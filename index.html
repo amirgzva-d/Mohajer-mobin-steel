@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOHAJER STEEL</title>
+    <!-- بارگذاری فونت‌های انگلیسی و فارسی -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@700;900&family=Vazirmatn:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==========================================================================
+       Header / Navigation
+       ========================================================================== -->
+    <header class="main-header">
+        <div class="logo" id="headerLogoBtn">
+            <img src="https://img.imgdd.com/2777581e-802a-4cdb-869b-a9aad0a1a6e3.png" alt="MOHAJER STEEL" class="main-logo-img">
+        </div>
+        
+        <nav class="nav-links">
+            <a href="#" id="navHomeLink" data-key="nav-home" class="active">Home</a>
+            <a href="#products" id="navProductsLink" data-key="nav-products">Products</a>
+            <a href="#departments" id="navDepartmentsLink" data-key="nav-departments">Departments</a>
+            <a href="#about" id="navAboutLink" data-key="nav-about">About Us</a>
+            <a href="#contact" id="navContactLink" data-key="nav-contact">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+            <!-- سوئیچر زبان -->
+            <div class="lang-selector-container">
+                <div class="lang-selector" id="langBtn">
+                    <span id="currentLang">EN</span>
+                    <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+                <ul class="lang-dropdown" id="langDropdown">
+                    <li data-lang="en">EN</li>
+                    <li data-lang="fa">FA</li>
+                    <li data-lang="ar">AR</li>
+                    <li data-lang="ru">RU</li>
+                </ul>
+            </div>
+            <!-- دکمه دریافت قیمت با لینک واتساپ اختصاصی -->
+            <button class="btn-quote" onclick="window.open('https://wa.me/message/4XJJK7VC6GWYD1', '_blank')">
+                <span data-key="btn-quote">Get a Quote</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- ==========================================================================
+       Main Landing Page View
+       ========================================================================== -->
+    <main id="mainLandingView">
+        
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-bg"></div>
+            <div class="hero-container">
+                <div class="slider-counter">
+                    <span class="num-active">01</span>
+                    <div class="counter-line"></div>
+                    <span class="num-total">03</span>
+                </div>
+                <div class="hero-text-block">
+                    <div class="subtitle-badge">
+                        <span class="line"></span>
+                        <span class="text" data-key="hero-subtitle">PREMIUM QUALITY STEEL</span>
+                    </div>
+                    <h1 class="main-title">
+                        <span class="light-text" data-key="hero-title-1">BUILD STRONGER</span>
+                        <span class="red-text" data-key="hero-title-2">BUILD BETTER</span>
+                    </h1>
+                    <p class="description" data-key="hero-desc">
+                        High-quality steel products engineered for strength, durability, and performance.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn-explore" id="heroExploreBtn">
+                            <span data-key="btn-explore">Explore Products</span>
+                            <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                        <button class="btn-catalog" id="btnViewCatalogVideo">
+                            <svg class="download-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            <span data-key="btn-catalog">View Catalog</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Value Propositions -->
+        <section class="footer-features">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <div class="feature-info">
+                        <h3 data-key="feat-1-title">Premium Quality</h3>
+                        <p data-key="feat-1-desc">Tested and certified to international standards.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    </div>
+                    <div class="feature-info">
+                        <h3 data-key="feat-2-title">High Strength</h3>
+                        <p data-key="feat-2-desc">Built for performance in the toughest conditions.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                    </div>
+                    <div class="feature-info">
+                        <h3 data-key="feat-3-title">On-Time Delivery</h3>
+                        <p data-key="feat-3-desc">Reliable logistics ensuring your projects stay on track.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <div class="feature-info">
+                        <h3 data-key="feat-4-title">Sustainable</h3>
+                        <p data-key="feat-4-desc">Committed to eco-friendly and responsible production.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-pagination">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </section>
+
+        <!-- Catalog Section -->
+        <section class="catalog-section" id="catalogSectionAnchor">
+            <div class="catalog-banner">
+                <div class="catalog-banner-bg"></div>
+                <div class="catalog-banner-text">
+                    <span class="red-badge-title" data-key="prod-sub">OUR PRODUCTS</span>
+                    <h2 class="section-main-title" data-key="prod-title">Premium Steel Products</h2>
+                    <p class="section-desc" data-key="prod-desc">
+                        High-quality steel products engineered for strength, durability, and performance in every project.
+                    </p>
+                </div>
+            </div>
+
+            <div class="catalog-layout">
+                <div class="catalog-grid-wrapper">
+                    <div class="catalog-toolbar">
+                        <span class="toolbar-showing" data-key="showing-txt-p1">Showing 1-8 of 12 products</span>
+                    </div>
+
+                    <div class="catalog-grid" id="catalogGrid">
+                        <!-- محصولات صفحه ۱ -->
+                        <div class="catalog-card" data-page="1">
+                            <div class="card-image" style="background-image: url('https://img.imgdd.com/d55b4ca8-46cd-4c9e-a1aa-aa406134c557.png');"></div>
+                            <div class="card-body">
+                                <h4 data-key="prod-round-title">Round Bars</h4>
+                                <p data-key="prod-round-desc">High strength round bars for machining and fabrication.</p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="standard-code">ASTM A36</span>
+                                <!-- شمش -->
+                                <a href="#" class="view-link btn-view-product-details" data-product="round" data-datasheet="https://img.imgdd.com/c7b38614-67d2-4b64-b974-f150975f16f2.png" data-key="view-details">
+                                    <span>View Details</span>
+                                    <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="catalog-card" data-page="1">
+                            <div class="card-image" style="background-image: url('https://img.imgdd.com/d4c0b410-4310-4ad3-9fab-b501ea9302d8.png');"></div>
+                            <div class="card-body">
+                                <h4 data-key="prod-plates-title">Steel Plates</h4>
+                                <p data-key="prod-plates-desc">High-quality plates for industrial use.</p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="standard-code">ASTM A36</span>
+                                <!-- ورق -->
+                                <a href="#" class="view-link btn-view-product-details" data-product="plates" data-datasheet="" data-key="view-details">
+                                    <span>View Details</span>
+                                    <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="catalog-card" data-page="1">
+                            <div class="card-image" style="background-image: url('https://img.imgdd.com/a7fe7eda-3eec-4774-8907-0e855909e1cd.png');"></div>
+                            <div class="card-body">
+                                <h4 data-key="prod-rebar-title">Rebar</h4>
+                                <p data-key="prod-rebar-desc">Deformed bars for reinforced concrete structures.</p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="standard-code">ASTM A615</span>
+                                <!-- میلگرد -->
+                                <a href="#" class="view-link btn-view-product-details" data-product="rebar" data-datasheet="https://img.imgdd.com/cc44152e-8336-4a43-b272-4082005b2fd6.png" data-key="view-details">
+                                    <span>View Details</span>
+                                    <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="catalog-card" data-page="1">
+                            <div class="card-image" style="background-image: url('https://img.imgdd.com/559925f4-2576-4cc5-acd3-45be2d2c3949.png');"></div>
+                            <div class="card-body">
+                                <h4 data-key="prod-angle-title">Angle Bars</h4>
+                                <p data-key="prod-angle-desc">Versatile angle bars for construction and fabrication.</p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="standard-code">ASTM A36</span>
+                                <!-- نبشی -->
+                                <a href="#" class="view-link btn-view-product-details" data-product="angle" data-datasheet="https://img.imgdd.com/cbb725cf-d117-4b86-b971-4d349e293290.png" data-key="view-details">
+                                    <span>View Details</span>
+                                    <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="catalog-card" data-page="1">
+                            <div class="card-image" style="background-image: url('https://img.imgdd.com/651f9be5-1f42-489d-81a1-e484637a0fec.png');"></div>
+                            <div class="card-body">
+                                <h4 data-key="prod-channel-title">U-Channels</h4>
+                                <p data-key="prod-channel-desc">Structural U-channels for framing and supports.</p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="standard-code">ASTM A36</span>
+                                <!-- ناودانی -->
+                                <a href="#" class="view-link btn-view-product-details" data-product="channels" data-datasheet="https://img.imgdd.com/18853546-aa82-4ee8-b51a-3d4d348ea371.png" data-key="view-details">
+                                    <span>View Details</span>
+                                    <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="catalog-card" data-page="1">
+                            <div class="card-image" style="background-image: url('https://img.imgdd.com/4c95417e-e75b-44f2-a1ce-90b9d2d2d900.png');"></div>
+                            <div class="card-body">
+                                <h4 data-key="prod-beams-title">H-Beams</h4>
+                                <p data-key="prod-beams-desc">High strength H-beams for structural applications.</p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="standard-code">ASTM A992</span>
+                                <!-- تیرآهن -->
+                                <a href="#" class="view-link btn-view-product-details" data-product="beams" data-datasheet="https://img.imgdd.com/edfcd4cf-2714-4d29-98d0-4e1dfc1424be.png" data-key="view-details">
+                                    <span>View Details</span>
+                                    <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="catalog-card" data-page="1">
+                            <div class="card-image" style="background-image: url('https://img.imgdd.com/7d93b663-e9b9-475e-bb6b-44070c959f35.png');"></div>
+                            <div class="card-body">
+                                <h4 data-key="prod-pipes-title">Steel Pipes</h4>
+                                <p data-key="prod-pipes-desc">Durable steel pipes for fluid and gas transport.</p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="standard-code">ASTM A53</span>
+                                <!-- لوله -->
+                                <a href="#" class="view-link btn-view-product-details" data-product="pipes" data-datasheet="https://img.imgdd.com/9d14d60c-2856-4e98-9996-bd2fe2d4cc00.png" data-key="view-details">
+                                    <span>View Details</span>
+                                    <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="catalog-card" data-page="1">
+                            <div class="card-image" style="background-image: url('https://img.imgdd.com/6528656f-b8d1-46f9-abcc-61aab0189ff4.png');"></div>
+                            <div class="card-body">
+                                <h4 data-key="prod-tubes-title">Square Tubes</h4>
+                                <p data-key="prod-tubes-desc">Precision square tubes for various applications.</p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="standard-code">ASTM A500</span>
+                                <!-- پروفیل -->
+                                <a href="#" class="view-link btn-view-product-details" data-product="tubes" data-datasheet="" data-key="view-details">
+                                    <span>View Details</span>
+                                    <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- محصولات صفحه ۲ -->
+                        <div class="catalog-card" data-page="2" style="display: none;">
+                            <div class="card-image" style="background-image: url('https://img.imgdd.com/164f4d34-a44c-407f-a8b1-8715c1112433.png');"></div>
+                            <div class="card-body">
+                                <h4 data-key="prod-flat-title">Flat Bars</h4>
+                                <p data-key="prod-flat-desc">Strong flat bars for multiple industrial applications.</p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="standard-code">ASTM A36</span>
+                                <!-- تسمه -->
+                                <a href="#" class="view-link btn-view-product-details" data-product="flat" data-datasheet="https://img.imgdd.com/6137f626-fc3d-4b3d-ae84-d248ce2e3d57.png" data-key="view-details">
+                                    <span>View Details</span>
+                                    <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="catalog-card" data-page="2" style="display: none;">
+                            <div class="card-image" style="background-image: url('https://img.imgdd.com/bb5335ba-092c-4a0c-b837-1fef233245da.png');"></div>
+                            <div class="card-body">
+                                <h4 data-key="prod-slab-title">Steel Slabs</h4>
+                                <p data-key="prod-slab-desc">High-quality steel slabs for industrial manufacturing.</p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="standard-code">ASTM A786</span>
+                                <!-- اسلب -->
+                                <a href="#" class="view-link btn-view-product-details" data-product="slab" data-datasheet="https://img.imgdd.com/ac8afc1d-da6a-4a48-a277-5d365e59ae7c.png" data-key="view-details">
+                                    <span>View Details</span>
+                                    <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="catalog-card" data-page="2" style="display: none;">
+                            <div class="card-image" style="background-image: url('https://img.imgdd.com/f9157b49-ee9d-40c8-8a3f-9992a088483e.png');"></div>
+                            <div class="card-body">
+                                <h4 data-key="prod-coil-title">Galvanized Coils</h4>
+                                <p data-key="prod-coil-desc">Corrosion-resistant coated steel coils.</p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="standard-code">ASTM A653</span>
+                                <!-- کلاف -->
+                                <a href="#" class="view-link btn-view-product-details" data-product="coils" data-datasheet="https://img.imgdd.com/caf09125-11ee-479c-9932-89932e55fb20.png" data-key="view-details">
+                                    <span>View Details</span>
+                                    <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="catalog-card" data-page="2" style="display: none;">
+                            <div class="card-image" style="background-image: url('https://img.imgdd.com/13c3bcc0-0dfe-4813-b463-bfb11af86b45.png');"></div>
+                            <div class="card-body">
+                                <h4 data-key="prod-wire-title">Steel Wires</h4>
+                                <p data-key="prod-wire-desc">High-tensile steel wires for industrial tying and mesh.</p>
+                            </div>
+                            <div class="card-footer">
+                                <span class="standard-code">ASTM A510</span>
+                                <!-- مفتول -->
+                                <a href="#" class="view-link btn-view-product-details" data-product="wires" data-datasheet="https://img.imgdd.com/5d192dd3-ec9a-4fda-a667-5a7ad9190a63.png" data-key="view-details">
+                                    <span>View Details</span>
+                                    <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="catalog-pagination">
+                        <button class="btn-page-prev" id="btnPagePrev"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+                        <button class="btn-page active" data-target-page="1">1</button>
+                        <button class="btn-page" data-target-page="2">2</button>
+                        <button class="btn-page-next" id="btnPageNext"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="custom-quote-cta">
+                <div class="cta-left">
+                    <div class="cta-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                    <div class="cta-text">
+                        <h3 data-key="cta-title">Can't find what you're looking for?</h3>
+                        <p data-key="cta-desc">Contact our experts for custom steel solutions tailored to your project.</p>
+                    </div>
+                </div>
+                <!-- دکمه درخواست قیمت سفارشی با لینک واتساپ -->
+                <button class="btn-request-quote" onclick="window.open('https://wa.me/message/4XJJK7VC6GWYD1', '_blank')">
+                    <span data-key="btn-custom-quote">Request Custom Quote</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- Contact Us Section -->
+        <section id="contactSection" class="contact-section">
+            <div class="contact-neon-bg-decor">
+                <div class="neon-line-decor"></div>
+                <div class="neon-line-decor"></div>
+                <div class="neon-line-decor"></div>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-left-side">
+                    <div class="contact-sub-badge">
+                        <span class="vertical-accent-line"></span>
+                        <span data-key="contact-sub-title">CONTACT US</span>
+                    </div>
+                    
+                    <p class="contact-lead-desc" data-key="contact-desc-text">
+                        Have a question or need a custom solution? Our team is here to help you build better.
+                    </p>
+                    
+                    <div class="contact-info-grid">
+                        <div class="info-card-item">
+                            <div class="info-card-icon-frame">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            </div>
+                            <div class="info-card-text">
+                                <h4 data-key="contact-phone-lbl">Phone</h4>
+                                <p dir="ltr">+98 51 3705 7124-5<br>+98 915 302 7342</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card-item">
+                            <div class="info-card-icon-frame">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            </div>
+                            <div class="info-card-text">
+                                <h4 data-key="contact-email-lbl">Email</h4>
+                                <p>www.mohajer-group.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card-item">
+                            <div class="info-card-icon-frame">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            </div>
+                            <div class="info-card-text">
+                                <h4 data-key="contact-addr-lbl">Address</h4>
+                                <p data-key="contact-addr-val">Mashhad, Janbaz Blvd, Pazh Admin Center 2, Floor 3, Unit 313</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card-item">
+                            <div class="info-card-icon-frame">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            </div>
+                            <div class="info-card-text">
+                                <h4 data-key="contact-hours-lbl">Working Hours</h4>
+                                <p data-key="contact-hours-val">Sat – Thu: 8:00 AM – 5:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-map-container">
+                        <iframe src="https://maps.google.com/maps?q=برج+اداری+پاژ+مشهد&t=&z=16&ie=UTF8&iwloc=&output=embed" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                
+                <div class="contact-right-side">
+                    <div class="form-container-card">
+                        <h3 data-key="form-title">Send Us a Message</h3>
+                        <p class="form-instructions-desc" data-key="form-sub">Fill out the form below and we'll get back to you as soon as possible.</p>
+                        
+                        <!-- فرم تماس با اکشن اختصاصی Formspree شما -->
+                        <form id="contactForm" class="contact-message-form" action="https://formspree.io/f/meewydqy" method="POST">
+                            <div class="contact-form-group">
+                                <input type="text" id="contactName" name="name" required placeholder="Full Name" data-placeholder-key="placeholder-name">
+                            </div>
+                            <div class="contact-form-group">
+                                <input type="email" id="contactEmail" name="email" required placeholder="Email Address" data-placeholder-key="placeholder-email">
+                            </div>
+                            <div class="contact-form-group">
+                                <input type="text" id="contactCompany" name="company" placeholder="Company Name" data-placeholder-key="placeholder-company">
+                            </div>
+                            <div class="contact-form-group">
+                                <input type="text" id="contactSubject" name="subject" placeholder="Subject" data-placeholder-key="placeholder-subject">
+                            </div>
+                            <div class="contact-form-group">
+                                <textarea id="contactMessage" name="message" required rows="5" placeholder="Your Message" data-placeholder-key="placeholder-msg"></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit-message">
+                                <span data-key="btn-send">Send Message</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="submit-arrow-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-trust-banner-container">
+                <div class="contact-trust-banner">
+                    <div class="trust-banner-left">
+                        <div class="trust-shield-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        </div>
+                        <div class="trust-banner-text">
+                            <h4 data-key="trust-title">Partnerships Built on Trust</h4>
+                            <p data-key="trust-desc">At Mohajer Steel, we believe strong partnerships create stronger results. Let's build the future together.</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap; z-index: 15;">
+                        <!-- دکمه درخواست تماس با قابلیت Click-to-call و حفظ استایل سایت -->
+                        <a href="tel:+989115302734" class="btn-request-callback" style="text-decoration: none;">
+                            <span data-key="btn-call">Request a Call</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="callback-arrow-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                        <!-- دکمه پیام به کارشناس با لینک واتساپ اختصاصی -->
+                        <button class="btn-direct-message" onclick="window.open('https://wa.me/message/4XJJK7VC6GWYD1', '_blank')">
+                            <span data-key="btn-direct-msg">Message Expert</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="msg-arrow-icon"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================================================
+       About Us View 
+       ========================================================================== -->
+    <main id="aboutUsView" style="display: none;" class="about-us-view">
+        
+        <section class="about-hero-section">
+            <div class="about-hero-bg"></div>
+            <div class="about-hero-container">
+                <div class="about-breadcrumbs">
+                    <span class="about-crumb-link" id="aboutCrumbHomeBtn" data-key="nav-home">Home</span>
+                    <span class="about-crumb-separator">></span>
+                    <span class="about-crumb-link" id="aboutCrumbUsBtn" data-key="nav-about">About Us</span>
+                    <span class="about-crumb-separator">></span>
+                    <span class="about-crumb-active" data-key="about-history">Our History</span>
+                </div>
+
+                <div class="about-hero-text">
+                    <h1 class="about-main-title">
+                        <span class="about-light-text" data-key="history-title-light">BUILT ON EXPERIENCE.</span>
+                        <span class="about-red-text" data-key="history-title-red">DRIVEN BY TRUST.</span>
+                    </h1>
+                    <div class="about-title-underline"></div>
+                    <p class="about-description" data-key="history-desc">
+                        With more than seven decades of experience in trade and export, Mohajer Steel has grown into one of the leading exporters in Khorasan Razavi Province, trusted by partners worldwide.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="history-founders-section">
+            <div class="history-founders-grid">
+                <div class="founder-card-item">
+                    <div class="founder-img-frame">
+                        <img src="https://img.imgdd.com/4f55df5a-764b-44c1-8b24-b14df82e0a3b.jpg" alt="Late Haj Ghasem Mohajeri Khorasani" class="founder-img">
+                    </div>
+                    <div class="founder-card-details">
+                        <span class="founder-card-year" data-key="founder1-year">1330</span>
+                        <span class="founder-card-role" data-key="founder1-subtitle">The Founder</span>
+                        <h3 class="founder-card-name" data-key="founder1-name">Late Haj Ghasem Mohajeri</h3>
+                        <p class="founder-card-bio" data-key="founder1-bio">
+                            The roots of our business go back to 1330, when the late Haj Ghasem Mohajeri Khorasani began his activity in the field of domestic trade of leather products and cross. By relying on experience, market knowledge, and professional business principles, he laid the foundation for a sustainable and successful business.
+                        </p>
+                    </div>
+                </div>
+                <div class="founder-card-item">
+                    <div class="founder-img-frame">
+                        <img src="https://img.imgdd.com/cfb2aa85-b026-4134-ae15-e467b56e5e7f.png" alt="Mr. Hashem Mohajeri Khorasani" class="founder-img">
+                    </div>
+                    <div class="founder-card-details">
+                        <span class="founder-card-year" data-key="founder2-year">1374</span>
+                        <span class="founder-card-role" data-key="founder2-subtitle">Continuing the Legacy</span>
+                        <h3 class="founder-card-name" data-key="founder2-name">Mr. Hashem Mohajeri</h3>
+                        <p class="founder-card-bio" data-key="founder2-bio">
+                            Continuing this path, from 1374, Mr. Hashem Mohajeri Khorasani expanded the company’s export activities, particularly in the food sector, utilizing the valuable experiences of the past and extending our presence to multiple international markets.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="history-timeline-section">
+            <div class="timeline-section-header">
+                <span class="timeline-sub-title" data-key="timeline-sub">OUR JOURNEY</span>
+                <h2 class="timeline-section-title" data-key="timeline-title">A History of Growth and Commitment</h2>
+                <div class="timeline-title-line"></div>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-node-item">
+                    <div class="timeline-marker"><div class="marker-dot"></div></div>
+                    <div class="timeline-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    </div>
+                    <div class="timeline-content-card">
+                        <span class="timeline-node-year" data-key="timeline1-year">1330</span>
+                        <h3 class="timeline-node-heading" data-key="timeline1-title">The Beginning</h3>
+                        <p class="timeline-node-desc" data-key="timeline1-desc">The roots of our business go back to 1330, when the late Haj Ghasem Mohajeri Khorasani began his activity in the field of domestic trade of leather products and cross. By relying on experience, market knowledge, and professional business principles, he laid the foundation for a sustainable and successful business.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-node-item">
+                    <div class="timeline-marker"><div class="marker-dot"></div></div>
+                    <div class="timeline-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </div>
+                    <div class="timeline-content-card">
+                        <span class="timeline-node-year" data-key="timeline2-year">1366</span>
+                        <h3 class="timeline-node-heading" data-key="timeline2-title">Expansion to International Markets</h3>
+                        <p class="timeline-node-desc" data-key="timeline2-desc">In 1366, the company entered international trade and began exporting cross and wet blue products to Turkey and Italy. This important step marked a turning point in the development of our business and entry into global markets.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-node-item">
+                    <div class="timeline-marker"><div class="marker-dot"></div></div>
+                    <div class="timeline-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                    </div>
+                    <div class="timeline-content-card">
+                        <span class="timeline-node-year" data-key="timeline3-year">1374</span>
+                        <h3 class="timeline-node-heading" data-key="timeline3-title">Growth in Exports</h3>
+                        <p class="timeline-node-desc" data-key="timeline3-desc">From 1374, under the leadership of Mr. Hashem Mohajeri Khorasani, our export activities expanded into various sectors including food products. During this period, our exports reached countries such as Afghanistan, Pakistan, Turkmenistan, Tajikistan, Kazakhstan, Kyrgyzstan, Russia, UAE, Turkey, Lebanon, Iraq, Canada, UK, Germany, and Somalia.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-node-item">
+                    <div class="timeline-marker"><div class="marker-dot"></div></div>
+                    <div class="timeline-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    </div>
+                    <div class="timeline-content-card">
+                        <span class="timeline-node-year" data-key="timeline4-year">1397</span>
+                        <h3 class="timeline-node-heading" data-key="timeline4-title">Diversification into Strategic Industries</h3>
+                        <p class="timeline-node-desc" data-key="timeline4-desc">Since 1397 and in line with global market demands, the company expanded into strategic commodities such as steel and petrochemical products. This approach has enabled sustainable growth and a stronger presence in international markets.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-node-item">
+                    <div class="timeline-marker"><div class="marker-dot"></div></div>
+                    <div class="timeline-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <div class="timeline-content-card">
+                        <span class="timeline-node-year" data-key="timeline5-year">Today and Beyond</span>
+                        <h3 class="timeline-node-heading" data-key="timeline5-title">Today and Beyond</h3>
+                        <p class="timeline-node-desc" data-key="timeline5-desc">Today, with more than 70 years of experience in trade and several decades of successful export, Mohajer Steel is recognized as one of the top exporters in Khorasan Razavi Province. We continue to build the future through professionalism, quality, commitment, and mutual trust.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Global Presence Section -->
+        <section class="global-presence-section">
+            <div class="global-presence-container">
+                
+                <div class="hero-row">
+                    <div class="hero-text">
+                        <span class="subtitle" data-key="global-subtitle">OUR GLOBAL PRESENCE</span>
+                        <h1 class="global-main-title">
+                            <span class="global-light" data-key="global-title-light">EXPORTING STRENGTH.</span><br>
+                            <span class="global-red" data-key="global-title-red">BUILDING CONNECTIONS.</span>
+                        </h1>
+                        <p class="global-desc" data-key="global-desc">Our products are trusted in over 20 countries worldwide. We continue to expand our global footprint with quality, reliability, and long-term partnerships.</p>
+                    </div>
+                </div>
+
+                <div class="main-workspace">
+                    <div class="sidebar-countries">
+                        <ul class="country-list" id="countryListSidebar">
+                        </ul>
+                    </div>
+
+                    <div class="map-container">
+                        <svg class="lines-overlay" viewBox="0 0 1440 900" style="width: 100%; height: 100%; display: block;">
+                            <image href="https://img.imgdd.com/8dc0bdfc-d8a6-4e5f-9da0-9d2b22096769.png" x="0" y="0" width="1440" height="900" />
+                        </svg>
+
+                        <div class="zoom-controls">
+                            <button class="btn-zoom">+</button>
+                            <button class="btn-zoom">−</button>
+                            <button class="btn-zoom">
+                                <svg style="width:14px; height:14px; fill:currentColor" viewBox="0 0 24 24"><path d="M12 2A10 10 0 1 0 22 12A10 10 0 0 0 12 2Zm1 17.93V18a1 1 0 0 0-2 0v1.93A8 8 0 0 1 4.07 13H5a1 1 0 0 0 0-2h-.93A8 8 0 0 1 11 4.07V5a1 1 0 0 0 2 0v-.93A8 8 0 0 1 19.93 11H19a1 1 0 0 0 0 2h.93A8 8 0 0 1 13 19.93Z"/></svg>
+                            </button>
+                        </div>
+
+                        <div class="country-detail-overlay" id="detail-card">
+                            <button class="btn-close-detail" id="close-card-btn">✕</button>
+                            
+                            <div class="card-top-layout">
+                                <img class="country-hero-img" id="card-img" src="" alt="Country Landmark">
+                                
+                                <div class="info-panel">
+                                    <div class="country-header">
+                                        <div class="flag-pill">
+                                            <img class="flag-icon" id="card-flag" src="" alt="">
+                                        </div>
+                                        <span class="country-name" id="card-country-name"></span>
+                                    </div>
+                                    <div class="partner-label" data-key="global-partner-lbl">Export Partner</div>
+                                    <p class="detail-desc" id="card-desc"></p>
+                                </div>
+                            </div>
+
+                            <div class="separator-line"></div>
+
+                            <h4 class="exports-title" id="card-exports-title"></h4>
+
+                            <div class="products-free-row">
+                                <div class="product-item-free" data-product="steel">
+                                    <div class="icon-box">
+                                        <svg class="industry-icon" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 8h24v8h10v8H44v16h10v8H44v8H20v-8H10v-8h10V24H10v-8h10z"/><path d="M24 16h16"/><path d="M24 48h16"/></g></svg>
+                                    </div>
+                                    <div class="product-text-meta">
+                                        <span class="icon-title" data-key="global-icon-steel">Steel Products</span>
+                                    </div>
+                                </div>
+
+                                <div class="product-item-free" data-product="petrochemical">
+                                    <div class="icon-box">
+                                        <svg class="industry-icon" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="2.5"><path d="M26 8h12"/><path d="M30 8v16L17 46c-3 5 0 10 6 10h18c6 0 9-5 6-10L34 24V8"/><path d="M22 38h20"/><circle cx="27" cy="45" r="1.5"/><circle cx="37" cy="49" r="1.5"/><circle cx="32" cy="43" r="1.5"/></g></svg>
+                                    </div>
+                                    <div class="product-text-meta">
+                                        <span class="icon-title" data-key="global-icon-petro">Petrochemical Products</span>
+                                    </div>
+                                </div>
+
+                                <div class="product-item-free" data-product="food">
+                                    <div class="icon-box">
+                                        <svg class="industry-icon" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="2.5"><path d="M32 10v44"/><path d="M32 16c-8 2-10 8-6 12"/><path d="M32 22c8-2 10 4 6 8"/><path d="M32 28c-8 2-10 8-6 12"/><path d="M32 34c8-2 10 4 6 8"/><path d="M32 40c-8 2-10 8-6 12"/></g></svg>
+                                    </div>
+                                    <div class="product-text-meta">
+                                        <span class="icon-title" data-key="global-icon-food">Food Products</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- بخش همکاری فعال اضافه شده -->
+                            <div class="active-cooperation-badge">
+                                <span class="coop-dot"></span>
+                                <span data-key="active-coop-text">Active Cooperation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-metrics-bar">
+                    <div class="metric-column">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 11 2 2 4-4"/></svg>
+                        <h4>70+</h4>
+                        <p data-key="foot-stat1">Years of Experience</p>
+                    </div>
+                    <div class="metric-column">
+                        <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <h4>100+</h4>
+                        <p data-key="foot-stat2">International Partners</p>
+                    </div>
+                    <div class="metric-column">
+                        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2" ry="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                        <h4>500K+</h4>
+                        <p data-key="foot-stat3">Tons Exported Annually</p>
+                    </div>
+                    <div class="metric-column">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                        <h4 data-key="foot-stat4-h">Top Exporter</h4>
+                        <p data-key="foot-stat4-p">Khorasan Razavi Province</p>
+                    </div>
+                    <div class="metric-column">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10zM2 12h20"/></svg>
+                        <h4>4</h4>
+                        <p data-key="foot-stat5">Continents</p>
+                    </div>
+                    <div class="metric-column">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 11 2 2 4-4"/></svg>
+                        <h4>100%</h4>
+                        <p data-key="foot-stat6">Commitment to Quality</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================================================
+       Departments View
+       ========================================================================== -->
+   <main id="departmentsView" style="display: none;" class="departments-view">
+    <section class="dept-hero-section">
+        <div class="dept-hero-bg"></div>
+        <div class="dept-hero-container">
+            <div class="dept-breadcrumbs">
+                <span class="dept-crumb-link" id="deptCrumbHomeBtn">Home</span>
+                <span class="dept-crumb-separator">></span>
+                <span class="dept-crumb-active" data-key="nav-departments">Departments</span>
+            </div>
+
+            <div class="dept-hero-text">
+                <h1 class="dept-main-title">
+                    <span class="dept-light-text" data-key="dept-title-light">DIVERSE EXPERTISE.</span>
+                    <span class="dept-red-text" data-key="dept-title-red">INDUSTRY LEADERSHIP.</span>
+                </h1>
+                <div class="dept-title-underline"></div>
+                <p class="dept-description" data-key="dept-desc">
+                    Mohajer Steel operates across key industries, delivering high-quality products and solutions that drive progress and build a stronger tomorrow.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="departments-cards-section">
+        <div class="departments-section-header">
+            <h2 class="departments-section-title" data-key="dept-key-title">Our Key Departments</h2>
+            <div class="departments-title-line"></div>
+        </div>
+
+        <div class="departments-cards-grid">
+            
+            <div class="department-card-item">
+                <div class="dept-card-image-wrapper">
+                    <img src="https://img.imgdd.com/a20f5d56-df9f-4a5b-affa-1cd6270ba0a5.png" alt="Food Industry" class="dept-card-img">
+                </div>
+                <div class="dept-card-body">
+                    <h3 class="dept-card-title" data-key="dept3-title">Food Industry</h3>
+                    <p class="dept-card-desc" data-key="dept3-desc">
+                        We supply hygienic and safe steel solutions for food processing and packaging industries, meeting the highest standards of quality and safety.
+                    </p>
+                    <ul class="dept-card-bullets">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-key="dept3-bullet1">Hygienic Materials</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-key="dept3-bullet2">Food-Grade Standards</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-key="dept3-bullet3">Sustainable Solutions</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-key="dept3-bullet4">Freshness & Safe Delivery</span></li>
+                    </ul>
+                    <div class="dept-card-footer">
+                        <!-- دکمه گروه واتساپ مواد غذایی -->
+                        <button class="btn-dept-learn-more" onclick="window.open('https://chat.whatsapp.com/FtTiOrCyKLv8XWUSXIM5gB?s=cl&p=a&mlu=0', '_blank')">
+                            <span data-key="btn-learn-more">Learn More</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="department-card-item">
+                <div class="dept-card-image-wrapper">
+                    <img src="https://img.imgdd.com/8da7b161-704a-4a77-800b-bc55753830c1.png" alt="Petrochemical" class="dept-card-img">
+                </div>
+                <div class="dept-card-body">
+                    <h3 class="dept-card-title" data-key="dept1-title">Petrochemical</h3>
+                    <p class="dept-card-desc" data-key="dept1-desc">
+                        We provide high-performance steel solutions for the petrochemical industry, ensuring durability and reliability in the most demanding environments.
+                    </p>
+                    <ul class="dept-card-bullets">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-key="dept1-bullet1">Corrosion-Resistant Alloys</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-key="dept1-bullet2">High-Pressure Applications</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-key="dept1-bullet3">Custom Fabrication</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-key="dept1-bullet4">Global Market Support</span></li>
+                    </ul>
+                    <div class="dept-card-footer">
+                        <!-- دکمه گروه واتساپ پتروشیمی -->
+                        <button class="btn-dept-learn-more" onclick="window.open('https://chat.whatsapp.com/Go0cHIDXHdgDyllopH6y0E', '_blank')">
+                            <span data-key="btn-learn-more">Learn More</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="department-card-item">
+                <div class="dept-card-image-wrapper">
+                    <img src="https://img.imgdd.com/bf4808bf-67c7-4bff-bc31-7505dbe233ed.png" alt="Steel" class="dept-card-img">
+                </div>
+                <div class="dept-card-body">
+                    <h3 class="dept-card-title" data-key="dept2-title">Steel</h3>
+                    <p class="dept-card-desc" data-key="dept2-desc">
+                        From raw materials to finished products, our steel department delivers excellence in quality, innovation, and sustainability.
+                    </p>
+                    <ul class="dept-card-bullets">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-key="dept2-bullet1">Structural Steel</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-key="dept2-bullet2">Steel Processing</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-key="dept2-bullet3">Quality Assurance</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-key="dept2-bullet4">Competitive Pricing</span></li>
+                    </ul>
+                    <div class="dept-card-footer">
+                        <!-- دکمه گروه واتساپ فولاد -->
+                        <button class="btn-dept-learn-more" onclick="window.open('https://chat.whatsapp.com/KeK8OGivszH8owQMZliohb', '_blank')">
+                            <span data-key="btn-learn-more">Learn More</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+    <!-- ==========================================================================
+       Product Analysis Detail View
+       ========================================================================== -->
+    <section id="productDetailView" class="detail-page-section" style="display: none;">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; flex-wrap: wrap; gap: 16px;">
+            <div class="breadcrumbs-container" style="margin-bottom: 0;">
+                <span class="crumb-link" id="crumbHomeBtn">Home</span>
+                <span class="crumb-separator">/</span>
+                <span class="crumb-link" id="crumbProductsBtn">Products</span>
+                <span class="crumb-separator">/</span>
+                <span class="crumb-active" id="detailBreadcrumbName">Steel Pipes</span>
+            </div>
+            <!-- دکمه‌های ناوبری از اینجا حذف و به زیر عکس منتقل شدند -->
+        </div>
+
+        <div class="detail-layout">
+            <div class="detail-left-column">
+                <div class="gallery-main-frame">
+                    <span class="gallery-astm-badge" id="detailBadgeCode">ASTM A53</span>
+                    <div class="gallery-img-container" id="detailImageContainer">
+                        <!-- عکس توسط JS در اینجا قرار می‌گیرد -->
+                    </div>
+                </div>
+                
+                <!-- دکمه‌های ناوبری جدید (کپسولی شکل زیر عکس) -->
+                <div class="product-nav-pill">
+                    <button class="nav-pill-btn" id="btnPrevProduct">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        <span data-key="btn-prev-prod">Previous</span>
+                    </button>
+                    <button class="nav-pill-grid" id="btnBackToCatalog" title="Back to Catalog">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    </button>
+                    <button class="nav-pill-btn" id="btnNextProduct">
+                        <span data-key="btn-next-prod">Next</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="detail-right-column">
+                <h1 class="detail-main-name" id="detailProductName">Steel Pipes</h1>
+                <p class="detail-main-desc" id="detailProductDesc">High-quality steel pipes designed for fluid and gas transport.</p>
+
+                <div class="detail-mini-features">
+                    <div class="mini-feature-card">
+                        <div class="mini-feat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        </div>
+                        <div class="mini-feat-text">
+                            <h5 data-key="detail-feat1-title">High Strength</h5>
+                            <p data-key="detail-feat1-desc">Built for durability</p>
+                        </div>
+                    </div>
+                    <div class="mini-feature-card">
+                        <div class="mini-feat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        </div>
+                        <div class="mini-feat-text">
+                            <h5 data-key="detail-feat2-title">Corrosion Resistant</h5>
+                            <p data-key="detail-feat2-desc">Long-lasting protection</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-action-btns">
+                    <!-- دکمه دریافت قیمت با لینک واتساپ اختصاصی -->
+                    <button class="btn-quote-fill" onclick="window.open('https://wa.me/message/4XJJK7VC6GWYD1', '_blank')">
+                        <span data-key="btn-quote">Get a Quote</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </button>
+                    <a href="#" id="btnDownloadDatasheet" class="btn-datasheet-outline" target="_blank" download="Product_Datasheet.png" style="text-decoration:none;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        <span data-key="btn-download-datasheet">Download Datasheet</span>
+                    </a>
+                </div>
+
+                <div class="detail-quick-specs"></div>
+            </div>
+
+            <div class="detail-table-container">
+                <h3 class="detail-table-title" id="detailChemTitle">Chemical Composition</h3>
+                <div class="table-scroll-wrapper">
+                    <table class="analysis-table">
+                        <thead>
+                            <tr></tr>
+                        </thead>
+                        <tbody id="detailChemBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Video Modal Overlay -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-content">
+            <span class="video-modal-close" id="closeVideoModal">&times;</span>
+            <div class="video-iframe-container">
+                <iframe id="videoIframe" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
