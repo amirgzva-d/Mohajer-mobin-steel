@@ -4,52 +4,45 @@ document.addEventListener('DOMContentLoaded', () => {
     let activeProductKey = null;
 
     // ==========================================================================
-    // لیست تصاویر اختصاصی محصولات برای نمایش در صفحه جزئیات تکی (کارت محصول)
+    // لیست تصاویر اختصاصی محصولات (لینک‌های جدید Cloudinary)
     // ==========================================================================
     const productImages = {
-        round: "https://img.imgdd.com/6d4d005f-b27a-48a4-8fa6-10abbd0185d8.png",       // شمش
-        plates: "https://img.imgdd.com/a828d09d-295e-426d-aac1-51cdb198b151.png",      // اسلب
-        rebar: "https://img.imgdd.com/bdaf7914-102e-486b-b3fd-6a76f03139b7.png",       // میلگرد
-        angle: "https://img.imgdd.com/7614d56c-2227-40a8-a697-fd0c80ce5038.png",       // نبشی
-        channels: "https://img.imgdd.com/ef0ec9af-b5c8-4c0a-a11b-bf1cc7a14212.png",    // ناودانی
-        beams: "https://img.imgdd.com/3d1c6c7a-311f-4a3b-8e82-2cc9c154ee51.png",       // تیرآهن
-        pipes: "https://img.imgdd.com/2c6dc2c8-8cd8-4867-859c-fb858c365167.png",       // لوله
-        tubes: "https://img.imgdd.com/3d182835-4802-4890-b87c-826268a8f61b.png",       // پروفیل
-        flat: "https://img.imgdd.com/ad475750-c182-47ae-bf00-723515ae982d.png",        // تسمه
-        chequered: "https://img.imgdd.com/085dcb6f-a531-4995-89eb-0244b4f0ccff.png",   // ورق آجدار
-        coils: "https://img.imgdd.com/5a09db5c-7198-4b8a-9873-76801d960be6.png",       // کلاف
-        wires: "https://img.imgdd.com/03f8f6e4-c7dc-420c-9fdd-213ec547af04.png"        // مفتول
+        round: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902903/%D8%B4%D9%85%D8%B4_cwnxsi.webp",
+        plates: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902906/%D9%88%D8%B1%D9%82_c5og8d.webp",
+        rebar: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%D9%85%DB%8C%D9%84%DA%AF%D8%B1%D8%AF_fw75cx.webp",
+        angle: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%D9%86%D8%A8%D8%B4%DB%8C_fbbc6a.webp",
+        channels: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902905/%D9%86%D9%88%D8%AF%D8%A7%D9%86%DB%8C_b0ctoh.webp",
+        beams: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902900/%D8%AA%DB%8C%D8%B1%D8%A7%D9%87%D9%86_gjwwlx.webp",
+        pipes: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%D9%84%D9%88%D9%84%D9%87_d5rvnj.webp",
+        tubes: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902908/%D9%BE%D8%B1%D9%88%D9%81%DB%8C%D9%84_fsuqgc.webp",
+        flat: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902899/%D8%AA%D8%B3%D9%85%D9%87_roluwo.webp",
+        slab: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902907/%D8%A7%D8%B3%D9%84%D8%A8_lyxy3f.webp",
+        coils: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%DA%A9%D9%84%D8%A7%D9%81_rseobr.webp",
+        wires: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%D9%85%D9%81%D8%AA%D9%88%D9%84_pffty8.webp"
     };
 
     // ==========================================================================
     // لیست تصاویر دیتاشیت محصولات
     // ==========================================================================
     const datasheetImages = {
-        round: "https://img.imgdd.com/c7b38614-67d2-4b64-b974-f150975f16f2.png",       
-        plates: "https://img.imgdd.com/ac8afc1d-da6a-4a48-a277-5d365e59ae7c.png",      
-        rebar: "https://img.imgdd.com/cc44152e-8336-4a43-b272-4082005b2fd6.png",       
-        angle: "https://img.imgdd.com/cbb725cf-d117-4b86-b971-4d349e293290.png",       
-        channels: "https://img.imgdd.com/18853546-aa82-4ee8-b51a-3d4d348ea371.png",    
-        beams: "https://img.imgdd.com/edfcd4cf-2714-4d29-98d0-4e1dfc1424be.png",       
-        pipes: "https://img.imgdd.com/9d14d60c-2856-4e98-9996-bd2fe2d4cc00.png",       
+        round: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782899239/3_leycac.png",       
+        plates: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782899273/6_d1ca01.png",      
+        rebar: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782899233/1_qzmxom.png",       
+        angle: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782899242/4_e42dej.png",       
+        channels: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782899243/5_dmqufn.png",    
+        beams: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782899240/2_p26oen.png",       
+        pipes: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782899268/9_ttqkzc.png",       
         tubes: "",                                                                     
-        flat: "https://img.imgdd.com/6137f626-fc3d-4b3d-ae84-d248ce2e3d57.png",        
-        chequered: "",                                                                 
-        coils: "https://img.imgdd.com/caf09125-11ee-479c-9932-89932e55fb20.png",       
-        wires: "https://img.imgdd.com/5d192dd3-ec9a-4fda-a667-5a7ad9190a63.png"        
+        flat: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782899260/8_d42ssf.png",        
+        slab: "",                                                                 
+        coils: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782899242/7_xvgoxc.png",       
+        wires: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782899271/10_cbrmmx.png"        
     };
 
     const productOrder = [
         'round', 'plates', 'rebar', 'angle', 'channels', 'beams', 
-        'pipes', 'tubes', 'flat', 'chequered', 'coils', 'wires'
+        'pipes', 'tubes', 'flat', 'slab', 'coils', 'wires'
     ];
-
-    const defaultHeaders = {
-        en: ["Grade", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
-        fa: ["گرید", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
-        ar: ["الفئة", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
-        ru: ["Марка", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"]
-    };
 
     // ==========================================================================
     // پایگاه داده کامل مشخصات محصولات
@@ -155,15 +148,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 ],
                 quickSpecs: [["Material Grade", "ASTM A36 / S275JR"], ["Product Type", "Hot Rolled Flat Profile"], ["Surface Finish", "Bare / Galvanized"], ["Width", "50 to 200 mm"], ["Thickness Range", "3.0mm to 25mm"]]
             },
-            chequered: {
-                category: "STEEL PLATES", title: "Chequered Plates", badge: "ASTM A786",
-                desc: "Heavy-duty anti-slip carbon steel patterned floor plates engineered for safety in industrial platforms.",
+            slab: {
+                category: "STEEL SLABS", title: "Steel Slabs", badge: "ASTM A786",
+                desc: "High-quality steel slabs for industrial manufacturing and heavy rolling.",
                 chemicalTitle: "Chemical Composition",
                 tableHeaders: ["Grade", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
-                    ["A786 Plate", "0.25 max", "0.80 - 1.20", "0.04 max", "0.05 max", "0.15 - 0.40", "0.20 min", "0.40 max", "0.40 max", "0.15 max", "Balance"]
+                    ["Industrial Slab", "0.25 max", "0.80 - 1.20", "0.04 max", "0.05 max", "0.15 - 0.40", "0.20 min", "0.40 max", "0.40 max", "0.15 max", "Balance"]
                 ],
-                quickSpecs: [["Material Grade", "ST37 - ST52"], ["Product Type", "Hot Rolled"], ["Thickness", "0.5 to 40 mm"], ["Dimensions", "1 to 1.25"], ["Surface Finish", "Roll and Sheet"]]
+                quickSpecs: [["Material Grade", "ST37 - ST52"], ["Product Type", "Hot Rolled"], ["Thickness", "0.5 to 40 mm"], ["Dimensions", "1 to 1.25"], ["Surface Finish", "Slab"]]
             },
             coils: {
                 category: "STEEL COILS", title: "Galvanized Coils", badge: "ASTM A653",
@@ -295,15 +288,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 ],
                 quickSpecs: [["گرید متریال", "ASTM A36 / S275JR"], ["نوع محصول", "تسمه نورد گرم ساختمانی"], ["سطح نهایی", "ساده / گالوانیزه گرم"], ["عرض تسمه", "50 تا 200 میل"], ["ضخامت تسمه", "۳.۰ تا ۲۵ میلی‌متر"]]
             },
-            chequered: {
-                category: "ورق‌های فولادی", title: "ورق آجدار", badge: "ASTM A786",
-                desc: "ورق‌های فولاد کربنی آجدار ضد لغزش با دوام بالا جهت حفظ ایمنی در مسیرهای تردد، رمپ‌های بارگیری و کفپوش‌های صنعتی.",
+            slab: {
+                category: "اسلب‌های فولادی", title: "اسلب فولادی", badge: "ASTM A786",
+                desc: "اسلب‌های فولادی با کیفیت بالا مناسب مصارف نورد و تولید ورق.",
                 chemicalTitle: "ترکیب شیمیایی",
                 tableHeaders: ["گرید", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
-                    ["ورق آجدار A786", "0.25 حداکثر", "0.80 - 1.20", "0.04 حداکثر", "0.05 حداکثر", "0.15 - 0.40", "0.20 حداقل", "0.40 حداکثر", "0.40 حداکثر", "0.15 حداکثر", "باقی‌مانده"]
+                    ["اسلب صنعتی", "0.25 حداکثر", "0.80 - 1.20", "0.04 حداکثر", "0.05 حداکثر", "0.15 - 0.40", "0.20 حداقل", "0.40 حداکثر", "0.40 حداکثر", "0.15 حداکثر", "باقی‌مانده"]
                 ],
-                quickSpecs: [["گرید متریال", "ST37-ST52"], ["نوع محصول", "نورد گرم"], ["ضخامت", "0.5 تا 40 میل"], ["ابعاد", "1 تا 1.25"], ["سطح نهایی", "رول و شیت"]]
+                quickSpecs: [["گرید متریال", "ST37-ST52"], ["نوع محصول", "نورد گرم"], ["ضخامت", "0.5 تا 40 میل"], ["ابعاد", "1 تا 1.25"], ["سطح نهایی", "اسلب مقطعی"]]
             },
             coils: {
                 category: "کویل‌های فولادی", title: "کلاف", badge: "ASTM A653",
@@ -435,13 +428,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 ],
                 quickSpecs: [["فئة المواد", "ASTM A36 / S275JR"], ["نوع المنتج", "خوص حديد ناعمة مسطحة"], ["تشطيب السطح", "عارٍ / مجلفن ساخن"], ["العرض", "50 إلى 200 ملم"], ["نطاق السمك", "من 3.0 ملم إلى 25 ملم"]]
             },
-            chequered: {
-                category: "صفائح الصلب", title: "صفائح حديد آجدار", badge: "ASTM A786",
-                desc: "ألواح حديدية منقوشة مانعة للانزلاق شديدة التحمل، مصممة خصيصاً لتوفير الأمان في المنصات الصناعية.",
+            slab: {
+                category: "صفائح الصلب", title: "بلاطات الصلب", badge: "ASTM A786",
+                desc: "بلاطات الصلب الإنشائية المدرفلة من الفولاذ الكربوني المقاوم، تمتاز بجودتها العالية.",
                 chemicalTitle: "التركيب الكيميائي",
                 tableHeaders: ["الفئة", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
-                    ["لوح آجدار A786", "0.25 كحد أقصى", "0.80 - 1.20", "0.04 كحد أقصى", "0.05 كحد أقصى", "0.15 - 0.40", "0.20 كحد أدنى", "0.40 كحد أقصى", "0.40 كحد أقصى", "0.15 كحد أقصى", "مستقر"]
+                    ["لوح A786", "0.25 كحد أقصى", "0.80 - 1.20", "0.04 كحد أقصى", "0.05 كحد أقصى", "0.15 - 0.40", "0.20 كحد أدنى", "0.40 كحد أقصى", "0.40 كحد أقصى", "0.15 كحد أقصى", "مستقر"]
                 ],
                 quickSpecs: [["فئة المواد", "ST37-ST52"], ["نوع المنتج", "درفلة ساخنة"], ["السمك", "0.5 إلى 40 ملم"], ["الأبعاد", "1 إلى 1.25"], ["تشطيب السطح", "رول وشيت"]]
             },
@@ -575,13 +568,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 ],
                 quickSpecs: [["Марка материала", "ASTM A36 / S275JR"], ["Тип продукта", "Горячекатаная полоса"], ["Отделка поверхности", "Без покрытия / Оцинкованная"], ["Ширина полосы", "от 50 до 200 мм"], ["Толщина полосы", "от 3.0мм до 25мм"]]
             },
-            chequered: {
-                category: "СТАЛЬНЫЕ ЛИСТЫ", title: "Рифленые листы", badge: "ASTM A786",
-                desc: "Прочные противоскользящие стальные напольные листы с рифленым рисунком для безопасного передвижения.",
+            slab: {
+                category: "СТАЛЬНЫЕ ЛИСТЫ", title: "Слябы", badge: "ASTM A786",
+                desc: "Конструкционные стальные слябы высокого качества для тяжелой промышленности.",
                 chemicalTitle: "Химический состав",
                 tableHeaders: ["Марка", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
-                    ["Лист рифленый A786", "макс. 0.25", "0.80 - 1.20", "макс. 0.04", "макс. 0.05", "0.15 - 0.40", "мин. 0.20", "макс. 0.40", "макс. 0.40", "макс. 0.15", "Остальное"]
+                    ["Слябы A786", "макс. 0.25", "0.80 - 1.20", "макс. 0.04", "макс. 0.05", "0.15 - 0.40", "мин. 0.20", "макс. 0.40", "макс. 0.40", "макс. 0.15", "Остальное"]
                 ],
                 quickSpecs: [["Марка материала", "ST37 - ST52"], ["Тип продукта", "Горячекатаный"], ["Толщина", "от 0.5 до 40 мм"], ["Размеры", "1 до 1.25"], ["Отделка поверхности", "Рулон и лист"]]
             },
@@ -639,12 +632,12 @@ document.addEventListener('DOMContentLoaded', () => {
             'prod-beams-title': 'H-Beams', 'prod-beams-desc': 'High strength steel beams for structural applications.',
             'prod-rebar-title': 'Rebar', 'prod-rebar-desc': 'Deformed bars for reinforced concrete structures.',
             'prod-tubes-title': 'Square Tubes', 'prod-tubes-desc': 'Precision steel profiles for various applications.',
-            'prod-plates-title': 'Slabs', 'prod-plates-desc': 'High-quality steel slabs for industrial use.',
+            'prod-plates-title': 'Steel Plates', 'prod-plates-desc': 'High-quality steel plates for industrial use.',
             'prod-angle-title': 'Angle Bars', 'prod-angle-desc': 'Versatile angle bars for construction and fabrication.',
             'prod-flat-title': 'Flat Bars', 'prod-flat-desc': 'Strong steel strips for multiple industrial applications.',
             'prod-round-title': 'Steel Billets', 'prod-round-desc': 'High strength billets for machining and rolling.',
             'prod-channel-title': 'U-Channels', 'prod-channel-desc': 'Structural U-channels for framing and supports.',
-            'prod-cheq-title': 'Chequered Plates', 'prod-cheq-desc': 'Anti-slip steel floor plates for industrial safety.',
+            'prod-slab-title': 'Steel Slabs', 'prod-slab-desc': 'High-quality steel slabs for industrial manufacturing.',
             'prod-coil-title': 'Galvanized Coils', 'prod-coil-desc': 'Corrosion-resistant coated steel coils.',
             'prod-wire-title': 'Steel Wires', 'prod-wire-desc': 'High-tensile steel wires for industrial tying and mesh.',
             'btn-download-datasheet': 'Download Datasheet',
@@ -735,12 +728,12 @@ document.addEventListener('DOMContentLoaded', () => {
             'prod-beams-title': 'تیرآهن', 'prod-beams-desc': 'تیرآهن‌های فولادی با مقاومت بالا برای سازه.',
             'prod-rebar-title': 'میلگرد', 'prod-rebar-desc': 'میلگردهای مقاوم سازی بتن در پروژه‌های عمرانی.',
             'prod-tubes-title': 'پروفیل', 'prod-tubes-desc': 'پروفیل‌های صنعتی چهارگوش با مهندسی ابعادی دقیق.',
-            'prod-plates-title': 'اسلب', 'prod-plates-desc': 'اسلب‌های فولادی با کیفیت بالا مناسب مصارف نورد.',
+            'prod-plates-title': 'ورق فولادی', 'prod-plates-desc': 'ورق‌های فولادی با کیفیت بالا مناسب مصارف صنعتی.',
             'prod-angle-title': 'نبشی', 'prod-angle-desc': 'پروفیل‌های نبشی پرکاربرد در صنایع ساختمانی.',
             'prod-flat-title': 'تسمه', 'prod-flat-desc': 'تسمه‌های فولادی مستحکم مناسب قطعه‌سازی.',
             'prod-round-title': 'شمش', 'prod-round-desc': 'شمش‌های فولادی مرغوب برای مصارف نورد و فولادسازی.',
             'prod-channel-title': 'ناودانی (U-Channel)', 'prod-channel-desc': 'ناودانی‌های ساختمانی با مقاومت بالا.',
-            'prod-cheq-title': 'ورق آجدار', 'prod-cheq-desc': 'ورق‌های فولادی ضد لغزش برای ایمنی سطوح صنعتی.',
+            'prod-slab-title': 'اسلب فولادی', 'prod-slab-desc': 'اسلب‌های فولادی با کیفیت بالا مناسب مصارف نورد.',
             'prod-coil-title': 'کلاف', 'prod-coil-desc': 'کلاف‌های ورق پوشش‌دار با مقاومت بالا در برابر زنگ‌زدگی.',
             'prod-wire-title': 'مفتول فولادی', 'prod-wire-desc': 'مفتول‌های فولادی با کشش بالا جهت آرماتوربندی.',
             'btn-download-datasheet': 'دانلود دیتاشیت',
@@ -835,7 +828,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'prod-flat-title': 'حديد مسطح', 'prod-flat-desc': 'خوص حديدية قوية ومقاومة للأحمال والشد الصناعي.',
             'prod-round-title': 'قضبان دائرية', 'prod-round-desc': 'قضبان حديد دائرية ملساء مناسبة لعمليات الدرفلة.',
             'prod-channel-title': 'قنوات U حديدية', 'prod-channel-desc': 'قنوات حديدية إنشائية لدعم الإطارات والهياكل.',
-            'prod-cheq-title': 'ألواح حديد صاج مضلع', 'prod-cheq-desc': 'ألواح أرضيات مانعة للانزلاق لضمان السلامة الصناعية.',
+            'prod-slab-title': 'بلاطات الصلب (اسلب)', 'prod-slab-desc': 'بلاطات الصلب الإنشائية المدرفلة.',
             'prod-coil-title': 'لفائف مجلفنة', 'prod-coil-desc': 'لفائف حديدية مطلية ومقاومة للصدأ والتآكل.',
             'prod-wire-title': 'أسلاك فولاذية', 'prod-wire-desc': 'أسلاك صلبة عالية الشد للربط الصناعي والشبكات.',
             'btn-download-datasheet': 'تحميل ورقة البيانات',
@@ -926,12 +919,12 @@ document.addEventListener('DOMContentLoaded', () => {
             'prod-beams-title': 'Двутавры H-образные', 'prod-beams-desc': 'Высокопрочные двутавровые балки для несущих конструкций.',
             'prod-rebar-title': 'Арматура', 'prod-rebar-desc': 'Стальные прутки для армирования железобетонных конструкций.',
             'prod-tubes-title': 'Профильные трубы', 'prod-tubes-desc': 'Точные профильные трубы для различных нужд.',
-            'prod-plates-title': 'Слябы', 'prod-plates-desc': 'Стальные листы высокой прочности для промышленности.',
+            'prod-plates-title': 'Стальные листы', 'prod-plates-desc': 'Стальные листы высокой прочности для промышленности.',
             'prod-angle-title': 'Уголки', 'prod-angle-desc': 'Универсальные стальные L-образные профили.',
             'prod-flat-title': 'Стальные полосы', 'prod-flat-desc': 'Универсальные металлические полосы горячей прокатки.',
             'prod-round-title': 'Стальные круги', 'prod-round-desc': 'Прутки круглого сечения для токарной обработки и заготовок.',
             'prod-channel-title': 'Швеллеры (U-профиль)', 'prod-channel-desc': 'Конструкционные швеллеры для каркасов и опор.',
-            'prod-cheq-title': 'Рифленые листы', 'prod-cheq-desc': 'Антискользящие стальные листы для промышленной безопасности.',
+            'prod-slab-title': 'Слябы', 'prod-slab-desc': 'Конструкционные стальные слябы высокого качества для тяжелой промышленности.',
             'prod-coil-title': 'Оцинкованные рулоны', 'prod-coil-desc': 'Стальные рулоны с коррозионностойким покрытием.',
             'prod-wire-title': 'Стальная проволока', 'prod-wire-desc': 'Высокопрочная проволока для связки и сеток.',
             'btn-download-datasheet': 'Скачать технический паспорт',
@@ -1004,27 +997,27 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // ==========================================================================
-    // منطق و داده‌های نقشه جهانی (Map Data & Logic)
+    // منطق و داده‌های نقشه جهانی (Cloudinary Image Updates)
     // ==========================================================================
 
     const countryData = {
-        af: { flag: "https://flagcdn.com/w40/af.png", img: "https://img.imgdd.com/ae23cab6-9910-4a8c-ac07-29f035f33328.png", exports: ["steel", "petrochemical", "food"] },
-        pk: { flag: "https://flagcdn.com/w40/pk.png", img: "https://img.imgdd.com/167906f7-e01e-4826-81e4-1514aa044dd2.png", exports: ["steel", "petrochemical", "food"] },
-        tm: { flag: "https://flagcdn.com/w40/tm.png", img: "https://img.imgdd.com/a2da5ae7-1fe6-4b0c-ac09-dc9b7b44042e.png", exports: ["steel", "petrochemical", "food"] },
-        uz: { flag: "https://flagcdn.com/w40/uz.png", img: "https://img.imgdd.com/1532813c-2c72-469b-94ad-9deb9921d8d0.png", exports: ["steel", "petrochemical", "food"] },
-        tj: { flag: "https://flagcdn.com/w40/tj.png", img: "https://img.imgdd.com/e9b733e2-65c9-4e93-835a-1adf05bb713c.png", exports: ["steel", "petrochemical", "food"] },
-        kz: { flag: "https://flagcdn.com/w40/kz.png", img: "https://img.imgdd.com/cfbb7224-7707-4f5e-af09-df3e6e39dde6.png", exports: ["steel", "petrochemical", "food"] },
-        kg: { flag: "https://flagcdn.com/w40/kg.png", img: "https://img.imgdd.com/c6475c2c-c3c9-42de-9cbb-fc0469ed939d.png", exports: ["steel", "petrochemical", "food"] },
-        tr: { flag: "https://flagcdn.com/w40/tr.png", img: "https://img.imgdd.com/c34f1a5a-1624-4c35-8134-76b9c4e1271b.png", exports: ["steel", "petrochemical", "food"] },
-        lb: { flag: "https://flagcdn.com/w40/lb.png", img: "https://img.imgdd.com/1348cda7-7e25-41ca-a2b0-f2b0ec2405b5.png", exports: ["steel", "petrochemical", "food"] },
-        sy: { flag: "https://flagcdn.com/w40/sy.png", img: "https://img.imgdd.com/f32650eb-4d98-4b0e-add0-b108eb6baf5f.png", exports: ["steel", "petrochemical", "food"] },
-        iq: { flag: "https://flagcdn.com/w40/iq.png", img: "https://img.imgdd.com/a9d09de1-1cba-42dd-8985-011264a5a1de.png", exports: ["steel", "petrochemical", "food"] },
-        ae: { flag: "https://flagcdn.com/w40/ae.png", img: "https://img.imgdd.com/03c3b314-e414-4b7a-976f-4cf62ff64517.png", exports: ["steel", "petrochemical", "food"] },
-        so: { flag: "https://flagcdn.com/w40/so.png", img: "https://img.imgdd.com/b5313aa4-923f-4057-999c-1ea3652ceac2.png", exports: ["steel", "petrochemical"] },
-        de: { flag: "https://flagcdn.com/w40/de.png", img: "https://img.imgdd.com/3f77f49e-3423-4754-999b-8ed377f915e1.png", exports: ["steel", "petrochemical", "food"] },
-        ca: { flag: "https://flagcdn.com/w40/ca.png", img: "https://img.imgdd.com/512337ea-e285-483b-b42f-308573e50fb1.png", exports: ["steel", "petrochemical", "food"] },
-        gb: { flag: "https://flagcdn.com/w40/gb.png", img: "https://img.imgdd.com/d418b630-4562-4c52-9726-ae7f35c618f2.jpg", exports: ["steel", "petrochemical", "food"] },
-        au: { flag: "https://flagcdn.com/w40/au.png", img: "https://img.imgdd.com/4047cd85-bbec-4680-b932-d20b6e2935da.png", exports: ["steel", "petrochemical", "food"] }
+        af: { flag: "https://flagcdn.com/w40/af.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897739/%D8%A7%D9%81%D8%BA%D8%A7%D9%86%D8%B3%D8%AA%D8%A7%D9%86_vttwtr.webp", exports: ["steel", "petrochemical", "food"] },
+        pk: { flag: "https://flagcdn.com/w40/pk.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897737/%D9%BE%D8%A7%DA%A9%D8%B3%D8%AA%D8%A7%D9%86_okldrx.webp", exports: ["steel", "petrochemical", "food"] },
+        tm: { flag: "https://flagcdn.com/w40/tm.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897743/%D8%AA%D8%A7%D8%AC%DB%8C%DA%A9%D8%B3%D8%AA%D8%A7%D9%86_tpqzyd.webp", exports: ["steel", "petrochemical", "food"] },
+        uz: { flag: "https://flagcdn.com/w40/uz.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897743/%D8%A7%D8%B2%DB%8C%DA%A9%D8%B3%D8%AA%D8%A7%D9%86_uxwtxw.webp", exports: ["steel", "petrochemical", "food"] },
+        tj: { flag: "https://flagcdn.com/w40/tj.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897739/%D8%AA%D8%A7%D8%AC%DB%8C%DA%A9%D8%B3%D8%AA%D8%A7%D9%86_tpqzyd.webp", exports: ["steel", "petrochemical", "food"] },
+        kz: { flag: "https://flagcdn.com/w40/kz.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897744/%D9%82%D8%B2%D8%A7%D9%82%D8%B3%D8%AA%D8%A7%D9%86_yk6jn7.webp", exports: ["steel", "petrochemical", "food"] },
+        kg: { flag: "https://flagcdn.com/w40/kg.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897743/%D9%82%D8%B1%D9%82%DB%8C%D8%B2%D8%B3%D8%AA%D8%A7%D9%86_yobiz6.webp", exports: ["steel", "petrochemical", "food"] },
+        tr: { flag: "https://flagcdn.com/w40/tr.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897740/%D8%AA%D8%B1%DA%A9%DB%8C%D9%87_crbvfu.webp", exports: ["steel", "petrochemical", "food"] },
+        lb: { flag: "https://flagcdn.com/w40/lb.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897736/%D9%84%D8%A8%D9%86%D8%A7%D9%86_x6msja.webp", exports: ["steel", "petrochemical", "food"] },
+        sy: { flag: "https://flagcdn.com/w40/sy.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897746/%D8%B3%D9%88%D8%B1%DB%8C%D9%87_u1xvhv.webp", exports: ["steel", "petrochemical", "food"] },
+        iq: { flag: "https://flagcdn.com/w40/iq.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897741/%D8%B9%D8%B1%D8%A7%D9%82_una0pi.webp", exports: ["steel", "petrochemical", "food"] },
+        ae: { flag: "https://flagcdn.com/w40/ae.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897736/%D8%A7%D9%85%D8%A7%D8%B1%D8%A7%D8%AA_t9pgsu.webp", exports: ["steel", "petrochemical", "food"] },
+        so: { flag: "https://flagcdn.com/w40/so.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897744/%D8%B3%D9%88%D8%B1%DB%8C%D9%87_u1xvhv.webp", exports: ["steel", "petrochemical"] },
+        de: { flag: "https://flagcdn.com/w40/de.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897735/%D8%A7%D9%84%D9%85%D8%A7%D9%86_a78sxj.webp", exports: ["steel", "petrochemical", "food"] },
+        ca: { flag: "https://flagcdn.com/w40/ca.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897738/%DA%A9%D8%A7%D9%86%D8%A7%D8%AF%D8%A7_bqj2rt.webp", exports: ["steel", "petrochemical", "food"] },
+        gb: { flag: "https://flagcdn.com/w40/gb.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897739/%D8%A7%D9%86%DA%AF%D9%84%D8%B3%D8%AA%D8%A7%D9%86_vbzfrg.webp", exports: ["steel", "petrochemical", "food"] },
+        au: { flag: "https://flagcdn.com/w40/au.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897733/%D8%A7%D8%B3%D8%AA%D8%B1%D8%A7%D9%84%DB%8C%D8%A7_zpvbgf.webp", exports: ["steel", "petrochemical", "food"] }
     };
 
     const overlay = document.querySelector('.lines-overlay');
@@ -1051,6 +1044,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const img = document.createElement('img');
             img.className = 'flag-box';
             img.src = data.flag;
+            img.setAttribute('loading', 'lazy');
+            img.setAttribute('decoding', 'async');
             
             const nameNode = document.createTextNode(' ' + translations[currentLang][`country-${code}-name`]);
             
@@ -1205,7 +1200,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // منطق نمایش یک‌ردیفه تیترها در تمام زبان‌ها
         const titlesToRow = document.querySelectorAll('.main-title, .dept-main-title, .about-main-title, .contact-main-heading, .global-main-title');
         titlesToRow.forEach(title => {
             title.style.flexDirection = 'row';
@@ -1253,7 +1247,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('detailChemTitle').innerText = spec.chemicalTitle;
 
         const imgContainer = document.getElementById('detailImageContainer');
-        const imgUrl = productImages[productKey] || "https://img.imgdd.com/be435070-02b5-4479-9382-71162b21ad6a.png";
+        const imgUrl = productImages[productKey] || "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%D9%84%D9%88%D9%84%D9%87_d5rvnj.webp";
         imgContainer.style.backgroundImage = `url('${imgUrl}')`;
 
         const downloadBtn = document.getElementById('btnDownloadDatasheet');
@@ -1375,7 +1369,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // دکمه بازگشت به کاتالوگ (آیکون چهارخانه وسط کپسول)
+    // دکمه بازگشت به کاتالوگ
     const btnBackToCatalog = document.getElementById('btnBackToCatalog');
     if (btnBackToCatalog) {
         btnBackToCatalog.addEventListener('click', () => {
@@ -1416,7 +1410,6 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // متصل کردن دکمه‌های ناوبری
     const clickMap = [
         { id: 'crumbHomeBtn', action: showMainLanding },
         { id: 'aboutCrumbHomeBtn', action: showMainLanding },
@@ -1470,11 +1463,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // باز کردن صفحه جزئیات کاتالوگ
     document.addEventListener('click', (e) => {
-        if (e.target.classList.contains('btn-view-product-details')) {
+        if (e.target.closest('.btn-view-product-details')) {
             e.preventDefault();
-            const productKey = e.target.getAttribute('data-product');
+            const btn = e.target.closest('.btn-view-product-details');
+            const productKey = btn.getAttribute('data-product');
             showProductAnalysis(productKey);
         }
     });
