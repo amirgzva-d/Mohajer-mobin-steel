@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ذخیره گرید محصول فعال
+    // ذخیره کلید محصول فعال
     let activeProductKey = null;
 
     // ==========================================================================
-    // لیست تصاویر اختصاصی محصولات (لینک‌های جدید Cloudinary)
+    // لیست تصاویر اختصاصی محصولات
     // ==========================================================================
     const productImages = {
         round: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902903/%D8%B4%D9%85%D8%B4_cwnxsi.webp",
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const productSpecs = {
         en: {
             round: {
-                category: "STEEL BILLETS", title: "Steel Billets", badge: "GOST 380-2005",
+                category: "STEEL BILLETS", title: "Steel Billets",
                 desc: "High-quality steel billets / round bars engineered for hot rolling, construction, and general forging applications.",
                 chemicalTitle: "Chemical Composition",
                 tableHeaders: ["Grade", "C %", "Si %", "Mn %", "S % (max)", "P % (max)", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["Material Grade", "ST 3SP / ST 4SP / ST 5SP"], ["Product Type", "Steel Billet"], ["Diameter Range", "80 to 200 mm"], ["Length", "6m / 12m or Custom"], ["Sizes", "100*100, 120*120, 125*125, 130*130, 150*150"]]
             },
             plates: {
-                category: "STEEL PLATES", title: "Steel Plates", badge: "DIN 17100",
+                category: "STEEL PLATES", title: "Steel Plates",
                 desc: "Heavy-duty steel plates engineered for rolling, structural steel frames, and high durability industrial applications.",
                 chemicalTitle: "Chemical Composition",
                 tableHeaders: ["Grade", "C %", "Mn %", "Si %", "P %", "S %", "Al %", "Cu %", "Ni %", "Cr %", "Mo %"],
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["Material Grade", "ST37 - ST52"], ["Product Type", "Hot Rolled"], ["Thickness", "0.5 to 40 mm"], ["Dimensions", "1 to 1.25"], ["Surface Finish", "Roll and Sheet"]]
             },
             rebar: {
-                category: "STEEL BARS", title: "Rebar", badge: "ISIRI 3132",
+                category: "STEEL BARS", title: "Rebar",
                 desc: "High-yield deformed reinforcing steel bars designed to provide excellent bonding strength in concrete structures.",
                 chemicalTitle: "Mechanical Properties",
                 tableHeaders: ["Grade", "Tensile Strength (MPa)", "Yield Strength (MPa)", "Ratio (Tensile/Yield)", "Elongation (A10) %"],
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["Material Grade", "A2 (340) / A3 (400) / A4 (500)"], ["Product Type", "Deformed TMT Rebar"], ["Surface Finish", "Hot Rolled Tempered"], ["Length", "12m or Custom Cut"], ["Bar Size", "8mm to 40mm"]]
             },
             angle: {
-                category: "ANGLE BARS", title: "Angle Bars", badge: "DIN 1028",
+                category: "ANGLE BARS", title: "Angle Bars",
                 desc: "Hot rolled equal steel angle profiles offering excellent structural rigidity, weldability, and fabrication ease.",
                 chemicalTitle: "Dimensions & Physical Specifications",
                 tableHeaders: ["Type Angle", "a (mm)", "t (mm)", "r (mm)", "Area (cm²)", "Mass (Kg/m)"],
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["Material Grade", "S235JR / S275JR / S355JR"], ["Product Type", "Hot Rolled Equal Angle"], ["Surface Finish", "Bare / Galvanized / Primed"], ["Leg Width", "25 to 100 mm"], ["Length", "6m / 12m or Custom Cuts"]]
             },
             channels: {
-                category: "STRUCTURAL STEEL", title: "U-Channels", badge: "DIN 1026-1",
+                category: "STRUCTURAL STEEL", title: "U-Channels",
                 desc: "Structural hot-rolled standard U-profile channels with tapered flanges for heavy frameworks.",
                 chemicalTitle: "Dimensions & Structural Specifications",
                 tableHeaders: ["Size (UPN)", "Height h (mm)", "Width b (mm)", "Web s (mm)", "Flange t (mm)", "Area (cm²)", "Mass (Kg/m)"],
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["Material Grade", "S235JR / S275JR / S355JR"], ["Product Type", "Hot Rolled UPN Channel"], ["Surface Finish", "Bare / Galvanized / Painted"], ["Size", "8 to 22 mm"], ["Length", "6m / 12m or Custom"]]
             },
             beams: {
-                category: "STRUCTURAL STEEL", title: "Steel Beams", badge: "DIN 1025-2",
+                category: "STRUCTURAL STEEL", title: "Steel Beams",
                 desc: "Hot rolled wide flange heavy H-beams engineered for high load-bearing steel frameworks.",
                 chemicalTitle: "Dimensions & Sectional Specifications",
                 tableHeaders: ["Size (HEB)", "Height h (mm)", "Width b (mm)", "Web s (mm)", "Flange t (mm)", "Radius r (mm)", "Area (cm²)", "Mass (Kg/m)"],
@@ -118,38 +118,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["Material Grade", "S275JR / S355JR / S355J2"], ["Product Type", "Wide Flange H-Beam HEB"], ["Surface Finish", "Bare / Primed / Painted"], ["Length", "6m / 12m or Custom Dimensions"], ["Size", "10 to 30"]]
             },
             pipes: {
-                category: "STEEL PIPES", title: "Steel Pipes", badge: "ASTM A53",
+                category: "STEEL PIPES", title: "Steel Pipes",
                 desc: "High-quality steel pipes designed for fluid and gas transport, structural applications, and various industrial uses.",
                 chemicalTitle: "Chemical Composition",
                 tableHeaders: ["Grade", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
-                    ["A53 Grade A", "0.25 max", "0.95 max", "0.05 max", "0.045 max", "0.10 min", "0.40 max", "0.40 max", "0.40 max", "0.15 max", "Balance"],
-                    ["A53 Grade B", "0.30 max", "1.20 max", "0.05 max", "0.045 max", "0.10 min", "0.40 max", "0.40 max", "0.40 max", "0.15 max", "Balance"]
+                    ["Grade A", "0.25 max", "0.95 max", "0.05 max", "0.045 max", "0.10 min", "0.40 max", "0.40 max", "0.40 max", "0.15 max", "Balance"],
+                    ["Grade B", "0.30 max", "1.20 max", "0.05 max", "0.045 max", "0.10 min", "0.40 max", "0.40 max", "0.40 max", "0.15 max", "Balance"]
                 ],
-                quickSpecs: [["Material Grade", "ASTM A53"], ["Product Type", "Seamless / Welded"], ["Surface Finish", "Black / Galvanized"], ["Length", "6m, 12m or Custom"], ["End Type", "Plain End / Beveled / Threaded"]]
+                quickSpecs: [["Material Grade", "Standard"], ["Product Type", "Seamless / Welded"], ["Surface Finish", "Black / Galvanized"], ["Length", "6m, 12m or Custom"], ["End Type", "Plain End / Beveled / Threaded"]]
             },
             tubes: {
-                category: "PROFILES", title: "Profiles", badge: "ASTM A500",
+                category: "PROFILES", title: "Profiles",
                 desc: "Precision welded and seamless square steel tubes designed for structural, architectural, and fabrication applications.",
                 chemicalTitle: "Chemical Composition",
                 tableHeaders: ["Grade", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
-                    ["A500 Grade B", "0.26 max", "1.35 max", "0.035 max", "0.035 max", "0.15 min", "0.40 max", "0.40 max", "0.40 max", "0.15 max", "Balance"]
+                    ["Grade B", "0.26 max", "1.35 max", "0.035 max", "0.035 max", "0.15 min", "0.40 max", "0.40 max", "0.40 max", "0.15 max", "Balance"]
                 ],
                 quickSpecs: [["Material Grade", "Grade A / B / C"], ["Product Type", "Welded / Seamless"], ["Surface Finish", "Oiled / Bare / Galvanized"], ["Length", "6m or Custom Size"], ["Wall Thickness", "1.5mm to 10.0mm"]]
             },
             flat: {
-                category: "STEEL STRIPS", title: "Steel Strips", badge: "ASTM A36",
+                category: "STEEL STRIPS", title: "Steel Strips",
                 desc: "Highly versatile flat steel bars manufactured with clean square corners, ideal for structural framing.",
                 chemicalTitle: "Chemical Composition",
                 tableHeaders: ["Grade", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
-                    ["A36 Flat Bar", "0.25 max", "0.90 max", "0.04 max", "0.05 max", "0.40 max", "0.20 min", "0.40 max", "0.40 max", "0.15 max", "Balance"]
+                    ["Flat Bar", "0.25 max", "0.90 max", "0.04 max", "0.05 max", "0.40 max", "0.20 min", "0.40 max", "0.40 max", "0.15 max", "Balance"]
                 ],
-                quickSpecs: [["Material Grade", "ASTM A36 / S275JR"], ["Product Type", "Hot Rolled Flat Profile"], ["Surface Finish", "Bare / Galvanized"], ["Width", "50 to 200 mm"], ["Thickness Range", "3.0mm to 25mm"]]
+                quickSpecs: [["Material Grade", "Standard / S275JR"], ["Product Type", "Hot Rolled Flat Profile"], ["Surface Finish", "Bare / Galvanized"], ["Width", "50 to 200 mm"], ["Thickness Range", "3.0mm to 25mm"]]
             },
             slab: {
-                category: "STEEL SLABS", title: "Steel Slabs", badge: "ASTM A786",
+                category: "STEEL SLABS", title: "Steel Slabs",
                 desc: "High-quality steel slabs for industrial manufacturing and heavy rolling.",
                 chemicalTitle: "Chemical Composition",
                 tableHeaders: ["Grade", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["Material Grade", "ST37 - ST52"], ["Product Type", "Hot Rolled"], ["Thickness", "0.5 to 40 mm"], ["Dimensions", "1 to 1.25"], ["Surface Finish", "Slab"]]
             },
             coils: {
-                category: "STEEL COILS", title: "Galvanized Coils", badge: "ASTM A653",
+                category: "STEEL COILS", title: "Galvanized Coils",
                 desc: "Corrosion-resistant hot-dip galvanized steel coils offering excellent durability and surface protection.",
                 chemicalTitle: "Chemical Composition",
                 tableHeaders: ["Grade", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["Material Grade", "3SP-RST34-1006-1008"], ["Product Type", "Galvanized Steel Coil"], ["Zinc Coating", "Z80 to Z275 g/m²"], ["Thickness", "5.5, 6.5, 8, 10"]]
             },
             wires: {
-                category: "STEEL WIRES", title: "Steel Wires", badge: "ASTM A510",
+                category: "STEEL WIRES", title: "Steel Wires",
                 desc: "High-tensile cold-drawn low-carbon steel wires designed for industrial mesh grids and construction tying.",
                 chemicalTitle: "Products & Pricing",
                 tableHeaders: ["Product Name", "Size", "Type", "Code / Price"],
@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         fa: {
             round: {
-                category: "شمش فولادی", title: "شمش", badge: "GOST 380-2005",
+                category: "شمش فولادی", title: "شمش",
                 desc: "شمش‌ها و مقاطع فولادی با کیفیت عالی تولید شده، طراحی شده برای صنایع نورد گرم، ساخت و ساز و کاربردهای فورج عمومی.",
                 chemicalTitle: "ترکیب شیمیایی شمش",
                 tableHeaders: ["گرید", "C %", "Si %", "Mn %", "S % (حداکثر)", "P % (حداکثر)", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["گرید متریال", "ST 3SP / ST 4SP / ST 5SP"], ["نوع محصول", "شمش فولادی"], ["محدوده ابعاد", "80 تا 200 میل"], ["طول شاخه", "۶ یا ۱۲ متری یا سفارشی"], ["سایزها", "100*100, 120*120, 125*125, 130*130, 150*150"]]
             },
             plates: {
-                category: "ورق فولادی", title: "ورق فولادی", badge: "DIN 17100",
+                category: "ورق فولادی", title: "ورق فولادی",
                 desc: "ورق‌های فولادی با کیفیت بسیار بالا، ایده‌آل برای صنایع نورد مجدد، اسکلت‌های فلزی سنگین و پروژه‌های بادوام صنعتی.",
                 chemicalTitle: "ترکیب شیمیایی",
                 tableHeaders: ["گرید", "C %", "Mn %", "Si % (حداکثر)", "P % (حداکثر)", "S % (حداکثر)", "Al % (حداکثر)", "Cu %", "Ni %", "Cr %", "Mo %"],
@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["گرید متریال", "ST37-ST52"], ["نوع محصول", "نورد گرم"], ["ضخامت", "0.5 تا 40 میل"], ["ابعاد", "1 تا 1.25"], ["سطح نهایی", "رول و شیت"]]
             },
             rebar: {
-                category: "میلگردهای فولادی", title: "میلگرد", badge: "ISIRI 3132",
+                category: "میلگردهای فولادی", title: "میلگرد",
                 desc: "میلگردهای آجدار تقویت‌کننده بتن با تنش تسلیم بالا جهت مهاربندی بتن و دوام اسکلت‌های فلزی.",
                 chemicalTitle: "خواص مکانیکی میلگرد",
                 tableHeaders: ["گرید", "استحکام کششی (MPa)", "مقاومت تسلیم (MPa)", "نسبت استحکام کششی به تسلیم", "درصد افزایش طول (A10)"],
@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["گرید متریال", "A2 (340) / A3 (400) / A4 (500)"], ["نوع محصول", "میلگرد آجدار TMT"], ["سطح نهایی", "نورد گرم ترمکس (تمپرد)"], ["طول شاخه", "۱۲ متری یا برش سفارشی"], ["سایز میلگرد", "۸ میلی‌متر تا ۴۰ میلی‌متر"]]
             },
             angle: {
-                category: "نبشی", title: "نبشی", badge: "DIN 1028",
+                category: "نبشی", title: "نبشی",
                 desc: "پروفیل‌های نبشی بال‌مساوی نورد گرم با مقاومت استاتیکی بالا جهت اتصالات سازه، خرپاها و دکل‌ها.",
                 chemicalTitle: "ابعاد و مشخصات فنی نبشی",
                 tableHeaders: ["نوع نبشی", "اندازه بال a (mm)", "ضخامت t (mm)", "شعاع r (mm)", "مقطع (cm²)", "وزن (Kg/m)"],
@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["گرید متریال", "S235JR / S275JR / S355JR"], ["نوع محصول", "نبشی بال مساوی نورد گرم"], ["سطح نهایی", "خام / گالوانیزه / آسترزده"], ["اندازه بال", "25 تا 100 میل"], ["طول شاخه", "۶ یا ۱۲ متری یا سفارشی"]]
             },
             channels: {
-                category: "فولاد سازه‌ای", title: "ناودانی (U-Channel)", badge: "DIN 1026-1",
+                category: "فولاد سازه‌ای", title: "ناودانی (U-Channel)",
                 desc: "ناودانی‌های سنگین نورد گرم با بال شیب‌دار جهت ساخت قاب‌های مهندسی و شاسی‌سازی سنگین.",
                 chemicalTitle: "ابعاد و مشخصات فنی ناودانی",
                 tableHeaders: ["سایز (UPN)", "ارتفاع h (mm)", "عرض بال b (mm)", "ضخامت جان s (mm)", "ضخامت بال t (mm)", "مقطع (cm²)", "وزن (Kg/m)"],
@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["گرید متریال", "S235JR / S275JR / S355JR"], ["نوع محصول", "ناودانی اروپایی UPN نورد گرم"], ["سطح نهایی", "خام / گالوانیزه / رنگ شده"], ["سایز", "8 تا 22 میل"], ["طول استاندارد", "۶ یا ۱۲ متری یا سفارشی"]]
             },
             beams: {
-                category: "فولاد سازه‌ای", title: "تیرآهن", badge: "DIN 1025-2",
+                category: "فولاد سازه‌ای", title: "تیرآهن",
                 desc: "تیرآهن‌های بال‌پهن سنگین نورد گرم، ایده‌آل برای پروژه‌های عظیم ساختمانی و بارهای مرده ساختاری.",
                 chemicalTitle: "ابعاد و مشخصات فنی تیرآهن",
                 tableHeaders: ["سایز (HEB)", "ارتفاع h (mm)", "عرض بال b (mm)", "ضخامت جان s (mm)", "ضخامت بال t (mm)", "شعاع r (mm)", "مقطع (cm²)", "وزن (Kg/m)"],
@@ -258,38 +258,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["گرید متریال", "S275JR / S355JR / S355J2"], ["نوع محصول", "تیرآهن بال‌پهن سنگین"], ["سطح نهایی", "خام / آسترزده / رنگ شده"], ["طول شاخه", "۶ یا ۱۲ متری یا سفارشی"], ["سایز", "10 تا 30"]]
             },
             pipes: {
-                category: "لوله‌های فولادی", title: "لوله", badge: "ASTM A53",
+                category: "لوله‌های فولادی", title: "لوله",
                 desc: "لوله‌های فولادی با کیفیت بالا طراحی شده برای انتقال سیالات و گاز، کاربردهای سازه‌ای و استفاده‌های مختلف صنعتی.",
                 chemicalTitle: "ترکیب شیمیایی",
                 tableHeaders: ["گرید", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
-                    ["A53 گرید A", "0.25 حداکثر", "0.95 حداکثر", "0.05 حداکثر", "0.045 حداکثر", "0.10 حداقل", "0.40 حداکثر", "0.40 حداکثر", "0.40 حداکثر", "0.15 حداکثر", "باقی‌مانده"],
-                    ["A53 گرید B", "0.30 حداکثر", "1.20 حداکثر", "0.05 حداکثر", "0.045 حداکثر", "0.10 حداقل", "0.40 حداکثر", "0.40 حداکثر", "0.40 حداکثر", "0.15 حداکثر", "باقی‌مانده"]
+                    ["گرید A", "0.25 حداکثر", "0.95 حداکثر", "0.05 حداکثر", "0.045 حداکثر", "0.10 حداقل", "0.40 حداکثر", "0.40 حداکثر", "0.40 حداکثر", "0.15 حداکثر", "باقی‌مانده"],
+                    ["گرید B", "0.30 حداکثر", "1.20 حداکثر", "0.05 حداکثر", "0.045 حداکثر", "0.10 حداقل", "0.40 حداکثر", "0.40 حداکثر", "0.40 حداکثر", "0.15 حداکثر", "باقی‌مانده"]
                 ],
-                quickSpecs: [["گرید متریال", "ASTM A53"], ["نوع محصول", "بدون درز / درزدار"], ["سطح نهایی", "سیاه / گالوانیزه"], ["طول", "۶ متری، ۱۲ متری یا سفارشی"], ["نوع انتها", "ساده / پخ‌خورده / دنده‌دار"]]
+                quickSpecs: [["گرید متریال", "استاندارد"], ["نوع محصول", "بدون درز / درزدار"], ["سطح نهایی", "سیاه / گالوانیزه"], ["طول", "۶ متری، ۱۲ متری یا سفارشی"], ["نوع انتها", "ساده / پخ‌خورده / دنده‌دار"]]
             },
             tubes: {
-                category: "قوطی و پروفیل", title: "پروفیل", badge: "ASTM A500",
+                category: "قوطی و پروفیل", title: "پروفیل",
                 desc: "پروفیل‌های فولادی با دقت ابعادی بالا جهت مصارف ساختمانی، شاسی‌سازی و اسکلت فلزی سبک.",
                 chemicalTitle: "ترکیب شیمیایی",
                 tableHeaders: ["گرید", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
-                    ["A500 گرید B", "0.26 حداکثر", "1.35 حداکثر", "0.035 حداکثر", "0.035 حداکثر", "0.15 حداقل", "0.40 حداکثر", "0.40 حداکثر", "0.40 حداکثر", "0.15 حداکثر", "باقی‌مانده"]
+                    ["گرید B", "0.26 حداکثر", "1.35 حداکثر", "0.035 حداکثر", "0.035 حداکثر", "0.15 حداقل", "0.40 حداکثر", "0.40 حداکثر", "0.40 حداکثر", "0.15 حداکثر", "باقی‌مانده"]
                 ],
                 quickSpecs: [["گرید متریال", "Grade A / B / C"], ["نوع محصول", "درزدار / بدون درز"], ["سطح نهایی", "روغن‌کاری‌شده / خام"], ["طول", "۶ متری یا ابعاد سفارشی"], ["ضخامت دیواره", "۱.۵ تا ۱۰.۰ میلی‌متر"]]
             },
             flat: {
-                category: "تسمه فولادی", title: "تسمه", badge: "ASTM A36",
+                category: "تسمه فولادی", title: "تسمه",
                 desc: "تسمه‌های فولادی نورد شده با لبه‌های بسیار تمیز و گونیایی، ایده‌آل برای قاب‌بندی، فریم‌های صنعتی و قطعه‌سازی عمومی.",
                 chemicalTitle: "ترکیب شیمیایی",
                 tableHeaders: ["گرید", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
-                    ["تسمه فولادی A36", "0.25 حداکثر", "0.90 حداکثر", "0.04 حداکثر", "0.05 حداکثر", "0.40 حداکثر", "0.20 حداقل", "0.40 حداکثر", "0.40 حداکثر", "0.15 حداکثر", "باقی‌مانده"]
+                    ["تسمه فولادی", "0.25 حداکثر", "0.90 حداکثر", "0.04 حداکثر", "0.05 حداکثر", "0.40 حداکثر", "0.20 حداقل", "0.40 حداکثر", "0.40 حداکثر", "0.15 حداکثر", "باقی‌مانده"]
                 ],
-                quickSpecs: [["گرید متریال", "ASTM A36 / S275JR"], ["نوع محصول", "تسمه نورد گرم ساختمانی"], ["سطح نهایی", "ساده / گالوانیزه گرم"], ["عرض تسمه", "50 تا 200 میل"], ["ضخامت تسمه", "۳.۰ تا ۲۵ میلی‌متر"]]
+                quickSpecs: [["گرید متریال", "استاندارد / S275JR"], ["نوع محصول", "تسمه نورد گرم ساختمانی"], ["سطح نهایی", "ساده / گالوانیزه گرم"], ["عرض تسمه", "50 تا 200 میل"], ["ضخامت تسمه", "۳.۰ تا ۲۵ میلی‌متر"]]
             },
             slab: {
-                category: "اسلب‌های فولادی", title: "اسلب فولادی", badge: "ASTM A786",
+                category: "اسلب‌های فولادی", title: "اسلب فولادی",
                 desc: "اسلب‌های فولادی با کیفیت بالا مناسب مصارف نورد و تولید ورق.",
                 chemicalTitle: "ترکیب شیمیایی",
                 tableHeaders: ["گرید", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["گرید متریال", "ST37-ST52"], ["نوع محصول", "نورد گرم"], ["ضخامت", "0.5 تا 40 میل"], ["ابعاد", "1 تا 1.25"], ["سطح نهایی", "اسلب مقطعی"]]
             },
             coils: {
-                category: "کویل‌های فولادی", title: "کلاف", badge: "ASTM A653",
+                category: "کویل‌های فولادی", title: "کلاف",
                 desc: "کویل‌های فولادی گالوانیزه شده به روش غوطه‌وری گرم با مقاومت استثنایی در برابر زنگ‌زدگی، فرم‌پذیری عالی و کیفیت بالای پوشش سطحی.",
                 chemicalTitle: "ترکیب شیمیایی",
                 tableHeaders: ["گرید", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
@@ -309,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["گرید متریال", "3SP-RST34-1006-1008"], ["نوع محصول", "کویل فولادی گالوانیزه"], ["پوشش روی (Zinc)", "Z80 تا Z275 گرم بر مترمربع"], ["ضخامت", "5.5 و 6.5 و 8 و 10"]]
             },
             wires: {
-                category: "مفتول‌های فولادی", title: "مفتول فولادی", badge: "ASTM A510",
+                category: "مفتول‌های فولادی", title: "مفتول فولادی",
                 desc: "مفتول‌های فولادی با کربن کم و مقاومت کششی بالا جهت توری، آرماتوربندی، ساخت میخ، پیچ و صنایع مفتولی عمومی.",
                 chemicalTitle: "لیست محصولات و قیمت",
                 tableHeaders: ["نام محصول", "سایز", "نوع پوشش", "کد / قیمت"],
@@ -330,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         ar: {
             round: {
-                category: "أنابيب الصلب", title: "أنابيب الصلب", badge: "GOST 380-2005",
+                category: "أنابيب الصلب", title: "أنابيب الصلب",
                 desc: "عروق الصلب الدائرية ملساء ومثالية لأعمال التشغيل اليدوي والحدادة.",
                 chemicalTitle: "التركيب الكيميائي",
                 tableHeaders: ["الفئة", "C %", "Si %", "Mn %", "S % (أقصى)", "P % (أقصى)", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
@@ -342,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["فئة المواد", "ST 3SP / ST 4SP / ST 5SP"], ["نوع المنتج", "عروق الصلب (بلت)"], ["نطاق الأقطار", "80 إلى 200 ملم"], ["طول القضيب", "6 م / 12 م أو حسب الطلب"], ["الأحجام", "100*100, 120*120, 125*125, 130*130, 150*150"]]
             },
             plates: {
-                category: "بلاطات الصلب", title: "بلاطات الصلب", badge: "DIN 17100",
+                category: "بلاطات الصلب", title: "بلاطات الصلب",
                 desc: "بلاطات الصلب الإنشائية المدرفلة من الفولاذ الكربوني المقاوم، تمتاز بجودتها العالية.",
                 chemicalTitle: "التركيب الكيميائي",
                 tableHeaders: ["الفئة", "C %", "Mn %", "Si % (أقصى)", "P % (أقصى)", "S % (أقصى)", "Al % (أقصى)", "Cu %", "Ni %", "Cr %", "Mo %"],
@@ -353,7 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["فئة المواد", "ST37-ST52"], ["نوع المنتج", "درفلة ساخنة"], ["السمك", "0.5 إلى 40 ملم"], ["الأبعاد", "1 إلى 1.25"], ["تشطيب السطح", "رول وشيت"]]
             },
             rebar: {
-                category: "قضبان التسليح", title: "حديد التسليح", badge: "ISIRI 3132",
+                category: "قضبان التسليح", title: "حديد التسليح",
                 desc: "حديد تسليح مضلع عالي المقاومة وذو متانة فائقة مصنع ليتلاءم بالكامل مع معايير الجودة.",
                 chemicalTitle: "الخواص الميكانيكية",
                 tableHeaders: ["الفئة", "قوة الشد (MPa)", "قوة الخضوع (MPa)", "نسبة قوة الشد إلى الخضوع", "الاستطالة (A10) %"],
@@ -365,7 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["فئة المواد", "A2 (340) / A3 (400) / A4 (500)"], ["نوع المنتج", "حديد تسليح مضلع TMT"], ["تشطيب السطح", "درفلة ساخنة معالجة"], ["الطول", "12 م أو قص مخصص"], ["مقاس القضيب", "من 8 ملم إلى 40 ملم"]]
             },
             angle: {
-                category: "زوايا حديد", title: "زوايا حديد", badge: "DIN 1028",
+                category: "زوايا حديد", title: "زوايا حديد",
                 desc: "مقاطع حديد زاوية L بالدرفلة على الساخن بالزوايا متساوية بالكامل، تتميز بمتانتها الفائقة.",
                 chemicalTitle: "أبعاد ومواصفات الزوايا",
                 tableHeaders: ["نوع الزاوية", "طول الجناح a (مم)", "السماكة t (مم)", "نصف القطر r (مم)", "المساحة (سم²)", "الوزن (كجم/م)"],
@@ -376,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["فئة المواد", "S235JR / S275JR / S355JR"], ["نوع المنتج", "زاوية حديد إنشائية L"], ["تشطيب السطح", "عارٍ / مجلفن / مطلي"], ["عرض الجناح", "25 إلى 100 ملم"], ["طول القطعة القياسي", "6 م / 12 م أو مخصص"]]
             },
             channels: {
-                category: "الفولاذ الإنشائي", title: "كمرات قنوات U", badge: "DIN 1026-1",
+                category: "الفولاذ الإنشائي", title: "كمرات قنوات U",
                 desc: "قنوات صلب مسطحة درفلة ساخنة مجهزة بالكامل لتطبيقات الإنشائية الكبرى.",
                 chemicalTitle: "أبعاد ومواصفات قنوات U",
                 tableHeaders: ["المقاس (UPN)", "الارتفاع h (مم)", "عرض الشفة b (مم)", "سمك الجسد s (مم)", "سمك الشفة t (مم)", "المساحة (سم²)", "الوزن (كجم/م)"],
@@ -387,7 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["فئة المواد", "S235JR / S275JR / S355JR"], ["نوع المنتج", "قطاعات UPN درفلة ساخنة"], ["تشطيب السطح", "عارٍ / مجلفن / مدهون"], ["المقاس", "8 إلى 22 ملم"], ["طول القياسي", "6 أمتار / 12 متر أو مخصص"]]
             },
             beams: {
-                category: "الفولاذ الإنشائي", title: "كمرات حديد", badge: "DIN 1025-2",
+                category: "الفولاذ الإنشائي", title: "كمرات حديد",
                 desc: "كمرات حديد عريضة الجناحين ثقيلة HEB من الفولاذ الهيكلي الصلب لمقاومة الأحمال.",
                 chemicalTitle: "أبعاد ومواصفات الكمرات",
                 tableHeaders: ["المقاس (HEB)", "الارتفاع h (مم)", "عرض الشفة b (مم)", "سمك الجسد s (مم)", "سمك الشفة t (مم)", "نصف القطر r (مم)", "المساحة (سم²)", "الوزن (كجم/م)"],
@@ -398,48 +398,48 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["فئة المواد", "S275JR / S355JR / S355J2"], ["نوع المنتج", "كمرات حديد عريضة الشفة HEB"], ["تشطيب السطح", "عارٍ / مطلي بالأساس"], ["طول القطعة", "6 م / 12 م أو أبعاد مخصصة"], ["المقاس", "10 إلى 30"]]
             },
             pipes: {
-                category: "أنابيب الصلب", title: "أنابيب الصلب", badge: "ASTM A53",
+                category: "أنابيب الصلب", title: "أنابيب الصلب",
                 desc: "أنابيب فولاذية عالية الجودة مصممة لنقل السوائل والغازات، التطبيقات الإنشائية، والاستخدامات الصناعية المختلفة.",
                 chemicalTitle: "التركيب الكيميائي",
                 tableHeaders: ["الفئة", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
-                    ["A53 الفئة A", "0.25 كحد أقصى", "0.95 كحد أقصى", "0.05 كحد أقصى", "0.045 كحد أقصى", "0.10 كحد أدنى", "0.40 كحد أقصى", "0.40 كحد أقصى", "0.40 كحد أقصى", "0.15 كحد أقصى", "مستقر"],
-                    ["A53 الفئة B", "0.30 كحد أقصى", "1.20 كحد أقصى", "0.05 كحد أقصى", "0.045 كحد أقصى", "0.10 كحد أدنى", "0.40 كحد أقصى", "0.40 كحد أقصى", "0.40 كحد أقصى", "0.15 كحد أقصى", "مستقر"]
+                    ["الفئة A", "0.25 كحد أقصى", "0.95 كحد أقصى", "0.05 كحد أقصى", "0.045 كحد أقصى", "0.10 كحد أدنى", "0.40 كحد أقصى", "0.40 كحد أقصى", "0.40 كحد أقصى", "0.15 كحد أقصى", "مستقر"],
+                    ["الفئة B", "0.30 كحد أقصى", "1.20 كحد أقصى", "0.05 كحد أقصى", "0.045 كحد أقصى", "0.10 كحد أدنى", "0.40 كحد أقصى", "0.40 كحد أقصى", "0.40 كحد أقصى", "0.15 كحد أقصى", "مستقر"]
                 ],
-                quickSpecs: [["فئة المواد", "ASTM A53"], ["نوع المنتج", "غير ملحوم / ملحوم"], ["تشطيب السطح", "أسود / مجلفن"], ["الطول", "6 م، 12 م أو مخصص"], ["نوع النهاية", "نهاية مستوية / مشطوفة / مسننة"]]
+                quickSpecs: [["فئة المواد", "قياسي"], ["نوع المنتج", "غير ملحوم / ملحوم"], ["تشطيب السطح", "أسود / مجلفن"], ["الطول", "6 م، 12 م أو مخصص"], ["نوع النهاية", "نهاية مستوية / مشطوفة / مسننة"]]
             },
             tubes: {
-                category: "بروفيلات", title: "بروفيلات", badge: "ASTM A500",
+                category: "بروفيلات", title: "بروفيلات",
                 desc: "أنابيب فولاذية مربعة ومستطيلة ذات دقة عالية في التصنيع، مناسبة للاستخدام الإنشائي والصناعي.",
                 chemicalTitle: "التركيب الكيميائي",
                 tableHeaders: ["الفئة", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
-                    ["A500 الفئة B", "0.26 كحد أقصى", "1.35 كحد أقصى", "0.035 كحد أقصى", "0.035 كحد أقصى", "0.15 كحد أدنى", "0.40 كحد أقصى", "0.40 كحد أقصى", "0.40 كحد أقصى", "0.15 كحد أقصى", "مستقر"]
+                    ["الفئة B", "0.26 كحد أقصى", "1.35 كحد أقصى", "0.035 كحد أقصى", "0.035 كحد أقصى", "0.15 كحد أدنى", "0.40 كحد أقصى", "0.40 كحد أقصى", "0.40 كحد أقصى", "0.15 كحد أقصى", "مستقر"]
                 ],
                 quickSpecs: [["فئة المواد", "Grade A / B / C"], ["نوع المنتج", "ملحوم / غير ملحوم"], ["تشطيب السطح", "مطلي بالزيت / عارٍ"], ["الطول", "6 م أو قياس مخصص"], ["سمك الجدار", "1.5 ملم إلى 10.0 ملم"]]
             },
             flat: {
-                category: "شرائح صلب", title: "شرائح صلب", badge: "ASTM A36",
+                category: "شرائح صلب", title: "شرائح صلب",
                 desc: "قضبان حديد مسطحة عالية المتانة والصلابة، مثالية لأعمال اللحام وقواعد التركيب والهياكل الهندسية العامة.",
                 chemicalTitle: "التركيب الكيميائي",
                 tableHeaders: ["الفئة", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
-                    ["خوص حديد A36", "0.25 كحد أقصى", "0.90 كحد أقصى", "0.04 كحد أقصى", "0.05 كحد أقصى", "0.40 كحد أقصى", "0.20 كحد أدنى", "0.40 كحد أقصى", "0.40 كحد أقصى", "0.15 كحد أقصى", "مستقر"]
+                    ["خوص حديد", "0.25 كحد أقصى", "0.90 كحد أقصى", "0.04 كحد أقصى", "0.05 كحد أقصى", "0.40 كحد أقصى", "0.20 كحد أدنى", "0.40 كحد أقصى", "0.40 كحد أقصى", "0.15 كحد أقصى", "مستقر"]
                 ],
-                quickSpecs: [["فئة المواد", "ASTM A36 / S275JR"], ["نوع المنتج", "خوص حديد ناعمة مسطحة"], ["تشطيب السطح", "عارٍ / مجلفن ساخن"], ["العرض", "50 إلى 200 ملم"], ["نطاق السمك", "من 3.0 ملم إلى 25 ملم"]]
+                quickSpecs: [["فئة المواد", "قياسي / S275JR"], ["نوع المنتج", "خوص حديد ناعمة مسطحة"], ["تشطيب السطح", "عارٍ / مجلفن ساخن"], ["العرض", "50 إلى 200 ملم"], ["نطاق السمك", "من 3.0 ملم إلى 25 ملم"]]
             },
             slab: {
-                category: "صفائح الصلب", title: "بلاطات الصلب", badge: "ASTM A786",
+                category: "صفائح الصلب", title: "بلاطات الصلب",
                 desc: "بلاطات الصلب الإنشائية المدرفلة من الفولاذ الكربوني المقاوم، تمتاز بجودتها العالية.",
                 chemicalTitle: "التركيب الكيميائي",
                 tableHeaders: ["الفئة", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
-                    ["لوح A786", "0.25 كحد أقصى", "0.80 - 1.20", "0.04 كحد أقصى", "0.05 كحد أقصى", "0.15 - 0.40", "0.20 كحد أدنى", "0.40 كحد أقصى", "0.40 كحد أقصى", "0.15 كحد أقصى", "مستقر"]
+                    ["لوح", "0.25 كحد أقصى", "0.80 - 1.20", "0.04 كحد أقصى", "0.05 كحد أقصى", "0.15 - 0.40", "0.20 كحد أدنى", "0.40 كحد أقصى", "0.40 كحد أقصى", "0.15 كحد أقصى", "مستقر"]
                 ],
                 quickSpecs: [["فئة المواد", "ST37-ST52"], ["نوع المنتج", "درفلة ساخنة"], ["السمك", "0.5 إلى 40 ملم"], ["الأبعاد", "1 إلى 1.25"], ["تشطيب السطح", "رول وشيت"]]
             },
             coils: {
-                category: "لفائف الصلب", title: "لفائف مجلفنة (كويل)", badge: "ASTM A653",
+                category: "لفائف الصلب", title: "لفائف مجلفنة (كويل)",
                 desc: "لفائف فولاذية مجلفنة بطريقة الغمس الساخن لمقاومة فائقة ضد الصدأ والتآكل.",
                 chemicalTitle: "التركيب الكيميائي",
                 tableHeaders: ["الفئة", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
@@ -449,7 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["فئة المواد", "3SP-RST34-1006-1008"], ["نوع المنتج", "لفائف صلب مجلفن غمس ساخن"], ["طبقة الزنك الحامية", "Z80 إلى Z275 جم/متر مربع"], ["السمك", "5.5، 6.5، 8، 10"]]
             },
             wires: {
-                category: "أسلاك فولاذية", title: "أسلاك فولاذية ناعمة", badge: "ASTM A510",
+                category: "أسلاك فولاذية", title: "أسلاك فولاذية ناعمة",
                 desc: "أسلاك حديدية منخفضة الكربون مع مقاومة شد عالية، مصممة ومجهزة لتشكيل شبكات الحديد.",
                 chemicalTitle: "المنتجات والأسعار",
                 tableHeaders: ["اسم المنتج", "الحجم", "النوع", "الرمز / السعر"],
@@ -470,7 +470,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         ru: {
             round: {
-                category: "СТАЛЬНЫЕ ЗАГОТОВКИ", title: "Стальные заготовки", badge: "GOST 380-2005",
+                category: "СТАЛЬНЫЕ ЗАГОТОВКИ", title: "Стальные заготовки",
                 desc: "Высококачественные стальные заготовки (круг/квадрат), изготовленные для сортового проката и ковки.",
                 chemicalTitle: "Химический состав",
                 tableHeaders: ["Марка", "C %", "Si %", "Mn %", "S % (макс.)", "P % (макс.)", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
@@ -482,7 +482,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["Марка материала", "Ст3сп / Ст4сп / Ст5сп"], ["Тип продукта", "Стальная заготовка"], ["Диаметр проката", "от 80 до 200 мм"], ["Длина прутка", "6м / 12м или под заказ"], ["Размеры", "100*100, 120*120, 125*125, 130*130, 150*150"]]
             },
             plates: {
-                category: "СЛЯБЫ", title: "Слябы", badge: "DIN 17100",
+                category: "СЛЯБЫ", title: "Слябы",
                 desc: "Конструкционные стальные плиты и слябы высокого качества для тяжелой промышленности.",
                 chemicalTitle: "Химический состав",
                 tableHeaders: ["Марка", "C %", "Mn %", "Si % (макс.)", "P % (макс.)", "S % (макс.)", "Al % (макс.)", "Cu %", "Ni %", "Cr %", "Mo %"],
@@ -493,7 +493,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["Марка материала", "ST37 - ST52"], ["Тип продукта", "Горячекатаный"], ["Толщина", "от 0.5 до 40 мм"], ["Размеры", "1 до 1.25"], ["Отделка поверхности", "Рулон и лист"]]
             },
             rebar: {
-                category: "СТАЛЬНЫЕ ПРУТКИ", title: "Арматура", badge: "ISIRI 3132",
+                category: "СТАЛЬНЫЕ ПРУТКИ", title: "Арматура",
                 desc: "Высокопрочная горячекатаная арматура периодического профиля для армирования железобетона.",
                 chemicalTitle: "Механические свойства",
                 tableHeaders: ["Класс", "Предел прочности (МПа)", "Предел текучести (МПа)", "Отношение", "Относительное удлинение (A10) %"],
@@ -505,7 +505,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["Марка материала", "A2 (340) / A3 (400) / A4 (500)"], ["Тип продукта", "Арматурный профиль TMT"], ["Отделка поверхности", "Горячекатаная закаленная"], ["Длина", "12м или нарезка под заказ"], ["Размер прутка", "от 8мм до 40мм"]]
             },
             angle: {
-                category: "УГОЛКИ", title: "Стальные уголки", badge: "DIN 1028",
+                category: "УГОЛКИ", title: "Стальные уголки",
                 desc: "Равнополочные горячекатаные стальные уголки для строительных конструкций и опор.",
                 chemicalTitle: "Размеры и вес уголков",
                 tableHeaders: ["Тип уголка", "Ширина полки a (мм)", "Толщина t (мм)", "Радиус r (мм)", "Площадь (см²)", "Вес (кг/м)"],
@@ -516,7 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["Марка материала", "S235JR / S275JR / S355JR"], ["Тип продукта", "Равнополочный стальный уголок"], ["Отделка поверхности", "Без покрытия / Оцинкованная"], ["Ширина полки", "от 25 до 100 мм"], ["Длина", "6м / 12м или резка под заказ"]]
             },
             channels: {
-                category: "СТРОИТЕЛЬНАЯ СТАЛЬ", title: "Швеллеры U-образные", badge: "DIN 1026-1",
+                category: "СТРОИТЕЛЬНАЯ СТАЛЬ", title: "Швеллеры U-образные",
                 desc: "Конструкционные швеллеры с наклонными полками серии UPN для тяжелонагруженных конструкций.",
                 chemicalTitle: "Размеры и характеристики швеллеров",
                 tableHeaders: ["Размер (UPN)", "Высота h (мм)", "Ширина b (мм)", "Толщина стенки s (мм)", "Толщина полки t (мм)", "Площадь (см²)", "Вес (кг/м)"],
@@ -527,7 +527,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["Марка материала", "S235JR / S275JR / S355JR"], ["Тип продукта", "Горячекатаный U-профиль"], ["Отделка поверхности", "Без покрытия / Оцинкованный"], ["Размер", "от 8 до 22 мм"], ["Стандартная длина", "6м / 12м или под заказ"]]
             },
             beams: {
-                category: "СТРОИТЕЛЬНАЯ СТАЛЬ", title: "Стальные балки", badge: "DIN 1025-2",
+                category: "СТРОИТЕЛЬНАЯ СТАЛЬ", title: "Стальные балки",
                 desc: "Широкополочные горячекатаные стальные балки серии HEB (IPB) для несущих стальных каркасов.",
                 chemicalTitle: "Размеры и характеристики двутавров",
                 tableHeaders: ["Размер (HEB)", "Высота h (мм)", "Ширина b (мм)", "Толщина стенки s (мм)", "Толщина полки t (мм)", "Радиус r (мм)", "Площадь (см²)", "Вес (кг/м)"],
@@ -538,48 +538,48 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["Марка материала", "S275JR / S355JR / S355J2"], ["Тип продукта", "Горячекатаный двутавр HEB"], ["Отделка поверхности", "Без покрытия / Грунтованная"], ["Длина", "6м / 12м или нарезка под заказ"], ["Размер", "10 до 30"]]
             },
             pipes: {
-                category: "СТАЛЬНЫЕ ТРУБЫ", title: "Стальные трубы", badge: "ASTM A53",
+                category: "СТАЛЬНЫЕ ТРУБЫ", title: "Стальные трубы",
                 desc: "Высококачественные стальные трубы, разработанные для транспортировки жидкостей и газов.",
                 chemicalTitle: "Химический состав",
                 tableHeaders: ["Марка", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
-                    ["A53 Класс A", "макс. 0.25", "макс. 0.95", "макс. 0.05", "макс. 0.045", "мин. 0.10", "макс. 0.40", "макс. 0.40", "макс. 0.40", "макс. 0.15", "Остальное"],
-                    ["A53 Класс B", "макс. 0.30", "макс. 1.20", "макс. 0.05", "макс. 0.045", "мин. 0.10", "макс. 0.40", "макс. 0.40", "макс. 0.40", "макс. 0.15", "Остальное"]
+                    ["Класс A", "макс. 0.25", "макс. 0.95", "макс. 0.05", "макс. 0.045", "мин. 0.10", "макс. 0.40", "макс. 0.40", "макс. 0.40", "макс. 0.15", "Остальное"],
+                    ["Класс B", "макс. 0.30", "макс. 1.20", "макс. 0.05", "макс. 0.045", "мин. 0.10", "макс. 0.40", "макс. 0.40", "макс. 0.40", "макс. 0.15", "Остальное"]
                 ],
-                quickSpecs: [["Марка материала", "ASTM A53"], ["Тип продукта", "Бесшовные / Сварные"], ["Отделка поверхности", "Черная / Оцинкованная"], ["Длина", "6м, 12m или под заказ"], ["Тип торца", "Гладкий / Скошенный / Резьбовой"]]
+                quickSpecs: [["Марка материала", "Стандарт"], ["Тип продукта", "Бесшовные / Сварные"], ["Отделка поверхности", "Черная / Оцинкованная"], ["Длина", "6м, 12m или под заказ"], ["Тип торца", "Гладкий / Скошенный / Резьбовой"]]
             },
             tubes: {
-                category: "ПРОФИЛЬНЫЕ ТРУБЫ", title: "Профильные трубы", badge: "ASTM A500",
+                category: "ПРОФИЛЬНЫЕ ТРУБЫ", title: "Профильные трубы",
                 desc: "Профильные стальные трубы квадратного и прямоугольного сечения, предназначенные для строительных каркасов.",
                 chemicalTitle: "Химический состав",
                 tableHeaders: ["Марка", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
-                    ["A500 Класс B", "макс. 0.26", "макс. 1.35", "макс. 0.035", "макс. 0.035", "мин. 0.15", "макс. 0.40", "макс. 0.40", "макс. 0.40", "макс. 0.15", "Остальное"]
+                    ["Класс B", "макс. 0.26", "макс. 1.35", "макс. 0.035", "макс. 0.035", "мин. 0.15", "макс. 0.40", "макс. 0.40", "макс. 0.40", "макс. 0.15", "Остальное"]
                 ],
                 quickSpecs: [["Марка материала", "Класс A / B / C"], ["Тип продукта", "Сварной / Бесшовный"], ["Отделка поверхности", "Черная / Оцинкованная"], ["Длина", "6м или под заказ"], ["Толщина стенки", "от 1.5мм до 10.0мм"]]
             },
             flat: {
-                category: "СТАЛЬНЫЕ ПОЛОСЫ", title: "Стальные полосы", badge: "ASTM A36",
+                category: "СТАЛЬНЫЕ ПОЛОСЫ", title: "Стальные полосы",
                 desc: "Универсальные стальные полосы горячей прокатки с идеально ровными кромками.",
                 chemicalTitle: "Химический состав",
                 tableHeaders: ["Марка", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
-                    ["Полоса A36", "макс. 0.25", "макс. 0.90", "макс. 0.04", "макс. 0.05", "макс. 0.40", "мин. 0.20", "макс. 0.40", "макс. 0.40", "макс. 0.15", "Остальное"]
+                    ["Полоса", "макс. 0.25", "макс. 0.90", "макс. 0.04", "макс. 0.05", "макс. 0.40", "мин. 0.20", "макс. 0.40", "макс. 0.40", "макс. 0.15", "Остальное"]
                 ],
-                quickSpecs: [["Марка материала", "ASTM A36 / S275JR"], ["Тип продукта", "Горячекатаная полоса"], ["Отделка поверхности", "Без покрытия / Оцинкованная"], ["Ширина полосы", "от 50 до 200 мм"], ["Толщина полосы", "от 3.0мм до 25мм"]]
+                quickSpecs: [["Марка материала", "Стандарт / S275JR"], ["Тип продукта", "Горячекатаная полоса"], ["Отделка поверхности", "Без покрытия / Оцинкованная"], ["Ширина полосы", "от 50 до 200 мм"], ["Толщина полосы", "от 3.0мм до 25мм"]]
             },
             slab: {
-                category: "СТАЛЬНЫЕ ЛИСТЫ", title: "Слябы", badge: "ASTM A786",
+                category: "СТАЛЬНЫЕ ЛИСТЫ", title: "Слябы",
                 desc: "Конструкционные стальные слябы высокого качества для тяжелой промышленности.",
                 chemicalTitle: "Химический состав",
                 tableHeaders: ["Марка", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
-                    ["Слябы A786", "макс. 0.25", "0.80 - 1.20", "макс. 0.04", "макс. 0.05", "0.15 - 0.40", "мин. 0.20", "макс. 0.40", "макс. 0.40", "макс. 0.15", "Остальное"]
+                    ["Слябы", "макс. 0.25", "0.80 - 1.20", "макс. 0.04", "макс. 0.05", "0.15 - 0.40", "мин. 0.20", "макс. 0.40", "макс. 0.40", "макс. 0.15", "Остальное"]
                 ],
                 quickSpecs: [["Марка материала", "ST37 - ST52"], ["Тип продукта", "Горячекатаный"], ["Толщина", "от 0.5 до 40 мм"], ["Размеры", "1 до 1.25"], ["Отделка поверхности", "Рулон и лист"]]
             },
             coils: {
-                category: "СТАЛЬНЫЕ РУЛОНЫ", title: "Оцинкованные рулоны", badge: "ASTM A653",
+                category: "СТАЛЬНЫЕ РУЛОНЫ", title: "Оцинкованные рулоны",
                 desc: "Рулонная сталь горячего цинкования с надежной антикоррозийной защитой.",
                 chemicalTitle: "Химический состав",
                 tableHeaders: ["Марка", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
@@ -589,7 +589,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 quickSpecs: [["Марка материала", "3SP-RST34-1006-1008"], ["Тип продукта", "Оцинкованная рулонная сталь"], ["Плотность цинка", "от Z80 до Z275 г/m²"], ["Толщина", "5.5, 6.5, 8, 10"]]
             },
             wires: {
-                category: "СТАЛЬНАЯ ПРОВОЛОКА", title: "Стальная проволока", badge: "ASTM A510",
+                category: "СТАЛЬНАЯ ПРОВОЛОКА", title: "Стальная проволока",
                 desc: "Высокопрочная стальная проволока холодного волочения из низкоуглеродистой стали.",
                 chemicalTitle: "Продукция и цены",
                 tableHeaders: ["Название продукта", "Размер", "Тип", "Код / Цена"],
@@ -645,7 +645,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'detail-feat1-title': 'High Strength', 'detail-feat1-desc': 'Built for durability',
             'detail-feat2-title': 'Corrosion Resistant', 'detail-feat2-desc': 'Long-lasting protection',
             
-            'contact-sub-title': 'CONTACT US', 'contact-title-light': "LET'S BUILD", 'contact-title-red': 'SOMETHING STRONG',
+            'contact-sub-title': 'CONTACT US',
             'contact-desc-text': 'Have a question or need a custom solution? Our team is here to help you make better decisions.',
             'contact-phone-lbl': 'Phone', 'contact-email-lbl': 'Email', 'contact-addr-lbl': 'Company Address',
             'contact-addr-val': 'Mashhad, Janbaz Blvd, Pazh Admin Center 2, Floor 3, Unit 313',
@@ -686,7 +686,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'global-desc': 'Our products are trusted in over 20 countries worldwide. We continue to expand our global footprint with quality, reliability, and long-term partnerships.',
             'global-stat1': 'Export Markets', 'global-stat2': 'Years of Experience', 'global-stat3': 'Products Exported',
             'global-partner-lbl': 'Export Partner', 'global-icon-steel': 'Steel Products', 'global-icon-petro': 'Petrochemical Products', 'global-icon-food': 'Food Products',
-            'foot-stat1': 'Years of Experience', 'foot-stat2': 'International Partners', 'foot-stat3': 'Tons Exported Annually', 'foot-stat4-h': 'Top Exporter', 'foot-stat4-p': 'Khorasan Razavi Province', 'foot-stat5': 'Continents', 'foot-stat6': 'Commitment to Quality',
+            'foot-stat1': 'Years of Experience', 'foot-stat2': 'International Partners', 'foot-stat4-h': 'Top Exporter', 'foot-stat4-p': 'Khorasan Razavi Province', 'foot-stat5': 'Continents', 'foot-stat6': 'Commitment to Quality',
             
             'active-coop-text': 'Active Cooperation',
             'country-af-name': 'Afghanistan', 'country-af-desc': 'We export high-quality steel, petrochemical and food products to Afghanistan with a focus on reliability and long-term cooperation.',
@@ -741,7 +741,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'detail-feat1-title': 'استحکام بالا', 'detail-feat1-desc': 'ساخته شده برای دوام بالا',
             'detail-feat2-title': 'مقاوم به خوردگی', 'detail-feat2-desc': 'حفاظت طولانی‌مدت',
 
-            'contact-sub-title': 'تماس با ما', 'contact-title-light': 'بیایید بسازیم', 'contact-title-red': 'سازه‌ای مستحکم',
+            'contact-sub-title': 'تماس با ما',
             'contact-desc-text': 'سوالی دارید یا به یک راه حل سفارشی نیاز دارید؟ تیم ما اینجاست تا به شما در تصمیم بهتر کمک کند.',
             'contact-phone-lbl': 'تلفن همراه', 'contact-email-lbl': 'پست الکترونیکی', 'contact-addr-lbl': 'آدرس شرکت',
             'contact-addr-val': 'مشهد، بلوار جانباز، پاژ اداری 2 طبقه 3 پلاک 313',
@@ -755,9 +755,9 @@ document.addEventListener('DOMContentLoaded', () => {
             'about-history': 'تاریخچه ما', 'history-sub-badge': 'تاریخچه شرکت',
             'history-title-light': 'تاریخچه', 'history-title-red': 'شرکت',
             'history-desc': 'با بیش از هفت دهه سابقه در تجارت و صادرات، شرکت مهاجر استیل به عنوان یکی از صادرکنندگان برتر استان خراسان رضوی در بازارهای جهانی شناخته می‌شود.',
-            'founder1-year': '۱۳۳۰', 'founder1-subtitle': 'بنیان‌گذار مجموعه', 'founder1-name': 'مرحوم حاج قاسم مهاجری',
+            'founder1-year': '۱۳۳۰', 'founder1-subtitle': 'بنیان‌گذار گروه بین‌المللی بازرگانی مهاجر', 'founder1-name': 'مرحوم حاج قاسم مهاجری',
             'founder1-bio': 'ریشه فعالیت‌های تجاری این مجموعه به سال ۱۳۳۰ بازمی‌گردد؛ زمانی که مرحوم حاج قاسم مهاجری خراسانی فعالیت خود را در حوزه تجارت داخلی محصولات چرمی و کراس آغاز نمودند. ایشان با تکیه بر تجربه، دانش بازار و اصول حرفه‌ای تجارت، پایه‌های یک کسب‌وکار پایدار و موفق را بنا نهادند.',
-            'founder2-year': '۱۳۷۴', 'founder2-subtitle': 'مدیرعامل و توسعه‌دهنده صادرات', 'founder2-name': 'هاشم مهاجری',
+            'founder2-year': '۱۳۷۴', 'founder2-subtitle': 'مدیر عامل گروه بین‌المللی بازرگانی مهاجر', 'founder2-name': 'هاشم مهاجری',
             'founder2-bio': 'در ادامه این مسیر و از سال ۱۳۷۴، آقای هاشم مهاجری خراسانی با بهره‌گیری از تجربیات ارزشمند گذشته، فعالیت‌های صادراتی مجموعه را به‌صورت تخصصی در حوزه‌هایی همچون مواد غذایی توسعه دادند و دامنه حضور ما را به بازارهای بین‌المللی گسترش دادند.',
             'timeline-sub': 'مسیر توسعه ما', 'timeline-title': 'تاریخچه‌ای از رشد و تعهد',
             'timeline1-year': '۱۳۳۰', 'timeline1-title': 'آغاز فعالیت', 'timeline1-desc': 'ریشه فعالیت‌های تجاری این مجموعه به سال ۱۳۳۰ بازمی‌گردد؛ زمانی که مرحوم حاج قاسم مهاجری خراسانی فعالیت خود را در حوزه تجارت داخلی محصولات چرمی و کراس آغاز نمودند. ایشان با تکیه بر تجربه، دانش بازار و اصول حرفه‌ای تجارت، پایه‌های یک کسب‌وکار پایدار و موفق را بنا نهادند.',
@@ -782,7 +782,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'global-desc': 'محصولات ما در بیش از ۲۰ کشور در سراسر جهان مورد اعتماد هستند. ما همچنان ردپای جهانی خود را با کیفیت و همکاری‌های بلندمدت گسترش می‌دهیم.',
             'global-stat1': 'بازارهای هدف صادرات', 'global-stat2': 'سال تجربه موفق', 'global-stat3': 'نوع محصول صادراتی',
             'global-partner-lbl': 'شریک تجاری', 'global-icon-steel': 'محصولات فولادی', 'global-icon-petro': 'محصولات پتروشیمی', 'global-icon-food': 'محصولات غذایی',
-            'foot-stat1': 'سال تجربه موفق', 'foot-stat2': 'شریک تجاری بین‌المللی', 'foot-stat3': 'تن صادرات سالیانه', 'foot-stat4-h': 'صادرکننده برتر', 'foot-stat4-p': 'استان خراسان رضوی', 'foot-stat5': 'قاره مختلف', 'foot-stat6': 'تعهد مطلق به کیفیت',
+            'foot-stat1': 'سال تجربه موفق', 'foot-stat2': 'شریک تجاری بین‌المللی', 'foot-stat4-h': 'صادرکننده برتر', 'foot-stat4-p': 'استان خراسان رضوی', 'foot-stat5': 'قاره مختلف', 'foot-stat6': 'تعهد مطلق به کیفیت',
             
             'active-coop-text': 'همکاری فعال',
             'country-af-name': 'افغانستان', 'country-af-desc': 'صادرات مستمر محصولات فولادی، پتروشیمی و غذایی با کیفیت بالا به افغانستان با تمرکز بر قابلیت اطمینان و توسعه پایدار.',
@@ -807,7 +807,7 @@ document.addEventListener('DOMContentLoaded', () => {
             dir: 'rtl',
             'nav-home': 'الرئيسية', 'nav-products': 'المنتجات', 'nav-departments': 'الأقسام', 'nav-about': 'من نحن', 'nav-contact': 'اتصل بنا',
             'btn-quote': 'احصل على سعر', 'hero-subtitle': 'فولاذ عالي الجودة', 
-            'hero-title-1': 'مهاجر مبين', 'hero-title-2': 'للصلب',
+            'hero-title-1': 'فولاذ', 'hero-title-2': 'مهاجر مبين',
             'hero-desc': 'شركة تابعة لمجموعة مهاجر التجارية الدولية',
             'btn-explore': 'استكشف المنتجات', 'btn-catalog': 'عرض الكتالوج', 'trusted-title': 'محل ثقة رواد الصناعة', 'trusted-desc': 'تقديم التميز في جميع أنحاء العالم.',
             'feat-1-title': 'جودة ممتازة', 'feat-1-desc': 'مُختبر ومعتمد وفقاً للمعايير الدولية.',
@@ -836,7 +836,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'detail-feat1-title': 'قوة عالية', 'detail-feat1-desc': 'مصمم للمتانة الفائقة',
             'detail-feat2-title': 'مقاوم للتآكل', 'detail-feat2-desc': 'حماية طويلة الأمد في البيئات الصعبة',
 
-            'contact-sub-title': 'اتصل بنا', 'contact-title-light': 'لنقم ببناء', 'contact-title-red': 'شيء قوي',
+            'contact-sub-title': 'اتصل بنا',
             'contact-desc-text': 'هل لديك سؤال أو تحتاج إلى حل مخصص؟ فريقنا هنا لمساعدتك في اتخاذ قرارات أفضل.',
             'contact-phone-lbl': 'الهاتف', 'contact-email-lbl': 'البريد الإلكتروني', 'contact-addr-lbl': 'عنوان الشركة',
             'contact-addr-val': 'مشهد، بلوار جانباز، باج الإداري 2، الطابق 3، رقم 313',
@@ -877,7 +877,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'global-desc': 'منتجاتنا موثوقة في أكثر من 20 دولة حول العالم. نواصل توسيع بصمتنا العالمية بالجودة والشراكات طويلة الأمد.',
             'global-stat1': 'أسواق التصدير', 'global-stat2': 'سنوات من الخبرة', 'global-stat3': 'المنتجات المصدرة',
             'global-partner-lbl': 'شريك تجاري', 'global-icon-steel': 'منتجات الصلب', 'global-icon-petro': 'منتجات البتروكيماويات', 'global-icon-food': 'المنتجات الغذائية',
-            'foot-stat1': 'سنوات من الخبرة', 'foot-stat2': 'شركاء دوليون', 'foot-stat3': 'أطنان مصدرة سنوياً', 'foot-stat4-h': 'أفضل مصدر', 'foot-stat4-p': 'محافظة خراسان رضوي', 'foot-stat5': 'قارات', 'foot-stat6': 'الالتزام بالجودة',
+            'foot-stat1': 'سنوات من الخبرة', 'foot-stat2': 'شركاء دوليون', 'foot-stat4-h': 'أفضل مصدر', 'foot-stat4-p': 'محافظة خراسان رضوي', 'foot-stat5': 'قارات', 'foot-stat6': 'الالتزام بالجودة',
             
             'active-coop-text': 'تعاون نشط',
             'country-af-name': 'أفغانستان', 'country-af-desc': 'نقوم بتصدير منتجات الصلب والبتروكيماويات والأغذية عالية الجودة إلى أفغانستان مع التركيز على الموثوقية والشراكة طويلة الأمد.',
@@ -932,7 +932,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'detail-feat1-title': 'Высокая прочность', 'detail-feat1-desc': 'Создано на века',
             'detail-feat2-title': 'Устойчивость к коррозии', 'detail-feat2-desc': 'Долговечная защита',
 
-            'contact-sub-title': 'СВЯЗАТЬСЯ С НАМИ', 'contact-title-light': 'ПОСТРОИМ', 'contact-title-red': 'НЕЧТО ПРОЧНОЕ',
+            'contact-sub-title': 'СВЯЗАТЬСЯ С НАМИ',
             'contact-desc-text': 'Есть вопросы или необходимо индивидуальное решение? Наша команда готова помочь вам принять лучшее решение.',
             'contact-phone-lbl': 'Телефон', 'contact-email-lbl': 'Эл. почта', 'contact-addr-lbl': 'Адрес компании',
             'contact-addr-val': 'Иран, Мешхед, бульвар Джанбаз, административное здание Паж 2, этаж 3, офис 313',
@@ -973,7 +973,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'global-desc': 'Нашей продукции доверяют более чем в 20 странах мира. Мы продолжаем расширять свое глобальное присутствие с качеством, надежностью и долгосрочными партнерствами.',
             'global-stat1': 'Рынков экспорта', 'global-stat2': 'Лет опыта', 'global-stat3': 'Товаров на экспорт',
             'global-partner-lbl': 'Экспортный партнер', 'global-icon-steel': 'Стальная продукция', 'global-icon-petro': 'Нефтехимическая продукция', 'global-icon-food': 'Пищевая продукция',
-            'foot-stat1': 'Лет опыта', 'foot-stat2': 'Международных партнеров', 'foot-stat3': 'Тонн экспортируется', 'foot-stat4-h': 'Лучший экспортер', 'foot-stat4-p': 'Провинция Хорасан-Резави', 'foot-stat5': 'Континента', 'foot-stat6': 'Приверженность качеству',
+            'foot-stat1': 'Лет опыта', 'foot-stat2': 'Международных партнеров', 'foot-stat4-h': 'Лучший экспортер', 'foot-stat4-p': 'Провинция Хорасан-Резави', 'foot-stat5': 'Континента', 'foot-stat6': 'Приверженность качеству',
             
             'active-coop-text': 'Активное сотрудничество',
             'country-af-name': 'Афганистан', 'country-af-desc': 'Мы экспортируем высококачественную сталь, нефтехимическую и пищевую продукцию в Афганистан с акцентом на надежность и долгосрочное сотрудничество.',
@@ -997,9 +997,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // ==========================================================================
-    // منطق و داده‌های نقشه جهانی (Cloudinary Image Updates)
+    // منطق و داده‌های نقشه جهانی
     // ==========================================================================
-
     const countryData = {
         af: { flag: "https://flagcdn.com/w40/af.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897739/%D8%A7%D9%81%D8%BA%D8%A7%D9%86%D8%B3%D8%AA%D8%A7%D9%86_vttwtr.webp", exports: ["steel", "petrochemical", "food"] },
         pk: { flag: "https://flagcdn.com/w40/pk.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897737/%D9%BE%D8%A7%DA%A9%D8%B3%D8%AA%D8%A7%D9%86_okldrx.webp", exports: ["steel", "petrochemical", "food"] },
@@ -1045,7 +1044,7 @@ document.addEventListener('DOMContentLoaded', () => {
             img.className = 'flag-box';
             img.src = data.flag;
             img.setAttribute('loading', 'lazy');
-            img.setAttribute('decoding', 'async');
+            img.setAttribute('onerror', "this.style.display='none'");
             
             const nameNode = document.createTextNode(' ' + translations[currentLang][`country-${code}-name`]);
             
@@ -1073,7 +1072,6 @@ document.addEventListener('DOMContentLoaded', () => {
             item.classList.remove('active');
             if (item.getAttribute('data-country') === code) {
                 item.classList.add('active');
-                if(item.scrollIntoViewIfNeeded) item.scrollIntoViewIfNeeded();
             }
         });
 
@@ -1148,11 +1146,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
     // ==========================================================================
     // سیستم تغییر زبان (Multi-Language)
     // ==========================================================================
-
     const langBtn = document.getElementById('langBtn');
     const langDropdown = document.getElementById('langDropdown');
     const currentLangText = document.getElementById('currentLang');
@@ -1183,6 +1179,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.setAttribute('dir', translation.dir);
         document.documentElement.setAttribute('lang', lang);
         if(currentLangText) currentLangText.innerText = lang.toUpperCase();
+        
+        // تنظیم جهت مسیرنما در صفحه جزئیات محصول
+        const breadcrumbsContainer = document.querySelector('.breadcrumbs-container');
+        if (breadcrumbsContainer) {
+            breadcrumbsContainer.style.setProperty('--dir', translation.dir);
+        }
 
         const translatableElements = document.querySelectorAll('[data-key]');
         translatableElements.forEach(elem => {
@@ -1200,14 +1202,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        const titlesToRow = document.querySelectorAll('.main-title, .dept-main-title, .about-main-title, .contact-main-heading, .global-main-title');
-        titlesToRow.forEach(title => {
-            title.style.flexDirection = 'row';
-            title.style.flexWrap = 'wrap';
-            title.style.gap = '12px';
-            title.style.alignItems = 'center';
-        });
-
         localStorage.setItem('selectedLanguage', lang);
 
         if (document.getElementById('productDetailView') && document.getElementById('productDetailView').style.display === 'block' && activeProductKey) {
@@ -1218,9 +1212,8 @@ document.addEventListener('DOMContentLoaded', () => {
         selectCountry(activeCountryCode);
     }
 
-
     // ==========================================================================
-    // متد اصلی نمایش صفحه جزئیات محصول (همراه با تصویر اختصاصی و جدول)
+    // متد اصلی نمایش صفحه جزئیات محصول
     // ==========================================================================
     const mainLandingView = document.getElementById('mainLandingView');
     const productDetailView = document.getElementById('productDetailView');
@@ -1241,14 +1234,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const spec = productSpecs[currentLang]?.[productKey] || productSpecs['en'][productKey] || productSpecs['en']['pipes'];
 
         document.getElementById('detailBreadcrumbName').innerText = spec.title;
-        document.getElementById('detailBadgeCode').innerText = spec.badge;
         document.getElementById('detailProductName').innerText = spec.title;
         document.getElementById('detailProductDesc').innerText = spec.desc;
         document.getElementById('detailChemTitle').innerText = spec.chemicalTitle;
 
         const imgContainer = document.getElementById('detailImageContainer');
         const imgUrl = productImages[productKey] || "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%D9%84%D9%88%D9%84%D9%87_d5rvnj.webp";
-        imgContainer.style.backgroundImage = `url('${imgUrl}')`;
+        imgContainer.innerHTML = `<img src="${imgUrl}" alt="${spec.title}" loading="lazy">`;
 
         const downloadBtn = document.getElementById('btnDownloadDatasheet');
         if (downloadBtn) {
@@ -1257,7 +1249,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 downloadBtn.href = datasheetUrl;
                 downloadBtn.download = `MohajerSteel_${productKey}_Datasheet.png`;
                 downloadBtn.style.display = 'inline-flex';
-                downloadBtn.target = "_blank";
             } else {
                 downloadBtn.style.display = 'none';
             }
@@ -1266,7 +1257,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateNavButtonsState();
 
         let rawHeaders = spec.tableHeaders || [];
-        let rawRows = spec.tableRows || spec.chemicalRows || [];
+        let rawRows = spec.tableRows || [];
 
         let activeIndices = [0]; 
         for (let colIdx = 1; colIdx < rawHeaders.length; colIdx++) {
@@ -1321,7 +1312,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // ==========================================================================
-    // کنترلرهای دکمه‌های ناوبری جدید (کپسولی زیر عکس)
+    // کنترلرهای دکمه‌های ناوبری و شورتکات کیبورد
     // ==========================================================================
     function updateNavButtonsState() {
         const currentIndex = productOrder.indexOf(activeProductKey);
@@ -1353,9 +1344,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnPrevProd) {
         btnPrevProd.addEventListener('click', () => {
             const currentIndex = productOrder.indexOf(activeProductKey);
-            if (currentIndex > 0) {
-                showProductAnalysis(productOrder[currentIndex - 1]);
-            }
+            if (currentIndex > 0) showProductAnalysis(productOrder[currentIndex - 1]);
         });
     }
 
@@ -1363,22 +1352,28 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnNextProd) {
         btnNextProd.addEventListener('click', () => {
             const currentIndex = productOrder.indexOf(activeProductKey);
-            if (currentIndex < productOrder.length - 1) {
-                showProductAnalysis(productOrder[currentIndex + 1]);
-            }
+            if (currentIndex < productOrder.length - 1) showProductAnalysis(productOrder[currentIndex + 1]);
         });
     }
 
-    // دکمه بازگشت به کاتالوگ
     const btnBackToCatalog = document.getElementById('btnBackToCatalog');
     if (btnBackToCatalog) {
         btnBackToCatalog.addEventListener('click', () => {
             showMainLanding();
             setActiveNavLink('navProductsLink');
             const section = document.getElementById('catalogSectionAnchor');
-            if (section) section.scrollIntoView({ behavior: 'smooth' });
+            if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     }
+
+    // شورتکات کیبورد برای بازگشت (Alt + ,)
+    document.addEventListener('keydown', (e) => {
+        if (e.altKey && e.key === ',') {
+            if (btnBackToCatalog && productDetailView && productDetailView.style.display !== 'none') {
+                btnBackToCatalog.click();
+            }
+        }
+    });
 
     // ==========================================================================
     // متدهای نمایش صفحات
@@ -1415,7 +1410,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'aboutCrumbHomeBtn', action: showMainLanding },
         { id: 'deptCrumbHomeBtn', action: showMainLanding },
         { id: 'headerLogoBtn', action: showMainLanding },
-        { id: 'navHomeLink', action: showMainLanding },
+        { id: 'navHomeLink', action: (e) => { e.preventDefault(); showMainLanding(); window.scrollTo({top:0, behavior:'smooth'}); } },
         { id: 'aboutCrumbUsBtn', action: showAboutUs },
         { id: 'navAboutLink', action: (e) => { e.preventDefault(); showAboutUs(); } },
         { id: 'navDepartmentsLink', action: (e) => { e.preventDefault(); showDepartments(); } }
@@ -1431,7 +1426,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showMainLanding();
         setActiveNavLink('navProductsLink');
         const section = document.getElementById('catalogSectionAnchor');
-        if (section) section.scrollIntoView({ behavior: 'smooth' });
+        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
     
     const navProductsLink = document.getElementById('navProductsLink');
@@ -1440,17 +1435,17 @@ document.addEventListener('DOMContentLoaded', () => {
         showMainLanding();
         setActiveNavLink('navProductsLink');
         const section = document.getElementById('catalogSectionAnchor');
-        if (section) section.scrollIntoView({ behavior: 'smooth' });
+        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
     const heroExploreBtn = document.getElementById('heroExploreBtn');
     if (heroExploreBtn) heroExploreBtn.addEventListener('click', () => {
         setActiveNavLink('navProductsLink');
         const section = document.getElementById('catalogSectionAnchor');
-        if (section) section.scrollIntoView({ behavior: 'smooth' });
+        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
-    const contactNavBtn = document.getElementById('navContactLink') || document.querySelector('.nav-links a:last-child');
+    const contactNavBtn = document.getElementById('navContactLink');
     if (contactNavBtn) {
         contactNavBtn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -1463,17 +1458,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ==========================================================================
+    // کلیک‌پذیر شدن کل کارت محصولات
+    // ==========================================================================
     document.addEventListener('click', (e) => {
-        if (e.target.closest('.btn-view-product-details')) {
+        // بررسی می‌کنیم که آیا روی کارتی با کلاس catalog-card کلیک شده است
+        const card = e.target.closest('.catalog-card');
+        if (card) {
             e.preventDefault();
-            const btn = e.target.closest('.btn-view-product-details');
-            const productKey = btn.getAttribute('data-product');
-            showProductAnalysis(productKey);
+            const productKey = card.getAttribute('data-product');
+            if(productKey) {
+                showProductAnalysis(productKey);
+            }
         }
     });
 
     // ==========================================================================
-    // منطق صفحه‌بندی کاتالوگ (Catalog Pagination)
+    // منوی موبایل (Mobile Menu)
+    // ==========================================================================
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinksContainer = document.getElementById('navLinks');
+    
+    if (mobileMenuBtn && navLinksContainer) {
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('active');
+        });
+
+        navLinksContainer.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinksContainer.classList.remove('active');
+            });
+        });
+    }
+
+    // ==========================================================================
+    // منطق صفحه‌بندی کاتالوگ
     // ==========================================================================
     const catalogCards = document.querySelectorAll('.catalog-card');
     const paginationBtns = document.querySelectorAll('.catalog-pagination .btn-page');
@@ -1507,11 +1526,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if(btnPagePrev) {
             btnPagePrev.style.opacity = currentCatalogPage === 1 ? '0.3' : '1';
-            btnPagePrev.style.cursor = currentCatalogPage === 1 ? 'not-allowed' : 'pointer';
+            btnPagePrev.style.pointerEvents = currentCatalogPage === 1 ? 'none' : 'auto';
         }
         if(btnPageNext) {
             btnPageNext.style.opacity = currentCatalogPage === maxPages ? '0.3' : '1';
-            btnPageNext.style.cursor = currentCatalogPage === maxPages ? 'not-allowed' : 'pointer';
+            btnPageNext.style.pointerEvents = currentCatalogPage === maxPages ? 'none' : 'auto';
         }
 
         const txtKey = currentCatalogPage === 1 ? 'showing-txt-p1' : 'showing-txt-p2';
@@ -1593,15 +1612,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================================================
-    // راه‌اندازی اولیه (Initialization)
+    // Scroll Spy & Header Shadow
     // ==========================================================================
-    const savedLang = localStorage.getItem('selectedLanguage') || 'en';
-    setLanguage(savedLang); 
-    changeCatalogPage(1); 
-
     const header = document.querySelector('.main-header');
-    if(header) {
-        window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', () => {
+        if(header) {
             if (window.scrollY > 50) {
                 header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.5)';
                 header.style.padding = '16px 6%';
@@ -1609,12 +1624,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 header.style.boxShadow = 'none';
                 header.style.padding = '24px 6%';
             }
-        });
-    }
+        }
+
+        if (mainLandingView && mainLandingView.style.display !== 'none') {
+            const scrollPos = window.scrollY + 150; 
+            const sections = [
+                { id: 'mainLandingView', linkId: 'navHomeLink' },
+                { id: 'catalogSectionAnchor', linkId: 'navProductsLink' },
+                { id: 'contactSection', linkId: 'navContactLink' }
+            ];
+            
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const sec = document.getElementById(sections[i].id);
+                if (sec && sec.offsetTop <= scrollPos) {
+                    setActiveNavLink(sections[i].linkId);
+                    break;
+                }
+            }
+        }
+    });
 
     // ==========================================================================
-    // ارسال فرم تماس با استفاده از Fetch
+    // راه‌اندازی اولیه
     // ==========================================================================
+    const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+    setLanguage(savedLang); 
+    changeCatalogPage(1); 
+
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', async (e) => {
@@ -1631,9 +1667,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const response = await fetch(e.target.action, {
                     method: 'POST',
                     body: new FormData(e.target),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
+                    headers: { 'Accept': 'application/json' }
                 });
 
                 if (response.ok) {
@@ -1650,5 +1684,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
 });
