@@ -43,7 +43,6 @@ html[dir="ltr"] {
     direction: ltr;
 }
 
-/* اعمال اجباری و یکپارچه فونت وزیرمتن برای تمام بخش‌ها در زبان‌های راست‌چین */
 html[dir="rtl"] * {
     font-family: 'Vazirmatn', sans-serif !important;
 }
@@ -131,7 +130,6 @@ html[dir="rtl"] .lang-dropdown { right: auto; left: 0; text-align: right; }
 .btn-quote:hover { background-color: var(--primary-blue-hover); transform: translateY(-1px); }
 html[dir="rtl"] .btn-quote svg { transform: scaleX(-1); }
 
-/* دکمه منوی موبایل */
 .mobile-menu-toggle {
     display: none;
     background: none;
@@ -156,7 +154,6 @@ html[dir="rtl"] .btn-quote svg { transform: scaleX(-1); }
     background-color: var(--bg-dark-section);
 }
 
-/* حذف هاله آبی و جایگزینی با هاله مشکی/خنثی */
 .hero-bg {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
     background-image: 
@@ -199,7 +196,6 @@ html[dir="rtl"] .hero-text-block { text-align: right; }
 .main-title .light-text { color: var(--text-white); }
 .main-title .red-text { color: var(--primary-blue); }
 
-/* اصلاح فاصله کلمات در تیترهای فارسی */
 html[dir="rtl"] .main-title,
 html[dir="rtl"] .dept-main-title,
 html[dir="rtl"] .about-main-title,
@@ -280,7 +276,6 @@ html[dir="rtl"] .catalog-banner-text { text-align: right; }
 
 .catalog-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 
-/* استایل جدید کارت‌ها برای افکت چرخش و کلیک‌پذیری کامل */
 .catalog-card {
     background-color: transparent; 
     border-radius: 16px; 
@@ -288,8 +283,8 @@ html[dir="rtl"] .catalog-banner-text { text-align: right; }
     box-shadow: var(--shadow-card); 
     transition: transform var(--transition-speed), box-shadow var(--transition-speed);
     position: relative;
-    cursor: pointer; /* کل کارت قابل کلیک است */
-    padding: 2px; /* فضای لازم برای حاشیه متحرک */
+    cursor: pointer;
+    padding: 2px;
     overflow: hidden;
     z-index: 1;
     border: none;
@@ -299,7 +294,6 @@ html[dir="rtl"] .catalog-banner-text { text-align: right; }
     box-shadow: var(--shadow-hover); 
 }
 
-/* افکت نوری چرخنده */
 .catalog-card::before {
     content: "";
     position: absolute;
@@ -322,7 +316,6 @@ html[dir="rtl"] .catalog-banner-text { text-align: right; }
     z-index: -1;
 }
 
-/* کانتینر داخلی کارت */
 .card-content-wrapper {
     display: flex;
     flex-direction: column;
@@ -447,16 +440,13 @@ html[dir="rtl"] .btn-request-callback svg, html[dir="rtl"] .btn-direct-message s
     overflow: hidden; background-color: var(--bg-dark-section);
 }
 
-/* اصلاح جابجایی عکس‌ها در دپارتمان و درباره ما */
 .about-hero-bg, .dept-hero-bg {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
     background-size: cover; background-repeat: no-repeat;
-    /* عکس انگلیسی برای حالت LTR */
     background-image: url('https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782896761/%D8%AF%D9%BE%D8%A7%D8%B1%D8%AA%D9%85%D8%A7%D9%86_%D9%81%D8%A7%D8%B1%D8%B3%DB%8C_chgkfe.webp');
     background-position: center right; 
 }
 html[dir="rtl"] .about-hero-bg, html[dir="rtl"] .dept-hero-bg {
-    /* عکس فارسی برای حالت RTL */
     background-image: url('https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782896761/%D8%A7%D9%86%DA%AF%D9%84%DB%8C%D8%B3%DB%8C_%D8%AF%D9%BE%D8%A7%D8%B1%D8%AA%D9%85%D8%A7%D9%86_ujzv0a.webp');
     background-position: center left;
 }
@@ -675,7 +665,6 @@ html[dir="rtl"] .detail-layout { direction: rtl; }
 .nav-pill-btn:hover { color: var(--primary-blue); }
 html[dir="rtl"] .nav-pill-btn svg { transform: scaleX(-1); }
 
-/* استایل دکمه بازگشت (فلش) که به بالا منتقل شده */
 .nav-pill-grid { 
     display: flex; align-items: center; justify-content: center; 
     width: 44px; height: 44px; background: var(--icon-bg-light); 
@@ -687,7 +676,7 @@ html[dir="rtl"] .nav-pill-btn svg { transform: scaleX(-1); }
     background: var(--primary-blue);
     color: var(--text-white);
 }
-html[dir="rtl"] .nav-pill-grid svg { transform: scaleX(-1); } /* چرخش فلش در فارسی */
+html[dir="rtl"] .nav-pill-grid svg { transform: scaleX(-1); }
 
 .detail-table-container { grid-column: 1 / -1; width: 100%; background-color: var(--bg-white); border: none; border-radius: 16px; padding: 32px; margin-top: 16px; box-shadow: var(--shadow-card); overflow-x: auto; }
 .detail-table-title { font-size: 18px; font-weight: 800; color: var(--text-dark); margin-bottom: 24px; }
@@ -737,7 +726,7 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
 .video-iframe-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
 /* ==========================================================================
-   Media Queries & MOBILE FIX
+   Media Queries - Desktop and Tablet Only (No Mobile Changes)
    ========================================================================== */
 @media (max-width: 1200px) {
     .catalog-grid { grid-template-columns: repeat(3, 1fr); }
@@ -762,130 +751,4 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
     .contact-container { grid-template-columns: 1fr; gap: 40px; }
     .detail-table-container { grid-column: 1; }
     .history-founders-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 768px) {
-    .main-header { padding: 12px 4%; }
-    .mobile-menu-toggle { display: block; }
-    
-    .nav-links {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: var(--bg-white);
-        flex-direction: column;
-        padding: 16px 4%;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        display: none; 
-        gap: 12px;
-        border-top: 1px solid var(--border-light);
-    }
-    .nav-links.active { display: flex; }
-    .nav-links a { font-size: 13px; padding-bottom: 6px; }
-    html[dir="rtl"] .nav-links { right: 0; left: auto; }
-
-    .btn-quote { padding: 10px 16px; font-size: 12px; }
-    .hero-section { padding-top: 100px; padding-left: 4%; padding-right: 4%; }
-    .hero-container { gap: 20px; }
-    .slider-counter { display: none; }
-    .hero-text-block { max-width: 100%; }
-    .features-grid { margin-top: -30px; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    
-    .history-founders-grid,
-    .departments-cards-grid,
-    .detail-layout,
-    .main-workspace,
-    .timeline-container,
-    .catalog-grid,
-    .contact-container,
-    .detail-mini-features {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
-        gap: 16px;
-        width: 100%;
-    }
-
-    .catalog-section { padding: 24px 4% 40px 4%; }
-    .catalog-banner { padding: 20px 16px; min-height: auto; }
-    .catalog-banner-text { max-width: 100%; text-align: center; }
-    .catalog-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    
-    .footer-features { padding: 24px 4% 32px 4%; }
-    .feature-card { padding: 20px 16px; }
-
-    .founder-card-item { flex-direction: column; align-items: center; text-align: center; padding: 20px; }
-    .founder-img-frame { width: 100%; max-width: 180px; height: 240px; }
-    .card-top-layout { grid-template-columns: 1fr; }
-    
-    .about-hero-section, .dept-hero-section { padding: 80px 4% 32px 4%; min-height: auto; }
-    .about-hero-text, .dept-hero-text { max-width: 100%; text-align: center; }
-    .about-main-title, .dept-main-title { font-size: clamp(24px, 5vw, 32px); }
-
-    h1 { font-size: clamp(22px, 5vw, 28px) !important; line-height: 1.3; }
-    h2 { font-size: clamp(18px, 4vw, 22px) !important; }
-    p { font-size: 13px !important; }
-
-    .btn-request-callback,
-    .btn-direct-message,
-    .btn-dept-learn-more,
-    .btn-quote-fill,
-    .btn-datasheet-outline,
-    .btn-explore,
-    .btn-catalog {
-        width: 100% !important;
-        justify-content: center;
-        padding: 12px 16px !important;
-        margin-bottom: 10px;
-        font-size: 13px !important;
-    }
-
-    .hero-buttons, .detail-action-btns { flex-direction: column; width: 100%; gap: 12px; }
-
-    .map-container { height: 350px; }
-    .timeline-line { left: 12px; }
-    .timeline-marker { left: 12px; }
-    .timeline-icon-wrapper { width: 40px; height: 40px; }
-    
-    .contact-section { padding: 40px 4%; }
-    .contact-info-grid { gap: 16px; }
-    .form-container-card { padding: 20px; }
-    .detail-page-section { padding: 100px 4% 40px 4%; }
-    
-    section { padding: 32px 4% !important; }
-    .detail-table-container { padding: 16px; }
-    
-    .departments-section-header, .timeline-section-header { margin-bottom: 32px; }
-    .global-presence-section { padding: 40px 4%; }
-}
-
-@media (max-width: 480px) {
-    .main-header { padding: 10px 3%; }
-    .logo img { height: 50px; }
-    
-    .nav-links { padding: 12px 3%; gap: 8px; }
-    .header-actions { gap: 12px; }
-    .btn-quote { padding: 8px 12px; font-size: 11px; }
-    
-    .hero-section { padding-top: 90px; padding-left: 3%; padding-right: 3%; min-height: 70vh; }
-    .main-title { font-size: 20px; gap: 8px; }
-    .description { font-size: 13px; }
-    
-    .feature-card { padding: 16px 12px; }
-    .feature-icon { width: 48px; height: 48px; }
-    
-    .catalog-grid { grid-template-columns: 1fr; }
-    .custom-quote-cta { padding: 16px; flex-direction: column; align-items: flex-start; }
-    .cta-left { gap: 16px; }
-    
-    .footer-metrics-bar { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 12px; }
-    .metric-column { border: none !important; padding: 8px 0; }
-    .metric-column h4 { font-size: 16px; }
-    
-    .contact-form-group input, .contact-form-group textarea { padding: 12px 14px; font-size: 13px; }
-    .form-container-card { padding: 16px; }
-    
-    .timeline-content-card { padding: 16px; }
-    .detail-header-top { margin-bottom: 16px; }
-    .detail-mini-features { gap: 12px; }
 }
