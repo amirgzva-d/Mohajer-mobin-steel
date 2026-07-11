@@ -613,7 +613,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const translations = {
         en: {
             dir: 'ltr',
-            'nav-home': 'Home', 'nav-products': 'Products', 'nav-departments': 'Departments', 'nav-about': 'About Us', 'nav-contact': 'Contact',
+            'nav-home': 'Home', 'nav-products': 'Products', 'nav-departments': 'Department', 'nav-about': 'About Us', 'nav-contact': 'Contact',
             'btn-quote': 'Get a Quote', 'hero-subtitle': 'PREMIUM QUALITY STEEL', 
             'hero-title-1': 'MOHAJER MOBIN', 'hero-title-2': 'STEEL',
             'hero-desc': 'Subsidiary of Mohajer International Trading Group',
@@ -659,10 +659,10 @@ document.addEventListener('DOMContentLoaded', () => {
             'about-history': 'Our History', 'history-sub-badge': 'OUR HISTORY',
             'history-title-light': 'COMPANY', 'history-title-red': 'HISTORY',
             'history-desc': 'With more than seven decades of experience in trade and export, Mohajer Steel has grown into one of the leading exporters in Khorasan Razavi Province, trusted by partners worldwide.',
-            'founder1-year': '1330', 'founder1-subtitle': 'The Founder', 'founder1-name': 'Late Haj Ghasem Mohajeri',
-            'founder1-bio': 'The roots of our business go back to 1330, when the late Haj Ghasem Mohajeri Khorasani began his activity in the field of domestic trade of leather products and cross. By relying on experience, market knowledge, and professional business principles, he laid the foundation for a sustainable and successful business.',
-            'founder2-year': '1374', 'founder2-subtitle': 'Continuing the Legacy', 'founder2-name': 'Mr. Hashem Mohajeri',
-            'founder2-bio': 'Continuing this path, from 1374, Mr. Hashem Mohajeri Khorasani expanded the company’s export activities, particularly in the food sector, utilizing the valuable experiences of the past and extending our presence to multiple international markets.',
+            'founder1-subtitle': 'The Founder', 'founder1-name': 'Late Haj Ghasem Mohajeri',
+            'founder1-bio': 'The roots of our business go back to <span class="highlight-year">1330</span>, when the late Haj Ghasem Mohajeri Khorasani began his activity in the field of domestic trade of leather products and cross. By relying on experience, market knowledge, and professional business principles, he laid the foundation for a sustainable and successful business.',
+            'founder2-subtitle': 'Continuing the Legacy', 'founder2-name': 'Mr. Hashem Mohajeri',
+            'founder2-bio': 'Continuing this path, from <span class="highlight-year">1374</span>, Mr. Hashem Mohajeri Khorasani expanded the company’s export activities, particularly in the food sector, utilizing the valuable experiences of the past and extending our presence to multiple international markets.',
             'timeline-sub': 'OUR JOURNEY', 'timeline-title': 'A History of Growth and Commitment',
             'timeline1-year': '1330', 'timeline1-title': 'The Beginning', 'timeline1-desc': 'The roots of our business go back to 1330, when the late Haj Ghasem Mohajeri Khorasani began his activity in the field of domestic trade of leather products and cross. By relying on experience, market knowledge, and professional business principles, he laid the foundation for a sustainable and successful business.',
             'timeline2-year': '1366', 'timeline2-title': 'Expansion to International Markets', 'timeline2-desc': 'In 1366, the company entered international trade and began exporting cross and wet blue products to Turkey and Italy. This important step marked a turning point in the development of our business and entry into global markets.',
@@ -671,9 +671,9 @@ document.addEventListener('DOMContentLoaded', () => {
             'timeline5-year': 'Today and Beyond', 'timeline5-title': 'Today and Beyond', 'timeline5-desc': 'Today, with more than 70 years of experience in trade and several decades of successful export, Mohajer Steel is recognized as one of the top exporters in Khorasan Razavi Province. We continue to build the future through professionalism, quality, commitment, and mutual trust.',
             
             'dept-sub': 'OUR DEPARTMENTS', 
-            'dept-title-light': 'SPECIALIZED AREAS OF', 'dept-title-red': 'ACTIVITY',
-            'dept-desc': '"Specialized activity in the steel, food, and petrochemical industries with an approach based on quality, sustainable supply, and global market development."',
-            'dept-key-title': 'Our Key Departments',
+            'dept-title-light': 'OTHER ACTIVITY AREAS OF', 'dept-title-red': 'MOHAJER TRADING GROUP',
+            'dept-desc': 'Mohajer International Trading Group operates in the three main areas of steel, petrochemicals, and food industries, with a focus on international trade, supply, and export.',
+            'dept-key-title': '',
             'dept1-title': 'Petrochemical', 'dept1-desc': 'The petrochemical department, relying on market knowledge and an extensive supply network, has built a reliable bridge between chemical industry producers and consumers. We provide basic and polymer products, ensuring a stable and reliable supply chain for our business partners.',
             'dept1-bullet1': 'Supply and trade of chemical and polymer raw materials', 'dept1-bullet2': 'Establishing a stable and reliable supply chain', 'dept1-bullet3': 'Risk management and global market support', 'dept1-bullet4': 'Offering customized trade solutions tailored to client needs',
             'dept2-title': 'Steel', 'dept2-desc': 'The steel industry is the core of our activities. Specializing in the supply and distribution of various steel products, from billets and slabs to beams and sheets, we provide reliable solutions for industrial and construction projects on a global scale.',
@@ -709,7 +709,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         fa: {
             dir: 'rtl',
-            'nav-home': 'خانه', 'nav-products': 'محصولات', 'nav-departments': 'دپارتمان‌ها', 'nav-about': 'درباره ما', 'nav-contact': 'تماس با ما',
+            'nav-home': 'خانه', 'nav-products': 'محصولات', 'nav-departments': 'دپارتمان', 'nav-about': 'درباره ما', 'nav-contact': 'تماس با ما',
             'btn-quote': 'دریافت قیمت', 'hero-subtitle': 'فولاد با کیفیت ممتاز', 
             'hero-title-1': 'فولاد', 'hero-title-2': 'مهاجر مبین',
             'hero-desc': 'زیر مجموعه گروه بین‌المللی بازرگانی مهاجر',
@@ -755,21 +755,21 @@ document.addEventListener('DOMContentLoaded', () => {
             'about-history': 'تاریخچه ما', 'history-sub-badge': 'تاریخچه شرکت',
             'history-title-light': 'تاریخچه', 'history-title-red': 'شرکت',
             'history-desc': 'با بیش از هفت دهه سابقه در تجارت و صادرات، شرکت مهاجر استیل به عنوان یکی از صادرکنندگان برتر استان خراسان رضوی در بازارهای جهانی شناخته می‌شود.',
-            'founder1-year': '۱۳۳۰', 'founder1-subtitle': 'بنیان‌گذار گروه بین‌المللی بازرگانی مهاجر', 'founder1-name': 'مرحوم حاج قاسم مهاجری',
-            'founder1-bio': 'ریشه فعالیت‌های تجاری این مجموعه به سال ۱۳۳۰ بازمی‌گردد؛ زمانی که مرحوم حاج قاسم مهاجری خراسانی فعالیت خود را در حوزه تجارت داخلی محصولات چرمی و کراس آغاز نمودند. ایشان با تکیه بر تجربه، دانش بازار و اصول حرفه‌ای تجارت، پایه‌های یک کسب‌وکار پایدار و موفق را بنا نهادند.',
-            'founder2-year': '۱۳۷۴', 'founder2-subtitle': 'مدیر عامل گروه بین‌المللی بازرگانی مهاجر', 'founder2-name': 'هاشم مهاجری',
-            'founder2-bio': 'در ادامه این مسیر و از سال ۱۳۷۴، آقای هاشم مهاجری خراسانی با بهره‌گیری از تجربیات ارزشمند گذشته، فعالیت‌های صادراتی مجموعه را به‌صورت تخصصی در حوزه‌هایی همچون مواد غذایی توسعه دادند و دامنه حضور ما را به بازارهای بین‌المللی گسترش دادند.',
+            'founder1-subtitle': 'بنیان‌گذار گروه بین‌المللی بازرگانی مهاجر', 'founder1-name': 'مرحوم حاج قاسم مهاجری',
+            'founder1-bio': 'ریشه فعالیت‌های تجاری این مجموعه به سال <span class="highlight-year">۱۳۳۰</span> بازمی‌گردد؛ زمانی که مرحوم حاج قاسم مهاجری خراسانی فعالیت خود را در حوزه تجارت داخلی محصولات چرمی و کراس آغاز نمودند. ایشان با تکیه بر تجربه، دانش بازار و اصول حرفه‌ای تجارت، پایه‌های یک کسب‌وکار پایدار و موفق را بنا نهادند.',
+            'founder2-subtitle': 'مدیر عامل گروه بین‌المللی بازرگانی مهاجر', 'founder2-name': 'جناب هاشم مهاجری',
+            'founder2-bio': 'در ادامه این مسیر و از سال <span class="highlight-year">۱۳۷۴</span>، جناب هاشم مهاجری خراسانی با بهره‌گیری از تجربیات ارزشمند گذشته، فعالیت‌های صادراتی مجموعه را به‌صورت تخصصی در حوزه‌هایی همچون مواد غذایی توسعه دادند و دامنه حضور ما را به بازارهای بین‌المللی گسترش دادند.',
             'timeline-sub': 'مسیر توسعه ما', 'timeline-title': 'تاریخچه‌ای از رشد و تعهد',
             'timeline1-year': '۱۳۳۰', 'timeline1-title': 'آغاز فعالیت', 'timeline1-desc': 'ریشه فعالیت‌های تجاری این مجموعه به سال ۱۳۳۰ بازمی‌گردد؛ زمانی که مرحوم حاج قاسم مهاجری خراسانی فعالیت خود را در حوزه تجارت داخلی محصولات چرمی و کراس آغاز نمودند. ایشان با تکیه بر تجربه، دانش بازار و اصول حرفه‌ای تجارت، پایه‌های یک کسب‌وکار پایدار و موفق را بنا نهادند.',
             'timeline2-year': '۱۳۶۶', 'timeline2-title': 'ورود به تجارت بین‌المللی', 'timeline2-desc': 'در سال ۱۳۶۶، این مجموعه وارد عرصه تجارت بین‌المللی شد و صادرات محصولات کراس و ویت‌بلو را به کشورهای ترکیه و ایتالیا آغاز کرد. این گام مهم، نقطه عطفی در توسعه فعالیت‌های بازرگانی مجموعه و ورود به بازارهای جهانی به شمار می‌آید.',
-            'timeline3-year': '۱۳۷۴', 'timeline3-title': 'توسعه صادرات با محوریت مواد غذایی', 'timeline3-desc': 'در ادامه این مسیر و از سال ۱۳۷۴، آقای هاشم مهاجری خراسانی با بهره‌گیری از تجربیات ارزشمند گذشته، فعالیت‌های صادراتی مجموعه را به‌صورت تخصصی در حوزه‌هایی همچون مواد غذایی توسعه دادند. در این دوره، دامنه صادرات به کشورهای متعددی از جمله افغانستان، پاکستان، ترکمنستان، تاجیکستان، قزاقستان، قرقیزستان، روسیه، امارات، ترکیه، لبنان، عراق، کانادا، انگلستان، آلمان و سومالی گسترش یافت.',
+            'timeline3-year': '۱۳۷۴', 'timeline3-title': 'توسعه صادرات با محوریت مواد غذایی', 'timeline3-desc': 'در ادامه این مسیر و از سال ۱۳۷۴، جناب هاشم مهاجری خراسانی با بهره‌گیری از تجربیات ارزشمند گذشته، فعالیت‌های صادراتی مجموعه را به‌صورت تخصصی در حوزه‌هایی همچون مواد غذایی توسعه دادند. در این دوره، دامنه صادرات به کشورهای متعددی از جمله افغانستان، پاکستان، ترکمنستان، تاجیکستان، قزاقستان، قرقیزستان، روسیه، امارات، ترکیه، لبنان، عراق، کانادا، انگلستان، آلمان و سومالی گسترش یافت.',
             'timeline4-year': '۱۳۹۷', 'timeline4-title': 'توسعه در حوزه کالاهای راهبردی', 'timeline4-desc': 'از سال ۱۳۹۷ و همگام با نیازهای روز بازارهای جهانی، فعالیت‌های شرکت در حوزه کالاهای راهبردی توسعه یافت و صادرات محصولات فولادی و پتروشیمی نیز به سبد فعالیت‌های مجموعه افزوده شد. این رویکرد، زمینه رشد پایدار و حضور گسترده‌تر در بازارهای بین‌المللی را فراهم ساخت.',
             'timeline5-year': 'امروز و آینده', 'timeline5-title': 'امروز و آینده', 'timeline5-desc': 'امروز این مجموعه با بیش از هفت دهه سابقه در تجارت و چندین دهه تجربه موفق در صادرات، به عنوان یکی از صادرکنندگان برتر استان خراسان رضوی شناخته می‌شود و با تکیه بر اصول حرفه‌ای، کیفیت، تعهد و اعتماد متقابل، همکاری‌های تجاری خود را در سطح جهانی ادامه می‌دهد.',
             
             'dept-sub': 'دپارتمان‌های ما', 
-            'dept-title-light': 'حوزه‌های تخصصی', 'dept-title-red': 'فعالیت',
-            'dept-desc': '«فعالیت تخصصی در صنایع فولاد، مواد غذایی و پتروشیمی با رویکردی مبتنی بر کیفیت، تأمین پایدار و توسعه بازارهای جهانی»',
-            'dept-key-title': 'دپارتمان‌های کلیدی ما',
+            'dept-title-light': 'دیگر حوزه‌های فعالیتی', 'dept-title-red': 'گروه بازرگانی مهاجر',
+            'dept-desc': 'گروه بین‌المللی بازرگانی مهاجر در سه حوزه اصلی فولاد، پتروشیمی و صنایع غذایی با تمرکز بر تجارت بین‌المللی، تأمین و صادرات فعالیت می‌کند.',
+            'dept-key-title': '',
             'dept1-title': 'صنایع پتروشیمی', 'dept1-desc': 'بخش پتروشیمی با تکیه بر دانش بازار و شبکه گسترده تأمین، پلی مطمئن میان تولیدکنندگان و مصرف‌کنندگان صنایع شیمیایی ایجاد کرده است. ما با ارائه محصولات پایه و پلیمری، زنجیره تأمینی پایدار و قابل اعتماد برای شرکای تجاری خود فراهم می‌کنیم.',
             'dept1-bullet1': 'تأمین و تجارت مواد اولیه شیمیایی و پلیمری', 'dept1-bullet2': 'ایجاد زنجیره تأمین پایدار و قابل اعتماد', 'dept1-bullet3': 'مدیریت ریسک و پشتیبانی از بازارهای جهانی', 'dept1-bullet4': 'ارائه راهکارهای تجاری متناسب با نیاز مشتریان',
             'dept2-title': 'صنایع فولاد', 'dept2-desc': 'صنایع فولاد، هسته اصلی فعالیت‌های ماست. با تخصص در تأمین و توزیع انواع محصولات فولادی، از بیلت و اسلب تا تیرآهن و ورق، راهکارهایی مطمئن برای پروژه‌های صنعتی و عمرانی در مقیاس جهانی ارائه می‌دهیم.',
@@ -805,7 +805,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         ar: {
             dir: 'rtl',
-            'nav-home': 'الرئيسية', 'nav-products': 'المنتجات', 'nav-departments': 'الأقسام', 'nav-about': 'من نحن', 'nav-contact': 'اتصل بنا',
+            'nav-home': 'الرئيسية', 'nav-products': 'المنتجات', 'nav-departments': 'قسم', 'nav-about': 'من نحن', 'nav-contact': 'اتصل بنا',
             'btn-quote': 'احصل على سعر', 'hero-subtitle': 'فولاذ عالي الجودة', 
             'hero-title-1': 'فولاذ', 'hero-title-2': 'مهاجر مبين',
             'hero-desc': 'شركة تابعة لمجموعة مهاجر التجارية الدولية',
@@ -850,10 +850,10 @@ document.addEventListener('DOMContentLoaded', () => {
             'about-history': 'تاريخنا', 'history-sub-badge': 'تاريخ الشركة',
             'history-title-light': 'تاريخ', 'history-title-red': 'الشركة',
             'history-desc': 'مع أكثر من سبعة عقود من الخبرة في التجارة والتصدير، نمت شركة مهاجر ستيل لتصبح واحدة من المصدرين الرائدين في مقاطعة خراسان رضوي، والموثوق بهم من قبل الشركاء في جميع أنحاء العالم.',
-            'founder1-year': '١٣٣٠', 'founder1-subtitle': 'المؤسس', 'founder1-name': 'المرحوم الحاج قاسم مهاجري',
-            'founder1-bio': 'تعود جذور أعمالنا إلى عام ١٣۳۰، عندما بدأ المرحوم الحاج قاسم مهاجري خراساني نشاطه في مجال التجارة المحلية للمنتجات الجلدية والكروس. ومن خلال الاعتماد على الخبرة، ومعرفة السوق، ومبادئ الأعمال المهنية، وضع الأساس لمشروع تجاري مستدام وناجح.',
-            'founder2-year': '١٣٧۴', 'founder2-subtitle': 'مواصلة الإرث وتطوير التصدير', 'founder2-name': 'السيد هاشم مهاجري',
-            'founder2-bio': 'استمراراً لهذا المسار، ومنذ عام ١٣۷۴، قام السيد هاشم مهاجري خراساني بتوسيع أنشطة التصدير للشركة، لا سيما في قطاع الأغذية، مستفيداً من الخبرات القيمة الماضية وموسعاً وجودنا في العديد من الأسواق الدولية.',
+            'founder1-subtitle': 'المؤسس', 'founder1-name': 'المرحوم الحاج قاسم مهاجري',
+            'founder1-bio': 'تعود جذور أعمالنا إلى عام <span class="highlight-year">١٣٣٠</span>، عندما بدأ المرحوم الحاج قاسم مهاجري خراساني نشاطه في مجال التجارة المحلية للمنتجات الجلدية والكروس. ومن خلال الاعتماد على الخبرة، ومعرفة السوق، ومبادئ الأعمال المهنية، وضع الأساس لمشروع تجاري مستدام وناجح.',
+            'founder2-subtitle': 'مواصلة الإرث وتطوير التصدير', 'founder2-name': 'السيد هاشم مهاجري',
+            'founder2-bio': 'استمراراً لهذا المسار، ومنذ عام <span class="highlight-year">١٣٧٤</span>، قام السيد هاشم مهاجري خراساني بتوسيع أنشطة التصدير للشركة، لا سيما في قطاع الأغذية، مستفيداً من الخبرات القيمة الماضية وموسعاً وجودنا في العديد من الأسواق الدولية.',
             'timeline-sub': 'مسيرتنا', 'timeline-title': 'تاريخ من النمو والالتزام',
             'timeline1-year': '١٣٣٠', 'timeline1-title': 'البداية', 'timeline1-desc': 'تعود جذور أعمالنا إلى عام ١٣۳۰، عندما بدأ المرحوم الحاج قاسم مهاجري خراساني نشاطه في مجال التجارة المحلية للمنتجات الجلدية والكروس. ومن خلال الاعتماد على الخبرة، ومعرفة السوق، ومبادئ الأعمال المهنية، وضع الأساس لمشروع تجاري مستدام وناجح.',
             'timeline2-year': '١٣۶۶', 'timeline2-title': 'التوسع إلى الأسواق الدولية', 'timeline2-desc': 'في عام ١٣۶۶، دخلت الشركة في التجارة الدولية وبدأت في تصدير منتجات الكروس والويت بلو إلى تركيا وإيطاليا. شكلت هذه الخطوة الهامة نقطة تحول في تطوير أعمالنا ودخولنا إلى الأسواق العالمية.',
@@ -862,9 +862,9 @@ document.addEventListener('DOMContentLoaded', () => {
             'timeline5-year': 'اليوم وما بعده', 'timeline5-title': 'اليوم وما بعده', 'timeline5-desc': 'اليوم، مع أكثر من ۷۰ عاماً من الخبرة في التجارة وعدة عقود من التصدير الناجح، تُعرف شركة مهاجر ستيل كأحد كبار المصدرين في مقاطعة خراسان رضوي، وتواصل بناء المستقبل من خلال الاحترافية والجودة والالتزام والثقة المتبادلة.',
             
             'dept-sub': 'أقسامنا وفروعنا', 
-            'dept-title-light': 'مجالات النشاط', 'dept-title-red': 'المتخصصة',
-            'dept-desc': '"نشاط متخصص في صناعات الصلب والأغذية والبتروكيماويات بنهج يعتمد على الجودة والتوريد المستدام وتطوير الأسواق العالمية."',
-            'dept-key-title': 'أقسامنا الرئيسية الكبرى',
+            'dept-title-light': 'مجالات النشاط الأخرى لـ', 'dept-title-red': 'مجموعة مهاجر التجارية',
+            'dept-desc': 'تعمل مجموعة مهاجر التجارية الدولية في المجالات الرئيسية الثلاثة وهي صناعات الصلب والبتروكيماويات والأغذية، مع التركيز على التجارة الدولية والتوريد والتصدير.',
+            'dept-key-title': '',
             'dept1-title': 'قطاع البتروكيماويات', 'dept1-desc': 'أنشأ قسم البتروكيماويات، بالاعتماد على المعرفة بالسوق وشبكة التوريد الواسعة، جسراً موثوقاً بين منتجي ومستهلكي الصناعات الكيميائية. من خلال توفير المنتجات الأساسية والبوليمرية، نوفر سلسلة توريد مستقرة وموثوقة لشركائنا التجاريين.',
             'dept1-bullet1': 'توريد وتجارة المواد الخام الكيميائية والبوليمرية', 'dept1-bullet2': 'إنشاء سلسلة توريد مستقرة وموثوقة', 'dept1-bullet3': 'إدارة المخاطر ودعم الأسواق العالمية', 'dept1-bullet4': 'تقديم حلول تجارية مخصصة وفقاً لاحتياجات العملاء',
             'dept2-title': 'قطاع الحديد والصلب', 'dept2-desc': 'صناعة الحديد والصلب هي جوهر أنشطتنا. تخصصاً في توريد وتوزيع مختلف المنتجات الفولاذية، من البليت والسلاب إلى الكمرات والألواح، نقدم حلولاً موثوقة للمشاريع الصناعية والإنشائية على نطاق عالمي.',
@@ -900,7 +900,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         ru: {
             dir: 'ltr',
-            'nav-home': 'Главная', 'nav-products': 'Продукция', 'nav-departments': 'Подразделения', 'nav-about': 'О нас', 'nav-contact': 'Контакты',
+            'nav-home': 'Главная', 'nav-products': 'Продукция', 'nav-departments': 'Отдел', 'nav-about': 'О нас', 'nav-contact': 'Контакты',
             'btn-quote': 'Запросить расчет', 'hero-subtitle': 'СТАЛЬ ПРЕМИАЛЬНОГО КАЧЕСТВА', 
             'hero-title-1': 'MOHAJER MOBIN', 'hero-title-2': 'STEEL',
             'hero-desc': 'Дочерняя компания международной торговой группы Mohajer',
@@ -946,10 +946,10 @@ document.addEventListener('DOMContentLoaded', () => {
             'about-history': 'Наша история', 'history-sub-badge': 'ИСТОРИЯ КОМПАНИИ',
             'history-title-light': 'ИСТОРИЯ', 'history-title-red': 'КОМПАНИИ',
             'history-desc': 'Обладая более чем семидесятилетним опытом торговли и экспорта, компания Mohajer Steel выросла в одного из ведущих экспортеров провинции Хорасан-Резави, пользующегося доверием партнеров по всему миру.',
-            'founder1-year': '1330', 'founder1-subtitle': 'Основатель', 'founder1-name': 'Покойный Хадж Гасем Мухаджери',
-            'founder1-bio': 'Истоки нашего бизнеса восходят к 1330 году, когда покойный Хадж Гасем Мухаджери Хорасани начал свою деятельность в сфере внутренней торговли кожей и кроссом. Опираясь на опыт, знание рынка и профессиональные принципы ведения бизнеса, он заложил фундамент для устойчивого и успешного предприятия.',
-            'founder2-year': '1374', 'founder2-subtitle': 'Продолжение наследия', 'founder2-name': 'Г-н Хашем Мухаджери',
-            'founder2-bio': 'Продолжая этот путь, с 1374 года г-н Хашем Мухаджери Хорасани расширил экспортную деятельность компании, особенно в продовольственном секторе, используя ценный опыт прошлого и расширив наше присутствие на многих международных рынках.',
+            'founder1-subtitle': 'Основатель', 'founder1-name': 'Покойный Хадж Гасем Мухаджери',
+            'founder1-bio': 'Истоки нашего бизнеса восходят к <span class="highlight-year">1330</span> году, когда покойный Хадж Гасем Мухаджери Хорасани начал свою деятельность в сфере внутренней торговли кожей и кроссом. Опираясь на опыт, знание рынка и профессиональные принципы ведения бизнеса, он заложил фундамент для устойчивого и успешного предприятия.',
+            'founder2-subtitle': 'Продолжение наследия', 'founder2-name': 'Г-н Хашем Мухаджери',
+            'founder2-bio': 'Продолжая этот путь, с <span class="highlight-year">1374</span> года г-н Хашем Мухаджери Хорасани расширил экспортную деятельность компании, особенно в продовольственном секторе, используя ценный опыт прошлого и расширив наше присутствие на многих международных рынках.',
             'timeline-sub': 'НАШ ПУТЬ', 'timeline-title': 'История роста и приверженности делу',
             'timeline1-year': '1330', 'timeline1-title': 'Начало пути', 'timeline1-desc': 'Истоки нашего бизнеса восходят к 1330 году, когда покойный Хадж Гасем Мухаджери Хорасани начал свою деятельность в сфере внутренней торговли кожей и кроссом. Опираясь на опыт, знание рынка и профессиональные принципы ведения бизнеса, он заложил фундамент для устойчивого и успешного предприятия.',
             'timeline2-year': '1366', 'timeline2-title': 'Выход на международные рынки', 'timeline2-desc': 'В 1366 году компания вышла на рынок международной торговли и начала экспортировать кросс и вет-блю в Турцию и Италию. Этот важный шаг ознаменовал поворотный момент в развитии нашего бизнеса и выходе на мировые рынки.',
@@ -958,15 +958,15 @@ document.addEventListener('DOMContentLoaded', () => {
             'timeline5-year': 'Сегодня и в будущем', 'timeline5-title': 'Сегодня и в будущем', 'timeline5-desc': 'Сегодня, обладая более чем 70-летним торговым опытом и несколькими десятилетиями успешного экспорта, Mohajer Steel признана одним из ведущих экспортеров в провинции Хорасан-Резави, продолжая строить будущее благодаря профессионализму, качеству, приверженности делу и взаимному доверию.',
             
             'dept-sub': 'НАШИ ПОДРАЗДЕЛЕНИЯ', 
-            'dept-title-light': 'СПЕЦИАЛИЗИРОВАННЫЕ НАПРАВЛЕНИЯ', 'dept-title-red': 'ДЕЯТЕЛЬНОСТИ',
-            'dept-desc': '"Специализированная деятельность в сталелитейной, пищевой и нефтехимической промышленности с подходом, основанным на качестве, стабильных поставках и развитии мировых рынков."',
-            'dept-key-title': 'Ключевые подразделения',
+            'dept-title-light': 'ДРУГИЕ НАПРАВЛЕНИЯ ДЕЯТЕЛЬНОСТИ', 'dept-title-red': 'MOHAJER TRADING GROUP',
+            'dept-desc': 'Международная торговая группа Mohajer работает в трех основных направлениях: металлургия, нефтехимия и пищевая промышленность, уделяя особое внимание международной торговле, поставкам и экспорту.',
+            'dept-key-title': '',
             'dept1-title': 'Нефтехимия', 'dept1-desc': 'Нефтехимический отдел, опираясь на знание рынка и обширную сеть поставок, построил надежный мост между производителями и потребителями химической промышленности. Мы предоставляем базовые и полимерные продукты, обеспечивая стабильную и надежную цепочку поставок для наших деловых партнеров.',
             'dept1-bullet1': 'Поставка и торговля химическим и полимерным сырьем', 'dept1-bullet2': 'Создание стабильной и надежной цепочки поставок', 'dept1-bullet3': 'Управление рисками и поддержка на мировых рынках', 'dept1-bullet4': 'Предоставление коммерческих решений под нужды клиентов',
             'dept2-title': 'Металлургия', 'dept2-desc': 'Сталелитейная промышленность является основой нашей деятельности. Специализируясь на поставке и дистрибуции различной стальной продукции, от заготовок и слябов до балок и листов, мы предоставляем надежные решения для промышленных и строительных проектов в глобальном масштабе.',
             'dept2-bullet1': 'Поставка стальной продукции премиум-качества', 'dept2-bullet2': 'Широкая международная сеть поставок и дистрибуции', 'dept2-bullet3': 'Конкурентоспособные цены и своевременная доставка', 'dept2-bullet4': 'Поддержка промышленных и строительных проектов любого масштаба',
             'dept3-title': 'Пищевая промышленность', 'dept3-desc': 'В отделе пищевой промышленности мы предлагаем высококачественные сельскохозяйственные и пищевые продукты на международных рынках путем создания глобальной сети надежных поставщиков и производителей. Строгое управление цепочкой поставок, контроль качества и профессиональная логистика гарантируют безопасную доставку в соответствии с мировыми стандартами.',
-            'dept3-bullet1': 'Международные поставки и торговля пищевой и сельскохозяйственной продукцией', 'dept3-bullet2': 'Контроль качества и соответствие международным стандартам', 'dept3-bullet3': 'Профессиональное управление логистикой и цепочкой поставок', 'dept3-bullet4': 'Гарантия свежести, безопасности и своевременной доставки',
+            'dept3-bullet1': 'Международные поставки и торговля пищевой и сельскохозяйственной продукцией', 'dept3-bullet2': 'Конترل качества и соответствие международным стандартам', 'dept3-bullet3': 'Профессиональное управление логистикой и цепочкой поставок', 'dept3-bullet4': 'Гарантия свежести, безопасности и своевременной доставки',
             'btn-learn-more': 'Подробнее',
 
             'global-subtitle': 'НАШЕ ГЛОБАЛЬНОЕ ПРИСУТСТВИЕ', 'global-title-light': 'ЭКСПОРТНАЯ МОЩЬ.', 'global-title-red': 'СОЗДАНИЕ СВЯЗЕЙ.',
@@ -983,7 +983,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'country-tj-name': 'Таджикистан', 'country-tj-desc': 'Надежные торговые каналы поставок деталей для сельхозтехники, строительной стали и продуктов питания для продовольственной безопасности.',
             'country-kz-name': 'Казахстан', 'country-kz-desc': 'Поставка базовых стальных сплавов, полимерных материалов и специализированного сырья для тяжелой промышленности Казахстана.',
             'country-kg-name': 'Кыргызстан', 'country-kg-desc': 'Развитие логистических сетей и дистрибуция стандартной строительной проволоки, зерновых продуктов и нефтепродуктов.',
-            'country-tr-name': 'Турция', 'country-tr-desc': 'Ключевой стратегический центр, куда мы активно экспортируем промышленные химикаты, высококачественный стальный прокат и органические продукты.',
+            'country-tr-name': 'Турция', 'country-tr-desc': 'Ключевой стратегический центр, куда мы активно экспортируем промышленные химикаты, высококачественный стальный прокат и органические продуктов.',
             'country-lb-name': 'Ливан', 'country-lb-desc': 'Специальные торговые соглашения по поставке пищевого сырья, зерновых масел и строительной арматуры для инфраструктуры.',
             'country-sy-name': 'Сирия', 'country-sy-desc': 'Поддержка восстановления промышленности с помощью необходимых строительных материалов, балок и нефтехимических производных.',
             'country-iq-name': 'Ирак', 'country-iq-desc': 'Обширные поставки стальных труб, арматуры и жизненно важных промышленных растворителей для общенациональных инфраструктурных проектов.',
@@ -995,8 +995,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'country-au-name': 'Австралия', 'country-au-desc': 'Поставка тяжелых стальных элементов морского класса и стратегический сельскохозяйственный экспорт для австралийского рынка.'
         }
     };
-
-    // ==========================================================================
+  // ==========================================================================
     // منطق و داده‌های نقشه جهانی
     // ==========================================================================
     const countryData = {
@@ -1190,7 +1189,8 @@ document.addEventListener('DOMContentLoaded', () => {
         translatableElements.forEach(elem => {
             const key = elem.getAttribute('data-key');
             if (translation[key] !== undefined) {
-                elem.innerText = translation[key];
+                // استفاده از innerHTML برای اعمال درست تگ‌های رنگی سال‌ها
+                elem.innerHTML = translation[key];
             }
         });
 
@@ -1462,7 +1462,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // کلیک‌پذیر شدن کل کارت محصولات
     // ==========================================================================
     document.addEventListener('click', (e) => {
-        // بررسی می‌کنیم که آیا روی کارتی با کلاس catalog-card کلیک شده است
         const card = e.target.closest('.catalog-card');
         if (card) {
             e.preventDefault();
