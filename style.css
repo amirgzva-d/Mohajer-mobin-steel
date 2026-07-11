@@ -156,19 +156,20 @@ html[dir="rtl"] .btn-quote svg { transform: scaleX(-1); }
     background-color: var(--bg-dark-section);
 }
 
-/* تغییر عکس‌های صفحه اول */
+/* عکس پس‌زمینه جدید برای انگلیسی و روسی */
 .hero-bg {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
     background-image: 
         linear-gradient(90deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0.2) 65%, rgba(0, 0, 0, 0) 100%), 
-        url('لینک_عکس_جدید_برای_انگلیسی.jpg'); /* <--- لینک عکس انگلیسی را اینجا بگذارید */
+        url('https://res.cloudinary.com/dqhbyqftq/image/upload/v1783501200/2_duxzdm.png');
     background-size: cover; background-position: right center; background-repeat: no-repeat;
 }
 
+/* عکس پس‌زمینه جدید برای فارسی و عربی */
 html[dir="rtl"] .hero-bg {
     background-image: 
         linear-gradient(270deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 45%, rgba(0, 0, 0, 0.2) 65%, rgba(0, 0, 0, 0) 100%), 
-        url('لینک_عکس_جدید_برای_فارسی.jpg'); /* <--- لینک عکس فارسی را اینجا بگذارید */
+        url('https://res.cloudinary.com/dqhbyqftq/image/upload/v1783501204/1_vzet9z.png');
     background-position: left center;
 }
 
@@ -248,7 +249,7 @@ html[dir="rtl"] .btn-explore svg { transform: scaleX(-1); }
 
 .catalog-banner {
     position: relative; border-radius: 16px; overflow: hidden; 
-    padding: 32px 4%; /* اصلاح: کمتر شدن پدینگ برای نزدیک شدن به گوشه */
+    padding: 32px 4%;
     margin-bottom: 40px; background-color: var(--bg-dark-section);
     min-height: 240px; display: flex; align-items: center; box-shadow: var(--shadow-card);
 }
@@ -266,18 +267,18 @@ html[dir="rtl"] .catalog-banner-bg {
 
 .catalog-banner-text { 
     position: relative; z-index: 1; 
-    max-width: 35%; /* اصلاح: جمع و جور کردن عرض متن بنر */ 
+    max-width: 35%; 
 }
 html[dir="rtl"] .catalog-banner-text { text-align: right; }
 .red-badge-title { display: none; }
 
 .section-main-title {
-    font-size: clamp(18px, 2.5vw, 24px); /* اصلاح: سایز تیتر محصولات کوچک‌تر شد */
+    font-size: clamp(18px, 2.5vw, 24px);
     font-weight: 800; color: var(--text-white); margin-bottom: 8px;
 }
 .section-desc { 
     color: rgba(255, 255, 255, 0.8); 
-    font-size: 12px; /* اصلاح: فونت توضیحات محصولات کوچک‌تر شد */
+    font-size: 12px;
     line-height: 1.6; 
 }
 
@@ -428,7 +429,7 @@ html[dir="rtl"] .btn-request-callback svg, html[dir="rtl"] .btn-direct-message s
 .about-hero-section {
     position: relative; min-height: 50vh; padding-top: 100px; padding-bottom: 40px;
     display: flex; align-items: center; 
-    padding-left: 4%; padding-right: 4%; /* اصلاح: فاصله از لبه‌ها کمتر شد تا به گوشه برود */
+    padding-left: 4%; padding-right: 4%; 
     overflow: hidden; background-color: var(--bg-dark-section);
 }
 
@@ -452,13 +453,13 @@ html[dir="rtl"] .about-crumb-separator { transform: scaleX(-1); }
 .about-crumb-active { color: var(--primary-blue); font-weight: 700; }
 
 .about-hero-text { 
-    max-width: 35%; /* اصلاح: عرض متن کمتر شد */ 
+    max-width: 35%; 
     text-align: left; 
 }
 html[dir="rtl"] .about-hero-text { text-align: right; }
 
 .about-main-title { 
-    font-size: clamp(20px, 3vw, 28px); /* اصلاح: سایز تیتر اصلی کمتر شد */
+    font-size: clamp(20px, 3vw, 28px); 
     font-weight: 900; line-height: 1.2; margin-bottom: 8px; display: flex; flex-direction: row; flex-wrap: wrap; gap: 8px; align-items: center; 
 }
 .about-main-title .about-light-text { color: var(--text-white); }
@@ -466,7 +467,7 @@ html[dir="rtl"] .about-hero-text { text-align: right; }
 .about-title-underline { width: 80px; height: 4px; background-color: var(--primary-blue); border-radius: 2px; margin-bottom: 16px; }
 html[dir="rtl"] .about-title-underline { margin-left: auto; margin-right: 0; }
 .about-description { 
-    font-size: 13px; /* اصلاح: سایز توضیحات کمتر شد */
+    font-size: 13px; 
     line-height: 1.6; color: rgba(255, 255, 255, 0.8); font-weight: 500; 
 }
 
@@ -483,8 +484,15 @@ html[dir="rtl"] .founder-card-item { text-align: right; }
 .founder-img-frame { width: 180px; height: 240px; border-radius: 12px; overflow: hidden; flex-shrink: 0; background-color: #E2E8F0; }
 .founder-img { width: 100%; height: 100%; object-fit: cover; }
 .founder-card-details { display: flex; flex-direction: column; justify-content: center; }
-.founder-card-year { font-family: 'Orbitron', sans-serif; font-size: 26px; font-weight: 900; color: var(--primary-blue); margin-bottom: 4px; display: block; }
-html[dir="rtl"] .founder-card-year { font-family: 'Vazirmatn', sans-serif !important; }
+
+/* استایل هایلایت کردن سال‌ها در متن درباره ما */
+.highlight-year {
+    color: var(--primary-blue);
+    font-size: 110%;
+    font-weight: 800;
+    padding: 0 4px;
+}
+
 .founder-card-role { font-size: 12px; font-weight: 800; color: var(--text-gray); text-transform: uppercase; margin-bottom: 12px; }
 .founder-card-name { font-size: 22px; font-weight: 800; color: var(--text-dark); margin-bottom: 12px; }
 .founder-card-bio { font-size: 14px; line-height: 1.6; color: var(--text-gray); font-weight: 500; }
@@ -499,7 +507,6 @@ html[dir="rtl"] .founder-card-year { font-family: 'Vazirmatn', sans-serif !impor
 .timeline-line { position: absolute; top: 0; bottom: 0; left: 24px; width: 2px; background-color: var(--border-light); z-index: 1; }
 html[dir="rtl"] .timeline-line { left: auto; right: 24px; }
 .timeline-node-item { position: relative; display: flex; gap: 24px; align-items: flex-start; z-index: 2; }
-/* اصلاح: نقطه آبی از روی آیکون‌های تایم‌لاین حذف شد */
 .timeline-marker { display: none; }
 .timeline-icon-wrapper { width: 48px; height: 48px; background-color: var(--icon-bg-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary-blue); flex-shrink: 0; z-index: 2; transition: all var(--transition-speed); }
 .timeline-node-item:hover .timeline-icon-wrapper { background-color: var(--primary-blue); color: var(--text-white); transform: scale(1.05); }
@@ -595,7 +602,7 @@ html[dir="rtl"] .metric-column { border-right: none; border-left: 1px solid var(
 .dept-hero-section {
     position: relative; min-height: 50vh; padding-top: 100px; padding-bottom: 40px;
     display: flex; align-items: center; 
-    padding-left: 4%; padding-right: 4%; /* اصلاح: فاصله از لبه‌ها کمتر شد */
+    padding-left: 4%; padding-right: 4%; 
     overflow: hidden; background-color: var(--bg-dark-section);
 }
 
@@ -619,12 +626,12 @@ html[dir="rtl"] .dept-crumb-separator { transform: scaleX(-1); }
 .dept-crumb-active { color: var(--primary-blue); font-weight: 700; }
 
 .dept-hero-text { 
-    max-width: 35%; /* اصلاح: عرض متن کمتر شد */ 
+    max-width: 35%;  
     text-align: left; 
 }
 html[dir="rtl"] .dept-hero-text { text-align: right; }
 .dept-main-title { 
-    font-size: clamp(20px, 3vw, 28px); /* اصلاح: سایز تیتر اصلی کمتر شد */
+    font-size: clamp(20px, 3vw, 28px); 
     font-weight: 900; line-height: 1.2; margin-bottom: 8px; display: flex; flex-direction: row; flex-wrap: wrap; gap: 8px; align-items: center; 
 }
 .dept-main-title .dept-light-text { color: var(--text-white); }
@@ -632,7 +639,7 @@ html[dir="rtl"] .dept-hero-text { text-align: right; }
 .dept-title-underline { width: 80px; height: 4px; background-color: var(--primary-blue); border-radius: 2px; margin-bottom: 16px; }
 html[dir="rtl"] .dept-title-underline { margin-left: auto; margin-right: 0; }
 .dept-description { 
-    font-size: 13px; /* اصلاح: سایز توضیحات کمتر شد */ 
+    font-size: 13px; 
     line-height: 1.6; color: rgba(255, 255, 255, 0.8); font-weight: 500; 
 }
 
@@ -687,7 +694,7 @@ html[dir="rtl"] .detail-layout { direction: rtl; }
 .nav-pill-btn:hover { color: var(--primary-blue); }
 html[dir="rtl"] .nav-pill-btn svg { transform: scaleX(-1); }
 
-/* استایل دکمه بازگشت (فلش) که به بالا منتقل شده */
+/* استایل دکمه بازگشت (فلش) */
 .nav-pill-grid { 
     display: flex; align-items: center; justify-content: center; 
     width: 44px; height: 44px; background: var(--icon-bg-light); 
@@ -699,8 +706,6 @@ html[dir="rtl"] .nav-pill-btn svg { transform: scaleX(-1); }
     background: var(--primary-blue);
     color: var(--text-white);
 }
-/* اصلاح: چرخش فلش در زبان فارسی حذف شد تا همیشه به سمت چپ باشد */
-/* html[dir="rtl"] .nav-pill-grid svg { transform: scaleX(-1); } */
 
 .detail-table-container { grid-column: 1 / -1; width: 100%; background-color: var(--bg-white); border: none; border-radius: 16px; padding: 32px; margin-top: 16px; box-shadow: var(--shadow-card); }
 .detail-table-title { font-size: 18px; font-weight: 800; color: var(--text-dark); margin-bottom: 24px; }
@@ -852,9 +857,6 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
     
     .timeline-line { left: 16px; }
     html[dir="rtl"] .timeline-line { right: 16px; left: auto; }
-    /* در موبایل هم نقطه روی تاریخچه رو برداشتم */
-    /* .timeline-marker { left: 16px; }
-    html[dir="rtl"] .timeline-marker { right: 16px; left: auto; transform: translateX(50%); } */
 
     section { padding: 40px 16px !important; }
     .detail-table-container { padding: 16px; }
