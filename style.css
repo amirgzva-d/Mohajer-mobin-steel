@@ -834,7 +834,24 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
         height: 45px;
     }
 
-    /* مخفی کردن دکمه قیمت دسکتاپ و نمایش دکمه درون منو */
+    /* رفع مشکل عدم نمایش دراپ‌داون انتخاب زبان در موبایل */
+    .lang-selector-container {
+        position: relative !important;
+    }
+    .lang-selector {
+        padding: 10px 12px !important; /* فضا دهی مناسب جهت لمس ساده تر */
+    }
+    .lang-dropdown {
+        position: absolute !important;
+        top: 100% !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        right: auto !important;
+        width: 80px !important;
+        z-index: 99999 !important; /* لایه اولویت بالا جهت جلوگیری از پنهان ماندن */
+    }
+
+    /* مخفی کردن دکمه قیمت اصلی دسکتاپ و نمایش نسخه فشرده موبایل درون منو */
     .main-header .header-actions .btn-quote {
         display: none !important;
     }
@@ -845,7 +862,7 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
         margin-top: 12px;
     }
     
-    /* انیمیشن کشویی و روان باز شدن منوی همبرگری موبایل */
+    /* انیمیشن کشویی و بسیار روان باز شدن منوی همبرگری موبایل */
     .nav-links {
         position: absolute;
         top: 100%;
@@ -908,93 +925,130 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
         z-index: 2;
     }
 
-    /* ممانعت از به‌هم‌ریختگی متن هیرو */
-    .main-title {
-        display: block !important;
-        text-align: center;
-    }
-    .main-title span {
-        display: inline-block;
-        margin: 4px;
-    }
-
-    /* قرارگیری دقیق ۴ کارت محصول در یک ردیف افقی بدون به‌هم‌ریختگی */
-    .catalog-grid {
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 8px !important; /* فاصله بهینه بین کارت‌ها در موبایل */
-    }
-    .catalog-card {
-        border-radius: 8px !important;
-    }
-    .catalog-card::after {
-        inset: 1px !important;
-        border-radius: 7px !important;
-    }
-    .card-content-wrapper {
-        border-radius: 7px !important;
-    }
-    .card-image-wrapper {
-        height: 65px !important; /* کاهش ارتفاع تصویر برای تناسب در ردیف */
-    }
-    .card-body {
-        padding: 6px !important;
-    }
-    .card-body h4 {
-        font-size: 10px !important;
-        margin-bottom: 0 !important;
-        line-height: 1.2 !important;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis; /* تبدیل متون طولانی به سه نقطه */
-    }
-    .card-body p {
-        display: none !important; /* حذف متن توضیحات برای ممانعت از کشیدگی کارت */
-    }
-    .card-footer {
-        padding: 4px 6px !important;
-        border-top: none !important;
-    }
-    .view-link span {
-        display: none !important; /* حذف متن "View Details" برای باز شدن فضا */
-    }
-    .view-link {
+    /* چیدمان افقی و بهینه دکمه‌های هیرو مطابق با تصویر ۱ */
+    .hero-buttons {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 12px !important;
         justify-content: center !important;
         width: 100% !important;
     }
-    .card-arrow {
-        margin: 0 !important;
-        width: 12px !important;
-        height: 12px !important;
+    .btn-explore, .btn-catalog {
+        flex: 1 !important;
+        max-width: 180px !important;
+        width: auto !important;
+        padding: 10px 14px !important;
+        font-size: 12px !important;
+        margin-bottom: 0 !important;
+        border-radius: 8px !important;
+        white-space: nowrap !important;
     }
 
-    /* قرارگیری ۴ کارت کیفیت ممتاز و ویژگی‌ها در یک ردیف افقی */
-    .features-grid {
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 6px !important;
-        margin-top: -35px !important;
+    /* ممانعت از به‌هم‌ریختگی متن هیرو و ایجاد حالت ۲ رنگ شکیل تصویر ۱ */
+    .main-title {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        font-size: 24px !important;
+        font-weight: 900 !important;
+        line-height: 1.3 !important;
     }
-    .feature-card {
-        padding: 10px 4px !important;
-        border-radius: 8px !important;
-        min-height: 80px !important;
+    .main-title .light-text {
+        color: var(--text-white) !important;
+    }
+    .main-title .red-text {
+        color: #38bdf8 !important; /* رنگ آبی آسمانی ملایم و لوکس مطابق عکس */
+    }
+    .hero-text-block {
+        text-align: center !important;
+    }
+    .subtitle-badge {
         justify-content: center !important;
     }
+
+    /* چیدمان ۲ در ۲ کارت‌های مزایا مطابق با تصویر ۱ */
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px !important;
+        margin-top: -40px !important;
+    }
+    .feature-card {
+        padding: 16px 12px !important;
+        border-radius: 12px !important;
+        min-height: auto !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
     .feature-icon {
-        width: 28px !important;
-        height: 28px !important;
-        margin-bottom: 6px !important;
+        width: 44px !important;
+        height: 44px !important;
+        margin-bottom: 10px !important;
     }
     .feature-icon svg {
-        width: 14px !important;
-        height: 14px !important;
+        width: 20px !important;
+        height: 20px !important;
     }
     .feature-info h3 {
-        font-size: 8px !important;
-        line-height: 1.2 !important;
-        margin-bottom: 0 !important;
+        font-size: 12px !important;
+        font-weight: 800 !important;
+        margin-bottom: 4px !important;
     }
     .feature-info p {
-        display: none !important; /* حذف توضیحات فرعی کارت‌های کوچک ویژگی‌ها */
+        font-size: 9px !important;
+        line-height: 1.4 !important;
+        color: var(--text-gray) !important;
+        display: block !important;
+    }
+
+    /* قرارگیری مرتب ۲ ستونه کارت‌های محصولات مطابق با تصویر ۰ */
+    .catalog-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+    }
+    .catalog-card {
+        border-radius: 12px !important;
+    }
+    .card-image-wrapper {
+        height: 120px !important; /* اندازه تصویر متناسب با حالت دو ستونه */
+    }
+    .card-body {
+        padding: 16px 12px 12px 12px !important;
+    }
+    .card-body h4 {
+        font-size: 14px !important;
+        font-weight: 800 !important;
+        margin-bottom: 4px !important;
+    }
+    .card-body p {
+        font-size: 11px !important;
+        line-height: 1.4 !important;
+        height: auto !important;
+        margin-bottom: 12px !important;
+        display: block !important;
+    }
+    .card-footer {
+        padding: 12px 12px !important;
+        border-top: 1px solid var(--border-light) !important;
+    }
+    html[dir="rtl"] .card-footer {
+        justify-content: flex-start !important;
+    }
+    html[dir="ltr"] .card-footer {
+        justify-content: flex-end !important;
+    }
+    .view-link span {
+        display: inline !important; /* فعالسازی متن مشاهده جزئیات */
+        font-size: 11px !important;
+    }
+    .view-link {
+        justify-content: flex-start !important;
+        width: auto !important;
+    }
+    .card-arrow {
+        width: 12px !important;
+        height: 12px !important;
     }
 
     /* بنر بخش محصولات */
@@ -1007,7 +1061,53 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
         line-height: 1.5 !important;
     }
 
-    /* بخش درباره ما (About Us) */
+    /* ظریف‌سازی فرم تماس و ورودی‌ها مطابق با تصویر ۲ */
+    .contact-form-group input, 
+    .contact-form-group textarea {
+        padding: 10px 14px !important;
+        font-size: 12px !important;
+        border-radius: 8px !important;
+    }
+    .contact-form-group textarea {
+        height: 90px !important;
+    }
+    .form-container-card {
+        padding: 24px !important;
+        border-radius: 16px !important;
+    }
+    .form-container-card h3 {
+        font-size: 18px !important;
+        margin-bottom: 6px !important;
+    }
+    .form-instructions-desc {
+        font-size: 11px !important;
+        margin-bottom: 20px !important;
+    }
+    .btn-submit-message {
+        padding: 10px 16px !important;
+        font-size: 13px !important;
+        border-radius: 8px !important;
+    }
+
+    /* بهینه‌سازی دکمه‌های بنر اعتماد به صورت افقی و ظریف مطابق تصویر ۲ */
+    .trust-banner-actions {
+        display: flex !important;
+        flex-direction: row !important; /* قرارگیری دکمه‌ها در کنار هم */
+        gap: 8px !important;
+        width: auto !important;
+        justify-content: center !important;
+    }
+    .btn-request-callback, 
+    .btn-direct-message {
+        width: auto !important;
+        flex: 1 !important; /* تسهیم مساوی فضا */
+        padding: 8px 12px !important;
+        font-size: 11px !important;
+        margin-bottom: 0 !important;
+        white-space: nowrap !important;
+    }
+
+    /* بهینه‌سازی بخش درباره ما (About Us) */
     .about-main-title {
         font-size: 16px !important;
         line-height: 1.3 !important;
@@ -1022,6 +1122,36 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
         font-size: 11px !important;
         line-height: 1.5 !important;
     }
+
+    /* حذف کامل نقشه و کشورها در موبایل بنا به دستور شما */
+    .global-presence-section {
+        display: none !important;
+    }
+
+    /* چیدمان افقی و ظریف موسسان شرکت مطابق تصویر ۴ */
+    .founder-card-item {
+        display: flex !important;
+        gap: 16px !important;
+        padding: 16px !important;
+        align-items: center !important;
+    }
+    html[dir="rtl"] .founder-card-item {
+        flex-direction: row !important; /* متن سمت چپ، عکس سمت راست */
+        text-align: right !important;
+    }
+    html[dir="ltr"] .founder-card-item {
+        flex-direction: row-reverse !important; /* متن سمت راست، عکس سمت چپ */
+        text-align: left !important;
+    }
+    .founder-img-frame {
+        width: 100px !important; /* سایز فشرده و بهینه */
+        height: 130px !important;
+        border-radius: 8px !important;
+        flex-shrink: 0 !important;
+    }
+    .founder-card-details {
+        flex-grow: 1 !important;
+    }
     .founder-card-name {
         font-size: 15px !important;
     }
@@ -1034,20 +1164,75 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
         line-height: 1.5 !important;
     }
 
-    /* بخش دپارتمان‌ها (Departments) */
-    .dept-main-title {
-        font-size: 16px !important;
-        line-height: 1.3 !important;
-        display: block !important;
-        text-align: center !important;
+    /* اصلاح خط زمانی تایم‌لاین در موبایل مطابق تصاویر ۴ و ۵ */
+    .timeline-container {
+        display: flex !important;
+        flex-direction: column !important;
+        position: relative !important;
+        gap: 20px !important;
     }
-    .dept-main-title span {
-        display: inline-block !important;
-        font-size: 16px !important;
+    .timeline-line {
+        position: absolute !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        width: 2px !important;
+        background-color: var(--border-light) !important;
+        z-index: 1 !important;
     }
-    .dept-description {
-        font-size: 11px !important;
-        line-height: 1.5 !important;
+    html[dir="rtl"] .timeline-line {
+        right: 20px !important; /* خط عمودی در سمت راست */
+        left: auto !important;
+    }
+    html[dir="ltr"] .timeline-line {
+        left: 20px !important;
+        right: auto !important;
+    }
+    .timeline-node-item {
+        display: flex !important;
+        align-items: center !important;
+        gap: 16px !important;
+        position: relative !important;
+        z-index: 2 !important;
+    }
+    html[dir="rtl"] .timeline-node-item {
+        flex-direction: row-reverse !important; /* دایره سمت راست، کادر سمت چپ */
+    }
+    html[dir="ltr"] .timeline-node-item {
+        flex-direction: row !important;
+    }
+    .timeline-icon-wrapper {
+        width: 40px !important;
+        height: 40px !important;
+        border-radius: 50% !important;
+        background-color: var(--icon-bg-light) !important;
+        color: var(--primary-blue) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-shrink: 0 !important;
+    }
+    .timeline-content-card {
+        flex-grow: 1 !important;
+        padding: 16px !important;
+        border-radius: 12px !important;
+        border: 1px solid var(--border-light) !important;
+        background: var(--bg-white) !important;
+    }
+
+    /* بخش دپارتمان‌ها (Departments) مطابق تصویر ۳ */
+    .departments-cards-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+    .department-card-item {
+        border-radius: 16px !important;
+    }
+    .dept-card-image-wrapper {
+        height: 180px !important;
+    }
+    .dept-card-body {
+        padding: 20px !important;
     }
     .dept-card-title {
         font-size: 15px !important;
@@ -1062,88 +1247,17 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
         font-size: 10px !important;
     }
 
-    /* حل تداخل منوی ثابت هدر با صفحه جزییات محصول (حل مشکل دکمه بازگشت) */
+    /* بخش جزئیات محصول و دکمه بازگشت (رفع باگ تداخل هدر) */
     .detail-page-section {
-        padding-top: 110px !important; /* ایجاد فاصله ایمن برای جلوگیری از رفتن زیر هدر */
+        padding-top: 110px !important;
         padding-bottom: 40px !important;
     }
     .detail-header-top {
         margin-bottom: 16px !important;
     }
-
-    /* راست‌چین کردن جهت فلش بک‌دکمه در جزییات محصول */
     html[dir="rtl"] .detail-header-top {
         flex-direction: row-reverse !important;
     }
-
-    /* ساختار گرید رسپانسیو موبایل */
-    .history-founders-grid,
-    .departments-cards-grid,
-    .detail-layout,
-    .main-workspace,
-    .contact-container,
-    .detail-mini-features {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
-        gap: 24px;
-        width: 100%;
-    }
-
-    /* حفظ ساختار بصری خط عمودی تایم‌لاین در موبایل */
-    .timeline-container {
-        display: flex !important;
-        flex-direction: column !important;
-    }
-    .timeline-node-item {
-        display: flex !important;
-        flex-direction: row !important;
-        gap: 16px !important;
-        width: 100%;
-    }
-    .timeline-line {
-        left: 24px !important;
-    }
-    html[dir="rtl"] .timeline-line {
-        right: 24px !important;
-        left: auto !important;
-    }
-
-    .catalog-banner { padding: 24px 16px !important; }
-    .catalog-banner-text,
-    .about-hero-text, 
-    .dept-hero-text { 
-        min-width: 0; max-width: 100% !important; text-align: center; 
-    }
-
-    .founder-card-item { flex-direction: column; align-items: center; text-align: center; }
-    .founder-img-frame { width: 100%; max-width: 220px; height: 280px; }
-    
-    .card-top-layout { grid-template-columns: 1fr; }
-
-    h1 { font-size: 28px !important; line-height: 1.3; }
-    h2 { font-size: 22px !important; }
-    p { font-size: 14px !important; }
-
-    .btn-request-callback,
-    .btn-direct-message,
-    .btn-dept-learn-more,
-    .btn-quote-fill,
-    .btn-datasheet-outline,
-    .btn-explore,
-    .btn-catalog {
-        width: 100% !important;
-        justify-content: center;
-        margin-bottom: 10px;
-    }
-    .trust-banner-actions {
-        width: 100% !important;
-        flex-direction: column !important;
-    }
-
-    .hero-buttons, .detail-action-btns { flex-direction: column; width: 100%; }
-
-    .map-container { overflow: hidden; height: 400px; }
-    .lines-overlay { width: 100%; height: auto; }
 }
 
 @media (max-width: 480px) {
