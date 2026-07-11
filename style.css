@@ -107,7 +107,7 @@ html[dir="rtl"] .lang-dropdown { right: auto; left: 0; text-align: right; }
 .btn-quote {
     background-color: var(--primary-blue); color: var(--text-white); border: none;
     padding: 12px 24px; font-size: 14px; font-weight: 700; border-radius: 8px;
-    cursor: pointer; align-items: center; gap: 8px;
+    cursor: pointer; display: flex; align-items: center; gap: 8px;
     transition: background-color var(--transition-speed), transform var(--transition-speed);
 }
 .btn-quote:hover { background-color: var(--primary-blue-hover); transform: translateY(-1px); }
@@ -523,6 +523,9 @@ html[dir="rtl"] .btn-dept-learn-more svg { transform: scaleX(-1); }
    PRODUCT ANALYSIS DETAIL VIEW
    ========================================================================== */
 .detail-page-section { padding: 120px 6% 80px 6%; background-color: var(--bg-main); }
+.detail-header-top { display: flex; align-items: center; justify-content: flex-start; }
+html[dir="rtl"] .detail-header-top { flex-direction: row-reverse; }
+
 .breadcrumbs-container { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-gray); margin-bottom: 32px; font-weight: 500; }
 .crumb-link { cursor: pointer; transition: color var(--transition-speed); }
 .crumb-link:hover { color: var(--primary-blue); }
@@ -541,13 +544,16 @@ html[dir="rtl"] .detail-layout { direction: rtl; }
 .product-nav-pill { display: flex; align-items: center; justify-content: space-between; background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 50px; padding: 8px 24px; box-shadow: var(--shadow-card); }
 .nav-pill-btn { display: flex; align-items: center; gap: 8px; background: none; border: none; color: var(--text-dark); font-size: 14px; font-weight: 700; cursor: pointer; }
 .nav-pill-btn:hover { color: var(--primary-blue); }
-html[dir="rtl"] .nav-pill-btn svg { transform: scaleX(-1); }
 
 .nav-pill-grid { 
     display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: var(--icon-bg-light); 
     color: var(--primary-blue); border-radius: 50%; border: none; cursor: pointer; transition: transform var(--transition-speed), background var(--transition-speed); 
 }
 .nav-pill-grid:hover { transform: scale(1.1); background: var(--primary-blue); color: var(--text-white); }
+
+html[dir="ltr"] .btn-back-catalog { margin-right: 20px !important; margin-left: 0 !important; }
+html[dir="rtl"] .btn-back-catalog { margin-left: 20px !important; margin-right: 0 !important; }
+html[dir="rtl"] .back-arrow-svg, html[dir="rtl"] .nav-arrow-prev, html[dir="rtl"] .nav-arrow-next, html[dir="rtl"] .action-btn-svg { transform: scaleX(-1); }
 
 .detail-table-container { grid-column: 1 / -1; width: 100%; background-color: var(--bg-white); border: none; border-radius: 16px; padding: 32px; margin-top: 16px; box-shadow: var(--shadow-card); }
 .detail-table-title { font-size: 18px; font-weight: 800; color: var(--text-dark); margin-bottom: 24px; }
@@ -572,7 +578,6 @@ html[dir="rtl"] .detail-right-column { text-align: right; }
 .detail-action-btns { display: flex; gap: 16px; margin-bottom: 40px; flex-wrap: wrap; }
 .btn-quote-fill { background-color: var(--primary-blue); color: var(--text-white); border: none; padding: 14px 28px; font-size: 15px; font-weight: 700; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 8px; justify-content: center; }
 .btn-quote-fill:hover { background-color: var(--primary-blue-hover); transform: translateY(-2px); }
-html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
 .btn-datasheet-outline { background-color: var(--bg-white); color: var(--text-dark); border: 1px solid var(--border-light); padding: 14px 28px; font-size: 15px; font-weight: 700; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
 .btn-datasheet-outline:hover { background-color: var(--bg-main); }
 
@@ -629,7 +634,6 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
 
     /* Fix Header alignment in mobile (Image 3) */
     .header-actions { gap: 12px; }
-    /* Ensure proper ordering of language and hamburger menu */
     html[dir="rtl"] .header-actions { direction: ltr; }
     html[dir="rtl"] .lang-selector-container { direction: rtl; }
 
@@ -656,67 +660,23 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
     
     /* Fix Hero Text alignment in mobile (Image 1) */
     .about-hero-text, .dept-hero-text, .contact-hero-text, .catalog-banner-text {
-        max-width: 100% !important;
-        text-align: center !important;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        max-width: 100% !important; text-align: center !important; display: flex; flex-direction: column; align-items: center; justify-content: center;
     }
     
-    html[dir="rtl"] .about-hero-text,
-    html[dir="rtl"] .dept-hero-text,
-    html[dir="rtl"] .contact-hero-text,
-    html[dir="rtl"] .catalog-banner-text {
-        text-align: center !important;
-    }
+    html[dir="rtl"] .about-hero-text, html[dir="rtl"] .dept-hero-text, html[dir="rtl"] .contact-hero-text, html[dir="rtl"] .catalog-banner-text { text-align: center !important; }
 
-    .about-main-title, .dept-main-title, .contact-main-title, .section-main-title {
-        text-align: center !important;
-        justify-content: center !important;
-        display: block !important;
-        line-height: 1.3 !important;
-    }
+    .about-main-title, .dept-main-title, .contact-main-title, .section-main-title { text-align: center !important; justify-content: center !important; display: block !important; line-height: 1.3 !important; }
+    .about-main-title span, .dept-main-title span, .contact-main-title span { display: inline-block !important; font-size: 18px !important; }
 
-    .about-main-title span, .dept-main-title span, .contact-main-title span {
-        display: inline-block !important;
-        font-size: 18px !important;
-    }
+    html[dir="rtl"] .about-title-underline, html[dir="rtl"] .dept-title-underline, html[dir="rtl"] .contact-title-underline { margin-left: auto !important; margin-right: auto !important; }
+    .about-description, .dept-description, .contact-description, .section-desc { text-align: center !important; font-size: 12px !important; line-height: 1.6 !important; margin-top: 10px !important; }
 
-    html[dir="rtl"] .about-title-underline,
-    html[dir="rtl"] .dept-title-underline,
-    html[dir="rtl"] .contact-title-underline {
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
-
-    .about-description, .dept-description, .contact-description, .section-desc {
-        text-align: center !important;
-        font-size: 12px !important;
-        line-height: 1.6 !important;
-        margin-top: 10px !important;
-    }
-
-    /* Dark overlays for readability */
-    .hero-section::after, .catalog-banner::after, .about-hero-section::after, .dept-hero-section::after, .contact-hero-section::after {
-        content: ''; position: absolute; inset: 0; background: rgba(11, 17, 33, 0.7) !important; z-index: 1;
-    }
+    .hero-section::after, .catalog-banner::after, .about-hero-section::after, .dept-hero-section::after, .contact-hero-section::after { content: ''; position: absolute; inset: 0; background: rgba(11, 17, 33, 0.7) !important; z-index: 1; }
     .hero-container, .catalog-banner-text, .about-hero-container, .dept-hero-container, .contact-hero-container { position: relative; z-index: 2; }
 
     /* CTA Section Fixes (Image 2) */
-    .custom-quote-cta {
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        padding: 24px !important;
-    }
-    .cta-left {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        gap: 12px !important;
-    }
+    .custom-quote-cta { flex-direction: column; justify-content: center; text-align: center; padding: 24px !important; }
+    .cta-left { flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 12px !important; }
     html[dir="rtl"] .cta-text { text-align: center !important; }
     .cta-text h3 { text-align: center !important; font-size: 16px !important; }
     .cta-text p { text-align: center !important; font-size: 12px !important; }
@@ -788,9 +748,17 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
     .dept-card-desc { font-size: 11px !important; line-height: 1.4 !important; margin-bottom: 12px !important; }
     .dept-card-bullets li { font-size: 10px !important; }
 
+    /* Product Detail Page Mobile Fixes */
     .detail-page-section { padding-top: 110px !important; padding-bottom: 40px !important; }
-    .detail-header-top { margin-bottom: 16px !important; }
-    html[dir="rtl"] .detail-header-top { flex-direction: row-reverse !important; }
+    .detail-layout { grid-template-columns: 1fr !important; gap: 24px !important; }
+    .gallery-main-frame { aspect-ratio: 4/3 !important; }
+    .detail-main-name { font-size: 24px !important; margin-bottom: 12px !important; text-align: center !important; }
+    .detail-main-desc { font-size: 13px !important; text-align: center !important; margin-bottom: 24px !important; }
+    .detail-mini-features { grid-template-columns: 1fr !important; gap: 12px !important; }
+    .detail-action-btns { flex-direction: column !important; gap: 12px !important; }
+    .btn-quote-fill, .btn-datasheet-outline { width: 100% !important; justify-content: center !important; }
+    .detail-table-container { padding: 16px !important; margin-top: 0 !important; }
+    .analysis-table th, .analysis-table td { padding: 10px !important; font-size: 11px !important; }
 }
 
 @media (max-width: 480px) {
