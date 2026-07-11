@@ -52,6 +52,11 @@ html[dir="rtl"] body {
     direction: rtl;
 }
 
+/* دکمه درخواست قیمت مخصوص موبایل (در دسکتاپ مخفی است) */
+.mobile-only-quote {
+    display: none !important;
+}
+
 /* ==========================================================================
    Header / Navigation
    ========================================================================== */
@@ -59,7 +64,7 @@ html[dir="rtl"] body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 6%;
+    padding: 24px 6%; /* پدینگ اولیه در دسکتاپ */
     background: var(--bg-white);
     border-bottom: 1px solid var(--border-light);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
@@ -67,8 +72,14 @@ html[dir="rtl"] body {
     top: 0;
     width: 100%;
     z-index: 1000;
-    transition: padding var(--transition-speed);
+    transition: padding var(--transition-speed), box-shadow var(--transition-speed);
     direction: ltr !important; 
+}
+
+/* افکت هدر منقبض‌شده هنگام اسکرول صفحات */
+.main-header.scrolled {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    padding: 16px 6%;
 }
 
 .logo { display: flex; align-items: center; cursor: pointer; }
@@ -767,9 +778,37 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
     .main-workspace { grid-template-columns: 1fr; }
     .sidebar-countries { height: 250px; }
     .footer-metrics-bar { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .metric-column:nth-child(3n) { border-right: none; border-left: none; }
-    .country-detail-overlay { width: 100%; position: relative; right: 0; top: 0; }
-    html[dir="rtl"] .country-detail-overlay { left: 0; top: 0; }
+    
+    .metric-column {
+        border: none !important;
+        border-bottom: 1px solid var(--border-light) !important;
+        padding-bottom: 15px;
+    }
+    .metric-column:last-child {
+        border-bottom: none !important;
+        padding-bottom: 0;
+    }
+
+    /* کارت اطلاعات کشور روی نقشه به عنوان کشوی پایینی در موبایل */
+    .country-detail-overlay {
+        position: absolute;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: auto;
+        max-height: 65%;
+        overflow-y: auto;
+        border-radius: 16px 16px 0 0;
+        border-bottom: none;
+        box-shadow: 0 -10px 30px rgba(0,0,0,0.15);
+        z-index: 10;
+    }
+    html[dir="rtl"] .country-detail-overlay {
+        left: 0;
+        right: 0;
+    }
 }
 
 @media (max-width: 992px) {
@@ -784,6 +823,29 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
 @media (max-width: 768px) {
     .mobile-menu-toggle { display: block; }
     
+    /* قفل کردن پدینگ هدر موبایل و کوچک کردن لوگو */
+    .main-header {
+        padding: 12px 16px !important;
+    }
+    .main-header.scrolled {
+        padding: 10px 16px !important;
+    }
+    .main-logo-img {
+        height: 45px;
+    }
+
+    /* مخفی کردن دکمه قیمت دسکتاپ و نمایش دکمه درون منو */
+    .main-header .header-actions .btn-quote {
+        display: none !important;
+    }
+    .mobile-only-quote {
+        display: flex !important;
+        width: 100%;
+        justify-content: center;
+        margin-top: 12px;
+    }
+    
+    /* انیمیشن کشویی و روان باز شدن منوی همبرگری موبایل */
     .nav-links {
         position: absolute;
         top: 100%;
@@ -791,25 +853,234 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
         width: 100%;
         background: var(--bg-white);
         flex-direction: column;
-        padding: 20px 6%;
+        padding: 0 6%;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, padding 0.4s ease, visibility 0.3s;
         box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        display: none; 
-        gap: 20px;
+        gap: 12px;
         border-top: 1px solid var(--border-light);
+        z-index: 999;
+        display: flex !important;
     }
-    .nav-links.active { display: flex; }
+    .nav-links.active {
+        max-height: 500px;
+        opacity: 1;
+        visibility: visible;
+        padding: 20px 6%;
+    }
     html[dir="rtl"] .nav-links { right: 0; left: auto; }
 
-    .hero-section { padding-top: 120px; }
-    .features-grid { margin-top: -40px; }
+    /* پدینگ سکشن‌ها در موبایل */
+    section { padding: 40px 16px !important; }
 
+    /* اصلاح مشکل سایز بزرگ فونت‌ها در منو و بخش‌های مختلف */
+    .nav-links a {
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        padding: 10px 0 !important;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(0,0,0,0.03);
+    }
+    .nav-links a:last-of-type {
+        border-bottom: none;
+    }
+
+    /* ایجاد پوشش تیره پشت متن هیرو و بنرها برای خوانایی بهتر متن سفید */
+    .hero-section::after,
+    .catalog-banner::after,
+    .about-hero-section::after,
+    .dept-hero-section::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(11, 17, 33, 0.7) !important;
+        z-index: 1;
+    }
+    .hero-container,
+    .catalog-banner-text,
+    .about-hero-container,
+    .dept-hero-container {
+        position: relative;
+        z-index: 2;
+    }
+
+    /* ممانعت از به‌هم‌ریختگی متن هیرو */
+    .main-title {
+        display: block !important;
+        text-align: center;
+    }
+    .main-title span {
+        display: inline-block;
+        margin: 4px;
+    }
+
+    /* قرارگیری دقیق ۴ کارت محصول در یک ردیف افقی بدون به‌هم‌ریختگی */
+    .catalog-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 8px !important; /* فاصله بهینه بین کارت‌ها در موبایل */
+    }
+    .catalog-card {
+        border-radius: 8px !important;
+    }
+    .catalog-card::after {
+        inset: 1px !important;
+        border-radius: 7px !important;
+    }
+    .card-content-wrapper {
+        border-radius: 7px !important;
+    }
+    .card-image-wrapper {
+        height: 65px !important; /* کاهش ارتفاع تصویر برای تناسب در ردیف */
+    }
+    .card-body {
+        padding: 6px !important;
+    }
+    .card-body h4 {
+        font-size: 10px !important;
+        margin-bottom: 0 !important;
+        line-height: 1.2 !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; /* تبدیل متون طولانی به سه نقطه */
+    }
+    .card-body p {
+        display: none !important; /* حذف متن توضیحات برای ممانعت از کشیدگی کارت */
+    }
+    .card-footer {
+        padding: 4px 6px !important;
+        border-top: none !important;
+    }
+    .view-link span {
+        display: none !important; /* حذف متن "View Details" برای باز شدن فضا */
+    }
+    .view-link {
+        justify-content: center !important;
+        width: 100% !important;
+    }
+    .card-arrow {
+        margin: 0 !important;
+        width: 12px !important;
+        height: 12px !important;
+    }
+
+    /* قرارگیری ۴ کارت کیفیت ممتاز و ویژگی‌ها در یک ردیف افقی */
+    .features-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 6px !important;
+        margin-top: -35px !important;
+    }
+    .feature-card {
+        padding: 10px 4px !important;
+        border-radius: 8px !important;
+        min-height: 80px !important;
+        justify-content: center !important;
+    }
+    .feature-icon {
+        width: 28px !important;
+        height: 28px !important;
+        margin-bottom: 6px !important;
+    }
+    .feature-icon svg {
+        width: 14px !important;
+        height: 14px !important;
+    }
+    .feature-info h3 {
+        font-size: 8px !important;
+        line-height: 1.2 !important;
+        margin-bottom: 0 !important;
+    }
+    .feature-info p {
+        display: none !important; /* حذف توضیحات فرعی کارت‌های کوچک ویژگی‌ها */
+    }
+
+    /* بنر بخش محصولات */
+    .section-main-title {
+        font-size: 16px !important;
+        line-height: 1.3 !important;
+    }
+    .section-desc {
+        font-size: 10px !important;
+        line-height: 1.5 !important;
+    }
+
+    /* بخش درباره ما (About Us) */
+    .about-main-title {
+        font-size: 16px !important;
+        line-height: 1.3 !important;
+        display: block !important;
+        text-align: center !important;
+    }
+    .about-main-title span {
+        display: inline-block !important;
+        font-size: 16px !important;
+    }
+    .about-description {
+        font-size: 11px !important;
+        line-height: 1.5 !important;
+    }
+    .founder-card-name {
+        font-size: 15px !important;
+    }
+    .founder-card-role {
+        font-size: 9px !important;
+        margin-bottom: 4px !important;
+    }
+    .founder-card-bio {
+        font-size: 11px !important;
+        line-height: 1.5 !important;
+    }
+
+    /* بخش دپارتمان‌ها (Departments) */
+    .dept-main-title {
+        font-size: 16px !important;
+        line-height: 1.3 !important;
+        display: block !important;
+        text-align: center !important;
+    }
+    .dept-main-title span {
+        display: inline-block !important;
+        font-size: 16px !important;
+    }
+    .dept-description {
+        font-size: 11px !important;
+        line-height: 1.5 !important;
+    }
+    .dept-card-title {
+        font-size: 15px !important;
+        margin-bottom: 6px !important;
+    }
+    .dept-card-desc {
+        font-size: 11px !important;
+        line-height: 1.4 !important;
+        margin-bottom: 12px !important;
+    }
+    .dept-card-bullets li {
+        font-size: 10px !important;
+    }
+
+    /* حل تداخل منوی ثابت هدر با صفحه جزییات محصول (حل مشکل دکمه بازگشت) */
+    .detail-page-section {
+        padding-top: 110px !important; /* ایجاد فاصله ایمن برای جلوگیری از رفتن زیر هدر */
+        padding-bottom: 40px !important;
+    }
+    .detail-header-top {
+        margin-bottom: 16px !important;
+    }
+
+    /* راست‌چین کردن جهت فلش بک‌دکمه در جزییات محصول */
+    html[dir="rtl"] .detail-header-top {
+        flex-direction: row-reverse !important;
+    }
+
+    /* ساختار گرید رسپانسیو موبایل */
     .history-founders-grid,
     .departments-cards-grid,
     .detail-layout,
     .main-workspace,
-    .timeline-container,
-    .catalog-grid,
-    .features-grid,
     .contact-container,
     .detail-mini-features {
         display: grid !important;
@@ -818,18 +1089,33 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
         width: 100%;
     }
 
+    /* حفظ ساختار بصری خط عمودی تایم‌لاین در موبایل */
+    .timeline-container {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    .timeline-node-item {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 16px !important;
+        width: 100%;
+    }
+    .timeline-line {
+        left: 24px !important;
+    }
+    html[dir="rtl"] .timeline-line {
+        right: 24px !important;
+        left: auto !important;
+    }
+
     .catalog-banner { padding: 24px 16px !important; }
     .catalog-banner-text,
     .about-hero-text, 
     .dept-hero-text { 
         min-width: 0; max-width: 100% !important; text-align: center; 
     }
-    html[dir="rtl"] .catalog-banner-text,
-    html[dir="rtl"] .about-hero-text, 
-    html[dir="rtl"] .dept-hero-text { text-align: center; }
 
     .founder-card-item { flex-direction: column; align-items: center; text-align: center; }
-    html[dir="rtl"] .founder-card-item { text-align: center; }
     .founder-img-frame { width: 100%; max-width: 220px; height: 280px; }
     
     .card-top-layout { grid-template-columns: 1fr; }
@@ -849,17 +1135,15 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
         justify-content: center;
         margin-bottom: 10px;
     }
+    .trust-banner-actions {
+        width: 100% !important;
+        flex-direction: column !important;
+    }
 
     .hero-buttons, .detail-action-btns { flex-direction: column; width: 100%; }
 
     .map-container { overflow: hidden; height: 400px; }
     .lines-overlay { width: 100%; height: auto; }
-    
-    .timeline-line { left: 16px; }
-    html[dir="rtl"] .timeline-line { right: 16px; left: auto; }
-
-    section { padding: 40px 16px !important; }
-    .detail-table-container { padding: 16px; }
 }
 
 @media (max-width: 480px) {
