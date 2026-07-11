@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         tubes: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902908/%D9%BE%D8%B1%D9%88%D9%81%DB%8C%D9%84_fsuqgc.webp",
         flat: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902899/%D8%AA%D8%B3%D9%85%D9%87_roluwo.webp",
         slab: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902907/%D8%A7%D8%B3%D9%84%D8%A8_lyxy3f.webp",
-        coils: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%DA%A9%D9%84%D8%A7%D9%81_rseobr.webp",
+        coils: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%DA%A9%D9%84%D8%A7%D9%8اف_rseobr.webp",
         wires: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%D9%85%D9%81%D8%AA%D9%88%D9%84_pffty8.webp"
     };
 
@@ -343,7 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             plates: {
                 category: "بلاطات الصلب", title: "بلاطات الصلب",
-                desc: "بلاطات الصلب الإنشائية المدرفلة من الفولاذ الكربوني المقاوم، تمتاز بجودتها العالية.",
+                desc: "بلاطات الصلب الإنشائية المدرفلة من الفولاذ الكربوني المقاوم, تمتاز بجودتها العالية.",
                 chemicalTitle: "التركيب الكيميائي",
                 tableHeaders: ["الفئة", "C %", "Mn %", "Si % (أقصى)", "P % (أقصى)", "S % (أقصى)", "Al % (أقصى)", "Cu %", "Ni %", "Cr %", "Mo %"],
                 tableRows: [
@@ -762,7 +762,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'timeline-sub': 'مسیر توسعه ما', 'timeline-title': 'تاریخچه‌ای از رشد و تعهد',
             'timeline1-year': '۱۳۳۰', 'timeline1-title': 'آغاز فعالیت', 'timeline1-desc': 'ریشه فعالیت‌های تجاری این مجموعه به سال ۱۳۳۰ بازمی‌گردد؛ زمانی که مرحوم حاج قاسم مهاجری خراسانی فعالیت خود را در حوزه تجارت داخلی محصولات چرمی و کراس آغاز نمودند. ایشان با تکیه بر تجربه، دانش بازار و اصول حرفه‌ای تجارت، پایه‌های یک کسب‌وکار پایدار و موفق را بنا نهادند.',
             'timeline2-year': '۱۳۶۶', 'timeline2-title': 'ورود به تجارت بین‌المللی', 'timeline2-desc': 'در سال ۱۳۶۶، این مجموعه وارد عرصه تجارت بین‌المللی شد و صادرات محصولات کراس و ویت‌بلو را به کشورهای ترکیه و ایتالیا آغاز کرد. این گام مهم، نقطه عطفی در توسعه فعالیت‌های بازرگانی مجموعه و ورود به بازارهای جهانی به شمار می‌آید.',
-            'timeline3-year': '۱۳۷۴', 'timeline3-title': 'توسعه صادرات با محوریت مواد غذایی', 'timeline3-desc': 'در ادامه این مسیر و از سال ۱۳۷۴، جناب هاشم مهاجری خراسانی با بهره‌گیری از تجربیات ارزشمند گذشته، فعالیت‌های صادراتی مجموعه را به‌صورت تخصصی در حوزه‌هایی همچون مواد غذایی توسعه دادند. در این دوره، دامنه صادرات به کشورهای متعددی از جمله افغانستان، پاکستان، ترکمنستان، تاجیکستان، قزاقستان، قرقیزستان، روسیه، امارات، ترکیه، لبنان، عراق، کانادا، انگلستان، آلمان و سومالی گسترش یافت.',
+            'timeline3-year': '۱۳۷۴', 'timeline3-title': 'توسعه صادرات با محوریت مواد غذایی', 'timeline3-desc': 'در ادامه این مسیر و از سال ۱۳۷۴، جناب هاشم مهاجری خراسانی با بهره‌گیری از تجربیات ارزشمند گذشته، فعالیت‌های صادراتی مجموعه را به‌صورت تخصصی در حوزه‌هایی همچون مواد غذایی توسعه دادند. در این دوره، دامنه صادرات به کشورهای متعددی از جمله افغانستان، پاکستان, ترکمنستان، تاجیکستان، قزاقستان، قرقیزستان، روسیه، امارات، ترکیه، لبنان، عراق، کانادا، انگلستان، آلمان و سومالی گسترش یافت.',
             'timeline4-year': '۱۳۹۷', 'timeline4-title': 'توسعه در حوزه کالاهای راهبردی', 'timeline4-desc': 'از سال ۱۳۹۷ و همگام با نیازهای روز بازارهای جهانی، فعالیت‌های شرکت در حوزه کالاهای راهبردی توسعه یافت و صادرات محصولات فولادی و پتروشیمی نیز به سبد فعالیت‌های مجموعه افزوده شد. این رویکرد، زمینه رشد پایدار و حضور گسترده‌تر در بازارهای بین‌المللی را فراهم ساخت.',
             'timeline5-year': 'امروز و آینده', 'timeline5-title': 'امروز و آینده', 'timeline5-desc': 'امروز این مجموعه با بیش از هفت دهه سابقه در تجارت و چندین دهه تجربه موفق در صادرات، به عنوان یکی از صادرکنندگان برتر استان خراسان رضوی شناخته می‌شود و با تکیه بر اصول حرفه‌ای، کیفیت، تعهد و اعتماد متقابل، همکاری‌های تجاری خود را در سطح جهانی ادامه می‌دهد.',
             
@@ -857,7 +857,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'timeline-sub': 'مسيرتنا', 'timeline-title': 'تاريخ من النمو والالتزام',
             'timeline1-year': '١٣٣٠', 'timeline1-title': 'البداية', 'timeline1-desc': 'تعود جذور أعمالنا إلى عام ١٣۳۰، عندما بدأ المرحوم الحاج قاسم مهاجري خراساني نشاطه في مجال التجارة المحلية للمنتجات الجلدية والكروس. ومن خلال الاعتماد على الخبرة، ومعرفة السوق، ومبادئ الأعمال المهنية، وضع الأساس لمشروع تجاري مستدام وناجح.',
             'timeline2-year': '١٣۶۶', 'timeline2-title': 'التوسع إلى الأسواق الدولية', 'timeline2-desc': 'في عام ١٣۶۶، دخلت الشركة في التجارة الدولية وبدأت في تصدير منتجات الكروس والويت بلو إلى تركيا وإيطاليا. شكلت هذه الخطوة الهامة نقطة تحول في تطوير أعمالنا ودخولنا إلى الأسواق العالمية.',
-            'timeline3-year': '١٣٧۴', 'timeline3-title': 'نمو الصادرات مع التركيز على المنتجات الغذائية', 'timeline3-desc': 'منذ عام ١٣۷۴، وتحت قيادة السيد هاشم مهاجري خراساني، توسعت أنشطة التصدير لدينا لتشمل قطاعات مختلفة بما في ذلك المنتجات الغذائية. خلال هذه الفترة، وصلت صادراتنا إلى العديد من الدول بما في ذلك أفغانستان، باكستان، تركمانستان، طاجيكستان، كازاخستان، قرقیزستان، روسيا، الإمارات العربية المتحدة، تركيا، لبنان، العراق، كندا، المملكة المتحدة، ألمانيا، والصومال.',
+            'timeline3-year': '١٣٧۴', 'timeline3-title': 'نمو الصادرات مع التركيز على المنتجات الغذائية', 'timeline3-desc': 'منذ عام ١٣۷۴، وتحت قيادة السيد هاشم مهاجري خراساني، تمددت أنشطة التصدير لدينا لتشمل قطاعات مختلفة بما في ذلك المنتجات الغذائية. خلال هذه الفترة، وصلت صادراتنا إلى العديد من الدول بما في ذلك أفغانستان، باكستان، تركمانستان، طاجيكستان، كازاخستان، قرقیزستان، روسيا، الإمارات العربية المتحدة، تركيا، لبنان، العراق، كندا، المملكة المتحدة، ألمانيا، والصومال.',
             'timeline4-year': '١٣۹۷', 'timeline4-title': 'التنويع في الصناعات الاستراتيجية', 'timeline4-desc': 'منذ عام ١٣۹۷ وتماشياً مع متطلبات السوق العالمية، توسعت الشركة في السلع الاستراتيجية مثل منتجات الصلب والبتروكيماويات. وقد أتاح هذا النهج تحقيق نمو مستدام وحضور أقوى في الأسواق الدولية.',
             'timeline5-year': 'اليوم وما بعده', 'timeline5-title': 'اليوم وما بعده', 'timeline5-desc': 'اليوم، مع أكثر من ۷۰ عاماً من الخبرة في التجارة وعدة عقود من التصدير الناجح، تُعرف شركة مهاجر ستيل كأحد كبار المصدرين في مقاطعة خراسان رضوي، وتواصل بناء المستقبل من خلال الاحترافية والجودة والالتزام والثقة المتبادلة.',
             
@@ -903,7 +903,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'nav-home': 'Главная', 'nav-products': 'Продукция', 'nav-departments': 'Отдел', 'nav-about': 'О нас', 'nav-contact': 'Контакты',
             'btn-quote': 'Запросить расчет', 'hero-subtitle': 'СТАЛЬ ПРЕМИАЛЬНОГО КАЧЕСТВА', 
             'hero-title-1': 'MOHAJER MOBIN', 'hero-title-2': 'STEEL',
-            'hero-desc': 'Дочерняя компания международной торговой группы Mohajer',
+            'hero-desc': 'Дочерняя компания международного торговой группы Mohajer',
             'btn-explore': 'Каталог продукции', 'btn-catalog': 'Скачать каталог', 'trusted-title': 'Нам доверяют лидеры отрасли',
             'trusted-desc': 'Превосходное качество по всему миру.',
             'feat-1-title': 'Премиум качество', 'feat-1-desc': 'Проверено и сертифицировано по международным стандартам.',
@@ -1008,10 +1008,10 @@ document.addEventListener('DOMContentLoaded', () => {
         kg: { flag: "https://flagcdn.com/w40/kg.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897743/%D9%82%D8%B1%D9%82%DB%8C%D8%B2%D8%B3%D8%AA%D8%A7%D9%86_yobiz6.webp", exports: ["steel", "petrochemical", "food"] },
         tr: { flag: "https://flagcdn.com/w40/tr.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897740/%D8%AA%D8%B1%DA%A9%DB%8C%D9%87_crbvfu.webp", exports: ["steel", "petrochemical", "food"] },
         lb: { flag: "https://flagcdn.com/w40/lb.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897736/%D9%84%D8%A8%D9%86%D8%A7%D9%86_x6msja.webp", exports: ["steel", "petrochemical", "food"] },
-        sy: { flag: "https://flagcdn.com/w40/sy.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897746/%D8%B3%D9%88%D8%B1%DB%8C%D9%87_u1xvhv.webp", exports: ["steel", "petrochemical", "food"] },
+        sy: { flag: "https://flagcdn.com/w40/sy.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897746/%D8%B3%D9%88%D8%B1%DB%8C%D9%8ه_u1xvhv.webp", exports: ["steel", "petrochemical", "food"] },
         iq: { flag: "https://flagcdn.com/w40/iq.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897741/%D8%B9%D8%B1%D8%A7%D9%82_una0pi.webp", exports: ["steel", "petrochemical", "food"] },
         ae: { flag: "https://flagcdn.com/w40/ae.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897736/%D8%A7%D9%85%D8%A7%D8%B1%D8%A7%D8%AA_t9pgsu.webp", exports: ["steel", "petrochemical", "food"] },
-        so: { flag: "https://flagcdn.com/w40/so.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897744/%D8%B3%D9%88%D8%B1%DB%8C%D9%87_u1xvhv.webp", exports: ["steel", "petrochemical"] },
+        so: { flag: "https://flagcdn.com/w40/so.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897744/%D8%B3%D9%88%D8%B1%DB%8C%D9%8ه_u1xvhv.webp", exports: ["steel", "petrochemical"] },
         de: { flag: "https://flagcdn.com/w40/de.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897735/%D8%A7%D9%84%D9%85%D8%A7%D9%86_a78sxj.webp", exports: ["steel", "petrochemical", "food"] },
         ca: { flag: "https://flagcdn.com/w40/ca.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897738/%DA%A9%D8%A7%D9%86%D8%A7%D8%AF%D8%A7_bqj2rt.webp", exports: ["steel", "petrochemical", "food"] },
         gb: { flag: "https://flagcdn.com/w40/gb.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897739/%D8%A7%D9%86%DA%AF%D9%84%D8%B3%D8%AA%D8%A7%D9%86_vbzfrg.webp", exports: ["steel", "petrochemical", "food"] },
@@ -1189,7 +1189,6 @@ document.addEventListener('DOMContentLoaded', () => {
         translatableElements.forEach(elem => {
             const key = elem.getAttribute('data-key');
             if (translation[key] !== undefined) {
-                // استفاده از innerHTML برای اعمال درست تگ‌های رنگی سال‌ها
                 elem.innerHTML = translation[key];
             }
         });
@@ -1615,13 +1614,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     const header = document.querySelector('.main-header');
     window.addEventListener('scroll', () => {
+        // اختصاص پویای کلاس اسکرول بدون دستکاری مستقیم پدینگ از طریق JS جهت جلوگیری از تداخل روی موبایل
         if(header) {
             if (window.scrollY > 50) {
-                header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.5)';
-                header.style.padding = '16px 6%';
+                header.classList.add('scrolled');
             } else {
-                header.style.boxShadow = 'none';
-                header.style.padding = '24px 6%';
+                header.classList.remove('scrolled');
             }
         }
 
