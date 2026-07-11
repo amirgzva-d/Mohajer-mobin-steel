@@ -368,7 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 category: "زوايا حديد", title: "زوايا حديد",
                 desc: "مقاطع حديد زاوية L بالدرفلة على الساخن بالزوايا متساوية بالكامل، تتميز بمتانتها الفائقة.",
                 chemicalTitle: "أبعاد ومواصفات الزوايا",
-                tableHeaders: ["نوع الزاوية", "طول الجناح a (مم)", "السماكة t (مم)", "نصف القطر r (مم)", "المساحة (سم²)", "الوزن (كجم/م)"],
+                tableHeaders: ["نوع الزاوية", "طول الجناح a (mm)", "السماكة t (مم)", "نصف القطر r (مم)", "المساحة (سم²)", "الوزن (كجم/م)"],
                 tableRows: [
                     ["100*100*10", "100", "10", "12", "19.2", "15"],
                     ["120*120*12", "120", "12", "13", "27.5", "12.6"]
@@ -645,6 +645,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'detail-feat1-title': 'High Strength', 'detail-feat1-desc': 'Built for durability',
             'detail-feat2-title': 'Corrosion Resistant', 'detail-feat2-desc': 'Long-lasting protection',
             
+            'contact-title-light': 'LET\'S BUILD', 'contact-title-red': 'TOGETHER', 'contact-desc-hero': 'Our team is ready to answer your questions and provide the best solutions for your projects.',
             'contact-sub-title': 'CONTACT US',
             'contact-desc-text': 'Have a question or need a custom solution? Our team is here to help you make better decisions.',
             'contact-phone-lbl': 'Phone', 'contact-email-lbl': 'Email', 'contact-addr-lbl': 'Company Address',
@@ -741,6 +742,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'detail-feat1-title': 'استحکام بالا', 'detail-feat1-desc': 'ساخته شده برای دوام بالا',
             'detail-feat2-title': 'مقاوم به خوردگی', 'detail-feat2-desc': 'حفاظت طولانی‌مدت',
 
+            'contact-title-light': 'آینده را با هم', 'contact-title-red': 'می‌سازیم', 'contact-desc-hero': 'تیم ما آماده پاسخگویی به سوالات شما و ارائه بهترین راهکارها برای پروژه‌های شماست.',
             'contact-sub-title': 'تماس با ما',
             'contact-desc-text': 'سوالی دارید یا به یک راه حل سفارشی نیاز دارید؟ تیم ما اینجاست تا به شما در تصمیم بهتر کمک کند.',
             'contact-phone-lbl': 'تلفن همراه', 'contact-email-lbl': 'پست الکترونیکی', 'contact-addr-lbl': 'آدرس شرکت',
@@ -807,7 +809,7 @@ document.addEventListener('DOMContentLoaded', () => {
             dir: 'rtl',
             'nav-home': 'الرئيسية', 'nav-products': 'المنتجات', 'nav-departments': 'قسم', 'nav-about': 'من نحن', 'nav-contact': 'اتصل بنا',
             'btn-quote': 'احصل على سعر', 'hero-subtitle': 'فولاذ عالي الجودة', 
-            'hero-title-1': 'فولاذ', 'hero-title-2': 'مهاجر مبين',
+            'hero-title-1': 'فولاذ', 'hero-title-2': 'مهاجر مبین',
             'hero-desc': 'شركة تابعة لمجموعة مهاجر التجارية الدولية',
             'btn-explore': 'استكشف المنتجات', 'btn-catalog': 'عرض الكتالوج', 'trusted-title': 'محل ثقة رواد الصناعة', 'trusted-desc': 'تقديم التميز في جميع أنحاء العالم.',
             'feat-1-title': 'جودة ممتازة', 'feat-1-desc': 'مُختبر ومعتمد وفقاً للمعايير الدولية.',
@@ -836,6 +838,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'detail-feat1-title': 'قوة عالية', 'detail-feat1-desc': 'مصمم للمتانة الفائقة',
             'detail-feat2-title': 'مقاوم للتآكل', 'detail-feat2-desc': 'حماية طويلة الأمد في البيئات الصعبة',
 
+            'contact-title-light': 'لنبنِ المستقبل', 'contact-title-red': 'معاً', 'contact-desc-hero': 'فريقنا مستعد للإجابة على أسئلتك وتقديم أفضل الحلول لمشاريعك.',
             'contact-sub-title': 'اتصل بنا',
             'contact-desc-text': 'هل لديك سؤال أو تحتاج إلى حل مخصص؟ فريقنا هنا لمساعدتك في اتخاذ قرارات أفضل.',
             'contact-phone-lbl': 'الهاتف', 'contact-email-lbl': 'البريد الإلكتروني', 'contact-addr-lbl': 'عنوان الشركة',
@@ -932,6 +935,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'detail-feat1-title': 'Высокая прочность', 'detail-feat1-desc': 'Создано на века',
             'detail-feat2-title': 'Устойчивость к коррозии', 'detail-feat2-desc': 'Долговечная защита',
 
+            'contact-title-light': 'СТРОИМ БУДУЩЕЕ', 'contact-title-red': 'ВМЕСТЕ', 'contact-desc-hero': 'Наша команда готова ответить на ваши вопросы и предоставить лучшие решения для ваших проектов.',
             'contact-sub-title': 'СВЯЗАТЬСЯ С НАМИ',
             'contact-desc-text': 'Есть вопросы или необходимо индивидуальное решение? Наша команда готова помочь вам принять лучшее решение.',
             'contact-phone-lbl': 'Телефон', 'contact-email-lbl': 'Эл. почта', 'contact-addr-lbl': 'Адрес компании',
@@ -995,7 +999,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'country-au-name': 'Австралия', 'country-au-desc': 'Поставка тяжелых стальных элементов морского класса и стратегический сельскохозяйственный экспорт для австралийского рынка.'
         }
     };
-  // ==========================================================================
+
+    // ==========================================================================
     // منطق و داده‌های نقشه جهانی
     // ==========================================================================
     const countryData = {
@@ -1179,11 +1184,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.setAttribute('lang', lang);
         if(currentLangText) currentLangText.innerText = lang.toUpperCase();
         
-        // تنظیم جهت مسیرنما در صفحه جزئیات محصول
-        const breadcrumbsContainer = document.querySelector('.breadcrumbs-container');
-        if (breadcrumbsContainer) {
-            breadcrumbsContainer.style.setProperty('--dir', translation.dir);
-        }
+        // تنظیم جهت مسیرنما در صفحه جزئیات محصول و صفحه تماس با ما
+        const breadcrumbsContainers = document.querySelectorAll('.breadcrumbs-container, .about-breadcrumbs, .dept-breadcrumbs, .contact-breadcrumbs');
+        breadcrumbsContainers.forEach(container => {
+            container.style.setProperty('--dir', translation.dir);
+        });
 
         const translatableElements = document.querySelectorAll('[data-key]');
         translatableElements.forEach(elem => {
@@ -1218,6 +1223,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const productDetailView = document.getElementById('productDetailView');
     const aboutUsView = document.getElementById('aboutUsView');
     const departmentsView = document.getElementById('departmentsView');
+    const contactView = document.getElementById('contactView'); // صفحه جدید تماس با ما
 
     function setActiveNavLink(linkId) {
         const navLinks = document.querySelectorAll('.nav-links a');
@@ -1304,9 +1310,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        
         if(mainLandingView) mainLandingView.style.display = 'none';
         if(aboutUsView) aboutUsView.style.display = 'none';
         if(departmentsView) departmentsView.style.display = 'none';
+        if(contactView) contactView.style.display = 'none';
+        
         if(productDetailView) productDetailView.style.display = 'block';
     };
 
@@ -1381,6 +1390,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(productDetailView) productDetailView.style.display = 'none';
         if(aboutUsView) aboutUsView.style.display = 'none';
         if(departmentsView) departmentsView.style.display = 'none';
+        if(contactView) contactView.style.display = 'none';
         if(mainLandingView) mainLandingView.style.display = 'block';
         activeProductKey = null;
         setActiveNavLink('navHomeLink');
@@ -1390,6 +1400,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(mainLandingView) mainLandingView.style.display = 'none';
         if(productDetailView) productDetailView.style.display = 'none';
         if(departmentsView) departmentsView.style.display = 'none';
+        if(contactView) contactView.style.display = 'none';
         if(aboutUsView) aboutUsView.style.display = 'block';
         setActiveNavLink('navAboutLink');
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1399,8 +1410,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if(mainLandingView) mainLandingView.style.display = 'none';
         if(productDetailView) productDetailView.style.display = 'none';
         if(aboutUsView) aboutUsView.style.display = 'none';
+        if(contactView) contactView.style.display = 'none';
         if(departmentsView) departmentsView.style.display = 'block';
         setActiveNavLink('navDepartmentsLink');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showContactUs() {
+        if(mainLandingView) mainLandingView.style.display = 'none';
+        if(productDetailView) productDetailView.style.display = 'none';
+        if(aboutUsView) aboutUsView.style.display = 'none';
+        if(departmentsView) departmentsView.style.display = 'none';
+        if(contactView) contactView.style.display = 'block';
+        setActiveNavLink('navContactLink');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -1408,11 +1430,12 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'crumbHomeBtn', action: showMainLanding },
         { id: 'aboutCrumbHomeBtn', action: showMainLanding },
         { id: 'deptCrumbHomeBtn', action: showMainLanding },
+        { id: 'contactCrumbHomeBtn', action: showMainLanding },
         { id: 'headerLogoBtn', action: showMainLanding },
         { id: 'navHomeLink', action: (e) => { e.preventDefault(); showMainLanding(); window.scrollTo({top:0, behavior:'smooth'}); } },
-        { id: 'aboutCrumbUsBtn', action: showAboutUs },
         { id: 'navAboutLink', action: (e) => { e.preventDefault(); showAboutUs(); } },
-        { id: 'navDepartmentsLink', action: (e) => { e.preventDefault(); showDepartments(); } }
+        { id: 'navDepartmentsLink', action: (e) => { e.preventDefault(); showDepartments(); } },
+        { id: 'navContactLink', action: (e) => { e.preventDefault(); showContactUs(); } }
     ];
 
     clickMap.forEach(map => {
@@ -1443,19 +1466,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const section = document.getElementById('catalogSectionAnchor');
         if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
-
-    const contactNavBtn = document.getElementById('navContactLink');
-    if (contactNavBtn) {
-        contactNavBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            showMainLanding();
-            setActiveNavLink('navContactLink');
-            const contactSection = document.getElementById('contactSection');
-            if (contactSection) {
-                contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    }
 
     // ==========================================================================
     // کلیک‌پذیر شدن کل کارت محصولات
@@ -1614,7 +1624,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     const header = document.querySelector('.main-header');
     window.addEventListener('scroll', () => {
-        // اختصاص پویای کلاس اسکرول بدون دستکاری مستقیم پدینگ از طریق JS جهت جلوگیری از تداخل روی موبایل
         if(header) {
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
@@ -1627,8 +1636,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const scrollPos = window.scrollY + 150; 
             const sections = [
                 { id: 'mainLandingView', linkId: 'navHomeLink' },
-                { id: 'catalogSectionAnchor', linkId: 'navProductsLink' },
-                { id: 'contactSection', linkId: 'navContactLink' }
+                { id: 'catalogSectionAnchor', linkId: 'navProductsLink' }
             ];
             
             for (let i = sections.length - 1; i >= 0; i--) {
