@@ -8,13 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     const productImages = {
         round: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902903/%D8%B4%D9%85%D8%B4_cwnxsi.webp",
-        plates: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902906/%D9%88%D8%B1%D9%8قرق_c5og8d.webp",
+        plates: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902906/%D9%88%D8%B1%D9%82_c5og8d.webp",
         rebar: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%D9%85%DB%8C%D9%84%DA%AF%D8%B1%D8%AF_fw75cx.webp",
         angle: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%D9%86%D8%A8%D8%B4%DB%8C_fbbc6a.webp",
         channels: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902905/%D9%86%D9%88%D8%AF%D8%A7%D9%86%DB%8C_b0ctoh.webp",
         beams: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902900/%D8%AA%DB%8C%D8%B1%D8%A7%D9%87%D9%86_gjwwlx.webp",
-        pipes: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%D9%84%D9%88%D9%84%D9%8ه_d5rvnj.webp",
-        tubes: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902908/%D9%BE%D8%B1%D9%88%D9%81%DB%8C%D9%84_fsuqgc.webp",
+        pipes: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%D9%8الوله_d5rvnj.webp",
+        tubes: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902908/%D9%BE%D8%B1%D9%8Temporary_fsuqgc.webp",
         flat: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902899/%D8%AA%D8%B3%D9%85%D9%87_roluwo.webp",
         slab: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902907/%D8%A7%D8%B3%D9%84%D8%A8_lyxy3f.webp",
         coils: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%DA%A9%D9%84%D8%A7%D9%8اف_rseobr.webp",
@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             angle: {
                 category: "نبشی", title: "نبشی",
-                desc: "پروفیل‌های نبشی بال‌مساوی نورد گرم با مقاومت استاتیکی بالا جهت اتصالات سازه, خرپاها و دکل‌ها.",
+                desc: "پروفیل‌های نبشی بال‌مساوی نورد گرم با مقاومت استاتیکی بالا جهت اتصالات سازه، خرپاها و دکل‌ها.",
                 chemicalTitle: "ابعاد و مشخصات فنی نبشی",
                 tableHeaders: ["نوع نبشی", "اندازه بال a (mm)", "ضخامت t (mm)", "شعاع r (mm)", "مقطع (cm²)", "وزن (Kg/m)"],
                 tableRows: [
@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             wires: {
                 category: "مفتول‌های فولادی", title: "مفتول فولادی",
-                desc: "مفتول‌های فولادی با کربن کم و مقاومت کششی بالا جهت توری، آرماتوربندی، ساخت میخ، پیچ و صنایع مفتولی عمومی.",
+                desc: "مفتول‌های فولادی با کربن کم و مقاومت کششی بالا جهت توری, آرماتوربندی، ساخت میخ، پیچ و صنایع مفتولی عمومی.",
                 chemicalTitle: "لیست محصولات و قیمت",
                 tableHeaders: ["نام محصول", "سایز", "نوع پوشش", "کد / قیمت"],
                 tableRows: [
@@ -452,20 +452,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 category: "أسلاك فولاذية", title: "أسلاك فولاذية ناعمة",
                 desc: "أسلاك حديدية منخفضة الكربون مع مقاومة شد عالية، مصممة ومجهزة لتشكيل شبكات الحديد.",
                 chemicalTitle: "المنتجات والأسعار",
-                tableHeaders: ["المنتج والأسعار", "سلك 0.9 مجلفن حار", "سلك 1.2 مجلفن حار", "سلك سكوب 1.5", "سلك 2 مجلفن حار", "سلك 2.2 مجلفن حار", "سلك 2.4 مجلفن حار", "سلك 2.8 مجلفن حار", "سلك 3 مجلفن حار", "سلك 3.5 مجلفن حار", "سلك 4 مجلفن حار"],
+                tableHeaders: ["اسم المنتج", "الحجم", "النوع", "الرمز / السعر"],
                 tableRows: [
-                    ["مفتول 0.9 گالوانیزه گرم", "0.9 mm", "گرم", "134000"],
-                    ["سیم مفتول 1.2 گالوانیزه گرم", "1.2 mm", "گرم", "131000"],
-                    ["سیم اسکوپ مفتول 1.5", "1.5 mm", "گرم", "126000"],
-                    ["مفتول 2 گالوانیزه گرم", "2.0 mm", "گرم", "1119600"],
-                    ["مفتول 2.2 گالوانیزه گرم", "2.2 mm", "گرم", "119500"],
-                    ["مفتول 2.4 گالوانیزه گرم", "2.4 mm", "گرم", "119500"],
-                    ["مفتول 2.8 گالوانیزه گرم", "2.8 mm", "گرم", "119500"],
-                    ["مفتول 3 گالوانیزه گرم", "3.0 mm", "گرم", "119500"],
-                    ["مفتول 3.5 گالوانیزه گرم", "3.5 mm", "گرم", "119500"],
-                    ["مفتول 4 گالوانیزه گرم", "4.0 mm", "گرم", "-"]
+                    ["سلك 0.9 مجلفن حار", "0.9 mm", "حار", "134000"],
+                    ["سلك 1.2 مجلفن حار", "1.2 mm", "حار", "131000"],
+                    ["سلك سكوب 1.5", "1.5 mm", "حار", "126000"],
+                    ["سلك 2 مجلفن حار", "2.0 mm", "حار", "1119600"],
+                    ["سلك 2.2 مجلفن حار", "2.2 mm", "حار", "119500"],
+                    ["سلك 2.4 مجلفن حار", "2.4 mm", "حار", "119500"],
+                    ["سلك 2.8 مجلفن حار", "2.8 mm", "حار", "119500"],
+                    ["سلك 3 مجلفن حار", "3.0 mm", "حار", "119500"],
+                    ["سلك 3.5 مجلفن حار", "3.5 mm", "حار", "119500"],
+                    ["سلك 4 مجلفن حار", "4.0 mm", "حار", "-"]
                 ],
-                quickSpecs: [["نوع محصول", "سیاه گالوانیزه"], ["سطح نهایی", "گالوانیزه / آنیل سیاه"], ["محدوده قطر مفتول", "۱.۰ تا ۶.۰ میلی‌متر"], ["نوع بسته‌بندی", "کلاف / قرقره"]]
+                quickSpecs: [["نوع المنتج", "أسود مجلفن"], ["تشطيب السطح", "مجلفن / صلب أسود"], ["نطاق القطر", "من 1.0 ملم إلى 6.0 ملم"], ["التعبئة والتغليف", "لفات دائرية / بكرات شحن"]]
             }
         },
         ru: {
@@ -565,8 +565,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'country-au-name': 'Австралия', 'country-au-desc': 'Поставка тяжелых стальных элементов морского класса и стратегический сельскохозяйственный экспорт для австралийского рынка.'
         }
     };
-
-    // ==========================================================================
+  // ==========================================================================
     // منطق و داده‌های نقشه جهانی
     // ==========================================================================
     const countryData = {
