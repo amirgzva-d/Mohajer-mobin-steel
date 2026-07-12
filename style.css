@@ -201,10 +201,10 @@ html[dir="rtl"] .btn-explore svg { transform: scaleX(-1); }
 }
 .catalog-banner-bg {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background-size: cover; background-repeat: no-repeat;
-    background-image: url('https://res.cloudinary.com/dqhbyqftq/image/upload/v1783839684/%DB%8C%D8%B3%DB%8C_izrgxz.webp'); background-position: center right; 
+    background-image: url('https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782896768/%D8%A7%D9%86%DA%AF%D9%84%DB%8C%D8%B3%DB%8C_kspmcz.webp'); background-position: center right; 
 }
 html[dir="rtl"] .catalog-banner-bg {
-    background-image: url('https://res.cloudinary.com/dqhbyqftq/image/upload/v1783839683/1%D8%B5%D8%AB_cnnt2o.webp'); background-position: center left;
+    background-image: url('https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782896770/%D9%81%D8%A7%D8%B1%D8%B3%DB%8C_zgzl34.webp'); background-position: center left;
 }
 .catalog-banner-text { position: relative; z-index: 1; max-width: 35%; }
 html[dir="rtl"] .catalog-banner-text { text-align: right; }
@@ -276,10 +276,10 @@ html[dir="rtl"] .cta-arrow { transform: scaleX(-1); }
 }
 .contact-hero-bg {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; background-size: cover; background-repeat: no-repeat;
-    background-image: url('https://res.cloudinary.com/dqhbyqftq/image/upload/v1783839684/%DB%8C%D8%B3%DB%8C_izrgxz.webp'); background-position: center right; 
+    background-image: url('https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782896761/%D8%A7%D9%86%DA%AF%D9%84%DB%8C%D8%B3%DB%8C_%D8%AF%D9%BE%D8%A7%D8%B1%D8%AA%D9%85%D8%A7%D9%86_lu60ni.webp'); background-position: center right; 
 }
 html[dir="rtl"] .contact-hero-bg {
-    background-image: url('https://res.cloudinary.com/dqhbyqftq/image/upload/v1783839683/1%D8%B5%D8%AB_cnnt2o.webp'); background-position: center left;
+    background-image: url('https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782896761/%D8%AF%D9%BE%D8%A7%D8%B1%D8%AA%D9%85%D8%A7%D9%86_%D9%81%D8%A7%D8%B1%D8%B3%DB%8C_chgkfe.webp'); background-position: center left;
 }
 .contact-hero-container { position: relative; z-index: 2; width: 100%; display: flex; flex-direction: column; justify-content: center; }
 .contact-breadcrumbs { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255, 255, 255, 0.6); margin-bottom: 24px; font-weight: 500; flex-wrap: wrap; }
@@ -345,10 +345,10 @@ html[dir="rtl"] .callback-arrow-icon, html[dir="rtl"] .msg-arrow-icon { transfor
 }
 .about-hero-bg {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; background-size: cover; background-repeat: no-repeat;
-    background-image: url('https://res.cloudinary.com/dqhbyqftq/image/upload/v1783839684/%DB%8C%D8%B3%DB%8C_izrgxz.webp'); background-position: center right; 
+    background-image: url('https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782896761/%D8%A7%D9%86%DA%AF%D9%84%DB%8C%D8%B3%DB%8C_%D8%AF%D9%BE%D8%A7%D8%B1%D8%AA%D9%85%D8%A7%D9%86_lu60ni.webp'); background-position: center right; 
 }
 html[dir="rtl"] .about-hero-bg {
-    background-image: url('https://res.cloudinary.com/dqhbyqftq/image/upload/v1783839683/1%D8%B5%D8%AB_cnnt2o.webp'); background-position: center left;
+    background-image: url('https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782896761/%D8%AF%D9%BE%D8%A7%D8%B1%D8%AA%D9%85%D8%A7%D9%86_%D9%81%D8%A7%D8%B1%D8%B3%DB%8C_chgkfe.webp'); background-position: center left;
 }
 .about-hero-container { position: relative; z-index: 2; width: 100%; display: flex; flex-direction: column; justify-content: center; }
 .about-breadcrumbs { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255, 255, 255, 0.6); margin-bottom: 24px; font-weight: 500; flex-wrap: wrap; }
@@ -478,10 +478,10 @@ html[dir="rtl"] .metric-column { border-right: none; border-left: 1px solid var(
 }
 .dept-hero-bg {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; background-size: cover; background-repeat: no-repeat;
-    background-image: url('https://res.cloudinary.com/dqhbyqftq/image/upload/v1783839684/%DB%8C%D8%B3%DB%8C_izrgxz.webp'); background-position: center right; 
+    background-image: url('https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782896761/%D8%A7%D9%86%DA%AF%D9%84%DB%8C%D8%B3%DB%8C_%D8%AF%D9%BE%D8%A7%D8%B1%D8%AA%D9%85%D8%A7%D9%86_lu60ni.webp'); background-position: center right; 
 }
 html[dir="rtl"] .dept-hero-bg {
-    background-image: url('https://res.cloudinary.com/dqhbyqftq/image/upload/v1783839683/1%D8%B5%D8%AB_cnnt2o.webp'); background-position: center left;
+    background-image: url('https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782896761/%D8%AF%D9%BE%D8%A7%D8%B1%D8%AA%D9%85%D8%A7%D9%86_%D9%81%D8%A7%D8%B1%D8%B3%DB%8C_chgkfe.webp'); background-position: center left;
 }
 .dept-hero-container { position: relative; z-index: 2; width: 100%; display: flex; flex-direction: column; justify-content: center; }
 .dept-breadcrumbs { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255, 255, 255, 0.6); margin-bottom: 24px; font-weight: 500; }
@@ -623,7 +623,7 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
     .history-founders-grid { grid-template-columns: 1fr; }
 }
 
-/* موبایل‌ها (طراحی Ultra-Compact و App-like بر اساس درخواست کاربر) */
+/* موبایل‌ها (طراحی Ultra-Compact و App-like) */
 @media (max-width: 768px) {
     /* هدر و منوی همبرگری */
     .mobile-menu-toggle { display: block; }
@@ -631,7 +631,7 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
     .main-header.scrolled { padding: 10px 16px !important; }
     .main-logo-img { height: 45px; }
 
-    /* Fix Header alignment in mobile */
+    /* Fix Header alignment */
     .header-actions { gap: 12px; }
     html[dir="rtl"] .header-actions { direction: ltr; }
     html[dir="rtl"] .lang-selector-container { direction: rtl; }
@@ -658,37 +658,27 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
         padding-bottom: 20px !important;
     }
     
-    .about-hero-text, .dept-hero-text, .contact-hero-text, .catalog-banner-text {
-        max-width: 100% !important;
-        text-align: center !important;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
+    /* اعمال عکس‌های جدید بنرها فقط در موبایل */
+    .about-hero-bg, .dept-hero-bg, .contact-hero-bg {
+        background-image: url('https://res.cloudinary.com/dqhbyqftq/image/upload/v1783839684/%DB%8C%D8%B3%DB%8C_izrgxz.webp') !important;
+    }
+    html[dir="rtl"] .about-hero-bg, html[dir="rtl"] .dept-hero-bg, html[dir="rtl"] .contact-hero-bg {
+        background-image: url('https://res.cloudinary.com/dqhbyqftq/image/upload/v1783839683/1%D8%B5%D8%AB_cnnt2o.webp') !important;
     }
     
+    .about-hero-text, .dept-hero-text, .contact-hero-text, .catalog-banner-text {
+        max-width: 100% !important; text-align: center !important; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
     html[dir="rtl"] .about-hero-text, html[dir="rtl"] .dept-hero-text, html[dir="rtl"] .contact-hero-text, html[dir="rtl"] .catalog-banner-text { text-align: center !important; }
 
     .about-main-title, .dept-main-title, .contact-main-title, .section-main-title {
-        text-align: center !important;
-        justify-content: center !important;
-        display: block !important;
-        line-height: 1.3 !important;
-        font-size: 18px !important;
+        text-align: center !important; justify-content: center !important; display: block !important; line-height: 1.3 !important; font-size: 18px !important;
     }
-
-    .about-main-title span, .dept-main-title span, .contact-main-title span {
-        display: inline-block !important;
-        font-size: 16px !important;
-    }
-
+    .about-main-title span, .dept-main-title span, .contact-main-title span { display: inline-block !important; font-size: 16px !important; }
     html[dir="rtl"] .about-title-underline, html[dir="rtl"] .dept-title-underline, html[dir="rtl"] .contact-title-underline { margin-left: auto !important; margin-right: auto !important; }
 
     .about-description, .dept-description, .contact-description, .section-desc {
-        text-align: center !important;
-        font-size: 11px !important;
-        line-height: 1.6 !important;
-        margin-top: 8px !important;
+        text-align: center !important; font-size: 11px !important; line-height: 1.6 !important; margin-top: 8px !important;
     }
 
     .hero-section::after, .catalog-banner::after, .about-hero-section::after, .dept-hero-section::after, .contact-hero-section::after {
@@ -696,7 +686,7 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
     }
     .hero-container, .catalog-banner-text, .about-hero-container, .dept-hero-container, .contact-hero-container { position: relative; z-index: 2; }
 
-    /* دکمه‌های موبایل (بزرگ و تاچ‌پسند) */
+    /* دکمه‌های موبایل */
     .btn-request-callback, .btn-direct-message, .btn-dept-learn-more, .btn-quote-fill, .btn-datasheet-outline, .btn-explore, .btn-catalog, .btn-submit-message, .btn-request-quote {
         width: 100% !important; justify-content: center; padding: 12px !important; border-radius: 8px !important;
     }
@@ -706,54 +696,37 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
     .hero-text-block { text-align: center !important; }
     .subtitle-badge { justify-content: center !important; margin-bottom: 16px !important; }
 
-    /* ویژگی‌ها (4 کارت در یک ردیف مثل اپلیکیشن) */
+    /* ویژگی‌ها (4 کارت در یک ردیف) */
     .features-grid { 
-        display: grid !important;
-        grid-template-columns: repeat(4, 1fr) !important; 
-        gap: 6px !important; 
-        margin-top: -30px !important; 
-        padding: 0 4px !important;
+        display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 6px !important; margin-top: -30px !important; padding: 0 4px !important;
     }
     .feature-card { padding: 10px 4px !important; border-radius: 8px !important; min-height: auto !important; align-items: center !important; text-align: center !important; justify-content: flex-start !important; }
     .feature-icon { width: 32px !important; height: 32px !important; margin-bottom: 6px !important; }
     .feature-icon svg { width: 16px !important; height: 16px !important; }
     .feature-info h3 { font-size: 9px !important; font-weight: 800 !important; margin-bottom: 0 !important; line-height: 1.2 !important; }
-    .feature-info p { display: none !important; } /* پنهان کردن توضیحات در موبایل برای زیبایی */
+    .feature-info p { display: none !important; } 
 
-    /* اسلایدر افقی محصولات */
+    /* محصولات - گرید 2 ستونه موبایل */
     .catalog-grid {
-        display: flex !important;
-        flex-wrap: nowrap !important;
-        overflow-x: auto !important;
-        overflow-y: hidden !important;
-        scroll-snap-type: x mandatory;
-        padding-bottom: 16px !important;
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
         gap: 12px !important;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
+        flex-wrap: unset !important;
+        overflow-x: visible !important;
     }
-    .catalog-grid::-webkit-scrollbar { display: none; }
-    .catalog-card { flex: 0 0 85% !important; max-width: 280px; scroll-snap-align: center; border-radius: 12px !important; }
-    .card-image-wrapper { height: 130px !important; }
+    .catalog-card { max-width: none !important; flex: unset !important; border-radius: 12px !important; }
+    .card-image-wrapper { height: 120px !important; }
     .card-body { padding: 12px 12px 8px 12px !important; }
-    .card-body h4 { font-size: 14px !important; margin-bottom: 4px !important; }
-    .card-body p { font-size: 11px !important; line-height: 1.4 !important; height: auto !important; margin-bottom: 8px !important; }
+    .card-body h4 { font-size: 13px !important; margin-bottom: 4px !important; }
+    .card-body p { font-size: 10px !important; line-height: 1.4 !important; height: auto !important; margin-bottom: 8px !important; }
     .card-footer { padding: 10px 12px !important; border-top: 1px solid var(--border-light) !important; }
-    
-    /* رفع مشکل آیکون و جهت دکمه جزئیات محصول در موبایل */
     html[dir="rtl"] .card-footer { justify-content: flex-start !important; }
     html[dir="ltr"] .card-footer { justify-content: flex-end !important; }
     .view-link { justify-content: flex-start !important; width: auto !important; }
 
     /* صفحه تماس با ما (اطلاعات -> فرم -> نقشه) */
-    .contact-container { 
-        display: flex !important; 
-        flex-direction: column !important; 
-        gap: 16px !important; 
-    }
-    /* استفاده از contents برای خارج کردن از دایو پدر و مرتب کردن مجدد در موبایل */
+    .contact-container { display: flex !important; flex-direction: column !important; gap: 16px !important; }
     .contact-left-side, .contact-right-side { display: contents !important; }
-    
     .contact-lead-desc { order: 1; text-align: center; font-size: 12px !important; margin-bottom: 0 !important;}
     .contact-info-grid { order: 2; width: 100%; display: grid !important; grid-template-columns: 1fr !important; gap: 10px !important; margin-bottom: 0 !important; }
     .form-container-card { order: 3; width: 100%; padding: 20px !important; border-radius: 16px !important; margin-top: 8px !important; }
@@ -766,7 +739,6 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
     .contact-form-group textarea { height: 80px !important; }
     .form-container-card h3 { font-size: 16px !important; margin-bottom: 4px !important; }
     .form-instructions-desc { font-size: 11px !important; margin-bottom: 16px !important; }
-
     .trust-banner-actions { display: flex !important; flex-direction: row !important; gap: 8px !important; width: auto !important; justify-content: center !important; }
     .btn-request-callback, .btn-direct-message { flex: 1 !important; padding: 10px 8px !important; font-size: 11px !important; white-space: nowrap !important; }
 
@@ -792,33 +764,30 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
     .spec-detail-row { font-size: 11px !important; padding-bottom: 8px !important; }
 
     /* درباره ما - رفع مشکل تایم‌لاین و کارت اشخاص */
-    .founder-card-item { display: flex !important; gap: 12px !important; padding: 12px !important; align-items: center !important; }
-    html[dir="rtl"] .founder-card-item { flex-direction: row !important; text-align: right !important; }
-    html[dir="ltr"] .founder-card-item { flex-direction: row-reverse !important; text-align: left !important; }
-    .founder-img-frame { width: 90px !important; height: 110px !important; border-radius: 8px !important; flex-shrink: 0 !important; }
-    .founder-card-details { flex-grow: 1 !important; display: flex; flex-direction: column; justify-content: center; }
-    .founder-card-name { font-size: 14px !important; margin-bottom: 2px !important; }
-    .founder-card-role { font-size: 9px !important; margin-bottom: 4px !important; }
-    .founder-card-bio { font-size: 10px !important; line-height: 1.4 !important; }
+    .founder-card-item { display: flex !important; flex-direction: column !important; text-align: center !important; padding: 20px 16px !important; align-items: center !important; gap: 16px !important; }
+    html[dir="rtl"] .founder-card-item { text-align: center !important; }
+    .founder-img-frame { width: 100% !important; max-width: 250px !important; height: auto !important; aspect-ratio: 3/4; border-radius: 12px !important; }
+    .founder-card-details { text-align: justify !important; text-align-last: center !important; display: flex; flex-direction: column; align-items: center; }
+    .founder-card-name { font-size: 18px !important; margin-bottom: 4px !important; }
+    .founder-card-role { font-size: 11px !important; margin-bottom: 12px !important; }
+    .founder-card-bio { font-size: 12px !important; line-height: 1.8 !important; }
 
-    .timeline-container { display: flex !important; flex-direction: column !important; position: relative !important; gap: 16px !important; padding-left: 0; padding-right: 0; }
+    .timeline-container { display: flex !important; flex-direction: column !important; position: relative !important; gap: 20px !important; padding-left: 0; padding-right: 0; }
     .timeline-line { position: absolute !important; top: 0 !important; bottom: 0 !important; width: 2px !important; background-color: var(--border-light) !important; z-index: 1 !important; }
     /* در فارسی خط راست قرار می‌گیرد */
-    html[dir="rtl"] .timeline-line { right: 20px !important; left: auto !important; }
+    html[dir="rtl"] .timeline-line { right: 18px !important; left: auto !important; }
     /* در انگلیسی خط چپ قرار می‌گیرد */
-    html[dir="ltr"] .timeline-line { left: 20px !important; right: auto !important; }
+    html[dir="ltr"] .timeline-line { left: 18px !important; right: auto !important; }
     
-    .timeline-node-item { display: flex !important; align-items: center !important; gap: 12px !important; position: relative !important; z-index: 2 !important; }
-    /* در فارسی آیکون سمت راست، متن سمت چپ */
-    html[dir="rtl"] .timeline-node-item { flex-direction: row !important; }
-    /* در انگلیسی آیکون سمت چپ، متن سمت راست */
-    html[dir="ltr"] .timeline-node-item { flex-direction: row !important; }
+    .timeline-node-item { display: flex !important; align-items: flex-start !important; gap: 16px !important; position: relative !important; z-index: 2 !important; }
+    /* در فارسی آیکون سمت راست، محتوا سمت چپ */
+    html[dir="rtl"] .timeline-node-item { flex-direction: row-reverse !important; }
     
-    .timeline-icon-wrapper { width: 40px !important; height: 40px !important; border-radius: 50% !important; background-color: var(--icon-bg-light) !important; color: var(--primary-blue) !important; display: flex !important; align-items: center !important; justify-content: center !important; flex-shrink: 0 !important; margin: 0 !important; }
-    .timeline-content-card { flex-grow: 1 !important; padding: 12px !important; border-radius: 12px !important; border: 1px solid var(--border-light) !important; background: var(--bg-white) !important; }
+    .timeline-icon-wrapper { width: 38px !important; height: 38px !important; border-radius: 50% !important; background-color: var(--icon-bg-light) !important; color: var(--primary-blue) !important; display: flex !important; align-items: center !important; justify-content: center !important; flex-shrink: 0 !important; margin: 0 !important; }
+    .timeline-content-card { flex-grow: 1 !important; padding: 16px !important; border-radius: 12px !important; border: 1px solid var(--border-light) !important; background: var(--bg-white) !important; }
     .timeline-node-year { font-size: 16px !important; margin-bottom: 4px !important; }
-    .timeline-node-heading { font-size: 14px !important; margin-bottom: 6px !important; }
-    .timeline-node-desc { font-size: 11px !important; }
+    .timeline-node-heading { font-size: 14px !important; margin-bottom: 8px !important; }
+    .timeline-node-desc { font-size: 12px !important; }
 
     /* دپارتمان‌ها */
     .departments-cards-grid { display: grid !important; grid-template-columns: 1fr !important; gap: 16px !important; }
@@ -830,7 +799,12 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
     .dept-card-bullets { margin-bottom: 16px !important; padding-top: 12px !important; }
     .dept-card-bullets li { font-size: 10px !important; margin-bottom: 6px; }
 
-    .global-presence-section { display: none !important; }
+    /* نمایش بخش کشورها (نقشه) در موبایل */
+    .global-presence-section { display: block !important; padding: 40px 16px !important; }
+    .main-workspace { grid-template-columns: 1fr !important; }
+    .sidebar-countries { height: 200px !important; margin-bottom: 16px; }
+    .map-container { height: 280px !important; }
+    .country-detail-overlay { position: relative !important; top: 0 !important; left: 0 !important; width: 100% !important; margin-top: 16px !important; box-shadow: var(--shadow-card) !important; border-radius: 12px !important; }
 }
 
 @media (max-width: 480px) {
