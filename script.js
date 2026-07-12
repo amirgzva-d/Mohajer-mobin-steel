@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         tubes: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902908/%D9%BE%D8%B1%D9%88%D9%81%DB%8C%D9%84_fsuqgc.webp",
         flat: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902899/%D8%AA%D8%B3%D9%85%D9%87_roluwo.webp",
         slab: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902907/%D8%A7%D8%B3%D9%84%D8%A8_lyxy3f.webp",
-        coils: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%DA%A9%D9%84%D8%A7%D9%8اف_rseobr.webp",
+        coils: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%DA%A9%D9%84%D8%A7%D9%81_rseobr.webp",
         wires: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%D9%85%D9%81%D8%AA%D9%88%D9%84_pffty8.webp"
     };
 
@@ -343,7 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             plates: {
                 category: "بلاطات الصلب", title: "بلاطات الصلب",
-                desc: "بلاطات الصلب الإنشائية المدرفلة من الفولاذ الكربوني المقاوم, تمتاز بجودتها العالية.",
+                desc: "بلاطات الصلب الإنشائية المدرفلة من الفولاذ الكربوني المقاوم، تمتاز بجودتها العالية.",
                 chemicalTitle: "التركيب الكيميائي",
                 tableHeaders: ["الفئة", "C %", "Mn %", "Si % (أقصى)", "P % (أقصى)", "S % (أقصى)", "Al % (أقصى)", "Cu %", "Ni %", "Cr %", "Mo %"],
                 tableRows: [
@@ -617,7 +617,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'btn-quote': 'Get a Quote', 'hero-subtitle': 'PREMIUM QUALITY STEEL', 
             'hero-title-1': 'MOHAJER MOBIN', 'hero-title-2': 'STEEL',
             'hero-desc': 'Subsidiary of Mohajer International Trading Group',
-            'btn-explore': 'Explore Products', 'btn-catalog': 'View Catalog', 'trusted-title': 'Trusted by Industry Leaders',
+            'btn-explore': 'Explore Products', 'btn-catalog': 'Download Catalog', 'trusted-title': 'Trusted by Industry Leaders',
             'trusted-desc': 'Delivering excellence across the globe.',
             'feat-1-title': 'Premium Quality', 'feat-1-desc': 'Tested and certified to international standards.',
             'feat-2-title': 'High Strength', 'feat-2-desc': 'Built for performance in the toughest conditions.',
@@ -645,6 +645,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'detail-feat1-title': 'High Strength', 'detail-feat1-desc': 'Built for durability',
             'detail-feat2-title': 'Corrosion Resistant', 'detail-feat2-desc': 'Long-lasting protection',
             
+            'contact-title-light': 'LET\'S BUILD', 'contact-title-red': 'TOGETHER', 'contact-desc-hero': 'Our team is ready to answer your questions and provide the best solutions for your projects.',
             'contact-sub-title': 'CONTACT US',
             'contact-desc-text': 'Have a question or need a custom solution? Our team is here to help you make better decisions.',
             'contact-phone-lbl': 'Phone', 'contact-email-lbl': 'Email', 'contact-addr-lbl': 'Company Address',
@@ -713,7 +714,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'btn-quote': 'دریافت قیمت', 'hero-subtitle': 'فولاد با کیفیت ممتاز', 
             'hero-title-1': 'فولاد', 'hero-title-2': 'مهاجر مبین',
             'hero-desc': 'زیر مجموعه گروه بین‌المللی بازرگانی مهاجر',
-            'btn-explore': 'بررسی محصولات', 'btn-catalog': 'مشاهده کاتالوگ', 'trusted-title': 'مورد اعتماد رهبران صنعت',
+            'btn-explore': 'بررسی محصولات', 'btn-catalog': 'دانلود کاتالوگ', 'trusted-title': 'مورد اعتماد رهبران صنعت',
             'trusted-desc': 'ارائه خدمات برتر در سراسر جهان.',
             'feat-1-title': 'کیفیت ممتاز', 'feat-1-desc': 'تست شده و تایید شده مطابق با استانداردهای بین‌المللی.',
             'feat-2-title': 'استحکام بالا', 'feat-2-desc': 'ساخته شده برای عملکرد در سخت‌ترین شرایط محیطی.',
@@ -741,6 +742,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'detail-feat1-title': 'استحکام بالا', 'detail-feat1-desc': 'ساخته شده برای دوام بالا',
             'detail-feat2-title': 'مقاوم به خوردگی', 'detail-feat2-desc': 'حفاظت طولانی‌مدت',
 
+            'contact-title-light': 'آینده را با هم', 'contact-title-red': 'می‌سازیم', 'contact-desc-hero': 'تیم ما آماده پاسخگویی به سوالات شما و ارائه بهترین راهکارها برای پروژه‌های شماست.',
             'contact-sub-title': 'تماس با ما',
             'contact-desc-text': 'سوالی دارید یا به یک راه حل سفارشی نیاز دارید؟ تیم ما اینجاست تا به شما در تصمیم بهتر کمک کند.',
             'contact-phone-lbl': 'تلفن همراه', 'contact-email-lbl': 'پست الکترونیکی', 'contact-addr-lbl': 'آدرس شرکت',
@@ -762,7 +764,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'timeline-sub': 'مسیر توسعه ما', 'timeline-title': 'تاریخچه‌ای از رشد و تعهد',
             'timeline1-year': '۱۳۳۰', 'timeline1-title': 'آغاز فعالیت', 'timeline1-desc': 'ریشه فعالیت‌های تجاری این مجموعه به سال ۱۳۳۰ بازمی‌گردد؛ زمانی که مرحوم حاج قاسم مهاجری خراسانی فعالیت خود را در حوزه تجارت داخلی محصولات چرمی و کراس آغاز نمودند. ایشان با تکیه بر تجربه، دانش بازار و اصول حرفه‌ای تجارت، پایه‌های یک کسب‌وکار پایدار و موفق را بنا نهادند.',
             'timeline2-year': '۱۳۶۶', 'timeline2-title': 'ورود به تجارت بین‌المللی', 'timeline2-desc': 'در سال ۱۳۶۶، این مجموعه وارد عرصه تجارت بین‌المللی شد و صادرات محصولات کراس و ویت‌بلو را به کشورهای ترکیه و ایتالیا آغاز کرد. این گام مهم، نقطه عطفی در توسعه فعالیت‌های بازرگانی مجموعه و ورود به بازارهای جهانی به شمار می‌آید.',
-            'timeline3-year': '۱۳۷۴', 'timeline3-title': 'توسعه صادرات با محوریت مواد غذایی', 'timeline3-desc': 'در ادامه این مسیر و از سال ۱۳۷۴، جناب هاشم مهاجری خراسانی با بهره‌گیری از تجربیات ارزشمند گذشته، فعالیت‌های صادراتی مجموعه را به‌صورت تخصصی در حوزه‌هایی همچون مواد غذایی توسعه دادند. در این دوره، دامنه صادرات به کشورهای متعددی از جمله افغانستان، پاکستان, ترکمنستان، تاجیکستان، قزاقستان، قرقیزستان، روسیه، امارات، ترکیه، لبنان، عراق، کانادا، انگلستان، آلمان و سومالی گسترش یافت.',
+            'timeline3-year': '۱۳۷۴', 'timeline3-title': 'توسعه صادرات با محوریت مواد غذایی', 'timeline3-desc': 'در ادامه این مسیر و از سال ۱۳۷۴، جناب هاشم مهاجری خراسانی با بهره‌گیری از تجربیات ارزشمند گذشته، فعالیت‌های صادراتی مجموعه را به‌صورت تخصصی در حوزه‌هایی همچون مواد غذایی توسعه دادند. در این دوره، دامنه صادرات به کشورهای متعددی از جمله افغانستان، پاکستان، ترکمنستان، تاجیکستان، قزاقستان، قرقیزستان، روسیه، امارات، ترکیه، لبنان، عراق، کانادا، انگلستان، آلمان و سومالی گسترش یافت.',
             'timeline4-year': '۱۳۹۷', 'timeline4-title': 'توسعه در حوزه کالاهای راهبردی', 'timeline4-desc': 'از سال ۱۳۹۷ و همگام با نیازهای روز بازارهای جهانی، فعالیت‌های شرکت در حوزه کالاهای راهبردی توسعه یافت و صادرات محصولات فولادی و پتروشیمی نیز به سبد فعالیت‌های مجموعه افزوده شد. این رویکرد، زمینه رشد پایدار و حضور گسترده‌تر در بازارهای بین‌المللی را فراهم ساخت.',
             'timeline5-year': 'امروز و آینده', 'timeline5-title': 'امروز و آینده', 'timeline5-desc': 'امروز این مجموعه با بیش از هفت دهه سابقه در تجارت و چندین دهه تجربه موفق در صادرات، به عنوان یکی از صادرکنندگان برتر استان خراسان رضوی شناخته می‌شود و با تکیه بر اصول حرفه‌ای، کیفیت، تعهد و اعتماد متقابل، همکاری‌های تجاری خود را در سطح جهانی ادامه می‌دهد.',
             
@@ -807,9 +809,9 @@ document.addEventListener('DOMContentLoaded', () => {
             dir: 'rtl',
             'nav-home': 'الرئيسية', 'nav-products': 'المنتجات', 'nav-departments': 'قسم', 'nav-about': 'من نحن', 'nav-contact': 'اتصل بنا',
             'btn-quote': 'احصل على سعر', 'hero-subtitle': 'فولاذ عالي الجودة', 
-            'hero-title-1': 'فولاذ', 'hero-title-2': 'مهاجر مبين',
+            'hero-title-1': 'فولاذ', 'hero-title-2': 'مهاجر مبین',
             'hero-desc': 'شركة تابعة لمجموعة مهاجر التجارية الدولية',
-            'btn-explore': 'استكشف المنتجات', 'btn-catalog': 'عرض الكتالوج', 'trusted-title': 'محل ثقة رواد الصناعة', 'trusted-desc': 'تقديم التميز في جميع أنحاء العالم.',
+            'btn-explore': 'استكشف المنتجات', 'btn-catalog': 'تنزيل الكتالوج', 'trusted-title': 'محل ثقة رواد الصناعة', 'trusted-desc': 'تقديم التميز في جميع أنحاء العالم.',
             'feat-1-title': 'جودة ممتازة', 'feat-1-desc': 'مُختبر ومعتمد وفقاً للمعايير الدولية.',
             'feat-2-title': 'قوة عالية', 'feat-2-desc': 'مصمم للأداء الممتاز في أصعب الظروف.',
             'feat-3-title': 'التسليم في الوقت المحدد', 'feat-3-desc': 'خدمات لوجستية موثوقة لضمان بقاء مشاريعك في المسار الصحيح.',
@@ -836,6 +838,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'detail-feat1-title': 'قوة عالية', 'detail-feat1-desc': 'مصمم للمتانة الفائقة',
             'detail-feat2-title': 'مقاوم للتآكل', 'detail-feat2-desc': 'حماية طويلة الأمد في البيئات الصعبة',
 
+            'contact-title-light': 'لنبنِ المستقبل', 'contact-title-red': 'معاً', 'contact-desc-hero': 'فريقنا مستعد للإجابة على أسئلتك وتقديم أفضل الحلول لمشاريعك.',
             'contact-sub-title': 'اتصل بنا',
             'contact-desc-text': 'هل لديك سؤال أو تحتاج إلى حل مخصص؟ فريقنا هنا لمساعدتك في اتخاذ قرارات أفضل.',
             'contact-phone-lbl': 'الهاتف', 'contact-email-lbl': 'البريد الإلكتروني', 'contact-addr-lbl': 'عنوان الشركة',
@@ -857,7 +860,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'timeline-sub': 'مسيرتنا', 'timeline-title': 'تاريخ من النمو والالتزام',
             'timeline1-year': '١٣٣٠', 'timeline1-title': 'البداية', 'timeline1-desc': 'تعود جذور أعمالنا إلى عام ١٣۳۰، عندما بدأ المرحوم الحاج قاسم مهاجري خراساني نشاطه في مجال التجارة المحلية للمنتجات الجلدية والكروس. ومن خلال الاعتماد على الخبرة، ومعرفة السوق، ومبادئ الأعمال المهنية، وضع الأساس لمشروع تجاري مستدام وناجح.',
             'timeline2-year': '١٣۶۶', 'timeline2-title': 'التوسع إلى الأسواق الدولية', 'timeline2-desc': 'في عام ١٣۶۶، دخلت الشركة في التجارة الدولية وبدأت في تصدير منتجات الكروس والويت بلو إلى تركيا وإيطاليا. شكلت هذه الخطوة الهامة نقطة تحول في تطوير أعمالنا ودخولنا إلى الأسواق العالمية.',
-            'timeline3-year': '١٣٧۴', 'timeline3-title': 'نمو الصادرات مع التركيز على المنتجات الغذائية', 'timeline3-desc': 'منذ عام ١٣۷۴، وتحت قيادة السيد هاشم مهاجري خراساني، تمددت أنشطة التصدير لدينا لتشمل قطاعات مختلفة بما في ذلك المنتجات الغذائية. خلال هذه الفترة، وصلت صادراتنا إلى العديد من الدول بما في ذلك أفغانستان، باكستان، تركمانستان، طاجيكستان، كازاخستان، قرقیزستان، روسيا، الإمارات العربية المتحدة، تركيا، لبنان، العراق، كندا، المملكة المتحدة، ألمانيا، والصومال.',
+            'timeline3-year': '١٣٧۴', 'timeline3-title': 'نمو الصادرات مع التركيز على المنتجات الغذائية', 'timeline3-desc': 'منذ عام ١٣۷۴، وتحت قيادة السيد هاشم مهاجري خراساني، توسعت أنشطة التصدير لدينا لتشمل قطاعات مختلفة بما في ذلك المنتجات الغذائية. خلال هذه الفترة، وصلت صادراتنا إلى العديد من الدول بما في ذلك أفغانستان، باكستان، تركمانستان، طاجيكستان، كازاخستان، قرقیزستان، روسيا، الإمارات العربية المتحدة، تركيا، لبنان، العراق، كندا، المملكة المتحدة، ألمانيا، والصومال.',
             'timeline4-year': '١٣۹۷', 'timeline4-title': 'التنويع في الصناعات الاستراتيجية', 'timeline4-desc': 'منذ عام ١٣۹۷ وتماشياً مع متطلبات السوق العالمية، توسعت الشركة في السلع الاستراتيجية مثل منتجات الصلب والبتروكيماويات. وقد أتاح هذا النهج تحقيق نمو مستدام وحضور أقوى في الأسواق الدولية.',
             'timeline5-year': 'اليوم وما بعده', 'timeline5-title': 'اليوم وما بعده', 'timeline5-desc': 'اليوم، مع أكثر من ۷۰ عاماً من الخبرة في التجارة وعدة عقود من التصدير الناجح، تُعرف شركة مهاجر ستيل كأحد كبار المصدرين في مقاطعة خراسان رضوي، وتواصل بناء المستقبل من خلال الاحترافية والجودة والالتزام والثقة المتبادلة.',
             
@@ -932,6 +935,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'detail-feat1-title': 'Высокая прочность', 'detail-feat1-desc': 'Создано на века',
             'detail-feat2-title': 'Устойчивость к коррозии', 'detail-feat2-desc': 'Долговечная защита',
 
+            'contact-title-light': 'СТРОИМ БУДУЩЕЕ', 'contact-title-red': 'ВМЕСТЕ', 'contact-desc-hero': 'Наша команда готова ответить на ваши вопросы и предоставить лучшие решения для ваших проектов.',
             'contact-sub-title': 'СВЯЗАТЬСЯ С НАМИ',
             'contact-desc-text': 'Есть вопросы или необходимо индивидуальное решение? Наша команда готова помочь вам принять лучшее решение.',
             'contact-phone-lbl': 'Телефон', 'contact-email-lbl': 'Эл. почта', 'contact-addr-lbl': 'Адрес компании',
@@ -995,7 +999,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'country-au-name': 'Австралия', 'country-au-desc': 'Поставка тяжелых стальных элементов морского класса и стратегический сельскохозяйственный экспорт для австралийского рынка.'
         }
     };
-  // ==========================================================================
+// ==========================================================================
     // منطق و داده‌های نقشه جهانی
     // ==========================================================================
     const countryData = {
@@ -1008,10 +1012,10 @@ document.addEventListener('DOMContentLoaded', () => {
         kg: { flag: "https://flagcdn.com/w40/kg.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897743/%D9%82%D8%B1%D9%82%DB%8C%D8%B2%D8%B3%D8%AA%D8%A7%D9%86_yobiz6.webp", exports: ["steel", "petrochemical", "food"] },
         tr: { flag: "https://flagcdn.com/w40/tr.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897740/%D8%AA%D8%B1%DA%A9%DB%8C%D9%87_crbvfu.webp", exports: ["steel", "petrochemical", "food"] },
         lb: { flag: "https://flagcdn.com/w40/lb.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897736/%D9%84%D8%A8%D9%86%D8%A7%D9%86_x6msja.webp", exports: ["steel", "petrochemical", "food"] },
-        sy: { flag: "https://flagcdn.com/w40/sy.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897746/%D8%B3%D9%88%D8%B1%DB%8C%D9%8ه_u1xvhv.webp", exports: ["steel", "petrochemical", "food"] },
+        sy: { flag: "https://flagcdn.com/w40/sy.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897746/%D8%B3%D9%88%D8%B1%DB%8C%D9%87_u1xvhv.webp", exports: ["steel", "petrochemical", "food"] },
         iq: { flag: "https://flagcdn.com/w40/iq.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897741/%D8%B9%D8%B1%D8%A7%D9%82_una0pi.webp", exports: ["steel", "petrochemical", "food"] },
         ae: { flag: "https://flagcdn.com/w40/ae.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897736/%D8%A7%D9%85%D8%A7%D8%B1%D8%A7%D8%AA_t9pgsu.webp", exports: ["steel", "petrochemical", "food"] },
-        so: { flag: "https://flagcdn.com/w40/so.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897744/%D8%B3%D9%88%D8%B1%DB%8C%D9%8ه_u1xvhv.webp", exports: ["steel", "petrochemical"] },
+        so: { flag: "https://flagcdn.com/w40/so.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897744/%D8%B3%D9%88%D8%B1%DB%8C%D9%87_u1xvhv.webp", exports: ["steel", "petrochemical"] },
         de: { flag: "https://flagcdn.com/w40/de.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897735/%D8%A7%D9%84%D9%85%D8%A7%D9%86_a78sxj.webp", exports: ["steel", "petrochemical", "food"] },
         ca: { flag: "https://flagcdn.com/w40/ca.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897738/%DA%A9%D8%A7%D9%86%D8%A7%D8%AF%D8%A7_bqj2rt.webp", exports: ["steel", "petrochemical", "food"] },
         gb: { flag: "https://flagcdn.com/w40/gb.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897739/%D8%A7%D9%86%DA%AF%D9%84%D8%B3%D8%AA%D8%A7%D9%86_vbzfrg.webp", exports: ["steel", "petrochemical", "food"] },
@@ -1179,16 +1183,17 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.setAttribute('lang', lang);
         if(currentLangText) currentLangText.innerText = lang.toUpperCase();
         
-        // تنظیم جهت مسیرنما در صفحه جزئیات محصول
-        const breadcrumbsContainer = document.querySelector('.breadcrumbs-container');
-        if (breadcrumbsContainer) {
-            breadcrumbsContainer.style.setProperty('--dir', translation.dir);
-        }
+        // تنظیم جهت مسیرنما در صفحه جزئیات محصول و سایر صفحات
+        const breadcrumbsContainers = document.querySelectorAll('.breadcrumbs-container, .about-breadcrumbs, .dept-breadcrumbs, .contact-breadcrumbs');
+        breadcrumbsContainers.forEach(container => {
+            container.style.setProperty('--dir', translation.dir);
+        });
 
         const translatableElements = document.querySelectorAll('[data-key]');
         translatableElements.forEach(elem => {
             const key = elem.getAttribute('data-key');
             if (translation[key] !== undefined) {
+                // استفاده از innerHTML برای پشتیبانی از تگ‌های رنگی (مثل سال‌ها در درباره ما)
                 elem.innerHTML = translation[key];
             }
         });
@@ -1218,6 +1223,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const productDetailView = document.getElementById('productDetailView');
     const aboutUsView = document.getElementById('aboutUsView');
     const departmentsView = document.getElementById('departmentsView');
+    const contactView = document.getElementById('contactView');
 
     function setActiveNavLink(linkId) {
         const navLinks = document.querySelectorAll('.nav-links a');
@@ -1304,9 +1310,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        
         if(mainLandingView) mainLandingView.style.display = 'none';
         if(aboutUsView) aboutUsView.style.display = 'none';
         if(departmentsView) departmentsView.style.display = 'none';
+        if(contactView) contactView.style.display = 'none';
+        
         if(productDetailView) productDetailView.style.display = 'block';
     };
 
@@ -1381,6 +1390,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(productDetailView) productDetailView.style.display = 'none';
         if(aboutUsView) aboutUsView.style.display = 'none';
         if(departmentsView) departmentsView.style.display = 'none';
+        if(contactView) contactView.style.display = 'none';
         if(mainLandingView) mainLandingView.style.display = 'block';
         activeProductKey = null;
         setActiveNavLink('navHomeLink');
@@ -1390,6 +1400,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(mainLandingView) mainLandingView.style.display = 'none';
         if(productDetailView) productDetailView.style.display = 'none';
         if(departmentsView) departmentsView.style.display = 'none';
+        if(contactView) contactView.style.display = 'none';
         if(aboutUsView) aboutUsView.style.display = 'block';
         setActiveNavLink('navAboutLink');
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1399,8 +1410,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if(mainLandingView) mainLandingView.style.display = 'none';
         if(productDetailView) productDetailView.style.display = 'none';
         if(aboutUsView) aboutUsView.style.display = 'none';
+        if(contactView) contactView.style.display = 'none';
         if(departmentsView) departmentsView.style.display = 'block';
         setActiveNavLink('navDepartmentsLink');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showContactUs() {
+        if(mainLandingView) mainLandingView.style.display = 'none';
+        if(productDetailView) productDetailView.style.display = 'none';
+        if(aboutUsView) aboutUsView.style.display = 'none';
+        if(departmentsView) departmentsView.style.display = 'none';
+        if(contactView) contactView.style.display = 'block';
+        setActiveNavLink('navContactLink');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -1408,11 +1430,12 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'crumbHomeBtn', action: showMainLanding },
         { id: 'aboutCrumbHomeBtn', action: showMainLanding },
         { id: 'deptCrumbHomeBtn', action: showMainLanding },
+        { id: 'contactCrumbHomeBtn', action: showMainLanding },
         { id: 'headerLogoBtn', action: showMainLanding },
         { id: 'navHomeLink', action: (e) => { e.preventDefault(); showMainLanding(); window.scrollTo({top:0, behavior:'smooth'}); } },
-        { id: 'aboutCrumbUsBtn', action: showAboutUs },
         { id: 'navAboutLink', action: (e) => { e.preventDefault(); showAboutUs(); } },
-        { id: 'navDepartmentsLink', action: (e) => { e.preventDefault(); showDepartments(); } }
+        { id: 'navDepartmentsLink', action: (e) => { e.preventDefault(); showDepartments(); } },
+        { id: 'navContactLink', action: (e) => { e.preventDefault(); showContactUs(); } }
     ];
 
     clickMap.forEach(map => {
@@ -1444,19 +1467,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
-    const contactNavBtn = document.getElementById('navContactLink');
-    if (contactNavBtn) {
-        contactNavBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            showMainLanding();
-            setActiveNavLink('navContactLink');
-            const contactSection = document.getElementById('contactSection');
-            if (contactSection) {
-                contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    }
-
     // ==========================================================================
     // کلیک‌پذیر شدن کل کارت محصولات
     // ==========================================================================
@@ -1483,6 +1493,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         navLinksContainer.querySelectorAll('a').forEach(link => {
+            // وقتی روی لینک‌ها کلیک شد، منوی موبایل بسته شود
             link.addEventListener('click', () => {
                 navLinksContainer.classList.remove('active');
             });
@@ -1614,7 +1625,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     const header = document.querySelector('.main-header');
     window.addEventListener('scroll', () => {
-        // اختصاص پویای کلاس اسکرول بدون دستکاری مستقیم پدینگ از طریق JS جهت جلوگیری از تداخل روی موبایل
         if(header) {
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
@@ -1627,8 +1637,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const scrollPos = window.scrollY + 150; 
             const sections = [
                 { id: 'mainLandingView', linkId: 'navHomeLink' },
-                { id: 'catalogSectionAnchor', linkId: 'navProductsLink' },
-                { id: 'contactSection', linkId: 'navContactLink' }
+                { id: 'catalogSectionAnchor', linkId: 'navProductsLink' }
             ];
             
             for (let i = sections.length - 1; i >= 0; i--) {
