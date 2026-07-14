@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         beams: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902900/%D8%AA%DB%8C%D8%B1%D8%A7%D9%87%D9%86_gjwwlx.webp",
         pipes: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%D9%84%D9%88%D9%84%D9%87_d5rvnj.webp",
         tubes: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902908/%D9%BE%D8%B1%D9%88%D9%81%DB%8C%D9%84_fsuqgc.webp",
-        flat: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902899/%D8%AA%D8%B3%D9%85%D9%87_roluwo.webp",
+        flat: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782899260/8_d42ssf.png",
         slab: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902907/%D8%A7%D8%B3%D9%84%D8%A8_lyxy3f.webp",
         coils: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%DA%A9%D9%84%D8%A7%D9%81_rseobr.webp",
         wires: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%D9%85%D9%81%D8%AA%D9%88%D9%84_pffty8.webp"
