@@ -1481,14 +1481,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // ==========================================================================
+    // // ==========================================================================
     // منوی موبایل (Mobile Menu)
     // ==========================================================================
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const navLinksContainer = document.getElementById('navLinks');
     
     if (mobileMenuBtn && navLinksContainer) {
-        mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // جلوگیری از بسته شدن فوری منو هنگام کلیک
             navLinksContainer.classList.toggle('active');
         });
 
@@ -1497,6 +1498,16 @@ document.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', () => {
                 navLinksContainer.classList.remove('active');
             });
+        });
+
+        // بسته شدن منو با کلیک در هر جای خالی از صفحه
+        document.addEventListener('click', (e) => {
+            if (navLinksContainer.classList.contains('active')) {
+                // اگر کلیک خارج از منو و دکمه همبرگری بود، منو بسته شود
+                if (!navLinksContainer.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    navLinksContainer.classList.remove('active');
+                }
+            }
         });
     }
 
