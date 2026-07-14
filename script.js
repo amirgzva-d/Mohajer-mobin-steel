@@ -999,7 +999,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'country-au-name': 'Австралия', 'country-au-desc': 'Поставка тяжелых стальных элементов морского класса и стратегический сельскохозяйственный экспорт для австралийского рынка.'
         }
     };
-// ==========================================================================
+
+    // ==========================================================================
     // منطق و داده‌های نقشه جهانی
     // ==========================================================================
     const countryData = {
@@ -1183,7 +1184,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.setAttribute('lang', lang);
         if(currentLangText) currentLangText.innerText = lang.toUpperCase();
         
-        // تنظیم جهت مسیرنما در صفحه جزئیات محصول و سایر صفحات
         const breadcrumbsContainers = document.querySelectorAll('.breadcrumbs-container, .about-breadcrumbs, .dept-breadcrumbs, .contact-breadcrumbs');
         breadcrumbsContainers.forEach(container => {
             container.style.setProperty('--dir', translation.dir);
@@ -1193,7 +1193,6 @@ document.addEventListener('DOMContentLoaded', () => {
         translatableElements.forEach(elem => {
             const key = elem.getAttribute('data-key');
             if (translation[key] !== undefined) {
-                // استفاده از innerHTML برای پشتیبانی از تگ‌های رنگی (مثل سال‌ها در درباره ما)
                 elem.innerHTML = translation[key];
             }
         });
@@ -1374,7 +1373,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // شورتکات کیبورد برای بازگشت (Alt + ,)
     document.addEventListener('keydown', (e) => {
         if (e.altKey && e.key === ',') {
             if (btnBackToCatalog && productDetailView && productDetailView.style.display !== 'none') {
@@ -1481,32 +1479,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // // ==========================================================================
-    // منوی موبایل (Mobile Menu)
+    // ==========================================================================
+    // منوی موبایل (Mobile Menu) - آپدیت شده برای بستن با کلیک بیرون
     // ==========================================================================
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const navLinksContainer = document.getElementById('navLinks');
     
     if (mobileMenuBtn && navLinksContainer) {
         mobileMenuBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // جلوگیری از بسته شدن فوری منو هنگام کلیک
+            e.stopPropagation(); // جلوگیری از بسته شدن فوری
             navLinksContainer.classList.toggle('active');
         });
 
         navLinksContainer.querySelectorAll('a').forEach(link => {
-            // وقتی روی لینک‌ها کلیک شد، منوی موبایل بسته شود
             link.addEventListener('click', () => {
                 navLinksContainer.classList.remove('active');
             });
         });
 
-        // بسته شدن منو با کلیک در هر جای خالی از صفحه
+        // بسته شدن منو با کلیک در فضای خالی
         document.addEventListener('click', (e) => {
-            if (navLinksContainer.classList.contains('active')) {
-                // اگر کلیک خارج از منو و دکمه همبرگری بود، منو بسته شود
-                if (!navLinksContainer.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                    navLinksContainer.classList.remove('active');
-                }
+            if (navLinksContainer.classList.contains('active') && !navLinksContainer.contains(e.target) && e.target !== mobileMenuBtn) {
+                navLinksContainer.classList.remove('active');
             }
         });
     }
