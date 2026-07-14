@@ -986,4 +986,162 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
         grid-template-columns: 1fr !important;
     }
 }
+/* ==========================================================================
+   UPDATED INNER PAGES (About, Dept, Contact) - رفع تداخل و جداسازی عکس از متن
+   ========================================================================== */
 
+/* ۱. استایل بنر عکس در بالای صفحات داخلی */
+.page-top-banner {
+    width: 100%;
+    height: 350px;
+    background-color: var(--bg-dark-section);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center right;
+    margin-top: 108px; /* ایجاد فاصله برای هدر فیکس شده */
+}
+html[dir="rtl"] .page-top-banner {
+    background-position: center left;
+}
+
+/* ۲. بخش مسیرنما و متون اصلی (زیر عکس) */
+.page-intro-section {
+    padding: 40px 6% 16px 6%;
+    background-color: var(--bg-main);
+    text-align: left;
+    position: relative;
+    z-index: 10;
+}
+html[dir="rtl"] .page-intro-section {
+    text-align: right;
+}
+
+/* اصلاح رنگ متون عناوین (چون حالا روی پس‌زمینه روشن قرار دارند) */
+.about-main-title .about-light-text, 
+.dept-main-title .dept-light-text, 
+.contact-main-title .contact-light-text {
+    color: var(--text-dark) !important;
+}
+
+.about-description, .dept-description, .contact-description {
+    font-size: 14.5px;
+    line-height: 1.8;
+    color: var(--text-gray) !important;
+    font-weight: 500;
+    margin-top: 16px;
+    max-width: 800px;
+}
+
+/* مسیرنما (Breadcrumbs) */
+.about-breadcrumbs, .dept-breadcrumbs, .contact-breadcrumbs {
+    display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-gray) !important; margin-bottom: 24px; font-weight: 500; flex-wrap: wrap;
+}
+.about-crumb-link, .dept-crumb-link, .contact-crumb-link { cursor: pointer; transition: color var(--transition-speed); color: var(--text-gray) !important; }
+.about-crumb-link:hover, .dept-crumb-link:hover, .contact-crumb-link:hover { color: var(--primary-blue) !important; }
+.about-crumb-active, .dept-crumb-active, .contact-crumb-active { color: var(--primary-blue) !important; font-weight: 700; }
+.about-crumb-separator, .dept-crumb-separator, .contact-crumb-separator { color: var(--border-light) !important; }
+
+/* ۳. فاصله‌گذاری دقیق بین متن و کارت‌های پایین (رفع مشکل روی هم افتادن) */
+.history-founders-section, 
+.departments-cards-section, 
+.contact-section {
+    padding: 24px 6% 80px 6% !important; /* فاصله تمیز از متون بالایی */
+    background-color: var(--bg-main);
+    position: relative;
+    z-index: 10;
+}
+
+/* ==========================================================================
+   CTA & Trust Banners - طراحی کشیده‌تر، جمع‌وجور و شیک کارت‌های تماس
+   ========================================================================== */
+.custom-quote-cta, .contact-trust-banner {
+    background-color: var(--bg-white) !important; 
+    border: 1px solid var(--border-light) !important; 
+    border-radius: 12px !important; 
+    padding: 20px 32px !important; /* کاهش ارتفاع کارت */
+    margin-top: 32px !important; 
+    display: flex !important; 
+    justify-content: space-between !important; 
+    align-items: center !important; 
+    flex-wrap: wrap !important; 
+    gap: 20px !important; 
+    box-shadow: var(--shadow-card) !important;
+}
+
+.cta-left, .trust-banner-left { 
+    display: flex !important; align-items: center !important; gap: 16px !important; flex-wrap: wrap !important; 
+}
+
+.cta-icon, .trust-shield-icon { 
+    width: 46px !important; height: 46px !important; /* کوچک‌ و شیک‌تر شدن آیکون */
+    background-color: var(--icon-bg-light) !important; border-radius: 50% !important; 
+    display: flex !important; align-items: center !important; justify-content: center !important; 
+    color: var(--primary-blue) !important; flex-shrink: 0 !important; 
+}
+.cta-icon svg, .trust-shield-icon svg { width: 20px !important; height: 20px !important; }
+
+.cta-text h3, .trust-banner-text h4 { 
+    font-size: 16px !important; font-weight: 800 !important; color: var(--text-dark) !important; margin-bottom: 4px !important; 
+}
+.cta-text p, .trust-banner-text p { 
+    font-size: 13px !important; color: var(--text-gray) !important; font-weight: 500 !important; line-height: 1.5 !important; margin: 0 !important;
+}
+
+/* ==========================================================================
+   اصلاحات موبایل برای ساختار جدید (سازگاری کامل)
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* ارتفاع بنر در موبایل */
+    .page-top-banner {
+        height: 160px !important;
+        margin-top: 69px !important;
+    }
+
+    .page-intro-section {
+        padding: 24px 16px 8px 16px !important;
+        text-align: center !important;
+    }
+    html[dir="rtl"] .page-intro-section {
+        text-align: center !important;
+    }
+
+    .about-breadcrumbs, .dept-breadcrumbs, .contact-breadcrumbs {
+        justify-content: center !important;
+        margin-bottom: 16px !important;
+        font-size: 11px !important;
+    }
+
+    .about-main-title, .dept-main-title, .contact-main-title {
+        justify-content: center !important;
+        font-size: 18px !important;
+        text-align: center !important;
+    }
+
+    .about-title-underline, .dept-title-underline, .contact-title-underline {
+        margin: 12px auto !important;
+    }
+
+    .about-description, .dept-description, .contact-description {
+        text-align: center !important;
+        font-size: 12px !important;
+        line-height: 1.6 !important;
+        margin-top: 12px !important;
+    }
+
+    /* استایل کشیده و جمع‌وجور بنرهای تماس در موبایل */
+    .custom-quote-cta, .contact-trust-banner {
+        flex-direction: column !important;
+        text-align: center !important;
+        padding: 20px 16px !important;
+    }
+    
+    .cta-left, .trust-banner-left {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+
+    html[dir="rtl"] .cta-text, html[dir="rtl"] .trust-banner-text {
+        text-align: center !important;
+    }
+}
