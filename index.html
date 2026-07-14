@@ -1,32 +1,789 @@
-<!-- ==========================================================================
-       Contact Us View (اصلاح شده: بنر جدا، متن جدا)
-       ========================================================================== -->
-    <main id="contactView" class="contact-view" style="display: none;">
-        
-        <!-- بنر عکس در بالای صفحه -->
-        <div class="page-top-banner contact-hero-bg"></div>
-        
-        <!-- مسیرنما و متن اصلی زیر بنر -->
-        <section class="page-intro-section">
-            <div class="contact-breadcrumbs">
-                <span class="contact-crumb-link" id="contactCrumbHomeBtn" data-key="nav-home">Home</span>
-                <span class="contact-crumb-separator">></span>
-                <span class="contact-crumb-active" data-key="nav-contact">Contact</span>
-            </div>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mohajer Steel - Premium Quality Steel Products. Exporting high-strength steel, petrochemicals, and food products globally.">
+    <title>MOHAJER STEEL</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://res.cloudinary.com">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@700;900&family=Vazirmatn:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-            <div class="contact-hero-text">
-                <h2 class="contact-main-title">
-                    <span class="contact-light-text" data-key="contact-title-light">LET'S BUILD</span>
-                    <span class="contact-red-text" data-key="contact-title-red">TOGETHER</span>
-                </h2>
-                <div class="contact-title-underline"></div>
-                <p class="contact-description" data-key="contact-desc-hero">
-                    Our team is ready to answer your questions and provide the best solutions for your projects.
-                </p>
+    <!-- ==========================================================================
+       Header / Navigation
+       ========================================================================== -->
+    <header class="main-header">
+        <div class="logo" id="headerLogoBtn">
+            <img src="https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto,w_1200/v1783141003/2777581e-802a-4cdb-869b-a9aad0a1a6e3_k75n8o.png" alt="MOHAJER STEEL" class="main-logo-img">
+        </div>
+        
+        <nav class="nav-links" id="navLinks">
+            <a href="#mainLandingView" id="navHomeLink" data-key="nav-home" class="active">Home</a>
+            <a href="#catalogSectionAnchor" id="navProductsLink" data-key="nav-products">Products</a>
+            <a href="#departments" id="navDepartmentsLink" data-key="nav-departments">Department</a>
+            <a href="#about" id="navAboutLink" data-key="nav-about">About Us</a>
+            <a href="#contactView" id="navContactLink" data-key="nav-contact">Contact</a>
+            
+            <a href="https://wa.me/message/4XJJK7VC6GWYD1" target="_blank" rel="noopener noreferrer" class="btn-quote mobile-only-quote" style="text-decoration: none;">
+                <span data-key="btn-quote">Get a Quote</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+        </nav>
+
+        <div class="header-actions">
+            <div class="lang-selector-container">
+                <div class="lang-selector" id="langBtn">
+                    <span id="currentLang">EN</span>
+                    <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+                <ul class="lang-dropdown" id="langDropdown">
+                    <li data-lang="en">EN</li>
+                    <li data-lang="fa">FA</li>
+                    <li data-lang="ar">AR</li>
+                    <li data-lang="ru">RU</li>
+                </ul>
+            </div>
+            <a href="https://wa.me/message/4XJJK7VC6GWYD1" target="_blank" rel="noopener noreferrer" class="btn-quote desktop-only-quote" style="text-decoration: none;">
+                <span data-key="btn-quote">Get a Quote</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            
+            <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle Menu">
+                <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- ==========================================================================
+       Main Landing Page View
+       ========================================================================== -->
+    <main id="mainLandingView">
+        
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-bg"></div>
+            <div class="hero-container">
+                <div class="slider-counter">
+                    <span class="num-active">01</span>
+                    <div class="counter-line"></div>
+                    <span class="num-total">03</span>
+                </div>
+                <div class="hero-text-block">
+                    <div class="subtitle-badge">
+                        <span class="line"></span>
+                        <span class="text" data-key="hero-subtitle">PREMIUM QUALITY STEEL</span>
+                    </div>
+                    <h1 class="main-title">
+                        <span class="light-text" data-key="hero-title-1">BUILD STRONGER</span>
+                        <span class="red-text" data-key="hero-title-2">BUILD BETTER</span>
+                    </h1>
+                    <p class="description" data-key="hero-desc">
+                        High-quality steel products engineered for strength, durability, and performance.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn-explore" id="heroExploreBtn">
+                            <span data-key="btn-explore">Explore Products</span>
+                            <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                        <button class="btn-catalog" id="btnViewCatalogVideo">
+                            <svg class="download-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            <span data-key="btn-catalog">Download Catalog</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- فرم تماس و نقشه -->
+        <!-- Value Propositions -->
+        <section class="footer-features">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <div class="feature-info">
+                        <h3 data-key="feat-1-title">Premium Quality</h3>
+                        <p data-key="feat-1-desc">Tested and certified to international standards.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    </div>
+                    <div class="feature-info">
+                        <h3 data-key="feat-2-title">High Strength</h3>
+                        <p data-key="feat-2-desc">Built for performance in the toughest conditions.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                    </div>
+                    <div class="feature-info">
+                        <h3 data-key="feat-3-title">On-Time Delivery</h3>
+                        <p data-key="feat-3-desc">Reliable logistics ensuring your projects stay on track.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <div class="feature-info">
+                        <h3 data-key="feat-4-title">Sustainable</h3>
+                        <p data-key="feat-4-desc">Committed to eco-friendly and responsible production.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Catalog Section -->
+        <section class="catalog-section" id="catalogSectionAnchor">
+            <div class="catalog-banner">
+                <div class="catalog-banner-bg"></div>
+                <div class="catalog-banner-text">
+                    <span class="red-badge-title" data-key="prod-sub">OUR PRODUCTS</span>
+                    <h2 class="section-main-title" data-key="prod-title">Premium Steel Products</h2>
+                    <p class="section-desc" data-key="prod-desc">
+                        High-quality steel products engineered for strength, durability, and performance in every project.
+                    </p>
+                </div>
+            </div>
+
+            <div class="catalog-layout">
+                <div class="catalog-grid-wrapper">
+                    <div class="catalog-toolbar">
+                        <span class="toolbar-showing" data-key="showing-txt-p1">Showing 1-8 of 12 products</span>
+                    </div>
+
+                    <div class="catalog-grid" id="catalogGrid">
+                        <!-- Products Page 1 -->
+                        <div class="catalog-card" data-page="1" data-product="round">
+                            <div class="card-content-wrapper">
+                                <div class="card-image-wrapper">
+                                    <img src="https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782903126/5_njyxot.webp" alt="Round Bars" loading="lazy">
+                                </div>
+                                <div class="card-body">
+                                    <h4 data-key="prod-round-title">Round Bars</h4>
+                                    <p data-key="prod-round-desc">High strength round bars for machining and fabrication.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="view-link" data-key="view-details">
+                                        <span>View Details</span>
+                                        <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="catalog-card" data-page="1" data-product="plates">
+                            <div class="card-content-wrapper">
+                                <div class="card-image-wrapper">
+                                    <img src="https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902898/10_gigpvt.webp" alt="Steel Plates" loading="lazy">
+                                </div>
+                                <div class="card-body">
+                                    <h4 data-key="prod-plates-title">Steel Plates</h4>
+                                    <p data-key="prod-plates-desc">High-quality plates for industrial use.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="view-link" data-key="view-details">
+                                        <span>View Details</span>
+                                        <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="catalog-card" data-page="1" data-product="rebar">
+                            <div class="card-content-wrapper">
+                                <div class="card-image-wrapper">
+                                    <img src="https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902897/9_gqxtmt.webp" alt="Rebar" loading="lazy">
+                                </div>
+                                <div class="card-body">
+                                    <h4 data-key="prod-rebar-title">Rebar</h4>
+                                    <p data-key="prod-rebar-desc">Deformed bars for reinforced concrete structures.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="view-link" data-key="view-details">
+                                        <span>View Details</span>
+                                        <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="catalog-card" data-page="1" data-product="angle">
+                            <div class="card-content-wrapper">
+                                <div class="card-image-wrapper">
+                                    <img src="https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782903122/2_j2io78.webp" alt="Angle Bars" loading="lazy">
+                                </div>
+                                <div class="card-body">
+                                    <h4 data-key="prod-angle-title">Angle Bars</h4>
+                                    <p data-key="prod-angle-desc">Versatile angle bars for construction and fabrication.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="view-link" data-key="view-details">
+                                        <span>View Details</span>
+                                        <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="catalog-card" data-page="1" data-product="channels">
+                            <div class="card-content-wrapper">
+                                <div class="card-image-wrapper">
+                                    <img src="https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782903125/6_hipbbp.webp" alt="U-Channels" loading="lazy">
+                                </div>
+                                <div class="card-body">
+                                    <h4 data-key="prod-channel-title">U-Channels</h4>
+                                    <p data-key="prod-channel-desc">Structural U-channels for framing and supports.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="view-link" data-key="view-details">
+                                        <span>View Details</span>
+                                        <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="catalog-card" data-page="1" data-product="beams">
+                            <div class="card-content-wrapper">
+                                <div class="card-image-wrapper">
+                                    <img src="https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902897/11_fiswcr.webp" alt="H-Beams" loading="lazy">
+                                </div>
+                                <div class="card-body">
+                                    <h4 data-key="prod-beams-title">H-Beams</h4>
+                                    <p data-key="prod-beams-desc">High strength H-beams for structural applications.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="view-link" data-key="view-details">
+                                        <span>View Details</span>
+                                        <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="catalog-card" data-page="1" data-product="pipes">
+                            <div class="card-content-wrapper">
+                                <div class="card-image-wrapper">
+                                    <img src="https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902898/12_mljkba.webp" alt="Steel Pipes" loading="lazy">
+                                </div>
+                                <div class="card-body">
+                                    <h4 data-key="prod-pipes-title">Steel Pipes</h4>
+                                    <p data-key="prod-pipes-desc">Durable steel pipes for fluid and gas transport.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="view-link" data-key="view-details">
+                                        <span>View Details</span>
+                                        <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="catalog-card" data-page="1" data-product="tubes">
+                            <div class="card-content-wrapper">
+                                <div class="card-image-wrapper">
+                                    <img src="https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782903121/1_l1h67q.webp" alt="Square Tubes" loading="lazy">
+                                </div>
+                                <div class="card-body">
+                                    <h4 data-key="prod-tubes-title">Square Tubes</h4>
+                                    <p data-key="prod-tubes-desc">Precision square tubes for various applications.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="view-link" data-key="view-details">
+                                        <span>View Details</span>
+                                        <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Products Page 2 -->
+                        <div class="catalog-card" data-page="2" data-product="flat" style="display: none;">
+                            <div class="card-content-wrapper">
+                                <div class="card-image-wrapper">
+                                    <img src="https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782903125/4_bwkibv.webp" alt="Flat Bars" loading="lazy">
+                                </div>
+                                <div class="card-body">
+                                    <h4 data-key="prod-flat-title">Flat Bars</h4>
+                                    <p data-key="prod-flat-desc">Strong flat bars for multiple industrial applications.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="view-link" data-key="view-details">
+                                        <span>View Details</span>
+                                        <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="catalog-card" data-page="2" data-product="slab" style="display: none;">
+                            <div class="card-content-wrapper">
+                                <div class="card-image-wrapper">
+                                    <img src="https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902897/8_n0kdjy.webp" alt="Steel Slabs" loading="lazy">
+                                </div>
+                                <div class="card-body">
+                                    <h4 data-key="prod-slab-title">Steel Slabs</h4>
+                                    <p data-key="prod-slab-desc">High-quality steel slabs for industrial manufacturing.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="view-link" data-key="view-details">
+                                        <span>View Details</span>
+                                        <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="catalog-card" data-page="2" data-product="coils" style="display: none;">
+                            <div class="card-content-wrapper">
+                                <div class="card-image-wrapper">
+                                    <img src="https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902895/7_jqjass.webp" alt="Galvanized Coils" loading="lazy">
+                                </div>
+                                <div class="card-body">
+                                    <h4 data-key="prod-coil-title">Galvanized Coils</h4>
+                                    <p data-key="prod-coil-desc">Corrosion-resistant coated steel coils.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="view-link" data-key="view-details">
+                                        <span>View Details</span>
+                                        <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="catalog-card" data-page="2" data-product="wires" style="display: none;">
+                            <div class="card-content-wrapper">
+                                <div class="card-image-wrapper">
+                                    <img src="https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782903123/3_qto0dl.webp" alt="Steel Wires" loading="lazy">
+                                </div>
+                                <div class="card-body">
+                                    <h4 data-key="prod-wire-title">Steel Wires</h4>
+                                    <p data-key="prod-wire-desc">High-tensile steel wires for industrial tying and mesh.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="view-link" data-key="view-details">
+                                        <span>View Details</span>
+                                        <svg class="card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="catalog-pagination">
+                        <button class="btn-page-prev" id="btnPagePrev"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+                        <button class="btn-page active" data-target-page="1">1</button>
+                        <button class="btn-page" data-target-page="2">2</button>
+                        <button class="btn-page-next" id="btnPageNext"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="custom-quote-cta">
+                <div class="cta-left">
+                    <div class="cta-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                    <div class="cta-text">
+                        <h3 data-key="cta-title">Can't find what you're looking for?</h3>
+                        <p data-key="cta-desc">Contact our experts for custom steel solutions tailored to your project.</p>
+                    </div>
+                </div>
+                <a href="https://wa.me/message/4XJJK7VC6GWYD1" target="_blank" rel="noopener noreferrer" class="btn-request-quote" style="text-decoration: none;">
+                    <span data-key="btn-custom-quote">Request Custom Quote</span>
+                    <svg class="cta-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- بخش نقشه جهانی (حذف شده از صفحه درباره ما و منتقل شده به انتهای صفحه اصلی) -->
+        <section class="global-presence-section">
+            <div class="global-presence-container">
+                
+                <div class="hero-row">
+                    <div class="hero-text">
+                        <span class="subtitle" data-key="global-subtitle">OUR GLOBAL PRESENCE</span>
+                        <h2 class="global-main-title">
+                            <span class="global-light" data-key="global-title-light">EXPORTING STRENGTH.</span><br>
+                            <span class="global-red" data-key="global-title-red">BUILDING CONNECTIONS.</span>
+                        </h2>
+                        <p class="global-desc" data-key="global-desc">Our products are trusted in over 20 countries worldwide. We continue to expand our global footprint with quality, reliability, and long-term partnerships.</p>
+                    </div>
+                </div>
+
+                <div class="main-workspace">
+                    <div class="sidebar-countries">
+                        <ul class="country-list" id="countryListSidebar">
+                        </ul>
+                    </div>
+
+                    <div class="map-container">
+                        <svg class="lines-overlay" viewBox="0 0 1440 900" style="width: 100%; height: 100%; display: block;">
+                            <image href="https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782896765/%D9%86%D9%82%D8%B4%D9%87_wznzhc.webp" x="0" y="0" width="1440" height="900" />
+                        </svg>
+
+                        <div class="zoom-controls">
+                            <button class="btn-zoom">+</button>
+                            <button class="btn-zoom">−</button>
+                            <button class="btn-zoom">
+                                <svg style="width:14px; height:14px; fill:currentColor" viewBox="0 0 24 24"><path d="M12 2A10 10 0 1 0 22 12A10 10 0 0 0 12 2Zm1 17.93V18a1 1 0 0 0-2 0v1.93A8 8 0 0 1 4.07 13H5a1 1 0 0 0 0-2h-.93A8 8 0 0 1 11 4.07V5a1 1 0 0 0 2 0v-.93A8 8 0 0 1 19.93 11H19a1 1 0 0 0 0 2h.93A8 8 0 0 1 13 19.93Z"/></svg>
+                            </button>
+                        </div>
+
+                        <div class="country-detail-overlay" id="detail-card">
+                            <button class="btn-close-detail" id="close-card-btn">✕</button>
+                            
+                            <div class="card-top-layout">
+                                <img class="country-hero-img" id="card-img" src="" alt="Country Landmark" loading="lazy">
+                                
+                                <div class="info-panel">
+                                    <div class="country-header">
+                                        <div class="flag-pill">
+                                            <img class="flag-icon" id="card-flag" src="" alt="Flag" loading="lazy" onerror="this.style.display='none'">
+                                        </div>
+                                        <span class="country-name" id="card-country-name"></span>
+                                    </div>
+                                    <div class="partner-label" data-key="global-partner-lbl">Export Partner</div>
+                                    <p class="detail-desc" id="card-desc"></p>
+                                </div>
+                            </div>
+
+                            <div class="separator-line"></div>
+
+                            <h4 class="exports-title" id="card-exports-title"></h4>
+
+                            <div class="products-free-row">
+                                <div class="product-item-free" data-product="steel">
+                                    <div class="icon-box">
+                                        <svg class="industry-icon" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 8h24v8h10v8H44v16h10v8H44v8H20v-8H10v-8h10V24H10v-8h10z"/><path d="M24 16h16"/><path d="M24 48h16"/></g></svg>
+                                    </div>
+                                    <div class="product-text-meta">
+                                        <span class="icon-title" data-key="global-icon-steel">Steel Products</span>
+                                    </div>
+                                </div>
+
+                                <div class="product-item-free" data-product="petrochemical">
+                                    <div class="icon-box">
+                                        <svg class="industry-icon" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="2.5"><path d="M26 8h12"/><path d="M30 8v16L17 46c-3 5 0 10 6 10h18c6 0 9-5 6-10L34 24V8"/><path d="M22 38h20"/><circle cx="27" cy="45" r="1.5"/><circle cx="37" cy="49" r="1.5"/><circle cx="32" cy="43" r="1.5"/></g></svg>
+                                    </div>
+                                    <div class="product-text-meta">
+                                        <span class="icon-title" data-key="global-icon-petro">Petrochemical Products</span>
+                                    </div>
+                                </div>
+
+                                <div class="product-item-free" data-product="food">
+                                    <div class="icon-box">
+                                        <svg class="industry-icon" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="2.5"><path d="M32 10v44"/><path d="M32 16c-8 2-10 8-6 12"/><path d="M32 22c8-2 10 4 6 8"/><path d="M32 28c-8 2-10 8-6 12"/><path d="M32 34c8-2 10 4 6 8"/><path d="M32 40c-8 2-10 8-6 12"/></g></svg>
+                                    </div>
+                                    <div class="product-text-meta">
+                                        <span class="icon-title" data-key="global-icon-food">Food Products</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="active-cooperation-badge">
+                                <span class="coop-dot"></span>
+                                <span data-key="active-coop-text">Active Cooperation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-metrics-bar">
+                    <div class="metric-column">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 11 2 2 4-4"/></svg>
+                        <h4>70+</h4>
+                        <p data-key="foot-stat1">Years of Experience</p>
+                    </div>
+                    <div class="metric-column">
+                        <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <h4>100+</h4>
+                        <p data-key="foot-stat2">International Partners</p>
+                    </div>
+                    <div class="metric-column">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                        <h4 data-key="foot-stat4-h">Top Exporter</h4>
+                        <p data-key="foot-stat4-p">Khorasan Razavi Province</p>
+                    </div>
+                    <div class="metric-column">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10zM2 12h20"/></svg>
+                        <h4>4</h4>
+                        <p data-key="foot-stat5">Continents</p>
+                    </div>
+                    <div class="metric-column">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 11 2 2 4-4"/></svg>
+                        <h4>100%</h4>
+                        <p data-key="foot-stat6">Commitment to Quality</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================================================
+       About Us View 
+       ========================================================================== -->
+    <main id="aboutUsView" style="display: none;" class="about-us-view">
+        
+        <section class="about-hero-section">
+            <div class="about-hero-bg"></div>
+            <div class="about-hero-container">
+                <div class="about-breadcrumbs">
+                    <span class="about-crumb-link" id="aboutCrumbHomeBtn" data-key="nav-home">Home</span>
+                    <span class="about-crumb-separator">></span>
+                    <span class="about-crumb-active" data-key="nav-about">About Us</span>
+                </div>
+
+                <div class="about-hero-text">
+                    <h2 class="about-main-title">
+                        <span class="about-light-text" data-key="history-title-light">BUILT ON EXPERIENCE.</span>
+                        <span class="about-red-text" data-key="history-title-red">DRIVEN BY TRUST.</span>
+                    </h2>
+                    <div class="about-title-underline"></div>
+                    <p class="about-description" data-key="history-desc">
+                        With more than seven decades of experience in trade and export, Mohajer Steel has grown into one of the leading exporters in Khorasan Razavi Province, trusted by partners worldwide.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="history-founders-section">
+            <div class="history-founders-grid">
+                <div class="founder-card-item">
+                    <div class="founder-img-frame">
+                        <img src="https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897823/%D8%AD%D8%A7%D8%AC_%D9%82%D8%A7%D8%B3%D9%85_%D9%85%D9%87%D8%A7%D8%AC%D8%B1%DB%8C_sdslbf.jpg" loading="lazy" alt="Late Haj Ghasem Mohajeri Khorasani" class="founder-img">
+                    </div>
+                    <div class="founder-card-details">
+                        <h3 class="founder-card-name" data-key="founder1-name">Late Haj Ghasem Mohajeri</h3>
+                        <span class="founder-card-role" data-key="founder1-subtitle">The Founder</span>
+                        <p class="founder-card-bio" data-key="founder1-bio">
+                            The roots of our business go back to <span class="highlight-year">1330</span>, when the late Haj Ghasem Mohajeri Khorasani began his activity in the field of domestic trade of leather products and cross. 
+                        </p>
+                    </div>
+                </div>
+                <div class="founder-card-item">
+                    <div class="founder-img-frame">
+                        <img src="https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897928/%D9%87%D8%A7%D8%B4%D9%85_%D9%85%D9%87%D8%A7%D8%AC%D8%B1%DB%8C_vdd0bg.png" loading="lazy" alt="Mr. Hashem Mohajeri Khorasani" class="founder-img">
+                    </div>
+                    <div class="founder-card-details">
+                        <h3 class="founder-card-name" data-key="founder2-name">Mr. Hashem Mohajeri</h3>
+                        <span class="founder-card-role" data-key="founder2-subtitle">Continuing the Legacy</span>
+                        <p class="founder-card-bio" data-key="founder2-bio">
+                            Continuing this path, from <span class="highlight-year">1374</span>, Mr. Hashem Mohajeri Khorasani expanded the company’s export activities, particularly in the food sector.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="history-timeline-section">
+            <div class="timeline-section-header">
+                <span class="timeline-sub-title" data-key="timeline-sub">OUR JOURNEY</span>
+                <h2 class="timeline-section-title" data-key="timeline-title">A History of Growth and Commitment</h2>
+                <div class="timeline-title-line"></div>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-node-item">
+                    <div class="timeline-marker"><div class="marker-dot"></div></div>
+                    <div class="timeline-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    </div>
+                    <div class="timeline-content-card">
+                        <span class="timeline-node-year" data-key="timeline1-year">1330</span>
+                        <h3 class="timeline-node-heading" data-key="timeline1-title">The Beginning</h3>
+                        <p class="timeline-node-desc" data-key="timeline1-desc">The roots of our business go back to 1330...</p>
+                    </div>
+                </div>
+
+                <div class="timeline-node-item">
+                    <div class="timeline-marker"><div class="marker-dot"></div></div>
+                    <div class="timeline-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </div>
+                    <div class="timeline-content-card">
+                        <span class="timeline-node-year" data-key="timeline2-year">1366</span>
+                        <h3 class="timeline-node-heading" data-key="timeline2-title">Expansion to International Markets</h3>
+                        <p class="timeline-node-desc" data-key="timeline2-desc">In 1366, the company entered international trade...</p>
+                    </div>
+                </div>
+
+                <div class="timeline-node-item">
+                    <div class="timeline-marker"><div class="marker-dot"></div></div>
+                    <div class="timeline-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                    </div>
+                    <div class="timeline-content-card">
+                        <span class="timeline-node-year" data-key="timeline3-year">1374</span>
+                        <h3 class="timeline-node-heading" data-key="timeline3-title">Growth in Exports</h3>
+                        <p class="timeline-node-desc" data-key="timeline3-desc">From 1374, under the leadership of Mr. Hashem Mohajeri Khorasani...</p>
+                    </div>
+                </div>
+
+                <div class="timeline-node-item">
+                    <div class="timeline-marker"><div class="marker-dot"></div></div>
+                    <div class="timeline-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    </div>
+                    <div class="timeline-content-card">
+                        <span class="timeline-node-year" data-key="timeline4-year">1397</span>
+                        <h3 class="timeline-node-heading" data-key="timeline4-title">Diversification into Strategic Industries</h3>
+                        <p class="timeline-node-desc" data-key="timeline4-desc">Since 1397 and in line with global market demands...</p>
+                    </div>
+                </div>
+
+                <div class="timeline-node-item">
+                    <div class="timeline-marker"><div class="marker-dot"></div></div>
+                    <div class="timeline-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <div class="timeline-content-card">
+                        <span class="timeline-node-year" data-key="timeline5-year">Today and Beyond</span>
+                        <h3 class="timeline-node-heading" data-key="timeline5-title">Today and Beyond</h3>
+                        <p class="timeline-node-desc" data-key="timeline5-desc">Today, with more than 70 years of experience...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================================================
+       Departments View
+       ========================================================================== -->
+   <main id="departmentsView" style="display: none;" class="departments-view">
+    <section class="dept-hero-section">
+        <div class="dept-hero-bg"></div>
+        <div class="dept-hero-container">
+            <div class="dept-breadcrumbs">
+                <span class="dept-crumb-link" id="deptCrumbHomeBtn" data-key="nav-home">Home</span>
+                <span class="dept-crumb-separator">></span>
+                <span class="dept-crumb-active" data-key="nav-departments">Department</span>
+            </div>
+
+            <div class="dept-hero-text">
+                <h2 class="dept-main-title">
+                    <span class="dept-light-text" data-key="dept-title-light">OTHER ACTIVITY AREAS OF</span>
+                    <span class="dept-red-text" data-key="dept-title-red">MOHAJER TRADING</span>
+                </h2>
+                <div class="dept-title-underline"></div>
+                <p class="dept-description" data-key="dept-desc">
+                    Mohajer International Trading Group operates in the three main areas...
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="departments-cards-section">
+        <div class="departments-cards-grid">
+            
+            <div class="department-card-item">
+                <div class="dept-card-image-wrapper">
+                    <img src="https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897929/%D9%85%D9%88%D8%A7%D8%AF_%D8%BA%D8%AF%D8%A7%DB%8C_xyaeom.png" loading="lazy" alt="Food Industry" class="dept-card-img">
+                </div>
+                <div class="dept-card-body">
+                    <h3 class="dept-card-title" data-key="dept3-title">Food Industry</h3>
+                    <p class="dept-card-desc" data-key="dept3-desc">We supply hygienic and safe steel solutions...</p>
+                    <ul class="dept-card-bullets">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-key="dept3-bullet1">Hygienic Materials</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-key="dept3-bullet2">Food-Grade Standards</span></li>
+                    </ul>
+                    <div class="dept-card-footer">
+                        <a href="https://chat.whatsapp.com/FtTiOrCyKLv8XWUSXIM5gB" target="_blank" rel="noopener noreferrer" class="btn-dept-learn-more" style="text-decoration:none;">
+                            <span data-key="btn-learn-more">Learn More</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="department-card-item">
+                <div class="dept-card-image-wrapper">
+                    <img src="https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897878/%D9%BE%D8%AA%D8%B1%D9%88%D8%B4%DB%8C%D9%85%DB%8C_qcermz.png" loading="lazy" alt="Petrochemical" class="dept-card-img">
+                </div>
+                <div class="dept-card-body">
+                    <h3 class="dept-card-title" data-key="dept1-title">Petrochemical</h3>
+                    <p class="dept-card-desc" data-key="dept1-desc">We provide high-performance steel solutions...</p>
+                    <ul class="dept-card-bullets">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-key="dept1-bullet1">Corrosion-Resistant Alloys</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-key="dept1-bullet2">High-Pressure Applications</span></li>
+                    </ul>
+                    <div class="dept-card-footer">
+                        <a href="https://chat.whatsapp.com/Go0cHIDXHdgDyllopH6y0E" target="_blank" rel="noopener noreferrer" class="btn-dept-learn-more" style="text-decoration:none;">
+                            <span data-key="btn-learn-more">Learn More</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="department-card-item">
+                <div class="dept-card-image-wrapper">
+                    <img src="https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897848/%D9%81%D9%88%D9%84%D8%A7%D8%AF_jwpfdd.png" loading="lazy" alt="Steel" class="dept-card-img">
+                </div>
+                <div class="dept-card-body">
+                    <h3 class="dept-card-title" data-key="dept2-title">Steel</h3>
+                    <p class="dept-card-desc" data-key="dept2-desc">From raw materials to finished products...</p>
+                    <ul class="dept-card-bullets">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-key="dept2-bullet1">Structural Steel</span></li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span data-key="dept2-bullet2">Steel Processing</span></li>
+                    </ul>
+                    <div class="dept-card-footer">
+                        <a href="https://chat.whatsapp.com/KeK8OGivszH8owQMZliohb" target="_blank" rel="noopener noreferrer" class="btn-dept-learn-more" style="text-decoration:none;">
+                            <span data-key="btn-learn-more">Learn More</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+    <!-- ==========================================================================
+       Contact Us View (صفحه اختصاصی و جداگانه تماس با ما)
+       ========================================================================== -->
+    <main id="contactView" class="contact-view" style="display: none;">
+        
+        <section class="contact-hero-section">
+            <div class="contact-hero-bg"></div>
+            <div class="contact-hero-container">
+                <div class="contact-breadcrumbs">
+                    <span class="contact-crumb-link" id="contactCrumbHomeBtn" data-key="nav-home">Home</span>
+                    <span class="contact-crumb-separator">></span>
+                    <span class="contact-crumb-active" data-key="nav-contact">Contact</span>
+                </div>
+
+                <div class="contact-hero-text">
+                    <h2 class="contact-main-title">
+                        <span class="contact-light-text" data-key="contact-title-light">LET'S BUILD</span>
+                        <span class="contact-red-text" data-key="contact-title-red">TOGETHER</span>
+                    </h2>
+                    <div class="contact-title-underline"></div>
+                    <p class="contact-description" data-key="contact-desc-hero">
+                        Our team is ready to answer your questions and provide the best solutions for your projects.
+                    </p>
+                </div>
+            </div>
+        </section>
+
         <section class="contact-section">
             <div class="contact-container">
                 <div class="contact-left-side">
@@ -136,3 +893,107 @@
             </div>
         </section>
     </main>
+
+    <!-- ==========================================================================
+       Product Analysis Detail View
+       ========================================================================== -->
+    <section id="productDetailView" class="detail-page-section" style="display: none;">
+        
+        <div class="detail-header-top" style="display: flex; align-items: center; margin-bottom: 32px; width: 100%; direction: ltr;">
+            <button class="nav-pill-grid" id="btnBackToCatalog" title="Back to Catalog" style="margin-right: 20px; flex-shrink: 0;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="breadcrumbs-container" style="margin-bottom: 0; flex-grow: 1; direction: var(--dir, ltr);">
+                <span class="crumb-link" id="crumbHomeBtn" data-key="nav-home">Home</span>
+                <span class="crumb-separator">/</span>
+                <span class="crumb-link" id="crumbProductsBtn" data-key="nav-products">Products</span>
+                <span class="crumb-separator">/</span>
+                <span class="crumb-active" id="detailBreadcrumbName">Steel Pipes</span>
+            </div>
+        </div>
+
+        <div class="detail-layout">
+            <div class="detail-left-column">
+                <div class="gallery-main-frame">
+                    <div class="gallery-img-container" id="detailImageContainer">
+                    </div>
+                </div>
+                
+                <div class="product-nav-pill">
+                    <button class="nav-pill-btn" id="btnPrevProduct">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        <span data-key="btn-prev-prod">Previous</span>
+                    </button>
+                    <button class="nav-pill-btn" id="btnNextProduct">
+                        <span data-key="btn-next-prod">Next</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="detail-right-column">
+                <h2 class="detail-main-name" id="detailProductName">Steel Pipes</h2>
+                <p class="detail-main-desc" id="detailProductDesc">High-quality steel pipes designed for fluid and gas transport.</p>
+
+                <div class="detail-mini-features">
+                    <div class="mini-feature-card">
+                        <div class="mini-feat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        </div>
+                        <div class="mini-feat-text">
+                            <h5 data-key="detail-feat1-title">High Strength</h5>
+                            <p data-key="detail-feat1-desc">Built for durability</p>
+                        </div>
+                    </div>
+                    <div class="mini-feature-card">
+                        <div class="mini-feat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        </div>
+                        <div class="mini-feat-text">
+                            <h5 data-key="detail-feat2-title">Corrosion Resistant</h5>
+                            <p data-key="detail-feat2-desc">Long-lasting protection</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-action-btns">
+                    <a href="https://wa.me/message/4XJJK7VC6GWYD1" target="_blank" rel="noopener noreferrer" class="btn-quote-fill" style="text-decoration:none;">
+                        <span data-key="btn-quote">Get a Quote</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </a>
+                    <a href="#" id="btnDownloadDatasheet" class="btn-datasheet-outline" target="_blank" rel="noopener noreferrer" download="Product_Datasheet.png" style="text-decoration:none;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        <span data-key="btn-download-datasheet">Download Datasheet</span>
+                    </a>
+                </div>
+
+                <div class="detail-quick-specs"></div>
+            </div>
+
+            <div class="detail-table-container">
+                <h3 class="detail-table-title" id="detailChemTitle">Chemical Composition</h3>
+                <div class="table-scroll-wrapper">
+                    <table class="analysis-table">
+                        <thead>
+                            <tr></tr>
+                        </thead>
+                        <tbody id="detailChemBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Video Modal Overlay -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-content">
+            <span class="video-modal-close" id="closeVideoModal">&times;</span>
+            <div class="video-iframe-container">
+                <iframe id="videoIframe" src="" loading="lazy" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
