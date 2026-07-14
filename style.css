@@ -799,4 +799,3 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
     .footer-metrics-bar { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 16px; }
     .metric-column { border: none !important; padding: 10px 0; }
 }
-```
