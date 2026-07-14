@@ -333,11 +333,6 @@ html[dir="rtl"] .crumb-separator svg {
 }
 html[dir="rtl"] .about-hero-text, html[dir="rtl"] .dept-hero-text, html[dir="rtl"] .contact-hero-text { text-align: right; }
 
-/* حذف خط آبی زیر عناوین در تمام صفحات داخلی */
-.about-title-underline, .dept-title-underline, .contact-title-underline { 
-    display: none !important;
-}
-
 .about-description, .dept-description, .contact-description { 
     font-size: 15px; line-height: 1.7; color: var(--text-gray); font-weight: 500; max-width: 800px;
 }
@@ -662,9 +657,9 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
     html[dir="ltr"] .catalog-banner-text { text-align: left !important; }
     
     /* کوچک‌تر کردن متن بنر محصولات در موبایل */
-    .catalog-banner .section-main-title { text-align: right !important; justify-content: flex-end !important; display: block !important; font-size: 14px !important; margin-bottom: 4px !important; font-weight: 800 !important; }
+    .catalog-banner .section-main-title { text-align: right !important; justify-content: flex-end !important; display: block !important; font-size: 14px !important; margin-bottom: 4px !important; }
     html[dir="ltr"] .catalog-banner .section-main-title { text-align: left !important; }
-    .catalog-banner .section-desc { text-align: right !important; font-size: 10px !important; margin-top: 0 !important; line-height: 1.4 !important; }
+    .catalog-banner .section-desc { text-align: right !important; font-size: 10px !important; margin-top: 0 !important; }
     html[dir="ltr"] .catalog-banner .section-desc { text-align: left !important; }
 
     .catalog-grid { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; flex-wrap: unset !important; overflow-x: visible !important; }
@@ -693,10 +688,20 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
     }
     
     .about-breadcrumbs, .dept-breadcrumbs, .contact-breadcrumbs {
-        display: flex !important; justify-content: center !important; align-items: center !important; margin-bottom: 16px !important; font-size: 12px !important; width: 100%;
+        display: flex !important;
+        justify-content: center !important; 
+        align-items: center !important;
+        margin-bottom: 16px !important; 
+        font-size: 12px !important;
+        width: 100%;
     }
     .breadcrumbs-container { 
-        display: flex !important; align-items: center !important; overflow-x: auto; white-space: nowrap; padding-bottom: 4px; font-size: 12px !important; 
+        display: flex !important;
+        align-items: center !important;
+        overflow-x: auto; 
+        white-space: nowrap; 
+        padding-bottom: 4px; 
+        font-size: 12px !important; 
     }
 
     .about-hero-text, .dept-hero-text, .contact-hero-text {
