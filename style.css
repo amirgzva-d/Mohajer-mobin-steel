@@ -333,7 +333,7 @@ html[dir="rtl"] .crumb-separator svg {
 }
 html[dir="rtl"] .about-hero-text, html[dir="rtl"] .dept-hero-text, html[dir="rtl"] .contact-hero-text { text-align: right; }
 
-/* خط آبی زیر عناوین حذف شد (توسط display: none) */
+/* حذف خط آبی زیر عناوین در تمام صفحات داخلی */
 .about-title-underline, .dept-title-underline, .contact-title-underline { 
     display: none !important;
 }
