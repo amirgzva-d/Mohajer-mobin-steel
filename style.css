@@ -306,7 +306,6 @@ html[dir="rtl"] .about-hero-bg, html[dir="rtl"] .dept-hero-bg, html[dir="rtl"] .
     background-color: var(--bg-main);
 }
 
-/* اصلاح استایل مسیرنما (Breadcrumbs) */
 .about-breadcrumbs, .dept-breadcrumbs, .contact-breadcrumbs { 
     display: flex; align-items: center; gap: 8px; font-size: 13px; 
     color: var(--text-gray); margin-bottom: 24px; font-weight: 600; flex-wrap: wrap; 
@@ -320,7 +319,6 @@ html[dir="rtl"] .about-hero-bg, html[dir="rtl"] .dept-hero-bg, html[dir="rtl"] .
 .about-crumb-separator, .dept-crumb-separator, .contact-crumb-separator, .crumb-separator { 
     color: var(--text-gray); opacity: 0.6; display: flex; align-items: center; justify-content: center;
 }
-/* چرخش آیکون جداکننده در حالت راست‌چین */
 html[dir="rtl"] .about-crumb-separator svg, 
 html[dir="rtl"] .dept-crumb-separator svg, 
 html[dir="rtl"] .contact-crumb-separator svg,
@@ -335,10 +333,10 @@ html[dir="rtl"] .crumb-separator svg {
 }
 html[dir="rtl"] .about-hero-text, html[dir="rtl"] .dept-hero-text, html[dir="rtl"] .contact-hero-text { text-align: right; }
 
+/* خط آبی زیر عناوین حذف شد (توسط display: none) */
 .about-title-underline, .dept-title-underline, .contact-title-underline { 
-    width: 80px; height: 4px; background-color: var(--primary-blue); border-radius: 2px; margin-bottom: 16px; 
+    display: none !important;
 }
-html[dir="rtl"] .about-title-underline, html[dir="rtl"] .dept-title-underline, html[dir="rtl"] .contact-title-underline { margin-left: auto; margin-right: 0; }
 
 .about-description, .dept-description, .contact-description { 
     font-size: 15px; line-height: 1.7; color: var(--text-gray); font-weight: 500; max-width: 800px;
@@ -662,9 +660,11 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
     .catalog-banner { min-height: 150px !important; padding: 28px 20px !important; align-items: flex-end !important; justify-content: flex-end !important; }
     .catalog-banner-text { max-width: 100% !important; text-align: right !important; display: block !important; align-items: normal !important; flex-direction: unset !important; }
     html[dir="ltr"] .catalog-banner-text { text-align: left !important; }
-    .catalog-banner .section-main-title { text-align: right !important; justify-content: flex-end !important; display: block !important; font-size: 19px !important; margin-bottom: 6px !important; }
+    
+    /* کوچک‌تر کردن متن بنر محصولات در موبایل */
+    .catalog-banner .section-main-title { text-align: right !important; justify-content: flex-end !important; display: block !important; font-size: 14px !important; margin-bottom: 4px !important; font-weight: 800 !important; }
     html[dir="ltr"] .catalog-banner .section-main-title { text-align: left !important; }
-    .catalog-banner .section-desc { text-align: right !important; font-size: 12px !important; margin-top: 0 !important; }
+    .catalog-banner .section-desc { text-align: right !important; font-size: 10px !important; margin-top: 0 !important; line-height: 1.4 !important; }
     html[dir="ltr"] .catalog-banner .section-desc { text-align: left !important; }
 
     .catalog-grid { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; flex-wrap: unset !important; overflow-x: visible !important; }
@@ -692,22 +692,11 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
         padding: 24px 16px 16px 16px !important;
     }
     
-    /* اصلاح نمایش مسیرنما (Breadcrumbs) در موبایل */
     .about-breadcrumbs, .dept-breadcrumbs, .contact-breadcrumbs {
-        display: flex !important;
-        justify-content: center !important; 
-        align-items: center !important;
-        margin-bottom: 16px !important; 
-        font-size: 12px !important;
-        width: 100%;
+        display: flex !important; justify-content: center !important; align-items: center !important; margin-bottom: 16px !important; font-size: 12px !important; width: 100%;
     }
     .breadcrumbs-container { 
-        display: flex !important;
-        align-items: center !important;
-        overflow-x: auto; 
-        white-space: nowrap; 
-        padding-bottom: 4px; 
-        font-size: 12px !important; 
+        display: flex !important; align-items: center !important; overflow-x: auto; white-space: nowrap; padding-bottom: 4px; font-size: 12px !important; 
     }
 
     .about-hero-text, .dept-hero-text, .contact-hero-text {
@@ -797,7 +786,7 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
     .dept-card-bullets { margin-bottom: 16px !important; padding-top: 12px !important; }
     .dept-card-bullets li { font-size: 10px !important; margin-bottom: 6px; }
 
-    /* ۴) حذف کامل بخش کشورها از صفحه اصلی در حالت موبایل */
+    /* حذف کامل بخش کشورها از صفحه اصلی در حالت موبایل */
     .global-presence-section { display: none !important; }
 }
 
