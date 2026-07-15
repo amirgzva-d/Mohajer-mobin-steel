@@ -687,10 +687,15 @@ html[dir="rtl"] .btn-quote-fill svg { transform: scaleX(-1); }
     html[dir="rtl"] .about-hero-bg, html[dir="rtl"] .dept-hero-bg, html[dir="rtl"] .contact-hero-bg {
         background-image: url('https://res.cloudinary.com/dqhbyqftq/image/upload/v1783839683/1%D8%B5%D8%AB_cnnt2o.webp') !important;
     }
-    .about-hero-container, .dept-hero-container, .contact-hero-container {
+/* حذف بخش تماس با ما از این گروه جهت جلوگیری از تداخل */
+    .about-hero-container, .dept-hero-container {
         position: relative !important; padding: 24px 16px 16px 16px !important; background-color: transparent !important;
     }
     
+    /* حذف کامل متن‌های بنر تماس با ما و فاصله‌های خالی اضافه در موبایل */
+    .contact-hero-container {
+        display: none !important;
+    }    
     /* رفع محو شدن متن‌ها در موبایل (چون پس‌زمینه سفید شده متن‌ها باید تیره شوند) */
     .about-main-title .about-light-text, 
     .dept-main-title .dept-light-text, 
