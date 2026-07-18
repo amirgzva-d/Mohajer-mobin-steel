@@ -61,9 +61,31 @@ html[dir="rtl"] body { direction: rtl; }
 }
 .main-header.scrolled { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); padding: 16px 6%; }
 
-.logo { display: flex; align-items: center; cursor: pointer; }
-.main-logo-img { height: 50px; object-fit: contain; transition: transform var(--transition-speed); filter: brightness(0) invert(1); }
-.main-logo-img:hover { transform: scale(1.02); }
+/* استایل جدید لوگو و خط نوری ظریف زیر آن */
+.logo-wrapper { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    cursor: pointer; 
+    position: relative;
+}
+.main-logo-img { 
+    height: 50px; 
+    object-fit: contain; 
+    transition: transform var(--transition-speed); 
+}
+.logo-wrapper:hover .main-logo-img { 
+    transform: scale(1.02); 
+}
+.logo-glow-line {
+    width: 110%; /* کمی عریض‌تر از خود لوگو برای زیبایی بیشتر */
+    height: 1px; /* بسیار ظریف */
+    background: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 1) 50%, transparent 100%);
+    box-shadow: 0 2px 10px 1px rgba(56, 189, 248, 0.8);
+    margin-top: 4px;
+    border-radius: 50%;
+}
 
 .nav-links { display: flex; gap: 32px; align-items: center; transition: all 0.3s ease; }
 html[dir="rtl"] .nav-links { direction: rtl; }
@@ -82,6 +104,26 @@ html[dir="rtl"] .nav-links { direction: rtl; }
 
 .header-actions { display: flex; align-items: center; gap: 20px; }
 html[dir="rtl"] .header-actions { direction: rtl; }
+
+/* دکمه خروج */
+.btn-exit {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--text-white);
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-speed);
+}
+.btn-exit:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border-color: #ef4444;
+}
 
 .lang-selector-container { position: relative; }
 .lang-selector {
@@ -128,7 +170,6 @@ html[dir="rtl"] .btn-quote svg { transform: scaleX(-1); }
     align-items: center; padding-left: 8%; padding-right: 8%; overflow: hidden; background-color: var(--bg-dark-section);
 }
 
-/* عکس‌های جدید برای پس‌زمینه هیرو */
 .hero-bg {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;
     background-image: url('https://res.cloudinary.com/dqhbyqftq/image/upload/v1783501200/2_duxzdm.png');
@@ -213,7 +254,7 @@ html[dir="rtl"] .vertical-slider-dots { right: auto; left: 4%; }
 .scroll-circle svg { width: 20px; height: 20px; }
 @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
 
-/* Hero Wave Divider (موج پایین عکس اول) */
+/* Hero Wave Divider */
 .hero-wave-divider {
     position: absolute;
     bottom: 0;
@@ -221,7 +262,7 @@ html[dir="rtl"] .vertical-slider-dots { right: auto; left: 4%; }
     width: 100%;
     overflow: hidden;
     line-height: 0;
-    transform: translateY(2px); /* جلوگیری از ایجاد خط خالی */
+    transform: translateY(2px);
     z-index: 5;
 }
 .hero-wave-divider svg {
@@ -231,11 +272,11 @@ html[dir="rtl"] .vertical-slider-dots { right: auto; left: 4%; }
     height: 90px;
 }
 .hero-wave-divider .shape-fill {
-    fill: var(--bg-main); /* همرنگ با پس‌زمینه سایت */
+    fill: var(--bg-main);
 }
 
 /* ==========================================================================
-   Value Propositions (Dark Cards - طراحی جدید آیکون‌ها)
+   Value Propositions (Dark Cards)
    ========================================================================== */
 .footer-features { 
     position: relative; background: transparent; padding: 60px 6% 80px; z-index: 20; 
@@ -252,12 +293,11 @@ html[dir="rtl"] .vertical-slider-dots { right: auto; left: 4%; }
 }
 .feature-card.dark-card:hover { transform: translateY(-8px); }
 
-/* طراحی دقیق آیکون دایره‌ای با حاشیه طلایی مشابه عکس */
 .feature-icon.gold-icon { 
     width: 76px; height: 76px; border-radius: 50%; 
-    background: linear-gradient(145deg, #0f172a, #1e293b); /* پس‌زمینه تیره داخلی */
-    border: 2px solid var(--primary-gold); /* حاشیه طلایی */
-    box-shadow: inset 0 4px 10px rgba(0,0,0,0.5), 0 4px 15px rgba(200, 152, 69, 0.15); /* سایه داخلی و خارجی */
+    background: linear-gradient(145deg, #0f172a, #1e293b);
+    border: 2px solid var(--primary-gold); 
+    box-shadow: inset 0 4px 10px rgba(0,0,0,0.5), 0 4px 15px rgba(200, 152, 69, 0.15);
     color: var(--primary-gold); margin-bottom: 24px; display: flex; align-items: center; justify-content: center; 
 }
 .feature-icon.gold-icon svg { width: 32px; height: 32px; }
@@ -280,7 +320,8 @@ html[dir="rtl"] .card-number::after { left: auto; right: 0; }
 .catalog-section { padding: 0 6% 80px 6%; position: relative; z-index: 1; }
 
 .catalog-banner {
-    position: relative; border-radius: 16px; overflow: hidden; padding: 32px 4%; margin-bottom: 40px; background-color: var(--bg-dark-section); min-height: 200px; display: flex; align-items: center; box-shadow: var(--shadow-card);
+    position: relative; border-radius: 16px; overflow: hidden; padding: 32px 6%; margin-bottom: 40px; background-color: var(--bg-dark-section); min-height: 200px; display: flex; align-items: center; box-shadow: var(--shadow-card);
+    justify-content: flex-start; /* چپ‌چین در انگلیسی */
 }
 .catalog-banner-bg {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background-size: cover; background-repeat: no-repeat;
@@ -289,7 +330,9 @@ html[dir="rtl"] .card-number::after { left: auto; right: 0; }
 html[dir="rtl"] .catalog-banner-bg {
     background-image: url('https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782896770/%D9%81%D8%A7%D8%B1%D8%B3%DB%8C_zgzl34.webp'); background-position: center left;
 }
-.catalog-banner-text { position: relative; z-index: 1; width: 100%; text-align: center; }
+.catalog-banner-text { position: relative; z-index: 1; max-width: 45%; text-align: left; }
+html[dir="rtl"] .catalog-banner-text { text-align: right; margin-left: auto; margin-right: 0; } /* راست‌چین در فارسی */
+
 .section-main-title { font-size: clamp(24px, 3vw, 36px); font-weight: 900; color: var(--text-white); margin-bottom: 12px; }
 .section-desc { color: var(--text-light-gray); font-size: 15px; line-height: 1.6; }
 
@@ -368,72 +411,6 @@ html[dir="rtl"] .dark-cta .cta-text { text-align: right; }
 }
 .btn-request-quote.gold-btn:hover { background-color: var(--primary-gold-hover); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(200, 152, 69, 0.3); }
 html[dir="rtl"] .btn-request-quote.gold-btn svg { transform: scaleX(-1) translateX(4px); }
-
-/* ==========================================================================
-   NEW EXPORT DESTINATIONS SECTION (طراحی دقیق مشابه عکس)
-   ========================================================================== */
-.export-destinations-section { padding: 80px 6%; position: relative; z-index: 1; }
-
-.export-header-top { text-align: center; margin-bottom: 48px; }
-.export-main-title { font-size: clamp(24px, 3vw, 32px); font-weight: 900; color: var(--text-dark); display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 12px; }
-.export-dot { width: 12px; height: 12px; background-color: var(--primary-blue); border-radius: 50%; }
-.export-sub-title { font-size: 15px; color: var(--text-gray); font-weight: 500; }
-
-.export-layout-container { display: flex; gap: 24px; margin-bottom: 48px; align-items: stretch; }
-html[dir="rtl"] .export-layout-container { direction: rtl; }
-
-.export-side-panel { 
-    width: 320px; border-radius: 20px; padding: 40px 32px; color: white; display: flex; flex-direction: column; position: relative; overflow: hidden; box-shadow: var(--shadow-card); flex-shrink: 0; 
-    background-image: linear-gradient(to bottom, rgba(11, 17, 33, 0.85), rgba(11, 17, 33, 0.98)), url('https://res.cloudinary.com/dqhbyqftq/image/upload/v1784176415/%D8%A7%D9%86%DA%AF%D9%84%DB%8C%D8%B3_duqngd.webp');
-    background-size: cover; background-position: center;
-}
-html[dir="rtl"] .export-side-panel { text-align: right; }
-
-.side-panel-subtitle { font-size: 14px; color: rgba(255,255,255,0.7); font-weight: 600; margin-bottom: 8px; display: block; }
-.side-panel-title { font-size: 64px; font-weight: 900; line-height: 1; margin-bottom: 8px; color: var(--text-white); }
-.side-panel-desc { font-size: 16px; font-weight: 700; color: var(--text-white); margin-bottom: 32px; display: block; }
-
-.side-panel-features { list-style: none; display: flex; flex-direction: column; gap: 24px; margin-bottom: 40px; flex-grow: 1; }
-.side-panel-features li { display: flex; align-items: flex-start; gap: 16px; }
-.feature-icon-wrapper { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(37, 99, 235, 0.5); display: flex; align-items: center; justify-content: center; color: var(--primary-blue); flex-shrink: 0; }
-.feature-icon-wrapper svg { width: 20px; height: 20px; }
-.feature-text h4 { font-size: 14px; font-weight: 700; color: var(--text-white); margin-bottom: 4px; }
-.feature-text p { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5; }
-
-.btn-export-coop { background-color: var(--primary-blue); color: var(--text-white); border: none; padding: 14px 24px; font-size: 14px; font-weight: 700; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; transition: 0.3s; }
-.btn-export-coop:hover { background-color: var(--primary-blue-hover); transform: translateY(-2px); }
-html[dir="rtl"] .btn-export-coop svg { transform: scaleX(-1); }
-
-.export-cards-area { flex-grow: 1; display: flex; flex-direction: column; gap: 24px; }
-.export-cards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-
-.export-card-item { background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-card); transition: 0.3s; display: flex; flex-direction: column; }
-.export-card-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: var(--primary-blue); }
-.export-card-img { width: 100%; height: 120px; object-fit: cover; }
-.export-card-header { display: flex; align-items: center; gap: 12px; padding: 16px 16px 12px; }
-.export-card-flag { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-.export-card-title { font-size: 15px; font-weight: 800; color: var(--text-dark); }
-.export-card-list { list-style: none; padding: 0 16px; margin: 0 0 16px 0; flex-grow: 1; }
-html[dir="rtl"] .export-card-list { text-align: right; }
-.export-card-list li { font-size: 12px; color: var(--text-gray); font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-.export-card-list li::before { content: ''; width: 5px; height: 5px; background: var(--text-light-gray); border-radius: 50%; flex-shrink: 0; }
-.export-card-link { padding: 12px 16px; border-top: 1px solid var(--border-light); font-size: 13px; font-weight: 700; color: var(--primary-blue); display: flex; align-items: center; gap: 6px; text-decoration: none; transition: 0.3s; cursor: pointer; }
-.export-card-link:hover { background: rgba(37, 99, 235, 0.05); }
-html[dir="rtl"] .export-card-link svg { transform: scaleX(-1); }
-
-.export-view-all { display: flex; justify-content: center; margin-top: 16px; }
-.btn-view-all-countries { background: var(--bg-white); border: 1px solid var(--border-light); color: var(--primary-blue); padding: 12px 24px; border-radius: 8px; font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: 0.3s; }
-.btn-view-all-countries:hover { border-color: var(--primary-blue); background: rgba(37, 99, 235, 0.05); }
-
-.export-stats-bottom { display: flex; justify-content: space-between; background: var(--bg-white); border-radius: 20px; padding: 32px 48px; box-shadow: var(--shadow-card); border: 1px solid var(--border-light); }
-html[dir="rtl"] .export-stats-bottom { direction: rtl; }
-.stat-item-new { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; flex: 1; border-right: 1px solid var(--border-light); }
-html[dir="rtl"] .stat-item-new { border-right: none; border-left: 1px solid var(--border-light); }
-.stat-item-new:last-child { border: none !important; }
-.stat-icon-new { color: var(--primary-blue); width: 36px; height: 36px; }
-.stat-icon-new svg { width: 100%; height: 100%; }
-.stat-text-new h4 { font-size: 26px; font-weight: 900; color: var(--text-dark); margin-bottom: 4px; }
-.stat-text-new p { font-size: 12px; color: var(--text-gray); font-weight: 600; }
 
 /* ==========================================================================
    NEW HERO STRUCTURE FOR INTERNAL PAGES (ABOUT, DEPT, CONTACT)
@@ -582,6 +559,77 @@ html[dir="rtl"] .timeline-content-card { text-align: right; }
 html[dir="rtl"] .timeline-node-year { font-family: 'Vazirmatn', sans-serif !important; }
 .timeline-node-heading { font-size: 18px; font-weight: 800; color: var(--text-dark); margin-bottom: 12px; }
 .timeline-node-desc { font-size: 14px; line-height: 1.6; color: var(--text-gray); font-weight: 500; }
+
+/* ==========================================================================
+   NEW EXPORT DESTINATIONS SECTION (Moved to About Us)
+   ========================================================================== */
+.export-destinations-section { padding: 80px 6%; position: relative; z-index: 1; }
+
+/* مخفی کردن در موبایل و تبلت */
+@media (max-width: 992px) {
+    .export-destinations-section { display: none !important; }
+}
+
+.export-header-top { text-align: center; margin-bottom: 48px; }
+.export-main-title { font-size: clamp(24px, 3vw, 32px); font-weight: 900; color: var(--text-dark); display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 12px; }
+.export-dot { width: 12px; height: 12px; background-color: var(--primary-blue); border-radius: 50%; }
+.export-sub-title { font-size: 15px; color: var(--text-gray); font-weight: 500; }
+
+.export-layout-container { display: flex; gap: 24px; margin-bottom: 48px; align-items: stretch; }
+html[dir="rtl"] .export-layout-container { direction: rtl; }
+
+.export-side-panel { 
+    width: 320px; border-radius: 20px; padding: 40px 32px; color: white; display: flex; flex-direction: column; position: relative; overflow: hidden; box-shadow: var(--shadow-card); flex-shrink: 0; 
+    background-image: linear-gradient(to bottom, rgba(11, 17, 33, 0.85), rgba(11, 17, 33, 0.98)), url('https://res.cloudinary.com/dqhbyqftq/image/upload/v1784176415/%D8%A7%D9%86%DA%AF%D9%84%DB%8C%D8%B3_duqngd.webp');
+    background-size: cover; background-position: center;
+}
+html[dir="rtl"] .export-side-panel { text-align: right; }
+
+.side-panel-subtitle { font-size: 14px; color: rgba(255,255,255,0.7); font-weight: 600; margin-bottom: 8px; display: block; }
+.side-panel-title { font-size: 64px; font-weight: 900; line-height: 1; margin-bottom: 8px; color: var(--text-white); }
+.side-panel-desc { font-size: 16px; font-weight: 700; color: var(--text-white); margin-bottom: 32px; display: block; }
+
+.side-panel-features { list-style: none; display: flex; flex-direction: column; gap: 24px; margin-bottom: 40px; flex-grow: 1; }
+.side-panel-features li { display: flex; align-items: flex-start; gap: 16px; }
+.feature-icon-wrapper { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(37, 99, 235, 0.5); display: flex; align-items: center; justify-content: center; color: var(--primary-blue); flex-shrink: 0; }
+.feature-icon-wrapper svg { width: 20px; height: 20px; }
+.feature-text h4 { font-size: 14px; font-weight: 700; color: var(--text-white); margin-bottom: 4px; }
+.feature-text p { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+.btn-export-coop { background-color: var(--primary-blue); color: var(--text-white); border: none; padding: 14px 24px; font-size: 14px; font-weight: 700; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; transition: 0.3s; }
+.btn-export-coop:hover { background-color: var(--primary-blue-hover); transform: translateY(-2px); }
+html[dir="rtl"] .btn-export-coop svg { transform: scaleX(-1); }
+
+.export-cards-area { flex-grow: 1; display: flex; flex-direction: column; gap: 24px; }
+.export-cards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+
+.export-card-item { background: var(--bg-white); border: 1px solid var(--border-light); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-card); transition: 0.3s; display: flex; flex-direction: column; }
+.export-card-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: var(--primary-blue); }
+.export-card-img { width: 100%; height: 120px; object-fit: cover; }
+.export-card-header { display: flex; align-items: center; gap: 12px; padding: 16px 16px 12px; }
+.export-card-flag { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.export-card-title { font-size: 15px; font-weight: 800; color: var(--text-dark); }
+.export-card-list { list-style: none; padding: 0 16px; margin: 0 0 16px 0; flex-grow: 1; }
+html[dir="rtl"] .export-card-list { text-align: right; }
+.export-card-list li { font-size: 12px; color: var(--text-gray); font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.export-card-list li::before { content: ''; width: 5px; height: 5px; background: var(--text-light-gray); border-radius: 50%; flex-shrink: 0; }
+.export-card-link { padding: 12px 16px; border-top: 1px solid var(--border-light); font-size: 13px; font-weight: 700; color: var(--primary-blue); display: flex; align-items: center; gap: 6px; text-decoration: none; transition: 0.3s; cursor: pointer; }
+.export-card-link:hover { background: rgba(37, 99, 235, 0.05); }
+html[dir="rtl"] .export-card-link svg { transform: scaleX(-1); }
+
+.export-view-all { display: flex; justify-content: center; margin-top: 16px; }
+.btn-view-all-countries { background: var(--bg-white); border: 1px solid var(--border-light); color: var(--primary-blue); padding: 12px 24px; border-radius: 8px; font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: 0.3s; }
+.btn-view-all-countries:hover { border-color: var(--primary-blue); background: rgba(37, 99, 235, 0.05); }
+
+.export-stats-bottom { display: flex; justify-content: space-between; background: var(--bg-white); border-radius: 20px; padding: 32px 48px; box-shadow: var(--shadow-card); border: 1px solid var(--border-light); }
+html[dir="rtl"] .export-stats-bottom { direction: rtl; }
+.stat-item-new { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; flex: 1; border-right: 1px solid var(--border-light); }
+html[dir="rtl"] .stat-item-new { border-right: none; border-left: 1px solid var(--border-light); }
+.stat-item-new:last-child { border: none !important; }
+.stat-icon-new { color: var(--primary-blue); width: 36px; height: 36px; }
+.stat-icon-new svg { width: 100%; height: 100%; }
+.stat-text-new h4 { font-size: 26px; font-weight: 900; color: var(--text-dark); margin-bottom: 4px; }
+.stat-text-new p { font-size: 12px; color: var(--text-gray); font-weight: 600; }
 
 /* ==========================================================================
    DEPARTMENTS SECTION
@@ -745,6 +793,9 @@ html[dir="rtl"] .footer-copyright { flex-direction: row-reverse; }
     .history-founders-grid { grid-template-columns: 1fr; }
     
     .vertical-slider-dots { display: none; } 
+    
+    /* مخفی کردن کامل بخش کشورهای صادراتی در موبایل و تبلت */
+    .export-destinations-section { display: none !important; }
 }
 
 @media (max-width: 768px) {
@@ -779,7 +830,7 @@ html[dir="rtl"] .footer-copyright { flex-direction: row-reverse; }
     .hero-text-block { text-align: center !important; margin: 0 auto; }
     .hero-buttons-new { justify-content: center; }
     
-    .hero-wave-divider svg { height: 40px; } /* موج در موبایل کوچکتر شود */
+    .hero-wave-divider svg { height: 40px; } 
 
     .features-grid { display: grid !important; grid-template-columns: 1fr !important; gap: 16px !important; padding: 0 16px !important; margin-top: 20px; }
     .feature-card.dark-card { padding: 24px 16px !important; border-radius: 14px !important; }
@@ -823,11 +874,6 @@ html[dir="rtl"] .footer-copyright { flex-direction: row-reverse; }
     .dark-cta .cta-text h3 { font-size: 18px !important; text-align: center !important; }
     html[dir="rtl"] .dark-cta .cta-text { text-align: center !important; }
     .dark-cta .cta-text p { font-size: 12px !important; }
-
-    .export-cards-grid { grid-template-columns: 1fr !important; }
-    .export-stats-bottom { flex-direction: column; padding: 24px; gap: 24px; }
-    .stat-item-new { border: none !important; border-bottom: 1px solid var(--border-light) !important; padding-bottom: 16px; }
-    .stat-item-new:last-child { border: none !important; padding-bottom: 0; }
 
     .footer-container { padding: 24px 16px; }
     .footer-content-flex { flex-direction: column; gap: 32px; text-align: center; }
@@ -940,4 +986,11 @@ html[dir="rtl"] .footer-copyright { flex-direction: row-reverse; }
     .dept-card-desc { font-size: 11px !important; line-height: 1.4 !important; margin-bottom: 12px !important; }
     .dept-card-bullets { margin-bottom: 16px !important; padding-top: 12px !important; }
     .dept-card-bullets li { font-size: 10px !important; margin-bottom: 6px; }
+}
+
+@media (max-width: 480px) {
+    .contact-main-heading { font-size: 24px; }
+    .form-container-card { padding: 16px !important; }
+    .footer-metrics-bar { grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 16px; }
+    .metric-column { border: none !important; padding: 10px 0; }
 }
