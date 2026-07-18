@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
         wires: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782903123/3_qto0dl.webp"
     };
 
+    // ==========================================================================
+    // لیست تصاویر دیتاشیت محصولات
+    // ==========================================================================
     const datasheetImages = {
         round: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782899239/3_leycac.png",       
         plates: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782899273/6_d1ca01.png",      
@@ -188,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fa: {
             round: {
                 category: "شمش فولادی", title: "شمش",
-                desc: "شمش‌های فولادی مرغوب برای مصارف نیرو، فولادسازی و کاربردهای فورج عمومی.",
+                desc: "شمش‌ها و مقاطع فولادی با کیفیت عالی تولید شده، طراحی شده برای صنایع نورد گرم، ساخت و ساز و کاربردهای فورج عمومی.",
                 chemicalTitle: "ترکیب شیمیایی شمش",
                 tableHeaders: ["گرید", "C %", "Si %", "Mn %", "S % (حداکثر)", "P % (حداکثر)", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
@@ -200,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             plates: {
                 category: "ورق فولادی", title: "ورق فولادی",
-                desc: "ورق‌های فولادی با کیفیت بالا مناسب مصارف صنعتی، اسکلت‌های فلزی و پروژه‌های ساختمانی.",
+                desc: "ورق‌های فولادی با کیفیت بسیار بالا، ایده‌آل برای صنایع نورد مجدد، اسکلت‌های فلزی سنگین و پروژه‌های بادوام صنعتی.",
                 chemicalTitle: "ترکیب شیمیایی",
                 tableHeaders: ["گرید", "C %", "Mn %", "Si % (حداکثر)", "P % (حداکثر)", "S % (حداکثر)", "Al % (حداکثر)", "Cu %", "Ni %", "Cr %", "Mo %"],
                 tableRows: [
@@ -211,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             rebar: {
                 category: "میلگردهای فولادی", title: "میلگرد",
-                desc: "میلگردهای مقاوم سازی بتن در پروژه‌های عمرانی و ساختمانی با تنش تسلیم بالا.",
+                desc: "میلگردهای آجدار تقویت‌کننده بتن با تنش تسلیم بالا جهت مهاربندی بتن و دوام اسکلت‌های فلزی.",
                 chemicalTitle: "خواص مکانیکی میلگرد",
                 tableHeaders: ["گرید", "استحکام کششی (MPa)", "مقاومت تسلیم (MPa)", "نسبت استحکام کششی به تسلیم", "درصد افزایش طول (A10)"],
                 tableRows: [
@@ -223,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             angle: {
                 category: "نبشی", title: "نبشی",
-                desc: "پروفیل‌های نبشی پرکاربرد در صنایع ساختمانی، اتصالات سازه و خرپاها.",
+                desc: "پروفیل‌های نبشی بال‌مساوی نورد گرم با مقاومت استاتیکی بالا جهت اتصالات سازه، خرپاها و دکل‌ها.",
                 chemicalTitle: "ابعاد و مشخصات فنی نبشی",
                 tableHeaders: ["نوع نبشی", "اندازه بال a (mm)", "ضخامت t (mm)", "شعاع r (mm)", "مقطع (cm²)", "وزن (Kg/m)"],
                 tableRows: [
@@ -234,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             channels: {
                 category: "فولاد سازه‌ای", title: "ناودانی (U-Channel)",
-                desc: "ناودانی‌های ساختمانی با استحکامی و مقاومت بالا جهت ساخت قاب‌های مهندسی.",
+                desc: "ناودانی‌های سنگین نورد گرم با بال شیب‌دار جهت ساخت قاب‌های مهندسی و شاسی‌سازی سنگین.",
                 chemicalTitle: "ابعاد و مشخصات فنی ناودانی",
                 tableHeaders: ["سایز (UPN)", "ارتفاع h (mm)", "عرض بال b (mm)", "ضخامت جان s (mm)", "ضخامت بال t (mm)", "مقطع (cm²)", "وزن (Kg/m)"],
                 tableRows: [
@@ -245,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             beams: {
                 category: "فولاد سازه‌ای", title: "تیرآهن",
-                desc: "تیرآهن‌های فولادی با مقاومت بالا برای بند و ستون در پروژه‌های بزرگ صنعتی.",
+                desc: "تیرآهن‌های بال‌پهن سنگین نورد گرم، ایده‌آل برای پروژه‌های عظیم ساختمانی و بارهای مرده ساختاری.",
                 chemicalTitle: "ابعاد و مشخصات فنی تیرآهن",
                 tableHeaders: ["سایز (HEB)", "ارتفاع h (mm)", "عرض بال b (mm)", "ضخامت جان s (mm)", "ضخامت بال t (mm)", "شعاع r (mm)", "مقطع (cm²)", "وزن (Kg/m)"],
                 tableRows: [
@@ -256,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             pipes: {
                 category: "لوله‌های فولادی", title: "لوله",
-                desc: "لوله‌های درزدار و بدون درز در انواع سایز و کاربرد جهت انتقال مایعات و گازها.",
+                desc: "لوله‌های فولادی با کیفیت بالا طراحی شده برای انتقال سیالات و گاز، کاربردهای سازه‌ای و استفاده‌های مختلف صنعتی.",
                 chemicalTitle: "ترکیب شیمیایی",
                 tableHeaders: ["گرید", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
@@ -267,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             tubes: {
                 category: "قوطی و پروفیل", title: "پروفیل",
-                desc: "پروفیل‌های متنوع جهت کاربردهای مختلف صنعتی، شاسی‌سازی و اسکلت فلزی.",
+                desc: "پروفیل‌های فولادی با دقت ابعادی بالا جهت مصارف ساختمانی، شاسی‌سازی و اسکلت فلزی سبک.",
                 chemicalTitle: "ترکیب شیمیایی",
                 tableHeaders: ["گرید", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
@@ -277,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             flat: {
                 category: "تسمه فولادی", title: "تسمه",
-                desc: "تسمه‌های فولادی مستحکم مناسب قطعه‌سازی، قاب‌بندی و فریم‌های صنعتی.",
+                desc: "تسمه‌های فولادی نورد شده با لبه‌های بسیار تمیز و گونیایی، ایده‌آل برای قاب‌بندی، فریم‌های صنعتی و قطعه‌سازی عمومی.",
                 chemicalTitle: "ترکیب شیمیایی",
                 tableHeaders: ["گرید", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
@@ -287,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             slab: {
                 category: "اسلب‌های فولادی", title: "اسلب فولادی",
-                desc: "اسلب‌های فولادی با کیفیت بالا مناسب مصارف نورد و تولید ورق‌های سنگین.",
+                desc: "اسلب‌های فولادی با کیفیت بالا مناسب مصارف نورد و تولید ورق.",
                 chemicalTitle: "ترکیب شیمیایی",
                 tableHeaders: ["گرید", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
@@ -297,7 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             coils: {
                 category: "کویل‌های فولادی", title: "کلاف",
-                desc: "کلاف‌های ورق پوشش‌دار با مقاومت بالا در برابر زنگ‌زدگی و خوردگی.",
+                desc: "کویل‌های فولادی گالوانیزه شده به روش غوطه‌وری گرم با مقاومت استثنایی در برابر زنگ‌زدگی، فرم‌پذیری عالی و کیفیت بالای پوشش سطحی.",
                 chemicalTitle: "ترکیب شیمیایی",
                 tableHeaders: ["گرید", "C %", "Mn %", "P %", "S %", "Si %", "Cu %", "Ni %", "Cr %", "Mo %", "V %"],
                 tableRows: [
@@ -307,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             wires: {
                 category: "مفتول‌های فولادی", title: "مفتول فولادی",
-                desc: "مفتول‌های فولادی با کشش بالا جهت آرماتوربندی، توری و صنایع مفتولی.",
+                desc: "مفتول‌های فولادی با کربن کم و مقاومت کششی بالا جهت توری، آرماتوربندی، ساخت میخ، پیچ و صنایع مفتولی عمومی.",
                 chemicalTitle: "لیست محصولات و قیمت",
                 tableHeaders: ["نام محصول", "سایز", "نوع پوشش", "کد / قیمت"],
                 tableRows: [
@@ -610,21 +613,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const translations = {
         en: {
             dir: 'ltr',
-            'nav-home': 'Home', 'nav-products': 'Products', 'nav-departments': 'Services', 'nav-about': 'About Us', 'nav-contact': 'Contact',
-            'btn-quote': 'Get a Quote', 
-            'hero-subtitle-new': 'Quality, Strength, Trust', 
-            'hero-title-new': '<span class="gold-text">FOOLAD MOHAJER MOBIN</span>',
-            'hero-desc-new': 'Subsidiary of Mohajer International Trading Group',
-            'btn-explore-new': 'View Products', 
-            'btn-catalog': 'View Catalog',
-            'feat-1-title-new': 'Sustainable Production', 'feat-1-desc-new': 'Committed to responsible production, environmental protection, and global standards.',
-            'feat-2-title-new': 'On-Time Delivery', 'feat-2-desc-new': 'Strong logistics and fast, reliable shipping across the country.',
-            'feat-3-title-new': 'High Strength', 'feat-3-desc-new': 'Products with the highest resistance and durability for tough conditions.',
-            'feat-4-title-new': 'Premium Quality', 'feat-4-desc-new': 'Offering products with quality matching international standards.',
-            'prod-title': 'FOOLAD MAST Products', 'prod-desc': 'Various high-quality steel products',
-            'filter-cat': 'Category', 'filter-sort': 'Sort by: Newest',
-            'showing-txt-p1': 'Showing 1-8 of 12 products', 'showing-txt-p2': 'Showing 9-12 of 12 products', 'view-details': 'Details',
-            'cta-title': 'Looking for something specific?', 'cta-desc': 'Contact our experts to receive custom steel solutions tailored to your project.',
+            'nav-home': 'Home', 'nav-products': 'Products', 'nav-departments': 'Department', 'nav-about': 'About Us', 'nav-contact': 'Contact',
+            'btn-quote': 'Get a Quote', 'hero-subtitle': 'PREMIUM QUALITY STEEL', 
+            'hero-title-1': 'MOHAJER MOBIN', 'hero-title-2': 'STEEL',
+            'hero-desc': 'Subsidiary of Mohajer International Trading Group',
+            'btn-explore': 'Explore Products', 'btn-catalog': 'Download Catalog', 'trusted-title': 'Trusted by Industry Leaders',
+            'trusted-desc': 'Delivering excellence across the globe.',
+            'feat-1-title': 'Premium Quality', 'feat-1-desc': 'Tested and certified to international standards.',
+            'feat-2-title': 'High Strength', 'feat-2-desc': 'Built for performance in the toughest conditions.',
+            'feat-3-title': 'On-Time Delivery', 'feat-3-desc': 'Reliable logistics ensuring your projects stay on track.',
+            'feat-4-title': 'Sustainable', 'feat-4-desc': 'Committed to eco-friendly and responsible production.',
+            
+            // تغییرات درخواستی بنر محصولات
+            'prod-sub': 'OUR PRODUCTS', 
+            'prod-title': 'Premium Quality Steel Products',
+            'prod-desc': 'High-quality steel products engineered for strength, durability, and performance in every project.',
+            
+            'showing-txt-p1': 'Showing 1-8 of 12 products', 'showing-txt-p2': 'Showing 9-12 of 12 products', 'view-details': 'View Details',
+            'cta-title': "Can't find what you're looking for?", 'cta-desc': 'Contact our experts for custom steel solutions tailored to your project.',
             'btn-custom-quote': 'Request Custom Quote',
             'prod-pipes-title': 'Steel Pipes', 'prod-pipes-desc': 'Durable steel pipes for fluid and gas transport.',
             'prod-beams-title': 'H-Beams', 'prod-beams-desc': 'High strength steel beams for structural applications.',
@@ -643,20 +649,14 @@ document.addEventListener('DOMContentLoaded', () => {
             'detail-feat1-title': 'High Strength', 'detail-feat1-desc': 'Built for durability',
             'detail-feat2-title': 'Corrosion Resistant', 'detail-feat2-desc': 'Long-lasting protection',
             
-            'export-main-title': 'Export Destinations', 'export-sub-title': 'High-quality steel products exported to over 15 countries worldwide.',
-            'export-side-sub': 'Exporting to', 'export-side-desc': 'Countries Worldwide',
-            'export-feat1-title': 'Extensive Export Network', 'export-feat1-desc': 'Active presence in international markets',
-            'export-feat2-title': 'Global Quality', 'export-feat2-desc': 'Compliant with international standards',
-            'export-feat3-title': 'Reliable Delivery', 'export-feat3-desc': 'Safe and on-time global shipping',
-            'btn-export-coop': 'Request Cooperation', 'btn-view-all-countries': 'View All Countries',
-            'stat-destinations': 'Export Destinations', 'stat-products': 'Steel Products', 'stat-tons': 'Thousand Tons Annually',
-            'stat-years': 'Years of Partnership', 'stat-satisfaction': 'Client Satisfaction',
-            
             'contact-title-light': 'LET\'S BUILD', 'contact-title-red': 'TOGETHER', 'contact-desc-hero': 'Our team is ready to answer your questions and provide the best solutions for your projects.',
             'contact-sub-title': 'CONTACT US',
             'contact-desc-text': 'Have a question or need a custom solution? Our team is here to help you make better decisions.',
             'contact-phone-lbl': 'Phone', 'contact-email-lbl': 'Email', 'contact-addr-lbl': 'Company Address',
+            
+            // آدرس جدید
             'contact-addr-val': 'Mashhad, Janbaz Blvd, Pazh Admin Center 2, Floor 3, Unit 313',
+            
             'contact-hours-lbl': 'Working Hours', 'contact-hours-val': 'Sat – Thu: 8:00 AM – 5:00 PM',
             'form-title': 'Send Us a Message', 'form-sub': "Fill out the form below and we'll get back to you as soon as possible.",
             'placeholder-name': 'Full Name', 'placeholder-email': 'Email Address', 'placeholder-company': 'Company Name',
@@ -689,69 +689,86 @@ document.addEventListener('DOMContentLoaded', () => {
             'dept3-title': 'Food Industry', 'dept3-desc': 'In the food industry department, we offer high-quality agricultural and food products to international markets by establishing a global network of reputable suppliers and producers. Rigorous supply chain management, quality control, and professional logistics guarantee safe delivery in compliance with global standards.',
             'dept3-bullet1': 'International supply and trade of food and agricultural products', 'dept3-bullet2': 'Quality control and compliance with global standards', 'dept3-bullet3': 'Professional logistics and supply chain management', 'dept3-bullet4': 'Guaranteed freshness, safety, and on-time delivery',
             'btn-learn-more': 'Learn More',
-            
-            'footer-address': 'Mashhad, Janbaz Blvd, Pazh Admin Center 2, Floor 3, Unit 313',
-            'footer-hours': 'Sat – Thu: 8:00 AM – 5:00 PM',
-            'footer-social-text': 'Follow us on social media',
-            'footer-copyright-text': 'All rights reserved to Mohajer Group.',
 
-            'country-af-name': 'Afghanistan', 'country-om-name': 'Oman', 'country-iq-name': 'Iraq', 'country-tr-name': 'Turkey', 
-            'country-ae-name': 'UAE', 'country-ru-name': 'Russia', 'country-in-name': 'India', 'country-lb-name': 'Lebanon', 
-            'country-pk-name': 'Pakistan', 'country-de-name': 'Germany',
+            'export-title': 'Global Export Destinations', 'export-sub': 'Delivering premium steel worldwide',
+            'export-panel-sub': 'Our Reach', 'export-panel-desc': 'Countries Worldwide',
+            'export-feat1-title': 'Reliable Logistics', 'export-feat1-desc': 'On-time global delivery',
+            'export-feat2-title': 'Premium Quality', 'export-feat2-desc': 'International standards',
+            'export-feat3-title': 'Trusted Partners', 'export-feat3-desc': 'Long-term cooperation',
+            'btn-export-coop': 'Start Cooperation',
+            'export-prod-steel': 'Steel Products', 'export-prod-petro': 'Petrochemicals', 'export-prod-food': 'Food Products',
+            'btn-view-all': 'View All Destinations',
             
-            'exp-rebar': 'Rebar', 'exp-beams': 'Beams', 'exp-galvanized': 'Galvanized Sheet', 'exp-plates': 'Steel Plates', 
-            'exp-pipes': 'Industrial Pipes', 'exp-angle': 'Angle & Channels', 'exp-billet': 'Steel Billets', 
-            'exp-sponge': 'Sponge Iron', 'exp-hotroll': 'Hot Rolled Coil'
+            'stat-exp': 'Years of Experience', 'stat-partners': 'Global Partners', 'stat-countries': 'Export Countries',
+            'stat-top-h': 'Top Exporter', 'stat-top-p': 'Khorasan Razavi',
+            
+            'country-af-name': 'Afghanistan',
+            'country-pk-name': 'Pakistan',
+            'country-tm-name': 'Turkmenistan',
+            'country-uz-name': 'Uzbekistan',
+            'country-tj-name': 'Tajikistan',
+            'country-kz-name': 'Kazakhstan',
+            'country-kg-name': 'Kyrgyzstan',
+            'country-tr-name': 'Turkey',
+            'country-lb-name': 'Lebanon',
+            'country-sy-name': 'Syria',
+            'country-iq-name': 'Iraq',
+            'country-ae-name': 'UAE',
+            'country-so-name': 'Somalia',
+            'country-de-name': 'Germany',
+            'country-ca-name': 'Canada',
+            'country-gb-name': 'England',
+            'country-au-name': 'Australia',
+            
+            'footer-social-title': 'Follow Us',
+            'footer-copyright-text': '2026 Mohajer International Trading Group. All Rights Reserved.'
         },
         fa: {
             dir: 'rtl',
-            'nav-home': 'خانه', 'nav-products': 'محصولات', 'nav-departments': 'خدمات', 'nav-about': 'درباره ما', 'nav-contact': 'تماس با ما',
-            'btn-quote': 'دریافت قیمت', 
-            'hero-subtitle-new': 'کیفیت، استحکام، اعتماد', 
-            'hero-title-new': '<span class="gold-text">فولاد مهاجر مبین</span>',
-            'hero-desc-new': 'زیر مجموعه گروه بین‌المللی بازرگانی مهاجر',
-            'btn-explore-new': 'بررسی محصولات', 
-            'btn-catalog': 'مشاهده کاتالوگ',
-            'feat-1-title-new': 'تولید پایدار', 'feat-1-desc-new': 'متعهد به تولید مسئولانه با حفظ محیط زیست و رعایت استانداردهای جهانی',
-            'feat-2-title-new': 'تحویل به موقع', 'feat-2-desc-new': 'لجستیک قوی و ارسال سریع و مطمئن به سراسر کشور',
-            'feat-3-title-new': 'استحکام بالا', 'feat-3-desc-new': 'محصولات با بالاترین مقاومت و دوام برای شرایط سخت',
-            'feat-4-title-new': 'کیفیت ممتاز', 'feat-4-desc-new': 'عرضه محصولات با کیفیت مطابق با استانداردهای بین‌المللی',
-            'prod-title': 'محصولات فولاد مست', 'prod-desc': 'انواع محصولات فولادی با کیفیت بالا',
-            'filter-cat': 'دسته بندی', 'filter-sort': 'مرتب‌سازی: جدیدترین',
-            'showing-txt-p1': 'نمایش ۱ تا ۸ از ۱۲ محصول', 'showing-txt-p2': 'نمایش ۹ تا ۱۲ از ۱۲ محصول', 'view-details': 'جزئیات',
-            'cta-title': 'می‌خواهید آنچه را که به دنبالش هستید پیدا کنید؟', 'cta-desc': 'با کارشناسان ما در ارتباط باشید تا راه‌حل‌های فولادی سفارشی متناسب با پروژه خود دریافت کنید.',
+            'nav-home': 'خانه', 'nav-products': 'محصولات', 'nav-departments': 'دپارتمان', 'nav-about': 'درباره ما', 'nav-contact': 'تماس با ما',
+            'btn-quote': 'دریافت قیمت', 'hero-subtitle': 'فولاد با کیفیت ممتاز', 
+            'hero-title-1': 'فولاد', 'hero-title-2': 'مهاجر مبین',
+            'hero-desc': 'زیر مجموعه گروه بین‌المللی بازرگانی مهاجر',
+            'btn-explore': 'بررسی محصولات', 'btn-catalog': 'دانلود کاتالوگ', 'trusted-title': 'مورد اعتماد رهبران صنعت',
+            'trusted-desc': 'ارائه خدمات برتر در سراسر جهان.',
+            'feat-1-title': 'کیفیت ممتاز', 'feat-1-desc': 'تست شده و تایید شده مطابق با استانداردهای بین‌المللی.',
+            'feat-2-title': 'استحکام بالا', 'feat-2-desc': 'ساخته شده برای عملکرد در سخت‌ترین شرایط محیطی.',
+            'feat-3-title': 'تحویل به موقع', 'feat-3-desc': 'لجستیک قابل اعتماد برای اطمینان از پیشرفت پروژه‌های شما.',
+            'feat-4-title': 'تولید پایدار', 'feat-4-desc': 'متعهد به تولید سازگار با محیط زیست و مسئولانه.',
+            
+            // تغییرات درخواستی بنر محصولات
+            'prod-sub': 'محصولات ما', 
+            'prod-title': 'محصولات فولادی ممتاز',
+            'prod-desc': 'محصولات فولادی با کیفیت بالا، مهندسی شده برای استحکام، دوام و کارایی در هر پروژه.',
+            
+            'showing-txt-p1': 'نمایش ۱ تا ۸ از ۱۲ محصول', 'showing-txt-p2': 'نمایش ۹ تا ۱۲ از ۱۲ محصول', 'view-details': 'مشاهده جزئیات',
+            'cta-title': 'نمی‌توانید آنچه را که به دنبالش هستید پیدا کنید؟', 'cta-desc': 'با کارشناسان ما برای راه‌حل‌های فولادی سفارشی متناسب با پروژه خود تماس بگیرید.',
             'btn-custom-quote': 'درخواست قیمت سفارشی',
-            'prod-pipes-title': 'لوله', 'prod-pipes-desc': 'لوله‌های درزدار و بدون درز در انواع سایز و کاربرد',
-            'prod-beams-title': 'تیرآهن', 'prod-beams-desc': 'تیرآهن‌های فولادی با مقاومت بالا برای بند و ستون',
-            'prod-rebar-title': 'میلگرد', 'prod-rebar-desc': 'میلگردهای مقاوم سازی بتن در پروژه‌های عمرانی',
-            'prod-tubes-title': 'پروفیل', 'prod-tubes-desc': 'پروفیل‌های متنوع جهت کاربردهای مختلف صنعتی',
-            'prod-plates-title': 'ورق فولادی', 'prod-plates-desc': 'ورق‌های فولادی با کیفیت بالا مناسب مصارف صنعتی',
-            'prod-angle-title': 'نبشی', 'prod-angle-desc': 'پروفیل‌های نبشی پرکاربرد در صنایع ساختمانی',
-            'prod-flat-title': 'تسمه', 'prod-flat-desc': 'تسمه‌های فولادی مستحکم مناسب قطعه‌سازی',
-            'prod-round-title': 'شمش', 'prod-round-desc': 'شمش‌های فولادی مرغوب برای مصارف نیرو و فولادسازی',
-            'prod-channel-title': 'ناودانی (U-Channel)', 'prod-channel-desc': 'ناودانی‌های ساختمانی با استحکامی و مقاومت بالا',
-            'prod-slab-title': 'اسلب فولادی', 'prod-slab-desc': 'اسلب‌های فولادی با کیفیت بالا مناسب مصارف نورد',
-            'prod-coil-title': 'کلاف', 'prod-coil-desc': 'کلاف‌های ورق پوشش‌دار با مقاومت بالا در برابر زنگ‌زدگی',
-            'prod-wire-title': 'مفتول فولادی', 'prod-wire-desc': 'مفتول‌های فولادی با کشش بالا جهت آرماتوربندی',
+            'prod-pipes-title': 'لوله', 'prod-pipes-desc': 'لوله‌های بادوام جهت انتقال مایعات و گازها.',
+            'prod-beams-title': 'تیرآهن', 'prod-beams-desc': 'تیرآهن‌های فولادی با مقاومت بالا برای سازه.',
+            'prod-rebar-title': 'میلگرد', 'prod-rebar-desc': 'میلگردهای مقاوم سازی بتن در پروژه‌های عمرانی.',
+            'prod-tubes-title': 'پروفیل', 'prod-tubes-desc': 'پروفیل‌های صنعتی چهارگوش با مهندسی ابعادی دقیق.',
+            'prod-plates-title': 'ورق فولادی', 'prod-plates-desc': 'ورق‌های فولادی با کیفیت بالا مناسب مصارف صنعتی.',
+            'prod-angle-title': 'نبشی', 'prod-angle-desc': 'پروفیل‌های نبشی پرکاربرد در صنایع ساختمانی.',
+            'prod-flat-title': 'تسمه', 'prod-flat-desc': 'تسمه‌های فولادی مستحکم مناسب قطعه‌سازی.',
+            'prod-round-title': 'شمش', 'prod-round-desc': 'شمش‌های فولادی مرغوب برای مصارف نورد و فولادسازی.',
+            'prod-channel-title': 'ناودانی (U-Channel)', 'prod-channel-desc': 'ناودانی‌های ساختمانی با مقاومت بالا.',
+            'prod-slab-title': 'اسلب فولادی', 'prod-slab-desc': 'اسلب‌های فولادی با کیفیت بالا مناسب مصارف نورد.',
+            'prod-coil-title': 'کلاف', 'prod-coil-desc': 'کلاف‌های ورق پوشش‌دار با مقاومت بالا در برابر زنگ‌زدگی.',
+            'prod-wire-title': 'مفتول فولادی', 'prod-wire-desc': 'مفتول‌های فولادی با کشش بالا جهت آرماتوربندی.',
             'btn-download-datasheet': 'دانلود دیتاشیت',
             'btn-prev-prod': 'محصول قبلی', 'btn-next-prod': 'محصول بعدی',
             'detail-feat1-title': 'استحکام بالا', 'detail-feat1-desc': 'ساخته شده برای دوام بالا',
             'detail-feat2-title': 'مقاوم به خوردگی', 'detail-feat2-desc': 'حفاظت طولانی‌مدت',
 
-            'export-main-title': 'کشورهای مقصد صادرات', 'export-sub-title': 'محصولات فولادی با کیفیت ما به بیش از ۱۵ کشور در سراسر جهان صادر می‌شود.',
-            'export-side-sub': 'صادرات به', 'export-side-desc': 'کشور جهان',
-            'export-feat1-title': 'شبکه صادرات گسترده', 'export-feat1-desc': 'حضور فعال در بازارهای بین‌المللی',
-            'export-feat2-title': 'کیفیت جهانی', 'export-feat2-desc': 'مطابق با استانداردهای بین‌المللی',
-            'export-feat3-title': 'تحویل مطمئن', 'export-feat3-desc': 'ارسال امن و به‌موقع به سراسر جهان',
-            'btn-export-coop': 'درخواست همکاری', 'btn-view-all-countries': 'مشاهده همه کشورها',
-            'stat-destinations': 'کشور مقصد', 'stat-products': 'محصول فولادی', 'stat-tons': 'هزار تن صادرات سالانه',
-            'stat-years': 'سال همکاری پایدار', 'stat-satisfaction': 'رضایت مشتریان',
-
             'contact-title-light': 'آینده را با هم', 'contact-title-red': 'می‌سازیم', 'contact-desc-hero': 'تیم ما آماده پاسخگویی به سوالات شما و ارائه بهترین راهکارها برای پروژه‌های شماست.',
             'contact-sub-title': 'تماس با ما',
             'contact-desc-text': 'سوالی دارید یا به یک راه حل سفارشی نیاز دارید؟ تیم ما اینجاست تا به شما در تصمیم بهتر کمک کند.',
             'contact-phone-lbl': 'تلفن همراه', 'contact-email-lbl': 'پست الکترونیکی', 'contact-addr-lbl': 'آدرس شرکت',
-            'contact-addr-val': 'مشهد، بلوار جانباز، پاژ اداری 2 طبقه 3 پلاک 313',
+            
+            // آدرس جدید
+            'contact-addr-val': 'مشهد، بلوار جانباز، پاژ اداری ۲، طبقه3 ، پلاک ۳۱۳',
+            
             'contact-hours-lbl': 'ساعات کاری', 'contact-hours-val': 'شنبه تا پنجشنبه: ۸:۰۰ صبح تا ۵:۰۰ عصر',
             'form-title': 'ارسال پیام به ما', 'form-sub': 'فرم زیر را پر کنید؛ ما در کوتاه‌ترین زمان ممکن با شما تماس خواهیم گرفت.',
             'placeholder-name': 'نام و نام خانوادگی', 'placeholder-email': 'آدرس ایمیل', 'placeholder-company': 'نام شرکت',
@@ -785,35 +802,57 @@ document.addEventListener('DOMContentLoaded', () => {
             'dept3-bullet1': 'تأمین و تجارت بین‌المللی محصولات غذایی و کشاورزی', 'dept3-bullet2': 'کنترل کیفیت و انطباق با استانداردهای جهانی', 'dept3-bullet3': 'مدیریت حرفه‌ای لجستیک و زنجیره تأمین', 'dept3-bullet4': 'تضمین تازگی، ایمنی و تحویل به‌موقع',
             'btn-learn-more': 'بیشتر بدانید',
 
-            'footer-address': 'مشهد، بلوار جانباز، بلوار اداری ۲، طبقه ۲، پلاک ۳۱۳',
-            'footer-hours': 'شنبه تا پنجشنبه: ۸:۰۰ صبح تا ۵:۰۰ عصر',
-            'footer-social-text': 'ما را در شبکه‌های اجتماعی دنبال کنید',
-            'footer-copyright-text': 'تمامی حقوق این وب‌سایت متعلق به گروه مهاجر می‌باشد.',
-
-            'country-af-name': 'افغانستان', 'country-om-name': 'عمان', 'country-iq-name': 'عراق', 'country-tr-name': 'ترکیه', 
-            'country-ae-name': 'امارات متحده عربی', 'country-ru-name': 'روسیه', 'country-in-name': 'هند', 'country-lb-name': 'لبنان', 
-            'country-pk-name': 'پاکستان', 'country-de-name': 'آلمان',
+            'export-title': 'مقاصد صادراتی ما', 'export-sub': 'ارسال فولاد ممتاز به سراسر جهان',
+            'export-panel-sub': 'گستره فعالیت ما', 'export-panel-desc': 'کشور در سراسر جهان',
+            'export-feat1-title': 'لجستیک مطمئن', 'export-feat1-desc': 'تحویل به‌موقع جهانی',
+            'export-feat2-title': 'کیفیت ممتاز', 'export-feat2-desc': 'استانداردهای بین‌المللی',
+            'export-feat3-title': 'شرکای معتمد', 'export-feat3-desc': 'همکاری‌های بلندمدت',
+            'btn-export-coop': 'شروع همکاری',
+            'export-prod-steel': 'محصولات فولادی', 'export-prod-petro': 'محصولات پتروشیمی', 'export-prod-food': 'محصولات غذایی',
+            'btn-view-all': 'مشاهده تمام مقاصد',
             
-            'exp-rebar': 'میلگرد', 'exp-beams': 'تیرآهن', 'exp-galvanized': 'ورق گالوانیزه', 'exp-plates': 'ورق فولادی', 
-            'exp-pipes': 'لوله صنعتی', 'exp-angle': 'نبشی و ناودانی', 'exp-billet': 'شمش فولادی', 
-            'exp-sponge': 'آهن اسفنجی', 'exp-hotroll': 'ورق گرم'
+            'stat-exp': 'سال تجربه موفق', 'stat-partners': 'شریک تجاری بین‌المللی', 'stat-countries': 'کشور مقصد صادرات',
+            'stat-top-h': 'صادرکننده برتر', 'stat-top-p': 'استان خراسان رضوی',
+            
+            'country-af-name': 'افغانستان',
+            'country-pk-name': 'پاکستان',
+            'country-tm-name': 'ترکمنستان',
+            'country-uz-name': 'ازبکستان',
+            'country-tj-name': 'تاجیکستان',
+            'country-kz-name': 'قزاقستان',
+            'country-kg-name': 'قرقیزستان',
+            'country-tr-name': 'ترکیه',
+            'country-lb-name': 'لبنان',
+            'country-sy-name': 'سوریه',
+            'country-iq-name': 'عراق',
+            'country-ae-name': 'امارات',
+            'country-so-name': 'سومالی',
+            'country-de-name': 'آلمان',
+            'country-ca-name': 'کانادا',
+            'country-gb-name': 'انگلستان',
+            'country-au-name': 'استرالیا',
+            
+            'footer-social-title': 'ما را دنبال کنید',
+            'footer-copyright-text': '۲۰۲۶ گروه بین‌المللی بازرگانی مهاجر. تمامی حقوق محفوظ است.'
         },
         ar: {
             dir: 'rtl',
-            'nav-home': 'الرئيسية', 'nav-products': 'المنتجات', 'nav-departments': 'الخدمات', 'nav-about': 'من نحن', 'nav-contact': 'اتصل بنا',
-            'btn-quote': 'احصل على سعر', 
-            'hero-subtitle-new': 'جودة، قوة، ثقة', 
-            'hero-title-new': '<span class="gold-text">فولاذ مهاجر مبين</span>',
-            'hero-desc-new': 'شركة تابعة لمجموعة مهاجر التجارية الدولية',
-            'btn-explore-new': 'عرض المنتجات', 
-            'btn-catalog': 'عرض الكتالوج',
-            'feat-1-title-new': 'إنتاج مستدام', 'feat-1-desc-new': 'ملتزمون بالإنتاج المسؤول والحفاظ على البيئة والمعايير العالمية.',
-            'feat-2-title-new': 'التسليم في الوقت المحدد', 'feat-2-desc-new': 'خدمات لوجستية قوية وشحن سريع وآمن إلى جميع أنحاء البلاد.',
-            'feat-3-title-new': 'قوة عالية', 'feat-3-desc-new': 'منتجات بأعلى درجات المقاومة والمتانة للظروف الصعبة.',
-            'feat-4-title-new': 'جودة ممتازة', 'feat-4-desc-new': 'تقديم منتجات بجودة تتطابق مع المعايير الدولية.',
-            'prod-title': 'منتجات فولاذ مست', 'prod-desc': 'مجموعة متنوعة من المنتجات الفولاذية عالية الجودة',
-            'filter-cat': 'الفئة', 'filter-sort': 'ترتيب حسب: الأحدث',
-            'showing-txt-p1': 'عرض ١ - ٨ من أصل ١٢ منتجاً', 'showing-txt-p2': 'عرض ٩ - ١٢ من أصل ١٢ منتجاً', 'view-details': 'التفاصيل',
+            'nav-home': 'الرئيسية', 'nav-products': 'المنتجات', 'nav-departments': 'قسم', 'nav-about': 'من نحن', 'nav-contact': 'اتصل بنا',
+            'btn-quote': 'احصل على سعر', 'hero-subtitle': 'فولاذ عالي الجودة', 
+            'hero-title-1': 'فولاذ', 'hero-title-2': 'مهاجر مبین',
+            'hero-desc': 'شركة تابعة لمجموعة مهاجر التجارية الدولية',
+            'btn-explore': 'استكشف المنتجات', 'btn-catalog': 'تنزيل الكتالوج', 'trusted-title': 'محل ثقة رواد الصناعة', 'trusted-desc': 'تقديم التميز في جميع أنحاء العالم.',
+            'feat-1-title': 'جودة ممتازة', 'feat-1-desc': 'مُختبر ومعتمد وفقاً للمعايير الدولية.',
+            'feat-2-title': 'قوة عالية', 'feat-2-desc': 'مصمم للأداء الممتاز في أصعب الظروف.',
+            'feat-3-title': 'التسليم في الوقت المحدد', 'feat-3-desc': 'خدمات لوجستية موثوقة لضمان بقاء مشاريعك في المسار الصحيح.',
+            'feat-4-title': 'إنتاج مستدام', 'feat-4-desc': 'ملتزمون بالإنتاج المسؤول والصديق للبيئة.',
+            
+            // تغييرات لافتة المنتجات
+            'prod-sub': 'منتجاتنا', 
+            'prod-title': 'منتجات الفولاذ المتميزة',
+            'prod-desc': 'منتجات فولاذية عالية الجودة مصممة للقوة والمتانة والأداء في كل مشروع.',
+            
+            'showing-txt-p1': 'عرض ١ - ٨ من أصل ١٢ منتجاً', 'showing-txt-p2': 'عرض ٩ - ١٢ من أصل ١٢ منتجاً', 'view-details': 'عرض التفاصيل',
             'cta-title': 'ألا تجد ما تبحث عنه؟', 'cta-desc': 'اتصل بخبرائنا للحصول على حلول فولاذية مخصصة لمشروعك.',
             'btn-custom-quote': 'طلب عرض سعر مخصص',
             'prod-pipes-title': 'أنابيب الصلب', 'prod-pipes-desc': 'أنابيب صلب متينة لنقل السوائل والغازات بشكل آمن.',
@@ -833,21 +872,15 @@ document.addEventListener('DOMContentLoaded', () => {
             'detail-feat1-title': 'قوة عالية', 'detail-feat1-desc': 'مصمم للمتانة الفائقة',
             'detail-feat2-title': 'مقاوم للتآكل', 'detail-feat2-desc': 'حماية طويلة الأمد في البيئات الصعبة',
 
-            'export-main-title': 'وجهات التصدير', 'export-sub-title': 'يتم تصدير منتجاتنا الفولاذية عالية الجودة إلى أكثر من 15 دولة حول العالم.',
-            'export-side-sub': 'التصدير إلى', 'export-side-desc': 'دولة حول العالم',
-            'export-feat1-title': 'شبكة تصدير واسعة', 'export-feat1-desc': 'حضور فعال في الأسواق الدولية',
-            'export-feat2-title': 'جودة عالمية', 'export-feat2-desc': 'مطابق للمعايير الدولية',
-            'export-feat3-title': 'تسليم موثوق', 'export-feat3-desc': 'شحن آمن وفي الوقت المحدد',
-            'btn-export-coop': 'طلب تعاون', 'btn-view-all-countries': 'عرض جميع الدول',
-            'stat-destinations': 'وجهة تصدير', 'stat-products': 'منتج فولاذي', 'stat-tons': 'ألف طن صادرات سنوية',
-            'stat-years': 'سنوات من الشراكة', 'stat-satisfaction': 'رضا العملاء',
-
             'contact-title-light': 'لنبنِ المستقبل', 'contact-title-red': 'معاً', 'contact-desc-hero': 'فريقنا مستعد للإجابة على أسئلتك وتقديم أفضل الحلول لمشاريعك.',
             'contact-sub-title': 'اتصل بنا',
             'contact-desc-text': 'هل لديك سؤال أو تحتاج إلى حل مخصص؟ فريقنا هنا لمساعدتك في اتخاذ قرارات أفضل.',
             'contact-phone-lbl': 'الهاتف', 'contact-email-lbl': 'البريد الإلكتروني', 'contact-addr-lbl': 'عنوان الشركة',
-            'contact-addr-val': 'مشهد، شارع جانباز، مجمع باج الإداري 2، الطابق 3، وحدة 313',
-            'contact-hours-lbl': 'ساعات العمل', 'contact-hours-val': 'السبت – الخميس: 8:00 صباحاً – 5:00 مساءً',
+            
+            // العنوان الجديد
+            'contact-addr-val': 'مشهد، بلوار جانباز، باج الإداري 2، الطابق 3، رقم 313',
+            
+            'contact-hours-lbl': 'ساعات العمل', 'contact-hours-val': 'السبت – الخميس: ٨:٠٠ صباحاً – ٥:٠٠ مساءً',
             'form-title': 'أرسل لنا رسالة', 'form-sub': 'يرجى ملء النموذج أدناه وسنقوم بالرد عليك في أقرب وقت ممكن.',
             'placeholder-name': 'الاسم الكامل', 'placeholder-email': 'البريد الإلكتروني', 'placeholder-company': 'اسم الشركة',
             'placeholder-subject': 'الموضوع', 'placeholder-msg': 'رسالتك', 'btn-send': 'إرسال الرسالة',
@@ -880,36 +913,59 @@ document.addEventListener('DOMContentLoaded', () => {
             'dept3-bullet1': 'التوريد والتجارة الدولية للمنتجات الغذائية والزراعية', 'dept3-bullet2': 'مراقبة الجودة والامتثال للمعايير العالمية', 'dept3-bullet3': 'الإدارة المهنية للوجستيات وسلسلة التوريد', 'dept3-bullet4': 'ضمان الطزاجة والسلامة والتسليم في الوقت المحدد',
             'btn-learn-more': 'تعرف على المزيد',
 
-            'footer-address': 'مشهد، شارع جانباز، مجمع باج الإداري 2، الطابق 3، وحدة 313',
-            'footer-hours': 'السبت – الخميس: 8:00 صباحاً – 5:00 مساءً',
-            'footer-social-text': 'تابعنا على وسائل التواصل الاجتماعي',
-            'footer-copyright-text': 'جميع الحقوق محفوظة لمجموعة مهاجر.',
-
-            'country-af-name': 'أفغانستان', 'country-om-name': 'عمان', 'country-iq-name': 'العراق', 'country-tr-name': 'تركيا', 
-            'country-ae-name': 'الإمارات', 'country-ru-name': 'روسيا', 'country-in-name': 'الهند', 'country-lb-name': 'لبنان', 
-            'country-pk-name': 'باكستان', 'country-de-name': 'ألمانيا',
+            'export-title': 'وجهات التصدير العالمية', 'export-sub': 'توصيل الفولاذ الممتاز إلى جميع أنحاء العالم',
+            'export-panel-sub': 'نطاق وصولنا', 'export-panel-desc': 'دولة حول العالم',
+            'export-feat1-title': 'لوجستيات موثوقة', 'export-feat1-desc': 'تسليم عالمي في الوقت المحدد',
+            'export-feat2-title': 'جودة ممتازة', 'export-feat2-desc': 'معايير دولية',
+            'export-feat3-title': 'شركاء موثوقون', 'export-feat3-desc': 'تعاون طويل الأمد',
+            'btn-export-coop': 'ابدأ التعاون',
+            'export-prod-steel': 'منتجات الصلب', 'export-prod-petro': 'البتروكيماويات', 'export-prod-food': 'المنتجات الغذائية',
+            'btn-view-all': 'عرض جميع الوجهات',
             
-            'exp-rebar': 'حديد التسليح', 'exp-beams': 'كمرات حديد', 'exp-galvanized': 'لفائف مجلفنة', 'exp-plates': 'صفائح الصلب', 
-            'exp-pipes': 'أنابيب صناعية', 'exp-angle': 'زوايا وقنوات', 'exp-billet': 'عروق الصلب', 
-            'exp-sponge': 'الحديد الإسفنجي', 'exp-hotroll': 'لفائف ساخنة'
+            'stat-exp': 'سنوات من الخبرة', 'stat-partners': 'شركاء دوليون', 'stat-countries': 'دول التصدير',
+            'stat-top-h': 'أفضل مصدر', 'stat-top-p': 'محافظة خراسان رضوي',
+            
+            'country-af-name': 'أفغانستان',
+            'country-pk-name': 'باكستان',
+            'country-tm-name': 'تركمانستان',
+            'country-uz-name': 'أوزبكستان',
+            'country-tj-name': 'طاجيكستان',
+            'country-kz-name': 'كازاخستان',
+            'country-kg-name': 'قيرغيزستان',
+            'country-tr-name': 'تركيا',
+            'country-lb-name': 'لبنان',
+            'country-sy-name': 'سوريا',
+            'country-iq-name': 'العراق',
+            'country-ae-name': 'الإمارات',
+            'country-so-name': 'الصومال',
+            'country-de-name': 'ألمانيا',
+            'country-ca-name': 'كندا',
+            'country-gb-name': 'إنجلترا',
+            'country-au-name': 'أستراليا',
+            
+            'footer-social-title': 'تابعنا',
+            'footer-copyright-text': '٢٠٢٦ مجموعة مهاجر التجارية الدولية. جميع الحقوق محفوظة.'
         },
         ru: {
             dir: 'ltr',
-            'nav-home': 'Главная', 'nav-products': 'Продукция', 'nav-departments': 'Услуги', 'nav-about': 'О нас', 'nav-contact': 'Контакты',
-            'btn-quote': 'Запросить расчет', 
-            'hero-subtitle-new': 'Качество, Прочность, Доверие', 
-            'hero-title-new': '<span class="gold-text">ФОЛАД МОХАДЖЕР МОБИН</span>',
-            'hero-desc-new': 'Дочерняя компания Mohajer International Trading Group',
-            'btn-explore-new': 'Посмотреть продукты', 
-            'btn-catalog': 'Скачать каталог',
-            'feat-1-title-new': 'Устойчивое производство', 'feat-1-desc-new': 'Стремление к ответственному производству, защите окружающей среды и мировым стандартам.',
-            'feat-2-title-new': 'Своевременная доставка', 'feat-2-desc-new': 'Надежная логистика и быстрая, надежная доставка по всей стране.',
-            'feat-3-title-new': 'Высокая прочность', 'feat-3-desc-new': 'Продукция с высочайшей прочностью и долговечностью для сложных условий.',
-            'feat-4-title-new': 'Премиум качество', 'feat-4-desc-new': 'Предложение продукции с качеством, соответствующим международным стандартам.',
-            'prod-title': 'Продукция Фолад Маст', 'prod-desc': 'Широкий ассортимент высококачественной стальной продукции',
-            'filter-cat': 'Категория', 'filter-sort': 'Сортировка: Сначала новые',
+            'nav-home': 'Главная', 'nav-products': 'Продукция', 'nav-departments': 'Отдел', 'nav-about': 'О нас', 'nav-contact': 'Контакты',
+            'btn-quote': 'Запросить расчет', 'hero-subtitle': 'СТАЛЬ ПРЕМИАЛЬНОГО КАЧЕСТВА', 
+            'hero-title-1': 'MOHAJER MOBIN', 'hero-title-2': 'STEEL',
+            'hero-desc': 'Дочерняя компания международного торговой группы Mohajer',
+            'btn-explore': 'Каталог продукции', 'btn-catalog': 'Скачать каталог', 'trusted-title': 'Нам доверяют лидеры отрасли',
+            'trusted-desc': 'Превосходное качество по всему миру.',
+            'feat-1-title': 'Премиум качество', 'feat-1-desc': 'Проверено и сертифицировано по международным стандартам.',
+            'feat-2-title': 'Высокая прочность', 'feat-2-desc': 'Создано для работы в самых суровых условиях.',
+            'feat-3-title': 'Точно в срок', 'feat-3-desc': 'Надежная логистика для бесперебойной работы ваших проектов.',
+            'feat-4-title': 'Экологичность', 'feat-4-desc': 'Стремление к экологически безопасному и ответственному производству.',
+            
+            // Обновление текста баннера
+            'prod-sub': 'НАША ПРОДУКЦИЯ', 
+            'prod-title': 'Стальная продукция премиум-класса',
+            'prod-desc': 'Высококачественная сталь, разработанная для прочности, долговечности и надежности в каждом проекте.',
+            
             'showing-txt-p1': 'Показано 1-8 из 12 товаров', 'showing-txt-p2': 'Показано 9-12 из 12 товаров', 'view-details': 'Подробнее',
-            'cta-title': 'Ищете что-то конкретное?', 'cta-desc': 'Свяжитесь с нашими экспертами для получения индивидуальных решений под ваш проект.',
+            'cta-title': 'Не нашли то, что искали?', 'cta-desc': 'Свяжитесь с нашими экспертами для разработки индивидуальных решений под ваш проект.',
             'btn-custom-quote': 'Запрос коммерческого предложения',
             'prod-pipes-title': 'Стальные трубы', 'prod-pipes-desc': 'Надежные стальные трубы для транспортировки жидкостей и газов.',
             'prod-beams-title': 'Двутавры H-образные', 'prod-beams-desc': 'Высокопрочные двутавровые балки для несущих конструкций.',
@@ -928,21 +984,15 @@ document.addEventListener('DOMContentLoaded', () => {
             'detail-feat1-title': 'Высокая прочность', 'detail-feat1-desc': 'Создано на века',
             'detail-feat2-title': 'Устойчивость к коррозии', 'detail-feat2-desc': 'Долговечная защита',
 
-            'export-main-title': 'Направления экспорта', 'export-sub-title': 'Высококачественная стальная продукция экспортируется в более чем 15 стран мира.',
-            'export-side-sub': 'Экспорт в', 'export-side-desc': 'Стран мира',
-            'export-feat1-title': 'Обширная сеть экспорта', 'export-feat1-desc': 'Активное присутствие на международных рынках',
-            'export-feat2-title': 'Глобальное качество', 'export-feat2-desc': 'Соответствие международным стандартам',
-            'export-feat3-title': 'Надежная доставка', 'export-feat3-desc': 'Безопасная и своевременная доставка',
-            'btn-export-coop': 'Запросить сотрудничество', 'btn-view-all-countries': 'Посмотреть все страны',
-            'stat-destinations': 'Направлений экспорта', 'stat-products': 'Стальных изделий', 'stat-tons': 'Тысяч тонн ежегодно',
-            'stat-years': 'Лет партнерства', 'stat-satisfaction': 'Удовлетворенность клиентов',
-
             'contact-title-light': 'СТРОИМ БУДУЩЕЕ', 'contact-title-red': 'ВМЕСТЕ', 'contact-desc-hero': 'Наша команда готова ответить на ваши вопросы и предоставить лучшие решения для ваших проектов.',
             'contact-sub-title': 'СВЯЗАТЬСЯ С НАМИ',
             'contact-desc-text': 'Есть вопросы или необходимо индивидуальное решение? Наша команда готова помочь вам принять лучшее решение.',
             'contact-phone-lbl': 'Телефон', 'contact-email-lbl': 'Эл. почта', 'contact-addr-lbl': 'Адрес компании',
-            'contact-addr-val': 'Иран, Мешхед, бульвар Джанбаз, Паж 2, этаж 3, офис 313',
-            'contact-hours-lbl': 'Часы работы', 'contact-hours-val': 'Сб – Чт: 8:00 – 17:00',
+            
+            // Новый адрес
+            'contact-addr-val': 'Иран, Мешхед, бульвар Джанбаз, административное здание Паж 2, этаж 3, офис 313',
+            
+            'contact-hours-lbl': 'Часы работы', 'contact-hours-val': 'Сб – Чт: с 8:00 до 17:00',
             'form-title': 'Отправить сообщение', 'form-sub': 'Заполните форму ниже, и мы свяжемся с вами в ближайшее время.',
             'placeholder-name': 'ФИО', 'placeholder-email': 'Адрес эл. почты', 'placeholder-company': 'Название компании',
             'placeholder-subject': 'Тема сообщения', 'placeholder-msg': 'Ваше сообщение', 'btn-send': 'Отправить',
@@ -972,78 +1022,43 @@ document.addEventListener('DOMContentLoaded', () => {
             'dept2-title': 'Металлургия', 'dept2-desc': 'Сталелитейная промышленность является основой нашей деятельности. Специализируясь на поставке и дистрибуции различной стальной продукции, от заготовок и слябов до балок и листов, мы предоставляем надежные решения для промышленных и строительных проектов в глобальном масштабе.',
             'dept2-bullet1': 'Поставка стальной продукции премиум-качества', 'dept2-bullet2': 'Широкая международная сеть поставок и дистрибуции', 'dept2-bullet3': 'Конкурентоспособные цены и своевременная доставка', 'dept2-bullet4': 'Поддержка промышленных и строительных проектов любого масштаба',
             'dept3-title': 'Пищевая промышленность', 'dept3-desc': 'В отделе пищевой промышленности мы предлагаем высококачественные сельскохозяйственные и пищевые продукты на международных рынках путем создания глобальной сети надежных поставщиков и производителей. Строгое управление цепочкой поставок, контроль качества и профессиональная логистика гарантируют безопасную доставку в соответствии с мировыми стандартами.',
-            'dept3-bullet1': 'Международные поставки и торговля пищевой и сельскохозяйственной продукцией', 'dept3-bullet2': 'Контроль качества и соответствие международным стандартам', 'dept3-bullet3': 'Профессиональное управление логистикой и цепочкой поставок', 'dept3-bullet4': 'Гарантия свежести, безопасности и своевременной доставки',
+            'dept3-bullet1': 'Международные поставки и торговля пищевой и сельскохозяйственной продукцией', 'dept3-bullet2': 'Конترل качества и соответствие международным стандартам', 'dept3-bullet3': 'Профессиональное управление логистикой и цепочкой поставок', 'dept3-bullet4': 'Гарантия свежести, безопасности и своевременной доставки',
             'btn-learn-more': 'Подробнее',
 
-            'footer-address': 'Иран, Мешхед, бульвар Джанбаз, Паж 2, этаж 3, офис 313',
-            'footer-hours': 'Сб – Чт: 8:00 – 17:00',
-            'footer-social-text': 'Следите за нами в соцсетях',
-            'footer-copyright-text': 'Все права защищены Mohajer Group.',
-
-            'country-af-name': 'Афганистан', 'country-om-name': 'Оман', 'country-iq-name': 'Ирак', 'country-tr-name': 'Турция', 
-            'country-ae-name': 'ОАЭ', 'country-ru-name': 'Россия', 'country-in-name': 'Индия', 'country-lb-name': 'Ливан', 
-            'country-pk-name': 'Пакистан', 'country-de-name': 'Германия',
+            'export-title': 'Глобальные направления экспорта', 'export-sub': 'Поставка стали премиум-класса по всему миру',
+            'export-panel-sub': 'Наш охват', 'export-panel-desc': 'Стран по всему миру',
+            'export-feat1-title': 'Надежная логистика', 'export-feat1-desc': 'Своевременная доставка',
+            'export-feat2-title': 'Премиум качество', 'export-feat2-desc': 'Международные стандарты',
+            'export-feat3-title': 'Надежные партнеры', 'export-feat3-desc': 'Долгосрочное сотрудничество',
+            'btn-export-coop': 'Начать сотрудничество',
+            'export-prod-steel': 'Стальная продукция', 'export-prod-petro': 'Нефтехимия', 'export-prod-food': 'Продукты питания',
+            'btn-view-all': 'Посмотреть все направления',
             
-            'exp-rebar': 'Арматура', 'exp-beams': 'Балки', 'exp-galvanized': 'Оцинкованный лист', 'exp-plates': 'Стальные листы', 
-            'exp-pipes': 'Промышленные трубы', 'exp-angle': 'Уголки и швеллеры', 'exp-billet': 'Стальные заготовки', 
-            'exp-sponge': 'Губчатое железо', 'exp-hotroll': 'Горячекатаный рулон'
+            'stat-exp': 'Лет опыта', 'stat-partners': 'Международных партнеров', 'stat-countries': 'Стран экспорта',
+            'stat-top-h': 'Лучший экспортер', 'stat-top-p': 'Хорасан-Резави',
+            
+            'country-af-name': 'Афганистан',
+            'country-pk-name': 'Пакистан',
+            'country-tm-name': 'Туркменистан',
+            'country-uz-name': 'Узбекистан',
+            'country-tj-name': 'Таджикистан',
+            'country-kz-name': 'Казахстан',
+            'country-kg-name': 'Кыргызстан',
+            'country-tr-name': 'Турция',
+            'country-lb-name': 'Ливан',
+            'country-sy-name': 'Сирия',
+            'country-iq-name': 'Ирак',
+            'country-ae-name': 'ОАЭ',
+            'country-so-name': 'Сомали',
+            'country-de-name': 'Германия',
+            'country-ca-name': 'Канада',
+            'country-gb-name': 'Англия',
+            'country-au-name': 'Австралия',
+            
+            'footer-social-title': 'Подписывайтесь на нас',
+            'footer-copyright-text': '2026 Mohajer International Trading Group. Все права защищены.'
         }
     };
-
-    // ==========================================================================
-    // داده‌های جدید کشورهای مقصد صادرات (مطابق عکس)
-    // ==========================================================================
-    const countryData = {
-        af: { flag: "https://flagcdn.com/w40/af.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897739/%D8%A7%D9%81%D8%BA%D8%A7%D9%86%D8%B3%D8%AA%D8%A7%D9%86_vttwtr.webp", exports: ["rebar", "beams", "galvanized"] },
-        om: { flag: "https://flagcdn.com/w40/om.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897736/%D8%A7%D9%85%D8%A7%D8%B1%D8%A7%D8%AA_t9pgsu.webp", exports: ["rebar", "plates", "pipes"] },
-        iq: { flag: "https://flagcdn.com/w40/iq.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897741/%D8%B9%D8%B1%D8%A7%D9%82_una0pi.webp", exports: ["rebar", "beams", "angle"] },
-        tr: { flag: "https://flagcdn.com/w40/tr.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897740/%D8%AA%D8%B1%DA%A9%DB%8C%D9%87_crbvfu.webp", exports: ["rebar", "beams", "billet"] },
-        ae: { flag: "https://flagcdn.com/w40/ae.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897736/%D8%A7%D9%85%D8%A7%D8%B1%D8%A7%D8%AA_t9pgsu.webp", exports: ["rebar", "sponge", "plates"] },
-        ru: { flag: "https://flagcdn.com/w40/ru.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897743/%D8%AA%D8%A7%D8%AC%DB%8C%DA%A9%D8%B3%D8%AA%D8%A7%D9%86_tpqzyd.webp", exports: ["plates", "rebar", "beams"] },
-        in: { flag: "https://flagcdn.com/w40/in.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897737/%D9%BE%D8%A7%DA%A9%D8%B3%D8%AA%D8%A7%D9%86_okldrx.webp", exports: ["rebar", "billet", "hotroll"] },
-        lb: { flag: "https://flagcdn.com/w40/lb.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897736/%D9%84%D8%A8%D9%86%D8%A7%D9%86_x6msja.webp", exports: ["rebar", "plates", "pipes"] },
-        pk: { flag: "https://flagcdn.com/w40/pk.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897737/%D9%BE%D8%A7%DA%A9%D8%B3%D8%AA%D8%A7%D9%86_okldrx.webp", exports: ["rebar", "beams", "angle"] },
-        de: { flag: "https://flagcdn.com/w40/de.png", img: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto/v1782897735/%D8%A7%D9%84%D9%85%D8%A7%D9%86_a78sxj.webp", exports: ["plates", "rebar", "billet"] }
-    };
-
-    function renderExportCards() {
-        const grid = document.getElementById('exportCardsGrid');
-        if (!grid) return;
-        grid.innerHTML = '';
-        const currentLang = localStorage.getItem('selectedLanguage') || 'fa';
-        
-        const countryKeys = Object.keys(countryData);
-        
-        countryKeys.forEach(code => {
-            const data = countryData[code];
-            const countryName = translations[currentLang][`country-${code}-name`];
-            const viewDetailsTxt = translations[currentLang]['view-details'];
-            
-            let productsHtml = '';
-            data.exports.forEach(exp => {
-                let expName = translations[currentLang][`exp-${exp}`];
-                productsHtml += `<li>${expName}</li>`;
-            });
-
-            const cardHtml = `
-                <div class="export-card-item">
-                    <img src="${data.img}" alt="${countryName}" class="export-card-img" loading="lazy">
-                    <div class="export-card-header">
-                        <img src="${data.flag}" alt="Flag" class="export-card-flag" loading="lazy">
-                        <span class="export-card-title">${countryName}</span>
-                    </div>
-                    <ul class="export-card-list">
-                        ${productsHtml}
-                    </ul>
-                    <a href="https://wa.me/message/4XJJK7VC6GWYD1" target="_blank" class="export-card-link">
-                        ${viewDetailsTxt}
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                    </a>
-                </div>
-            `;
-            grid.insertAdjacentHTML('beforeend', cardHtml);
-        });
-    }
 
     // ==========================================================================
     // سیستم تغییر زبان (Multi-Language)
@@ -1079,6 +1094,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.setAttribute('lang', lang);
         if(currentLangText) currentLangText.innerText = lang.toUpperCase();
         
+        // تنظیم جهت مسیرنما در صفحه جزئیات محصول و سایر صفحات
         const breadcrumbsContainers = document.querySelectorAll('.breadcrumbs-container, .about-breadcrumbs, .dept-breadcrumbs, .contact-breadcrumbs');
         breadcrumbsContainers.forEach(container => {
             container.style.setProperty('--dir', translation.dir);
@@ -1088,6 +1104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         translatableElements.forEach(elem => {
             const key = elem.getAttribute('data-key');
             if (translation[key] !== undefined) {
+                // استفاده از innerHTML برای پشتیبانی از تگ‌های رنگی
                 elem.innerHTML = translation[key];
             }
         });
@@ -1105,8 +1122,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (document.getElementById('productDetailView') && document.getElementById('productDetailView').style.display === 'block' && activeProductKey) {
             showProductAnalysis(activeProductKey);
         }
-        
-        renderExportCards();
     }
 
     // ==========================================================================
@@ -1128,7 +1143,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.showProductAnalysis = function(productKey) {
         activeProductKey = productKey;
-        const currentLang = localStorage.getItem('selectedLanguage') || 'fa';
+        const currentLang = localStorage.getItem('selectedLanguage') || 'en';
         const spec = productSpecs[currentLang]?.[productKey] || productSpecs['en'][productKey] || productSpecs['en']['pipes'];
 
         document.getElementById('detailBreadcrumbName').innerText = spec.title;
@@ -1267,6 +1282,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // شورتکات کیبورد برای بازگشت (Alt + ,)
     document.addEventListener('keydown', (e) => {
         if (e.altKey && e.key === ',') {
             if (btnBackToCatalog && productDetailView && productDetailView.style.display !== 'none') {
@@ -1407,6 +1423,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================================================
+    // دکمه خروج از سایت (Exit Button Logic)
+    // ==========================================================================
+    const exitSiteBtn = document.getElementById('exitSiteBtn');
+    if (exitSiteBtn) {
+        exitSiteBtn.addEventListener('click', () => {
+            const currentLang = localStorage.getItem('selectedLanguage') || 'en';
+            let confirmMsg = 'Are you sure you want to exit?';
+            if (currentLang === 'fa') confirmMsg = 'آیا مطمئن هستید که می‌خواهید از سایت خارج شوید؟';
+            else if (currentLang === 'ar') confirmMsg = 'هل أنت متأكد أنك تريد الخروج؟';
+            else if (currentLang === 'ru') confirmMsg = 'Вы уверены, что хотите выйти?';
+
+            if (confirm(confirmMsg)) {
+                // هدایت به صفحه گوگل به عنوان خروج از سایت
+                window.location.href = 'https://www.google.com';
+            }
+        });
+    }
+
+    // ==========================================================================
     // منطق صفحه‌بندی کاتالوگ
     // ==========================================================================
     const catalogCards = document.querySelectorAll('.catalog-card');
@@ -1451,7 +1486,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const txtKey = currentCatalogPage === 1 ? 'showing-txt-p1' : 'showing-txt-p2';
         if (showingTextElement) {
             showingTextElement.setAttribute('data-key', txtKey);
-            const currentLang = localStorage.getItem('selectedLanguage') || 'fa';
+            const currentLang = localStorage.getItem('selectedLanguage') || 'en';
             if (translations[currentLang] && translations[currentLang][txtKey]) {
                 showingTextElement.innerText = translations[currentLang][txtKey];
             }
@@ -1559,7 +1594,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     // راه‌اندازی اولیه
     // ==========================================================================
-    const savedLang = localStorage.getItem('selectedLanguage') || 'fa';
+    const savedLang = localStorage.getItem('selectedLanguage') || 'en';
     setLanguage(savedLang); 
     changeCatalogPage(1); 
 
@@ -1567,8 +1602,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault(); 
-            const currentLang = localStorage.getItem('selectedLanguage') || 'fa';
-            const successMessage = translations[currentLang]?.['msg-success'] || translations['fa']['msg-success'];
+            const currentLang = localStorage.getItem('selectedLanguage') || 'en';
+            const successMessage = translations[currentLang]?.['msg-success'] || translations['en']['msg-success'];
             const btnSubmitBtn = contactForm.querySelector('.btn-submit-message');
             const originalBtnText = btnSubmitBtn.innerHTML;
 
