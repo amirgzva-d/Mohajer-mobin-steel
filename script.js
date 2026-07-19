@@ -4,23 +4,22 @@ document.addEventListener('DOMContentLoaded', () => {
     let activeProductKey = null;
 
     // ==========================================================================
-    // لیست تصاویر اختصاصی محصولات
+    // لیست تصاویر اختصاصی محصولات (برای نمایش در صفحه جزئیات محصول)
     // ==========================================================================
     const productImages = {
-        round: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782903126/5_njyxot.webp",
-        plates: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902898/10_gigpvt.webp",
-        rebar: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902897/9_gqxtmt.webp",
-        angle: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782903122/2_j2io78.webp",
-        channels: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782903125/6_hipbbp.webp",
-        beams: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902897/11_fiswcr.webp",
-        pipes: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902898/12_mljkba.webp",
-        tubes: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782903121/1_l1h67q.webp",
-        flat: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782903125/4_bwkibv.webp",
-        slab: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902897/8_n0kdjy.webp",
-        coils: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902895/7_jqjass.webp",
-        wires: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782903123/3_qto0dl.webp"
+        round: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902903/%D8%B4%D9%85%D8%B4_cwnxsi.webp",
+        plates: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902906/%D9%88%D8%B1%D9%82_c5og8d.webp",
+        rebar: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%D9%85%DB%8C%D9%84%DA%AF%D8%B1%D8%AF_fw75cx.webp",
+        angle: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%D9%86%D8%A8%D8%B4%DB%8C_fbbc6a.webp",
+        channels: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902905/%D9%86%D9%88%D8%AF%D8%A7%D9%86%DB%8C_b0ctoh.webp",
+        beams: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902900/%D8%AA%DB%8C%D8%B1%D8%A7%D9%87%D9%86_gjwwlx.webp",
+        pipes: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%D9%84%D9%88%D9%84%D9%87_d5rvnj.webp",
+        tubes: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902908/%D9%BE%D8%B1%D9%88%D9%81%DB%8C%D9%84_fsuqgc.webp",
+        flat: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902899/%D8%AA%D8%B3%D9%85%D9%87_roluwo.webp",
+        slab: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902907/%D8%A7%D8%B3%D9%84%D8%A8_lyxy3f.webp",
+        coils: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%DA%A9%D9%84%D8%A7%D9%81_rseobr.webp",
+        wires: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%D9%85%D9%81%D8%AA%D9%88%D9%84_pffty8.webp"
     };
-
     // ==========================================================================
     // لیست تصاویر دیتاشیت محصولات
     // ==========================================================================
@@ -614,8 +613,8 @@ document.addEventListener('DOMContentLoaded', () => {
         en: {
             dir: 'ltr',
             'nav-home': 'Home', 'nav-products': 'Products', 'nav-departments': 'Department', 'nav-about': 'About Us', 'nav-contact': 'Contact',
-            'btn-quote': 'Get a Quote', 'hero-subtitle': 'PREMIUM QUALITY STEEL', 
-            'hero-title-1': 'MOHAJER MOBIN', 'hero-title-2': 'STEEL',
+            'btn-quote': 'Get a Quote', 
+            'hero-title-combined': 'MOHAJER MOBIN STEEL',
             'hero-desc': 'Subsidiary of Mohajer International Trading Group',
             'btn-explore': 'Explore Products', 'btn-catalog': 'Download Catalog', 'trusted-title': 'Trusted by Industry Leaders',
             'trusted-desc': 'Delivering excellence across the globe.',
@@ -624,7 +623,6 @@ document.addEventListener('DOMContentLoaded', () => {
             'feat-3-title': 'On-Time Delivery', 'feat-3-desc': 'Reliable logistics ensuring your projects stay on track.',
             'feat-4-title': 'Sustainable', 'feat-4-desc': 'Committed to eco-friendly and responsible production.',
             
-            // تغییرات درخواستی بنر محصولات
             'prod-sub': 'OUR PRODUCTS', 
             'prod-title': 'Premium Quality Steel Products',
             'prod-desc': 'High-quality steel products engineered for strength, durability, and performance in every project.',
@@ -652,10 +650,11 @@ document.addEventListener('DOMContentLoaded', () => {
             'contact-title-light': 'LET\'S BUILD', 'contact-title-red': 'TOGETHER', 'contact-desc-hero': 'Our team is ready to answer your questions and provide the best solutions for your projects.',
             'contact-sub-title': 'CONTACT US',
             'contact-desc-text': 'Have a question or need a custom solution? Our team is here to help you make better decisions.',
-            'contact-phone-lbl': 'Phone', 'contact-email-lbl': 'Email', 'contact-addr-lbl': 'Company Address',
+            'contact-phone-lbl': 'Phone', 'contact-email-lbl': 'Email', 'contact-addr-lbl': 'Address',
             
-            // آدرس جدید
             'contact-addr-val': 'Mashhad, Janbaz Blvd, Pazh Admin Center 2, Floor 3, Unit 313',
+            'contact-phone-val': '+98 51 3705 7124-5 <br> +98 915 302 7342',
+            'contact-email-val': 'info@mohajer-group.com',
             
             'contact-hours-lbl': 'Working Hours', 'contact-hours-val': 'Sat – Thu: 8:00 AM – 5:00 PM',
             'form-title': 'Send Us a Message', 'form-sub': "Fill out the form below and we'll get back to you as soon as possible.",
@@ -665,7 +664,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'btn-call': 'Request a Call', 'btn-direct-msg': 'Message Expert', 'msg-success': 'Your message has been sent successfully!',
             
             'about-history': 'Our History', 'history-sub-badge': 'OUR HISTORY',
-            'history-title-light': 'COMPANY', 'history-title-red': 'HISTORY',
+            'history-title-light': 'BUILT ON EXPERIENCE.', 'history-title-red': 'DRIVEN BY TRUST.',
             'history-desc': 'With more than seven decades of experience in trade and export, Mohajer Steel has grown into one of the leading exporters in Khorasan Razavi Province, trusted by partners worldwide.',
             'founder1-subtitle': 'The Founder', 'founder1-name': 'Late Haj Ghasem Mohajeri',
             'founder1-bio': 'The roots of our business go back to <span class="highlight-year">1330</span>, when the late Haj Ghasem Mohajeri Khorasani began his activity in the field of domestic trade of leather products and cross. By relying on experience, market knowledge, and professional business principles, he laid the foundation for a sustainable and successful business.',
@@ -679,55 +678,53 @@ document.addEventListener('DOMContentLoaded', () => {
             'timeline5-year': 'Today and Beyond', 'timeline5-title': 'Today and Beyond', 'timeline5-desc': 'Today, with more than 70 years of experience in trade and several decades of successful export, Mohajer Steel is recognized as one of the top exporters in Khorasan Razavi Province. We continue to build the future through professionalism, quality, commitment, and mutual trust.',
             
             'dept-sub': 'OUR DEPARTMENTS', 
-            'dept-title-light': 'OTHER ACTIVITY AREAS OF', 'dept-title-red': 'MOHAJER TRADING GROUP',
+            'dept-title-light': 'OTHER ACTIVITY AREAS OF', 'dept-title-red': 'MOHAJER TRADING',
             'dept-desc': 'Mohajer International Trading Group operates in the three main areas of steel, petrochemicals, and food industries, with a focus on international trade, supply, and export.',
             'dept-key-title': '',
             'dept1-title': 'Petrochemical', 'dept1-desc': 'The petrochemical department, relying on market knowledge and an extensive supply network, has built a reliable bridge between chemical industry producers and consumers. We provide basic and polymer products, ensuring a stable and reliable supply chain for our business partners.',
-            'dept1-bullet1': 'Supply and trade of chemical and polymer raw materials', 'dept1-bullet2': 'Establishing a stable and reliable supply chain', 'dept1-bullet3': 'Risk management and global market support', 'dept1-bullet4': 'Offering customized trade solutions tailored to client needs',
+            'dept1-bullet1': 'Corrosion-Resistant Alloys', 'dept1-bullet2': 'High-Pressure Applications', 'dept1-bullet3': 'Custom Fabrication', 'dept1-bullet4': 'Global Market Support',
             'dept2-title': 'Steel', 'dept2-desc': 'The steel industry is the core of our activities. Specializing in the supply and distribution of various steel products, from billets and slabs to beams and sheets, we provide reliable solutions for industrial and construction projects on a global scale.',
-            'dept2-bullet1': 'Supply of premium quality steel products', 'dept2-bullet2': 'Extensive international supply and distribution network', 'dept2-bullet3': 'Competitive pricing and on-time delivery', 'dept2-bullet4': 'Support for industrial and construction projects at any scale',
+            'dept2-bullet1': 'Structural Steel', 'dept2-bullet2': 'Steel Processing', 'dept2-bullet3': 'Quality Assurance', 'dept2-bullet4': 'Competitive Pricing',
             'dept3-title': 'Food Industry', 'dept3-desc': 'In the food industry department, we offer high-quality agricultural and food products to international markets by establishing a global network of reputable suppliers and producers. Rigorous supply chain management, quality control, and professional logistics guarantee safe delivery in compliance with global standards.',
-            'dept3-bullet1': 'International supply and trade of food and agricultural products', 'dept3-bullet2': 'Quality control and compliance with global standards', 'dept3-bullet3': 'Professional logistics and supply chain management', 'dept3-bullet4': 'Guaranteed freshness, safety, and on-time delivery',
+            'dept3-bullet1': 'Hygienic Materials', 'dept3-bullet2': 'Food-Grade Standards', 'dept3-bullet3': 'Sustainable Solutions', 'dept3-bullet4': 'Freshness & Safe Delivery',
             'btn-learn-more': 'Learn More',
 
-            'export-title': 'Global Export Destinations', 'export-sub': 'Delivering premium steel worldwide',
-            'export-panel-sub': 'Our Reach', 'export-panel-desc': 'Countries Worldwide',
-            'export-feat1-title': 'Reliable Logistics', 'export-feat1-desc': 'On-time global delivery',
-            'export-feat2-title': 'Premium Quality', 'export-feat2-desc': 'International standards',
-            'export-feat3-title': 'Trusted Partners', 'export-feat3-desc': 'Long-term cooperation',
-            'btn-export-coop': 'Start Cooperation',
-            'export-prod-steel': 'Steel Products', 'export-prod-petro': 'Petrochemicals', 'export-prod-food': 'Food Products',
-            'btn-view-all': 'View All Destinations',
+            'export-global-reach': 'GLOBAL REACH',
+            'export-title-dark': 'Our Export <span class="gold-text">Destinations</span>',
+            'export-desc-dark': 'Delivering premium steel products to international markets across the globe.',
+            'btn-view-all-dest': 'VIEW ALL DESTINATIONS',
             
             'stat-exp': 'Years of Experience', 'stat-partners': 'Global Partners', 'stat-countries': 'Export Countries',
             'stat-top-h': 'Top Exporter', 'stat-top-p': 'Khorasan Razavi',
             
-            'country-af-name': 'Afghanistan',
-            'country-pk-name': 'Pakistan',
-            'country-tm-name': 'Turkmenistan',
-            'country-uz-name': 'Uzbekistan',
-            'country-tj-name': 'Tajikistan',
-            'country-kz-name': 'Kazakhstan',
-            'country-kg-name': 'Kyrgyzstan',
-            'country-tr-name': 'Turkey',
-            'country-lb-name': 'Lebanon',
-            'country-sy-name': 'Syria',
-            'country-iq-name': 'Iraq',
             'country-ae-name': 'UAE',
-            'country-so-name': 'Somalia',
-            'country-de-name': 'Germany',
-            'country-ca-name': 'Canada',
-            'country-gb-name': 'England',
-            'country-au-name': 'Australia',
+            'country-tr-name': 'TURKEY',
+            'country-de-name': 'GERMANY',
+            'country-ru-name': 'RUSSIA',
+            'country-om-name': 'OMAN',
+            'country-af-name': 'AFGHANISTAN',
+            'country-pk-name': 'PAKISTAN',
+            'country-tm-name': 'TURKMENISTAN',
+            'country-uz-name': 'UZBEKISTAN',
+            'country-tj-name': 'TAJIKISTAN',
+            'country-kz-name': 'KAZAKHSTAN',
+            'country-kg-name': 'KYRGYZSTAN',
+            'country-lb-name': 'LEBANON',
+            'country-sy-name': 'SYRIA',
+            'country-iq-name': 'IRAQ',
+            'country-so-name': 'SOMALIA',
+            'country-ca-name': 'CANADA',
+            'country-gb-name': 'ENGLAND',
+            'country-au-name': 'AUSTRALIA',
             
-            'footer-social-title': 'Follow Us',
-            'footer-copyright-text': '2026 Mohajer International Trading Group. All Rights Reserved.'
+            'footer-social-title': 'Follow Us on Social Media',
+            'footer-copyright-text': 'All rights reserved by Mohajer Group.'
         },
         fa: {
             dir: 'rtl',
             'nav-home': 'خانه', 'nav-products': 'محصولات', 'nav-departments': 'دپارتمان', 'nav-about': 'درباره ما', 'nav-contact': 'تماس با ما',
-            'btn-quote': 'دریافت قیمت', 'hero-subtitle': 'فولاد با کیفیت ممتاز', 
-            'hero-title-1': 'فولاد', 'hero-title-2': 'مهاجر مبین',
+            'btn-quote': 'دریافت قیمت', 
+            'hero-title-combined': 'فولاد مهاجر مبین',
             'hero-desc': 'زیر مجموعه گروه بین‌المللی بازرگانی مهاجر',
             'btn-explore': 'بررسی محصولات', 'btn-catalog': 'دانلود کاتالوگ', 'trusted-title': 'مورد اعتماد رهبران صنعت',
             'trusted-desc': 'ارائه خدمات برتر در سراسر جهان.',
@@ -736,7 +733,6 @@ document.addEventListener('DOMContentLoaded', () => {
             'feat-3-title': 'تحویل به موقع', 'feat-3-desc': 'لجستیک قابل اعتماد برای اطمینان از پیشرفت پروژه‌های شما.',
             'feat-4-title': 'تولید پایدار', 'feat-4-desc': 'متعهد به تولید سازگار با محیط زیست و مسئولانه.',
             
-            // تغییرات درخواستی بنر محصولات
             'prod-sub': 'محصولات ما', 
             'prod-title': 'محصولات فولادی ممتاز',
             'prod-desc': 'محصولات فولادی با کیفیت بالا، مهندسی شده برای استحکام، دوام و کارایی در هر پروژه.',
@@ -764,10 +760,11 @@ document.addEventListener('DOMContentLoaded', () => {
             'contact-title-light': 'آینده را با هم', 'contact-title-red': 'می‌سازیم', 'contact-desc-hero': 'تیم ما آماده پاسخگویی به سوالات شما و ارائه بهترین راهکارها برای پروژه‌های شماست.',
             'contact-sub-title': 'تماس با ما',
             'contact-desc-text': 'سوالی دارید یا به یک راه حل سفارشی نیاز دارید؟ تیم ما اینجاست تا به شما در تصمیم بهتر کمک کند.',
-            'contact-phone-lbl': 'تلفن همراه', 'contact-email-lbl': 'پست الکترونیکی', 'contact-addr-lbl': 'آدرس شرکت',
+            'contact-phone-lbl': 'تلفن', 'contact-email-lbl': 'ایمیل', 'contact-addr-lbl': 'آدرس',
             
-            // آدرس جدید
             'contact-addr-val': 'مشهد، بلوار جانباز، پاژ اداری ۲، طبقه3 ، پلاک ۳۱۳',
+            'contact-phone-val': '+98 51 3705 7124-5 <br> +98 915 302 7342',
+            'contact-email-val': 'info@mohajer-group.com',
             
             'contact-hours-lbl': 'ساعات کاری', 'contact-hours-val': 'شنبه تا پنجشنبه: ۸:۰۰ صبح تا ۵:۰۰ عصر',
             'form-title': 'ارسال پیام به ما', 'form-sub': 'فرم زیر را پر کنید؛ ما در کوتاه‌ترین زمان ممکن با شما تماس خواهیم گرفت.',
@@ -777,7 +774,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'btn-call': 'درخواست تماس', 'btn-direct-msg': 'پیام به کارشناس', 'msg-success': 'پیام شما با موفقیت ارسال شد!',
             
             'about-history': 'تاریخچه ما', 'history-sub-badge': 'تاریخچه شرکت',
-            'history-title-light': 'تاریخچه', 'history-title-red': 'شرکت',
+            'history-title-light': 'ساخته شده بر پایه تجربه.', 'history-title-red': 'هدایت شده با اعتماد.',
             'history-desc': 'با بیش از هفت دهه سابقه در تجارت و صادرات، شرکت مهاجر استیل به عنوان یکی از صادرکنندگان برتر استان خراسان رضوی در بازارهای جهانی شناخته می‌شود.',
             'founder1-subtitle': 'بنیان‌گذار گروه بین‌المللی بازرگانی مهاجر', 'founder1-name': 'مرحوم حاج قاسم مهاجری',
             'founder1-bio': 'ریشه فعالیت‌های تجاری این مجموعه به سال <span class="highlight-year">۱۳۳۰</span> بازمی‌گردد؛ زمانی که مرحوم حاج قاسم مهاجری خراسانی فعالیت خود را در حوزه تجارت داخلی محصولات چرمی و کراس آغاز نمودند. ایشان با تکیه بر تجربه، دانش بازار و اصول حرفه‌ای تجارت، پایه‌های یک کسب‌وکار پایدار و موفق را بنا نهادند.',
@@ -802,18 +799,19 @@ document.addEventListener('DOMContentLoaded', () => {
             'dept3-bullet1': 'تأمین و تجارت بین‌المللی محصولات غذایی و کشاورزی', 'dept3-bullet2': 'کنترل کیفیت و انطباق با استانداردهای جهانی', 'dept3-bullet3': 'مدیریت حرفه‌ای لجستیک و زنجیره تأمین', 'dept3-bullet4': 'تضمین تازگی، ایمنی و تحویل به‌موقع',
             'btn-learn-more': 'بیشتر بدانید',
 
-            'export-title': 'مقاصد صادراتی ما', 'export-sub': 'ارسال فولاد ممتاز به سراسر جهان',
-            'export-panel-sub': 'گستره فعالیت ما', 'export-panel-desc': 'کشور در سراسر جهان',
-            'export-feat1-title': 'لجستیک مطمئن', 'export-feat1-desc': 'تحویل به‌موقع جهانی',
-            'export-feat2-title': 'کیفیت ممتاز', 'export-feat2-desc': 'استانداردهای بین‌المللی',
-            'export-feat3-title': 'شرکای معتمد', 'export-feat3-desc': 'همکاری‌های بلندمدت',
-            'btn-export-coop': 'شروع همکاری',
-            'export-prod-steel': 'محصولات فولادی', 'export-prod-petro': 'محصولات پتروشیمی', 'export-prod-food': 'محصولات غذایی',
-            'btn-view-all': 'مشاهده تمام مقاصد',
+            'export-global-reach': 'گستره جهانی',
+            'export-title-dark': 'مقاصد صادراتی <span class="gold-text">ما</span>',
+            'export-desc-dark': 'ارسال محصولات فولادی ممتاز به بازارهای بین‌المللی در سراسر جهان.',
+            'btn-view-all-dest': 'مشاهده تمام مقاصد',
             
             'stat-exp': 'سال تجربه موفق', 'stat-partners': 'شریک تجاری بین‌المللی', 'stat-countries': 'کشور مقصد صادرات',
             'stat-top-h': 'صادرکننده برتر', 'stat-top-p': 'استان خراسان رضوی',
             
+            'country-ae-name': 'امارات',
+            'country-tr-name': 'ترکیه',
+            'country-de-name': 'آلمان',
+            'country-ru-name': 'روسیه',
+            'country-om-name': 'عمان',
             'country-af-name': 'افغانستان',
             'country-pk-name': 'پاکستان',
             'country-tm-name': 'ترکمنستان',
@@ -821,25 +819,22 @@ document.addEventListener('DOMContentLoaded', () => {
             'country-tj-name': 'تاجیکستان',
             'country-kz-name': 'قزاقستان',
             'country-kg-name': 'قرقیزستان',
-            'country-tr-name': 'ترکیه',
             'country-lb-name': 'لبنان',
             'country-sy-name': 'سوریه',
             'country-iq-name': 'عراق',
-            'country-ae-name': 'امارات',
             'country-so-name': 'سومالی',
-            'country-de-name': 'آلمان',
             'country-ca-name': 'کانادا',
             'country-gb-name': 'انگلستان',
             'country-au-name': 'استرالیا',
             
-            'footer-social-title': 'ما را دنبال کنید',
-            'footer-copyright-text': '۲۰۲۶ گروه بین‌المللی بازرگانی مهاجر. تمامی حقوق محفوظ است.'
+            'footer-social-title': 'ما را در شبکه‌های اجتماعی دنبال کنید',
+            'footer-copyright-text': 'تمامی حقوق این وب‌سایت متعلق به گروه مهاجر می‌باشد.'
         },
         ar: {
             dir: 'rtl',
             'nav-home': 'الرئيسية', 'nav-products': 'المنتجات', 'nav-departments': 'قسم', 'nav-about': 'من نحن', 'nav-contact': 'اتصل بنا',
-            'btn-quote': 'احصل على سعر', 'hero-subtitle': 'فولاذ عالي الجودة', 
-            'hero-title-1': 'فولاذ', 'hero-title-2': 'مهاجر مبین',
+            'btn-quote': 'احصل على سعر', 
+            'hero-title-combined': 'مهاجر مبین للصلب',
             'hero-desc': 'شركة تابعة لمجموعة مهاجر التجارية الدولية',
             'btn-explore': 'استكشف المنتجات', 'btn-catalog': 'تنزيل الكتالوج', 'trusted-title': 'محل ثقة رواد الصناعة', 'trusted-desc': 'تقديم التميز في جميع أنحاء العالم.',
             'feat-1-title': 'جودة ممتازة', 'feat-1-desc': 'مُختبر ومعتمد وفقاً للمعايير الدولية.',
@@ -847,7 +842,6 @@ document.addEventListener('DOMContentLoaded', () => {
             'feat-3-title': 'التسليم في الوقت المحدد', 'feat-3-desc': 'خدمات لوجستية موثوقة لضمان بقاء مشاريعك في المسار الصحيح.',
             'feat-4-title': 'إنتاج مستدام', 'feat-4-desc': 'ملتزمون بالإنتاج المسؤول والصديق للبيئة.',
             
-            // تغييرات لافتة المنتجات
             'prod-sub': 'منتجاتنا', 
             'prod-title': 'منتجات الفولاذ المتميزة',
             'prod-desc': 'منتجات فولاذية عالية الجودة مصممة للقوة والمتانة والأداء في كل مشروع.',
@@ -875,10 +869,11 @@ document.addEventListener('DOMContentLoaded', () => {
             'contact-title-light': 'لنبنِ المستقبل', 'contact-title-red': 'معاً', 'contact-desc-hero': 'فريقنا مستعد للإجابة على أسئلتك وتقديم أفضل الحلول لمشاريعك.',
             'contact-sub-title': 'اتصل بنا',
             'contact-desc-text': 'هل لديك سؤال أو تحتاج إلى حل مخصص؟ فريقنا هنا لمساعدتك في اتخاذ قرارات أفضل.',
-            'contact-phone-lbl': 'الهاتف', 'contact-email-lbl': 'البريد الإلكتروني', 'contact-addr-lbl': 'عنوان الشركة',
+            'contact-phone-lbl': 'الهاتف', 'contact-email-lbl': 'البريد الإلكتروني', 'contact-addr-lbl': 'العنوان',
             
-            // العنوان الجديد
             'contact-addr-val': 'مشهد، بلوار جانباز، باج الإداري 2، الطابق 3، رقم 313',
+            'contact-phone-val': '+98 51 3705 7124-5 <br> +98 915 302 7342',
+            'contact-email-val': 'info@mohajer-group.com',
             
             'contact-hours-lbl': 'ساعات العمل', 'contact-hours-val': 'السبت – الخميس: ٨:٠٠ صباحاً – ٥:٠٠ مساءً',
             'form-title': 'أرسل لنا رسالة', 'form-sub': 'يرجى ملء النموذج أدناه وسنقوم بالرد عليك في أقرب وقت ممكن.',
@@ -888,12 +883,12 @@ document.addEventListener('DOMContentLoaded', () => {
             'btn-call': 'طلب مكالمة', 'btn-direct-msg': 'مراسلة الخبير', 'msg-success': 'تم إرسال رسالتك بنجاح!',
             
             'about-history': 'تاريخنا', 'history-sub-badge': 'تاريخ الشركة',
-            'history-title-light': 'تاريخ', 'history-title-red': 'الشركة',
+            'history-title-light': 'مبني على الخبرة.', 'history-title-red': 'مدفوع بالثقة.',
             'history-desc': 'مع أكثر من سبعة عقود من الخبرة في التجارة والتصدير، نمت شركة مهاجر ستيل لتصبح واحدة من المصدرين الرائدين في مقاطعة خراسان رضوي، والموثوق بهم من قبل الشركاء في جميع أنحاء العالم.',
             'founder1-subtitle': 'المؤسس', 'founder1-name': 'المرحوم الحاج قاسم مهاجري',
             'founder1-bio': 'تعود جذور أعمالنا إلى عام <span class="highlight-year">١٣٣٠</span>، عندما بدأ المرحوم الحاج قاسم مهاجري خراساني نشاطه في مجال التجارة المحلية للمنتجات الجلدية والكروس. ومن خلال الاعتماد على الخبرة، ومعرفة السوق، ومبادئ الأعمال المهنية، وضع الأساس لمشروع تجاري مستدام وناجح.',
             'founder2-subtitle': 'مواصلة الإرث وتطوير التصدير', 'founder2-name': 'السيد هاشم مهاجري',
-            'founder2-bio': 'استمراراً لهذا المسار، ومنذ عام <span class="highlight-year">١٣٧٤</span>، قام السيد هاشم مهاجري خراساني بتوسيع أنشطة التصدير للشركة، لا سيما في قطاع الأغذية، مستفيداً من الخبرات القيمة الماضية وموسعاً وجودنا في العديد من الأسواق الدولية.',
+            'founder2-bio': 'استمراراً لهذا المسار، ومنذ عام <span class="highlight-year">١٣٧۴</span>، قام السيد هاشم مهاجري خراساني بتوسيع أنشطة التصدير للشركة، لا سيما في قطاع الأغذية، مستفيداً من الخبرات القيمة الماضية وموسعاً وجودنا في العديد من الأسواق الدولية.',
             'timeline-sub': 'مسیرتنا', 'timeline-title': 'تاريخ من النمو والالتزام',
             'timeline1-year': '١٣٣٠', 'timeline1-title': 'البداية', 'timeline1-desc': 'تعود جذور أعمالنا إلى عام ١٣۳۰، عندما بدأ المرحوم الحاج قاسم مهاجري خراساني نشاطه في مجال التجارة المحلية للمنتجات الجلدية والكروس. ومن خلال الاعتماد على الخبرة، ومعرفة السوق، ومبادئ الأعمال المهنية، وضع الأساس لمشروع تجاري مستدام وناجح.',
             'timeline2-year': '١٣۶۶', 'timeline2-title': 'التوسع إلى الأسواق الدولية', 'timeline2-desc': 'في عام ١٣۶۶، دخلت الشركة في التجارة الدولية وبدأت في تصدير منتجات الكروس والويت بلو إلى تركيا وإيطاليا. شكلت هذه الخطوة الهامة نقطة تحول في تطوير أعمالنا ودخولنا إلى الأسواق العالمية.',
@@ -913,18 +908,19 @@ document.addEventListener('DOMContentLoaded', () => {
             'dept3-bullet1': 'التوريد والتجارة الدولية للمنتجات الغذائية والزراعية', 'dept3-bullet2': 'مراقبة الجودة والامتثال للمعايير العالمية', 'dept3-bullet3': 'الإدارة المهنية للوجستيات وسلسلة التوريد', 'dept3-bullet4': 'ضمان الطزاجة والسلامة والتسليم في الوقت المحدد',
             'btn-learn-more': 'تعرف على المزيد',
 
-            'export-title': 'وجهات التصدير العالمية', 'export-sub': 'توصيل الفولاذ الممتاز إلى جميع أنحاء العالم',
-            'export-panel-sub': 'نطاق وصولنا', 'export-panel-desc': 'دولة حول العالم',
-            'export-feat1-title': 'لوجستيات موثوقة', 'export-feat1-desc': 'تسليم عالمي في الوقت المحدد',
-            'export-feat2-title': 'جودة ممتازة', 'export-feat2-desc': 'معايير دولية',
-            'export-feat3-title': 'شركاء موثوقون', 'export-feat3-desc': 'تعاون طويل الأمد',
-            'btn-export-coop': 'ابدأ التعاون',
-            'export-prod-steel': 'منتجات الصلب', 'export-prod-petro': 'البتروكيماويات', 'export-prod-food': 'المنتجات الغذائية',
-            'btn-view-all': 'عرض جميع الوجهات',
+            'export-global-reach': 'الوصول العالمي',
+            'export-title-dark': 'وجهات التصدير <span class="gold-text">لدينا</span>',
+            'export-desc-dark': 'تقديم منتجات الصلب المتميزة للأسواق الدولية في جميع أنحاء العالم.',
+            'btn-view-all-dest': 'عرض جميع الوجهات',
             
             'stat-exp': 'سنوات من الخبرة', 'stat-partners': 'شركاء دوليون', 'stat-countries': 'دول التصدير',
             'stat-top-h': 'أفضل مصدر', 'stat-top-p': 'محافظة خراسان رضوي',
             
+            'country-ae-name': 'الإمارات',
+            'country-tr-name': 'تركيا',
+            'country-de-name': 'ألمانيا',
+            'country-ru-name': 'روسيا',
+            'country-om-name': 'عُمان',
             'country-af-name': 'أفغانستان',
             'country-pk-name': 'باكستان',
             'country-tm-name': 'تركمانستان',
@@ -932,25 +928,22 @@ document.addEventListener('DOMContentLoaded', () => {
             'country-tj-name': 'طاجيكستان',
             'country-kz-name': 'كازاخستان',
             'country-kg-name': 'قيرغيزستان',
-            'country-tr-name': 'تركيا',
             'country-lb-name': 'لبنان',
             'country-sy-name': 'سوريا',
             'country-iq-name': 'العراق',
-            'country-ae-name': 'الإمارات',
             'country-so-name': 'الصومال',
-            'country-de-name': 'ألمانيا',
             'country-ca-name': 'كندا',
             'country-gb-name': 'إنجلترا',
             'country-au-name': 'أستراليا',
             
-            'footer-social-title': 'تابعنا',
-            'footer-copyright-text': '٢٠٢٦ مجموعة مهاجر التجارية الدولية. جميع الحقوق محفوظة.'
+            'footer-social-title': 'تابعنا على وسائل التواصل الاجتماعي',
+            'footer-copyright-text': 'جميع الحقوق محفوظة لمجموعة مهاجر.'
         },
         ru: {
             dir: 'ltr',
             'nav-home': 'Главная', 'nav-products': 'Продукция', 'nav-departments': 'Отдел', 'nav-about': 'О нас', 'nav-contact': 'Контакты',
-            'btn-quote': 'Запросить расчет', 'hero-subtitle': 'СТАЛЬ ПРЕМИАЛЬНОГО КАЧЕСТВА', 
-            'hero-title-1': 'MOHAJER MOBIN', 'hero-title-2': 'STEEL',
+            'btn-quote': 'Запросить расчет', 
+            'hero-title-combined': 'MOHAJER MOBIN STEEL',
             'hero-desc': 'Дочерняя компания международного торговой группы Mohajer',
             'btn-explore': 'Каталог продукции', 'btn-catalog': 'Скачать каталог', 'trusted-title': 'Нам доверяют лидеры отрасли',
             'trusted-desc': 'Превосходное качество по всему миру.',
@@ -959,7 +952,6 @@ document.addEventListener('DOMContentLoaded', () => {
             'feat-3-title': 'Точно в срок', 'feat-3-desc': 'Надежная логистика для бесперебойной работы ваших проектов.',
             'feat-4-title': 'Экологичность', 'feat-4-desc': 'Стремление к экологически безопасному и ответственному производству.',
             
-            // Обновление текста баннера
             'prod-sub': 'НАША ПРОДУКЦИЯ', 
             'prod-title': 'Стальная продукция премиум-класса',
             'prod-desc': 'Высококачественная сталь, разработанная для прочности, долговечности и надежности в каждом проекте.',
@@ -987,10 +979,11 @@ document.addEventListener('DOMContentLoaded', () => {
             'contact-title-light': 'СТРОИМ БУДУЩЕЕ', 'contact-title-red': 'ВМЕСТЕ', 'contact-desc-hero': 'Наша команда готова ответить на ваши вопросы и предоставить лучшие решения для ваших проектов.',
             'contact-sub-title': 'СВЯЗАТЬСЯ С НАМИ',
             'contact-desc-text': 'Есть вопросы или необходимо индивидуальное решение? Наша команда готова помочь вам принять лучшее решение.',
-            'contact-phone-lbl': 'Телефон', 'contact-email-lbl': 'Эл. почта', 'contact-addr-lbl': 'Адрес компании',
+            'contact-phone-lbl': 'Телефон', 'contact-email-lbl': 'Эл. почта', 'contact-addr-lbl': 'Адрес',
             
-            // Новый адрес
             'contact-addr-val': 'Иран, Мешхед, бульвар Джанбаз, административное здание Паж 2, этаж 3, офис 313',
+            'contact-phone-val': '+98 51 3705 7124-5 <br> +98 915 302 7342',
+            'contact-email-val': 'info@mohajer-group.com',
             
             'contact-hours-lbl': 'Часы работы', 'contact-hours-val': 'Сб – Чт: с 8:00 до 17:00',
             'form-title': 'Отправить сообщение', 'form-sub': 'Заполните форму ниже, и мы свяжемся с вами в ближайшее время.',
@@ -1000,7 +993,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'btn-call': 'Заказать обратный звонок', 'btn-direct-msg': 'Личное сообщение', 'msg-success': 'Ваше сообщение успешно отправлено!',
 
             'about-history': 'Наша история', 'history-sub-badge': 'ИСТОРИЯ КОМПАНИИ',
-            'history-title-light': 'ИСТОРИЯ', 'history-title-red': 'КОМПАНИИ',
+            'history-title-light': 'ПОСТРОЕНО НА ОПЫТЕ.', 'history-title-red': 'ОСНОВАНО НА ДОВЕРИИ.',
             'history-desc': 'Обладая более чем семидесятилетним опытом торговли и экспорта, компания Mohajer Steel выросла в одного из ведущих экспортеров провинции Хорасан-Резави, пользующегося доверием партнеров по всему миру.',
             'founder1-subtitle': 'Основатель', 'founder1-name': 'Покойный Хадж Гасем Мухаджери',
             'founder1-bio': 'Истоки нашего бизнеса восходят к <span class="highlight-year">1330</span> году, когда покойный Хадж Гасем Мухаджери Хорасани начал свою деятельность в сфере внутренней торговли кожей и кроссом. Опираясь на опыт, знание рынка и профессиональные принципы ведения бизнеса, он заложил фундамент для устойчивого и успешного предприятия.',
@@ -1014,7 +1007,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'timeline5-year': 'Сегодня и в будущем', 'timeline5-title': 'Сегодня и в будущем', 'timeline5-desc': 'Сегодня, обладая более чем 70-летним торговым опытом и несколькими десятилетиями успешного экспорта, Mohajer Steel признана одним из ведущих экспортеров в провинции Хорасан-Резави, продолжая строить будущее благодаря профессионализму, качеству, приверженности делу и взаимному доверию.',
             
             'dept-sub': 'НАШИ ПОДРАЗДЕЛЕНИЯ', 
-            'dept-title-light': 'ДРУГИЕ НАПРАВЛЕНИЯ ДЕЯТЕЛЬНОСТИ', 'dept-title-red': 'MOHAJER TRADING GROUP',
+            'dept-title-light': 'ДРУГИЕ НАПРАВЛЕНИЯ ДЕЯТЕЛЬНОСТИ', 'dept-title-red': 'MOHAJER TRADING',
             'dept-desc': 'Международная торговая группа Mohajer работает в трех основных направлениях: металлургия, нефтехимия и пищевая промышленность, уделяя особое внимание международной торговле, поставкам и экспорту.',
             'dept-key-title': '',
             'dept1-title': 'Нефтехимия', 'dept1-desc': 'Нефтехимический отдел, опираясь на знание рынка и обширную сеть поставок, построил надежный мост между производителями и потребителями химической промышленности. Мы предоставляем базовые и полимерные продукты, обеспечивая стабильную и надежную цепочку поставок для наших деловых партнеров.',
@@ -1025,38 +1018,36 @@ document.addEventListener('DOMContentLoaded', () => {
             'dept3-bullet1': 'Международные поставки и торговля пищевой и сельскохозяйственной продукцией', 'dept3-bullet2': 'Конترل качества и соответствие международным стандартам', 'dept3-bullet3': 'Профессиональное управление логистикой и цепочкой поставок', 'dept3-bullet4': 'Гарантия свежести, безопасности и своевременной доставки',
             'btn-learn-more': 'Подробнее',
 
-            'export-title': 'Глобальные направления экспорта', 'export-sub': 'Поставка стали премиум-класса по всему миру',
-            'export-panel-sub': 'Наш охват', 'export-panel-desc': 'Стран по всему миру',
-            'export-feat1-title': 'Надежная логистика', 'export-feat1-desc': 'Своевременная доставка',
-            'export-feat2-title': 'Премиум качество', 'export-feat2-desc': 'Международные стандарты',
-            'export-feat3-title': 'Надежные партнеры', 'export-feat3-desc': 'Долгосрочное сотрудничество',
-            'btn-export-coop': 'Начать сотрудничество',
-            'export-prod-steel': 'Стальная продукция', 'export-prod-petro': 'Нефтехимия', 'export-prod-food': 'Продукты питания',
-            'btn-view-all': 'Посмотреть все направления',
+            'export-global-reach': 'ГЛОБАЛЬНЫЙ ОХВАТ',
+            'export-title-dark': 'Наши направления <span class="gold-text">экспорта</span>',
+            'export-desc-dark': 'Поставка высококачественной стальной продукции на международные рынки по всему миру.',
+            'btn-view-all-dest': 'СМОТРЕТЬ ВСЕ НАПРАВЛЕНИЯ',
             
             'stat-exp': 'Лет опыта', 'stat-partners': 'Международных партнеров', 'stat-countries': 'Стран экспорта',
             'stat-top-h': 'Лучший экспортер', 'stat-top-p': 'Хорасан-Резави',
             
-            'country-af-name': 'Афганистан',
-            'country-pk-name': 'Пакистан',
-            'country-tm-name': 'Туркменистан',
-            'country-uz-name': 'Узбекистан',
-            'country-tj-name': 'Таджикистан',
-            'country-kz-name': 'Казахстан',
-            'country-kg-name': 'Кыргызстан',
-            'country-tr-name': 'Турция',
-            'country-lb-name': 'Ливан',
-            'country-sy-name': 'Сирия',
-            'country-iq-name': 'Ирак',
             'country-ae-name': 'ОАЭ',
-            'country-so-name': 'Сомали',
-            'country-de-name': 'Германия',
-            'country-ca-name': 'Канада',
-            'country-gb-name': 'Англия',
-            'country-au-name': 'Австралия',
+            'country-tr-name': 'ТУРЦИЯ',
+            'country-de-name': 'ГЕРМАНИЯ',
+            'country-ru-name': 'РОССИЯ',
+            'country-om-name': 'ОМАН',
+            'country-af-name': 'АФГАНИСТАН',
+            'country-pk-name': 'ПАКИСТАН',
+            'country-tm-name': 'ТУРКМЕНИСТАН',
+            'country-uz-name': 'УЗБЕКИСТАН',
+            'country-tj-name': 'ТАДЖИКИСТАН',
+            'country-kz-name': 'КАЗАХСТАН',
+            'country-kg-name': 'КЫРГЫЗСТАН',
+            'country-lb-name': 'ЛИВАН',
+            'country-sy-name': 'СИРИЯ',
+            'country-iq-name': 'ИРАК',
+            'country-so-name': 'СОМАЛИ',
+            'country-ca-name': 'КАНАДА',
+            'country-gb-name': 'АНГЛИЯ',
+            'country-au-name': 'АВСТРАЛИЯ',
             
-            'footer-social-title': 'Подписывайтесь на нас',
-            'footer-copyright-text': '2026 Mohajer International Trading Group. Все права защищены.'
+            'footer-social-title': 'Следите за нами в социальных сетях',
+            'footer-copyright-text': 'Все права защищены Mohajer Group.'
         }
     };
 
@@ -1376,6 +1367,106 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================================================
+    // منطق اسلایدر مقاصد صادراتی (Drag & Auto-Scroll)
+    // ==========================================================================
+    const exportCarouselWrapper = document.getElementById('exportCarouselWrapper');
+    const btnViewAllDestinations = document.getElementById('btnViewAllDestinations');
+    const exportBtnContainer = document.getElementById('exportBtnContainer');
+
+    if (exportCarouselWrapper && btnViewAllDestinations) {
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        let autoScrollInterval;
+        let isHovered = false;
+
+        const startAutoScroll = () => {
+            if (autoScrollInterval) clearInterval(autoScrollInterval);
+            autoScrollInterval = setInterval(() => {
+                if (isHovered || isDown) return;
+                
+                const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+                const step = isRTL ? -1 : 1;
+                
+                let prevScrollLeft = exportCarouselWrapper.scrollLeft;
+                exportCarouselWrapper.scrollLeft += step;
+                
+                // اگر اسکرول به انتها رسید و دیگر حرکت نکرد، آن را ریست کن
+                if (exportCarouselWrapper.scrollLeft === prevScrollLeft) {
+                    exportCarouselWrapper.scrollLeft = 0; 
+                }
+            }, 30);
+        };
+
+        const stopAutoScroll = () => {
+            if (autoScrollInterval) clearInterval(autoScrollInterval);
+        };
+
+        // کلیک روی دکمه مشاهده تمام مقاصد
+        btnViewAllDestinations.addEventListener('click', () => {
+            exportCarouselWrapper.classList.add('is-active');
+            if (exportBtnContainer) exportBtnContainer.style.display = 'none';
+            startAutoScroll();
+        });
+
+        // Mouse Events برای کشیدن با موس
+        exportCarouselWrapper.addEventListener('mousedown', (e) => {
+            isDown = true;
+            exportCarouselWrapper.style.cursor = 'grabbing';
+            startX = e.pageX - exportCarouselWrapper.offsetLeft;
+            scrollLeft = exportCarouselWrapper.scrollLeft;
+            stopAutoScroll();
+        });
+
+        exportCarouselWrapper.addEventListener('mouseleave', () => {
+            isDown = false;
+            exportCarouselWrapper.style.cursor = 'grab';
+            isHovered = false;
+            if (exportCarouselWrapper.classList.contains('is-active')) startAutoScroll();
+        });
+
+        exportCarouselWrapper.addEventListener('mouseup', () => {
+            isDown = false;
+            exportCarouselWrapper.style.cursor = 'grab';
+            if (exportCarouselWrapper.classList.contains('is-active')) startAutoScroll();
+        });
+
+        exportCarouselWrapper.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - exportCarouselWrapper.offsetLeft;
+            const walk = (x - startX) * 2; 
+            exportCarouselWrapper.scrollLeft = scrollLeft - walk;
+        });
+
+        // Touch Events برای موبایل
+        exportCarouselWrapper.addEventListener('touchstart', (e) => {
+            isDown = true;
+            startX = e.touches[0].pageX - exportCarouselWrapper.offsetLeft;
+            scrollLeft = exportCarouselWrapper.scrollLeft;
+            stopAutoScroll();
+        }, { passive: true });
+
+        exportCarouselWrapper.addEventListener('touchend', () => {
+            isDown = false;
+            if (exportCarouselWrapper.classList.contains('is-active')) startAutoScroll();
+        });
+
+        exportCarouselWrapper.addEventListener('touchmove', (e) => {
+            if (!isDown) return;
+            const x = e.touches[0].pageX - exportCarouselWrapper.offsetLeft;
+            const walk = (x - startX) * 2;
+            exportCarouselWrapper.scrollLeft = scrollLeft - walk;
+        }, { passive: true });
+
+        // توقف اسکرول هنگام هاور
+        exportCarouselWrapper.addEventListener('mouseenter', () => {
+            isHovered = true;
+            stopAutoScroll();
+        });
+    }
+
+    // ==========================================================================
     // کلیک‌پذیر شدن کل کارت محصولات
     // ==========================================================================
     document.addEventListener('click', (e) => {
@@ -1435,7 +1526,6 @@ document.addEventListener('DOMContentLoaded', () => {
             else if (currentLang === 'ru') confirmMsg = 'Вы уверены, что хотите выйти?';
 
             if (confirm(confirmMsg)) {
-                // هدایت به صفحه گوگل به عنوان خروج از سایت
                 window.location.href = 'https://www.google.com';
             }
         });
