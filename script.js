@@ -1369,9 +1369,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     // منطق اسلایدر مقاصد صادراتی (Drag & Auto-Scroll)
     // ==========================================================================
-    const exportCarouselWrapper = document.getElementById('exportCarouselWrapper');
+    const exportCarouselWrapper = document.getElementById('exportSliderWrapper');
     const btnViewAllDestinations = document.getElementById('btnViewAllDestinations');
-    const exportBtnContainer = document.getElementById('exportBtnContainer');
+    const exportBtnContainer = document.querySelector('.export-btn-container');
 
     if (exportCarouselWrapper && btnViewAllDestinations) {
         let isDown = false;
@@ -1404,7 +1404,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // کلیک روی دکمه مشاهده تمام مقاصد
         btnViewAllDestinations.addEventListener('click', () => {
-            exportCarouselWrapper.classList.add('is-active');
+            exportCarouselWrapper.classList.add('expanded');
             if (exportBtnContainer) exportBtnContainer.style.display = 'none';
             startAutoScroll();
         });
@@ -1422,13 +1422,13 @@ document.addEventListener('DOMContentLoaded', () => {
             isDown = false;
             exportCarouselWrapper.style.cursor = 'grab';
             isHovered = false;
-            if (exportCarouselWrapper.classList.contains('is-active')) startAutoScroll();
+            if (exportCarouselWrapper.classList.contains('expanded')) startAutoScroll();
         });
 
         exportCarouselWrapper.addEventListener('mouseup', () => {
             isDown = false;
             exportCarouselWrapper.style.cursor = 'grab';
-            if (exportCarouselWrapper.classList.contains('is-active')) startAutoScroll();
+            if (exportCarouselWrapper.classList.contains('expanded')) startAutoScroll();
         });
 
         exportCarouselWrapper.addEventListener('mousemove', (e) => {
@@ -1449,7 +1449,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         exportCarouselWrapper.addEventListener('touchend', () => {
             isDown = false;
-            if (exportCarouselWrapper.classList.contains('is-active')) startAutoScroll();
+            if (exportCarouselWrapper.classList.contains('expanded')) startAutoScroll();
         });
 
         exportCarouselWrapper.addEventListener('touchmove', (e) => {
@@ -1505,12 +1505,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 navLinksContainer.classList.remove('active');
             }
         });
-
-        window.addEventListener('scroll', () => {
-            if (navLinksContainer.classList.contains('active')) {
-                navLinksContainer.classList.remove('active');
-            }
-        }, { passive: true });
+        
+        // رویداد بسته شدن منو با اسکرول حذف شد تا کاربر در موبایل راحت‌تر باشد
     }
 
     // ==========================================================================
@@ -1722,4 +1718,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
