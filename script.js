@@ -7,18 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // لیست تصاویر اختصاصی محصولات (برای نمایش در صفحه جزئیات محصول)
     // ==========================================================================
     const productImages = {
-        round: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902903/%D8%B4%D9%85%D8%B4_cwnxsi.webp",
-        plates: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902906/%D9%88%D8%B1%D9%82_c5og8d.webp",
+        round: "https://res.cloudinary.com/dqhbyqftq/image/upload/v1784520479/%D8%B4%D9%85%D8%B4_ccazwm.png",
+        plates: "https://res.cloudinary.com/dqhbyqftq/image/upload/v1784520474/%D9%88%D8%B1%D9%82_c5og8d_uwo0nv.png",
         rebar: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%D9%85%DB%8C%D9%84%DA%AF%D8%B1%D8%AF_fw75cx.webp",
         angle: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%D9%86%D8%A8%D8%B4%DB%8C_fbbc6a.webp",
-        channels: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902905/%D9%86%D9%88%D8%AF%D8%A7%D9%86%DB%8C_b0ctoh.webp",
-        beams: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902900/%D8%AA%DB%8C%D8%B1%D8%A7%D9%87%D9%86_gjwwlx.webp",
-        pipes: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%D9%84%D9%88%D9%84%D9%87_d5rvnj.webp",
+        channels: "https://res.cloudinary.com/dqhbyqftq/image/upload/v1784520478/%D9%86%D9%88%D8%AF%D8%A7%D9%86%DB%8C_fvix6k.png",
+        beams: "https://res.cloudinary.com/dqhbyqftq/image/upload/v1784520475/%D8%AA%DB%8C%D8%B1%D8%A7%D9%87%D9%86_xcypso.png",
+        pipes: "https://res.cloudinary.com/dqhbyqftq/image/upload/v1784520475/%D9%84%D9%88%D9%84%D9%87_d5rvnj_jrwiqj.png",
         tubes: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902908/%D9%BE%D8%B1%D9%88%D9%81%DB%8C%D9%84_fsuqgc.webp",
-        flat: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902899/%D8%AA%D8%B3%D9%85%D9%87_roluwo.webp",
-        slab: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902907/%D8%A7%D8%B3%D9%84%D8%A8_lyxy3f.webp",
+        flat: "https://res.cloudinary.com/dqhbyqftq/image/upload/v1784520475/%D8%AA%D8%B3%D9%85%D9%87_roluwo_vx5dpm.png",
+        slab: "https://res.cloudinary.com/dqhbyqftq/image/upload/v1784520476/%D8%A7%D8%B3%D9%84%D8%A8_lyxy3f_zd5abm.png",
         coils: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%DA%A9%D9%84%D8%A7%D9%81_rseobr.webp",
-        wires: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782902904/%D9%85%D9%81%D8%AA%D9%88%D9%84_pffty8.webp"
+        wires: "https://res.cloudinary.com/dqhbyqftq/image/upload/v1784520480/%D9%85%D9%81%D8%AA%D9%88%D9%84_pffty8_hrnldf.png"
     };
     // ==========================================================================
     // لیست تصاویر دیتاشیت محصولات
@@ -615,7 +615,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'nav-home': 'Home', 'nav-products': 'Products', 'nav-departments': 'Department', 'nav-about': 'About Us', 'nav-contact': 'Contact',
             'btn-quote': 'Get a Quote', 
             'hero-title-combined': 'MOHAJER MOBIN STEEL',
-            'hero-desc': 'Subsidiary of Mohajer International Trading Group',
+            'hero-export': 'Exporter of all steel products',
+            'hero-desc': 'Subsidiary of Mohajer Trading Group',
             'btn-explore': 'Explore Products', 'btn-catalog': 'Download Catalog', 'trusted-title': 'Trusted by Industry Leaders',
             'trusted-desc': 'Delivering excellence across the globe.',
             'feat-1-title': 'Premium Quality', 'feat-1-desc': 'Tested and certified to international standards.',
@@ -725,7 +726,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'nav-home': 'خانه', 'nav-products': 'محصولات', 'nav-departments': 'دپارتمان', 'nav-about': 'درباره ما', 'nav-contact': 'تماس با ما',
             'btn-quote': 'دریافت قیمت', 
             'hero-title-combined': 'فولاد مهاجر مبین',
-            'hero-desc': 'زیر مجموعه گروه بین‌المللی بازرگانی مهاجر',
+            'hero-export': 'صادرکننده تمام مقاطع فولادی',
+            'hero-desc': 'زیرمجموعه گروه بازرگانی مهاجر',
             'btn-explore': 'بررسی محصولات', 'btn-catalog': 'دانلود کاتالوگ', 'trusted-title': 'مورد اعتماد رهبران صنعت',
             'trusted-desc': 'ارائه خدمات برتر در سراسر جهان.',
             'feat-1-title': 'کیفیت ممتاز', 'feat-1-desc': 'تست شده و تایید شده مطابق با استانداردهای بین‌المللی.',
@@ -791,7 +793,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'dept-title-light': 'دیگر حوزه‌های فعالیتی', 'dept-title-red': 'گروه بازرگانی مهاجر',
             'dept-desc': 'گروه بین‌المللی بازرگانی مهاجر در سه حوزه اصلی فولاد، پتروشیمی و صنایع غذایی با تمرکز بر تجارت بین‌المللی، تأمین و صادرات فعالیت می‌کند.',
             'dept-key-title': '',
-            'dept1-title': 'صنایع پتروشیمی', 'dept1-desc': 'بخش پتروشیمی با تکیه بر دانش بازار و شبکه گسترده تأمین، پلی مطمئن میان تولیدکنندگان و مصرف‌کنندگان صنایع شیمیایی ایجاد کرده است. ما با ارائه محصولات پایه و پلیمری، زنجیره تأمینی پایدار و قابل اعتماد برای شرکای تجاری خود فراهم می‌کنیم.',
+            'dept1-title': 'صنایع پتروشیمی', 'dept1-desc': 'بخش پتروشیمی با تکیه بر دانش بازار و شبکه گسترده تأمین، پلی مطمئن میان تولیدکنندگان و مصرف‌کنندگان صنایع شیمیایی ایجاد کرده است. ما با ارائه محصولات پایه و پلیمری، زنجیره تأمین پایدار و قابل اعتماد برای شرکای تجاری خود فراهم می‌کنیم.',
             'dept1-bullet1': 'تأمین و تجارت مواد اولیه شیمیایی و پلیمری', 'dept1-bullet2': 'ایجاد زنجیره تأمین پایدار و قابل اعتماد', 'dept1-bullet3': 'مدیریت ریسک و پشتیبانی از بازارهای جهانی', 'dept1-bullet4': 'ارائه راهکارهای تجاری متناسب با نیاز مشتریان',
             'dept2-title': 'صنایع فولاد', 'dept2-desc': 'صنایع فولاد، هسته اصلی فعالیت‌های ماست. با تخصص در تأمین و توزیع انواع محصولات فولادی، از بیلت و اسلب تا تیرآهن و ورق، راهکارهایی مطمئن برای پروژه‌های صنعتی و عمرانی در مقیاس جهانی ارائه می‌دهیم.',
             'dept2-bullet1': 'تأمین انواع محصولات فولادی با کیفیت ممتاز', 'dept2-bullet2': 'شبکه گسترده تأمین و توزیع بین‌المللی', 'dept2-bullet3': 'قیمت‌گذاری رقابتی و تحویل به‌موقع', 'dept2-bullet4': 'پشتیبانی از پروژه‌های صنعتی و ساختمانی در هر مقیاس',
@@ -834,8 +836,9 @@ document.addEventListener('DOMContentLoaded', () => {
             dir: 'rtl',
             'nav-home': 'الرئيسية', 'nav-products': 'المنتجات', 'nav-departments': 'قسم', 'nav-about': 'من نحن', 'nav-contact': 'اتصل بنا',
             'btn-quote': 'احصل على سعر', 
-            'hero-title-combined': 'مهاجر مبین للصلب',
-            'hero-desc': 'شركة تابعة لمجموعة مهاجر التجارية الدولية',
+            'hero-title-combined': 'فولاذ مهاجر مبين',
+            'hero-export': 'مُصدِّر لجميع مقاطع الصلب',
+            'hero-desc': 'شركة تابعة لمجموعة مهاجر التجارية',
             'btn-explore': 'استكشف المنتجات', 'btn-catalog': 'تنزيل الكتالوج', 'trusted-title': 'محل ثقة رواد الصناعة', 'trusted-desc': 'تقديم التميز في جميع أنحاء العالم.',
             'feat-1-title': 'جودة ممتازة', 'feat-1-desc': 'مُختبر ومعتمد وفقاً للمعايير الدولية.',
             'feat-2-title': 'قوة عالية', 'feat-2-desc': 'مصمم للأداء الممتاز في أصعب الظروف.',
@@ -944,7 +947,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'nav-home': 'Главная', 'nav-products': 'Продукция', 'nav-departments': 'Отдел', 'nav-about': 'О нас', 'nav-contact': 'Контакты',
             'btn-quote': 'Запросить расчет', 
             'hero-title-combined': 'MOHAJER MOBIN STEEL',
-            'hero-desc': 'Дочерняя компания международного торговой группы Mohajer',
+            'hero-export': 'Экспортер всего стального проката',
+            'hero-desc': 'Дочерняя компания торговой группы Mohajer',
             'btn-explore': 'Каталог продукции', 'btn-catalog': 'Скачать каталог', 'trusted-title': 'Нам доверяют лидеры отрасли',
             'trusted-desc': 'Превосходное качество по всему миру.',
             'feat-1-title': 'Премиум качество', 'feat-1-desc': 'Проверено и сертифицировано по международным стандартам.',
@@ -1369,11 +1373,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     // منطق اسلایدر مقاصد صادراتی (Drag & Auto-Scroll)
     // ==========================================================================
-    const exportCarouselWrapper = document.getElementById('exportSliderWrapper');
+    const exportSliderWrapper = document.getElementById('exportSliderWrapper');
     const btnViewAllDestinations = document.getElementById('btnViewAllDestinations');
-    const exportBtnContainer = document.querySelector('.export-btn-container');
+    const exportBtnContainer = document.getElementById('exportBtnContainer');
 
-    if (exportCarouselWrapper && btnViewAllDestinations) {
+    if (exportSliderWrapper && btnViewAllDestinations) {
         let isDown = false;
         let startX;
         let scrollLeft;
@@ -1386,14 +1390,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (isHovered || isDown) return;
                 
                 const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
-                const step = isRTL ? -1 : 1;
+                const step = isRTL ? -1 : 1; 
                 
-                let prevScrollLeft = exportCarouselWrapper.scrollLeft;
-                exportCarouselWrapper.scrollLeft += step;
+                let prevScrollLeft = exportSliderWrapper.scrollLeft;
+                exportSliderWrapper.scrollLeft += step;
                 
-                // اگر اسکرول به انتها رسید و دیگر حرکت نکرد، آن را ریست کن
-                if (exportCarouselWrapper.scrollLeft === prevScrollLeft) {
-                    exportCarouselWrapper.scrollLeft = 0; 
+                // اگر اسکرول به انتها رسید و دیگر حرکت نکرد، آن را به حالت اول بازگردانید
+                if (exportSliderWrapper.scrollLeft === prevScrollLeft) {
+                    exportSliderWrapper.scrollLeft = 0; 
                 }
             }, 30);
         };
@@ -1402,65 +1406,66 @@ document.addEventListener('DOMContentLoaded', () => {
             if (autoScrollInterval) clearInterval(autoScrollInterval);
         };
 
-        // کلیک روی دکمه مشاهده تمام مقاصد
+        // کلیک روی دکمه مشاهده تمام مقاصد برای نمایش ردیفی همه کشورها
         btnViewAllDestinations.addEventListener('click', () => {
-            exportCarouselWrapper.classList.add('expanded');
+            exportSliderWrapper.classList.remove('collapsed');
+            exportSliderWrapper.classList.add('expanded');
             if (exportBtnContainer) exportBtnContainer.style.display = 'none';
             startAutoScroll();
         });
 
         // Mouse Events برای کشیدن با موس
-        exportCarouselWrapper.addEventListener('mousedown', (e) => {
+        exportSliderWrapper.addEventListener('mousedown', (e) => {
             isDown = true;
-            exportCarouselWrapper.style.cursor = 'grabbing';
-            startX = e.pageX - exportCarouselWrapper.offsetLeft;
-            scrollLeft = exportCarouselWrapper.scrollLeft;
+            exportSliderWrapper.style.cursor = 'grabbing';
+            startX = e.pageX - exportSliderWrapper.offsetLeft;
+            scrollLeft = exportSliderWrapper.scrollLeft;
             stopAutoScroll();
         });
 
-        exportCarouselWrapper.addEventListener('mouseleave', () => {
+        exportSliderWrapper.addEventListener('mouseleave', () => {
             isDown = false;
-            exportCarouselWrapper.style.cursor = 'grab';
+            exportSliderWrapper.style.cursor = 'grab';
             isHovered = false;
-            if (exportCarouselWrapper.classList.contains('expanded')) startAutoScroll();
+            if (exportSliderWrapper.classList.contains('expanded')) startAutoScroll();
         });
 
-        exportCarouselWrapper.addEventListener('mouseup', () => {
+        exportSliderWrapper.addEventListener('mouseup', () => {
             isDown = false;
-            exportCarouselWrapper.style.cursor = 'grab';
-            if (exportCarouselWrapper.classList.contains('expanded')) startAutoScroll();
+            exportSliderWrapper.style.cursor = 'grab';
+            if (exportSliderWrapper.classList.contains('expanded')) startAutoScroll();
         });
 
-        exportCarouselWrapper.addEventListener('mousemove', (e) => {
+        exportSliderWrapper.addEventListener('mousemove', (e) => {
             if (!isDown) return;
             e.preventDefault();
-            const x = e.pageX - exportCarouselWrapper.offsetLeft;
+            const x = e.pageX - exportSliderWrapper.offsetLeft;
             const walk = (x - startX) * 2; 
-            exportCarouselWrapper.scrollLeft = scrollLeft - walk;
+            exportSliderWrapper.scrollLeft = scrollLeft - walk;
         });
 
         // Touch Events برای موبایل
-        exportCarouselWrapper.addEventListener('touchstart', (e) => {
+        exportSliderWrapper.addEventListener('touchstart', (e) => {
             isDown = true;
-            startX = e.touches[0].pageX - exportCarouselWrapper.offsetLeft;
-            scrollLeft = exportCarouselWrapper.scrollLeft;
+            startX = e.touches[0].pageX - exportSliderWrapper.offsetLeft;
+            scrollLeft = exportSliderWrapper.scrollLeft;
             stopAutoScroll();
         }, { passive: true });
 
-        exportCarouselWrapper.addEventListener('touchend', () => {
+        exportSliderWrapper.addEventListener('touchend', () => {
             isDown = false;
-            if (exportCarouselWrapper.classList.contains('expanded')) startAutoScroll();
+            if (exportSliderWrapper.classList.contains('expanded')) startAutoScroll();
         });
 
-        exportCarouselWrapper.addEventListener('touchmove', (e) => {
+        exportSliderWrapper.addEventListener('touchmove', (e) => {
             if (!isDown) return;
-            const x = e.touches[0].pageX - exportCarouselWrapper.offsetLeft;
+            const x = e.touches[0].pageX - exportSliderWrapper.offsetLeft;
             const walk = (x - startX) * 2;
-            exportCarouselWrapper.scrollLeft = scrollLeft - walk;
+            exportSliderWrapper.scrollLeft = scrollLeft - walk;
         }, { passive: true });
 
         // توقف اسکرول هنگام هاور
-        exportCarouselWrapper.addEventListener('mouseenter', () => {
+        exportSliderWrapper.addEventListener('mouseenter', () => {
             isHovered = true;
             stopAutoScroll();
         });
@@ -1505,8 +1510,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 navLinksContainer.classList.remove('active');
             }
         });
-        
-        // رویداد بسته شدن منو با اسکرول حذف شد تا کاربر در موبایل راحت‌تر باشد
+
+        window.addEventListener('scroll', () => {
+            if (navLinksContainer.classList.contains('active')) {
+                navLinksContainer.classList.remove('active');
+            }
+        }, { passive: true });
     }
 
     // ==========================================================================
