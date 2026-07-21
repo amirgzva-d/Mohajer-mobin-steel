@@ -230,11 +230,11 @@ html[dir="rtl"] .main-title-new {
     letter-spacing: 0.5px;
     line-height: 1.4;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    text-align: left;
+    text-align: center; /* ویرایش به وسط‌چین برای دسکتاپ */
 }
 html[dir="rtl"] .sub-title-export {
     font-size: clamp(18px, 2vw, 32px); /* حفظ سایز قبلی برای فارسی و عربی */
-    text-align: right;
+    text-align: center; /* ویرایش به وسط‌چین برای دسکتاپ */
 }
 
 .desc-wrapper {
@@ -1359,7 +1359,7 @@ html[dir="rtl"] .copyright-content {
     
     /* Departments cards - responsive layout */
     .departments-cards-section { padding: 30px 16px !important; }
-    .departments-cards-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+    .departments-cards-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
     .department-card-item { border-radius: 12px !important; }
     .dept-card-image-wrapper { height: 120px !important; }
     .dept-card-body { padding: 16px 12px !important; }
