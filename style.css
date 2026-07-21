@@ -197,7 +197,7 @@ html[dir="rtl"] .hero-container { justify-content: flex-start; }
 html[dir="rtl"] .hero-text-block { text-align: right; }
 
 .main-title-new {
-    font-size: clamp(32px, 5vw, 64px); 
+    font-size: clamp(28px, 4vw, 56px); 
     font-weight: 900; 
     color: var(--text-white); 
     margin-bottom: 16px; 
@@ -210,7 +210,7 @@ html[dir="rtl"] .hero-text-block { text-align: right; }
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 html[dir="rtl"] .main-title-new {
-    font-size: clamp(30px, 4.5vw, 58px);
+    font-size: clamp(26px, 3.5vw, 50px);
 }
 .main-title-new .gold-text { 
     color: var(--primary-gold); 
@@ -219,7 +219,7 @@ html[dir="rtl"] .main-title-new {
 
 /* استایل مخصوص متن صادرات با فونت لاله زار */
 .sub-title-export {
-    font-size: clamp(24px, 3.5vw, 42px);
+    font-size: clamp(20px, 2.5vw, 36px);
     color: var(--primary-gold);
     margin-bottom: 24px;
     font-weight: 400; /* لاله زار ذاتا بولد است */
@@ -229,7 +229,7 @@ html[dir="rtl"] .main-title-new {
     text-align: left;
 }
 html[dir="rtl"] .sub-title-export {
-    font-size: clamp(22px, 3vw, 38px);
+    font-size: clamp(18px, 2vw, 32px);
     text-align: right;
 }
 
@@ -250,7 +250,7 @@ html[dir="rtl"] .sub-title-export {
 }
 
 .description-new {
-    font-size: clamp(16px, 1.8vw, 20px); 
+    font-size: clamp(14px, 1.5vw, 18px); 
     line-height: 1.8; 
     color: var(--text-white); 
     font-weight: 500; 
@@ -1162,16 +1162,16 @@ html[dir="rtl"] .copyright-content {
     }
 
     /* سایزهای متون بخش اصلی (بسیار کوچک‌تر و ظریف‌تر جهت عدم تداخل) */
-    .main-title-new { font-size: 16px !important; margin-bottom: 4px !important; }
-    html[dir="rtl"] .main-title-new { font-size: 16px !important; }
+    .main-title-new { font-size: 14px !important; margin-bottom: 4px !important; }
+    html[dir="rtl"] .main-title-new { font-size: 14px !important; }
     
-    .sub-title-export { font-size: 11px !important; text-align: left; line-height: 1.4 !important; white-space: normal !important; margin-bottom: 8px !important; }
-    html[dir="rtl"] .sub-title-export { font-size: 11px !important; text-align: right; }
+    .sub-title-export { font-size: 10px !important; text-align: left; line-height: 1.4 !important; white-space: normal !important; margin-bottom: 8px !important; }
+    html[dir="rtl"] .sub-title-export { font-size: 10px !important; text-align: right; }
     
     .desc-wrapper { flex-direction: row !important; gap: 8px !important; margin-bottom: 15px !important; justify-content: flex-start !important; }
     .desc-line-left, .desc-line-right { display: none !important; } /* حذف کامل خطوط طلایی در موبایل برای ظاهر خلوت و ظریف */
     
-    .description-new { font-size: 10px !important; text-align: left !important; margin: 0 !important; max-width: 100% !important; }
+    .description-new { font-size: 9px !important; text-align: left !important; margin: 0 !important; max-width: 100% !important; }
     html[dir="rtl"] .description-new { text-align: right !important; }
     
     .hero-text-block { text-align: left !important; margin: 0; width: 100%; }
@@ -1460,8 +1460,8 @@ html[dir="rtl"] .copyright-content {
 }
 
 @media (max-width: 480px) {
-    .main-title-new { font-size: 16px !important; }
-    html[dir="rtl"] .main-title-new { font-size: 16px !important; }
+    .main-title-new { font-size: 14px !important; }
+    html[dir="rtl"] .main-title-new { font-size: 14px !important; }
     .export-country-card { width: 120px !important; padding: 10px !important; }
     .flag-wrapper { width: 60px !important; height: 40px !important; }
 }
