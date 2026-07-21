@@ -1193,7 +1193,10 @@ html[dir="rtl"] .copyright-content {
         margin-bottom: 15px !important;
     }
 
-    /* بازگرداندن استایل‌های موبایل به حالت اولیه (چپ‌چین برای انگلیسی/روسی و راست‌چین برای فارسی/عربی) */
+    /* برداشتن حالت وسط‌چین برای موبایل و بازگشت به حالت تراز چپ/راست */
+    .hero-text-block { text-align: left !important; margin: 0; width: 100%; display: flex !important; flex-direction: column !important; align-items: flex-start !important; }
+    html[dir="rtl"] .hero-text-block { text-align: right !important; align-items: flex-start !important; }
+    
     .main-title-new { font-size: 14px !important; margin-bottom: 4px !important; justify-content: flex-start !important; text-align: left !important; width: 100% !important; }
     html[dir="rtl"] .main-title-new { font-size: 14px !important; justify-content: flex-start !important; text-align: right !important; width: 100% !important; }
     
@@ -1205,9 +1208,6 @@ html[dir="rtl"] .copyright-content {
     
     .description-new { font-size: 9px !important; text-align: left !important; margin: 0 !important; max-width: 100% !important; width: 100% !important; }
     html[dir="rtl"] .description-new { text-align: right !important; width: 100% !important; }
-    
-    .hero-text-block { text-align: left !important; margin: 0; width: 100%; display: flex !important; flex-direction: column !important; align-items: flex-start !important; }
-    html[dir="rtl"] .hero-text-block { text-align: right !important; align-items: flex-start !important; }
     
     /* دکمه‌ها در موبایل - جمع‌وجور و با فاصله‌دهی مناسب از متون */
     .hero-buttons-new { flex-direction: row !important; width: 100%; gap: 8px !important; align-items: center; justify-content: flex-start !important; margin-top: 15px !important; }
