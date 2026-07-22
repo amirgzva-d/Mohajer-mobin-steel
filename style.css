@@ -1,7 +1,7 @@
 /* ==========================================================================
    Base Theme Variables & Resets
    ========================================================================== */
-:root {
+:root {ً
     --primary-gold: #C89845; 
     --primary-gold-hover: #B38538;
     --primary-blue: #2563EB; 
@@ -171,11 +171,7 @@ html[dir="rtl"] .btn-quote svg { transform: scaleX(-1); }
    ========================================================================== */
 .hero-section {
     position: relative; min-height: 100vh; padding-top: 100px; display: flex;
-    align-items: center; padding-left: 3%; padding-right: 8%; overflow: hidden; background-color: var(--bg-dark-section);
-}
-html[dir="rtl"] .hero-section {
-    padding-right: 3%; 
-    padding-left: 8%;
+    align-items: center; padding-left: 8%; padding-right: 8%; overflow: hidden; background-color: var(--bg-dark-section);
 }
 
 .hero-bg {
@@ -201,7 +197,7 @@ html[dir="rtl"] .hero-container { justify-content: flex-start; }
 html[dir="rtl"] .hero-text-block { text-align: right; }
 
 .main-title-new {
-    font-size: clamp(22px, 3vw, 40px); /* کوچکتر برای انگلیسی و روسی */
+    font-size: clamp(32px, 5vw, 64px); 
     font-weight: 900; 
     color: var(--text-white); 
     margin-bottom: 16px; 
@@ -214,7 +210,7 @@ html[dir="rtl"] .hero-text-block { text-align: right; }
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 html[dir="rtl"] .main-title-new {
-    font-size: clamp(26px, 3.5vw, 50px); /* حفظ سایز قبلی برای فارسی و عربی */
+    font-size: clamp(30px, 4.5vw, 58px);
 }
 .main-title-new .gold-text { 
     color: var(--primary-gold); 
@@ -223,18 +219,18 @@ html[dir="rtl"] .main-title-new {
 
 /* استایل مخصوص متن صادرات با فونت لاله زار */
 .sub-title-export {
-    font-size: clamp(16px, 1.8vw, 26px); /* کوچکتر برای انگلیسی و روسی */
+    font-size: clamp(24px, 3.5vw, 42px);
     color: var(--primary-gold);
     margin-bottom: 24px;
     font-weight: 400; /* لاله زار ذاتا بولد است */
     letter-spacing: 0.5px;
     line-height: 1.4;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    text-align: center; /* ویرایش به وسط‌چین برای دسکتاپ */
+    text-align: left;
 }
 html[dir="rtl"] .sub-title-export {
-    font-size: clamp(18px, 2vw, 32px); /* حفظ سایز قبلی برای فارسی و عربی */
-    text-align: center; /* ویرایش به وسط‌چین برای دسکتاپ */
+    font-size: clamp(22px, 3vw, 38px);
+    text-align: right;
 }
 
 .desc-wrapper {
@@ -254,7 +250,7 @@ html[dir="rtl"] .sub-title-export {
 }
 
 .description-new {
-    font-size: clamp(12px, 1.2vw, 14px); /* کوچکتر برای انگلیسی و روسی */
+    font-size: clamp(16px, 1.8vw, 20px); 
     line-height: 1.8; 
     color: var(--text-white); 
     font-weight: 500; 
@@ -262,7 +258,6 @@ html[dir="rtl"] .sub-title-export {
     text-align: left;
 }
 html[dir="rtl"] .description-new {
-    font-size: clamp(13px, 1.4vw, 16px); /* حفظ سایز قبلی برای فارسی و عربی */
     text-align: right;
 }
 
@@ -284,9 +279,8 @@ html[dir="rtl"] .btn-explore-new svg { transform: scaleX(-1); }
 .btn-catalog-outline:hover { border-color: var(--primary-gold); color: var(--primary-gold); background: rgba(255, 255, 255, 0.05); }
 
 .vertical-slider-dots {
-    display: none !important; /* این بخش مخفی شد */
     position: absolute; right: 4%; top: 50%; transform: translateY(-50%);
-    flex-direction: column; gap: 24px; z-index: 10;
+    display: flex; flex-direction: column; gap: 24px; z-index: 10;
 }
 html[dir="rtl"] .vertical-slider-dots { right: auto; left: 4%; }
 .v-dot {
@@ -1080,7 +1074,7 @@ html[dir="rtl"] .copyright-content {
     .detail-table-container { grid-column: 1; }
     .history-founders-grid { grid-template-columns: 1fr; }
     
-    .vertical-slider-dots { display: none !important; } 
+    .vertical-slider-dots { display: none; } 
     
     .new-dark-export { 
         display: flex !important; 
@@ -1168,16 +1162,16 @@ html[dir="rtl"] .copyright-content {
     }
 
     /* سایزهای متون بخش اصلی (بسیار کوچک‌تر و ظریف‌تر جهت عدم تداخل) */
-    .main-title-new { font-size: 14px !important; margin-bottom: 4px !important; }
-    html[dir="rtl"] .main-title-new { font-size: 14px !important; }
+    .main-title-new { font-size: 16px !important; margin-bottom: 4px !important; }
+    html[dir="rtl"] .main-title-new { font-size: 16px !important; }
     
-    .sub-title-export { font-size: 10px !important; text-align: left; line-height: 1.4 !important; white-space: normal !important; margin-bottom: 8px !important; }
-    html[dir="rtl"] .sub-title-export { font-size: 10px !important; text-align: right; }
+    .sub-title-export { font-size: 11px !important; text-align: left; line-height: 1.4 !important; white-space: normal !important; margin-bottom: 8px !important; }
+    html[dir="rtl"] .sub-title-export { font-size: 11px !important; text-align: right; }
     
     .desc-wrapper { flex-direction: row !important; gap: 8px !important; margin-bottom: 15px !important; justify-content: flex-start !important; }
     .desc-line-left, .desc-line-right { display: none !important; } /* حذف کامل خطوط طلایی در موبایل برای ظاهر خلوت و ظریف */
     
-    .description-new { font-size: 9px !important; text-align: left !important; margin: 0 !important; max-width: 100% !important; }
+    .description-new { font-size: 10px !important; text-align: left !important; margin: 0 !important; max-width: 100% !important; }
     html[dir="rtl"] .description-new { text-align: right !important; }
     
     .hero-text-block { text-align: left !important; margin: 0; width: 100%; }
@@ -1359,7 +1353,7 @@ html[dir="rtl"] .copyright-content {
     
     /* Departments cards - responsive layout */
     .departments-cards-section { padding: 30px 16px !important; }
-    .departments-cards-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .departments-cards-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
     .department-card-item { border-radius: 12px !important; }
     .dept-card-image-wrapper { height: 120px !important; }
     .dept-card-body { padding: 16px 12px !important; }
@@ -1466,8 +1460,8 @@ html[dir="rtl"] .copyright-content {
 }
 
 @media (max-width: 480px) {
-    .main-title-new { font-size: 14px !important; }
-    html[dir="rtl"] .main-title-new { font-size: 14px !important; }
+    .main-title-new { font-size: 16px !important; }
+    html[dir="rtl"] .main-title-new { font-size: 16px !important; }
     .export-country-card { width: 120px !important; padding: 10px !important; }
     .flag-wrapper { width: 60px !important; height: 40px !important; }
 }
