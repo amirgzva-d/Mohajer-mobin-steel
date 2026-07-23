@@ -653,7 +653,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'contact-desc-text': 'Have a question or need a custom solution? Our team is here to help you make better decisions.',
             'contact-phone-lbl': 'Phone', 'contact-email-lbl': 'Email', 'contact-addr-lbl': 'Address',
             
-            'contact-addr-val': 'Mashhad, Janbaz Blvd, Pazh Admin Center 2, Floor 3, Unit 313',
+            'contact-addr-val': 'Unit 313, 3rd Floor, Paj 2 Management Center, Janbaz Blvd., Mashhad',
             'contact-phone-val': '+98 51 3705 7124-5 <br> +98 915 302 7342',
             'contact-email-val': 'info@mohajer-group.com',
             
@@ -780,8 +780,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'history-desc': 'با بیش از هفت دهه سابقه در تجارت و صادرات، شرکت مهاجر استیل به عنوان یکی از صادرکنندگان برتر استان خراسان رضوی در بازارهای جهانی شناخته می‌شود.',
             'founder1-subtitle': 'بنیان‌گذار گروه بین‌المللی بازرگانی مهاجر', 'founder1-name': 'مرحوم حاج قاسم مهاجری',
             'founder1-bio': 'ریشه فعالیت‌های تجاری این مجموعه به سال <span class="highlight-year">۱۳۳۰</span> بازمی‌گردد؛ زمانی که مرحوم حاج قاسم مهاجری خراسانی فعالیت خود را در حوزه تجارت داخلی محصولات چرمی و کراس آغاز نمودند. ایشان با تکیه بر تجربه، دانش بازار و اصول حرفه‌ای تجارت، پایه‌های یک کسب‌وکار پایدار و موفق را بنا نهادند.',
-            'founder2-subtitle': 'مدیر عامل گروه بین‌المللی بازرگانی مهاجر', 'founder2-name': 'جناب هاشم مهاجری',
-            'founder2-bio': 'در ادامه این مسیر و از سال <span class="highlight-year">۱۳۷۴</span>، جناب هاشم مهاجری خراسانی با بهره‌گیری از تجربیات ارزشمند گذشته، فعالیت‌های صادراتی مجموعه را به‌صورت تخصصی در حوزه‌هایی همچون مواد غذایی توسعه دادند و دامنه حضور ما را به بازارهای بین‌المللی گسترش دادند.',
+            'founder2-subtitle': 'مدیر عامل گروه بین‌المللی بازرگانی مهاجر', 'founder2-name': 'جناب اقا هاشم مهاجری',
+            'founder2-bio': 'در ادامه این مسیر و از سال <span class="highlight-year">۱۳۷۴</span>، جناب اقا هاشم مهاجری خراسانی با بهره‌گیری از تجربیات ارزشمند گذشته، فعالیت‌های صادراتی مجموعه را به‌صورت تخصصی در حوزه‌هایی همچون مواد غذایی توسعه دادند و دامنه حضور ما را به بازارهای بین‌المللی گسترش دادند.',
             'timeline-sub': 'مسیر توسعه ما', 'timeline-title': 'تاریخچه‌ای از رشد و تعهد',
             'timeline1-year': '۱۳۳۰', 'timeline1-title': 'آغاز فعالیت', 'timeline1-desc': 'ریشه فعالیت‌های تجاری این مجموعه به سال ۱۳۳۰ بازمی‌گردد؛ زمانی که مرحوم حاج قاسم مهاجری خراسانی فعالیت خود را در حوزه تجارت داخلی محصولات چرمی و کراس آغاز نمودند. ایشان با تکیه بر تجربه، دانش بازار و اصول حرفه‌ای تجارت، پایه‌های یک کسب‌وکار پایدار و موفق را بنا نهادند.',
             'timeline2-year': '۱۳۶۶', 'timeline2-title': 'ورود به تجارت بین‌المللی', 'timeline2-desc': 'در سال ۱۳۶۶، این مجموعه وارد عرصه تجارت بین‌المللی شد و صادرات محصولات کراس و ویت‌بلو را به کشورهای ترکیه و ایتالیا آغاز کرد. این گام مهم، نقطه عطفی در توسعه فعالیت‌های بازرگانی مجموعه و ورود به بازارهای جهانی به شمار می‌آید.',
@@ -1289,12 +1289,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     // متدهای نمایش صفحات
     // ==========================================================================
+   const mainFooter = document.getElementById('mainFooter'); // اضافه کردن متغیر فوتر
+
     function showMainLanding() {
         if(productDetailView) productDetailView.style.display = 'none';
         if(aboutUsView) aboutUsView.style.display = 'none';
         if(departmentsView) departmentsView.style.display = 'none';
         if(contactView) contactView.style.display = 'none';
         if(mainLandingView) mainLandingView.style.display = 'block';
+        if(mainFooter) mainFooter.style.display = 'block'; // نمایش فوتر
         activeProductKey = null;
         setActiveNavLink('navHomeLink');
     }
@@ -1305,6 +1308,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(departmentsView) departmentsView.style.display = 'none';
         if(contactView) contactView.style.display = 'none';
         if(aboutUsView) aboutUsView.style.display = 'block';
+        if(mainFooter) mainFooter.style.display = 'block'; // نمایش فوتر
         setActiveNavLink('navAboutLink');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -1315,6 +1319,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(aboutUsView) aboutUsView.style.display = 'none';
         if(contactView) contactView.style.display = 'none';
         if(departmentsView) departmentsView.style.display = 'block';
+        if(mainFooter) mainFooter.style.display = 'block'; // نمایش فوتر
         setActiveNavLink('navDepartmentsLink');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -1325,11 +1330,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if(aboutUsView) aboutUsView.style.display = 'none';
         if(departmentsView) departmentsView.style.display = 'none';
         if(contactView) contactView.style.display = 'block';
+        if(mainFooter) mainFooter.style.display = 'none'; // 🔴 مخفی کردن فوتر فقط در صفحه تماس
         setActiveNavLink('navContactLink');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    const clickMap = [
+     const clickMap = [
         { id: 'crumbHomeBtn', action: showMainLanding },
         { id: 'aboutCrumbHomeBtn', action: showMainLanding },
         { id: 'deptCrumbHomeBtn', action: showMainLanding },
@@ -1341,7 +1347,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'navContactLink', action: (e) => { e.preventDefault(); showContactUs(); } }
     ];
 
-    clickMap.forEach(map => {
+   clickMap.forEach(map => {
         const btn = document.getElementById(map.id);
         if (btn) btn.addEventListener('click', map.action);
     });
@@ -1369,6 +1375,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const section = document.getElementById('catalogSectionAnchor');
         if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
+
 
     // ==========================================================================
     // منطق اسلایدر مقاصد صادراتی (Drag & Auto-Scroll)
