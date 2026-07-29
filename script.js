@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     const datasheetImages = {
         round: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782899239/3_leycac.png",       
-        plates: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782899273/6_d1ca01.png",      
+        plates: "https://res.cloudinary.com/dqhbyqftq/image/upload/v1785301580/file_00000000f5f081f5ad0b13541501a3cb_mitcq2.png",      
         rebar: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782899233/1_qzmxom.png",       
         angle: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782899242/4_e42dej.png",       
         channels: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782899243/5_dmqufn.png",    
@@ -33,15 +33,16 @@ document.addEventListener('DOMContentLoaded', () => {
         pipes: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782899268/9_ttqkzc.png",       
         tubes: "",                                                                     
         flat: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782899260/8_d42ssf.png",        
-        slab: "",                                                                 
+        slab: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782899273/6_d1ca01.png",                                                                 
         coils: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782899242/7_xvgoxc.png",       
         wires: "https://res.cloudinary.com/dqhbyqftq/image/upload/f_auto,q_auto:good/v1782899271/10_cbrmmx.png"        
     };
 
     const productOrder = [
-        'round', 'plates', 'rebar', 'angle', 'channels', 'beams', 
-        'pipes', 'tubes', 'flat', 'slab', 'coils', 'wires'
+        'round', 'slab', 'rebar', 'angle', 'channels', 'beams', 
+        'pipes', 'tubes', 'flat', 'plates', 'coils', 'wires'
     ];
+
 
     // ==========================================================================
     // پایگاه داده کامل مشخصات محصولات
