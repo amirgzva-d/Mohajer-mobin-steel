@@ -1128,7 +1128,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const aboutUsView = document.getElementById('aboutUsView');
     const departmentsView = document.getElementById('departmentsView');
     const contactView = document.getElementById('contactView');
-
+    const specialSaleView = document.getElementById('specialSaleView');
+  
     function setActiveNavLink(linkId) {
         const navLinks = document.querySelectorAll('.nav-links a');
         navLinks.forEach(link => {
@@ -1290,15 +1291,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     // متدهای نمایش صفحات
     // ==========================================================================
-   const mainFooter = document.getElementById('mainFooter'); // اضافه کردن متغیر فوتر
+const mainFooter = document.getElementById('mainFooter');
 
     function showMainLanding() {
         if(productDetailView) productDetailView.style.display = 'none';
         if(aboutUsView) aboutUsView.style.display = 'none';
         if(departmentsView) departmentsView.style.display = 'none';
         if(contactView) contactView.style.display = 'none';
+        if(specialSaleView) specialSaleView.style.display = 'none';
         if(mainLandingView) mainLandingView.style.display = 'block';
-        if(mainFooter) mainFooter.style.display = 'block'; // نمایش فوتر
+        if(mainFooter) mainFooter.style.display = 'block'; 
         activeProductKey = null;
         setActiveNavLink('navHomeLink');
     }
@@ -1308,8 +1310,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if(productDetailView) productDetailView.style.display = 'none';
         if(departmentsView) departmentsView.style.display = 'none';
         if(contactView) contactView.style.display = 'none';
+        if(specialSaleView) specialSaleView.style.display = 'none';
         if(aboutUsView) aboutUsView.style.display = 'block';
-        if(mainFooter) mainFooter.style.display = 'block'; // نمایش فوتر
+        if(mainFooter) mainFooter.style.display = 'block'; 
         setActiveNavLink('navAboutLink');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -1319,8 +1322,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if(productDetailView) productDetailView.style.display = 'none';
         if(aboutUsView) aboutUsView.style.display = 'none';
         if(contactView) contactView.style.display = 'none';
+        if(specialSaleView) specialSaleView.style.display = 'none';
         if(departmentsView) departmentsView.style.display = 'block';
-        if(mainFooter) mainFooter.style.display = 'block'; // نمایش فوتر
+        if(mainFooter) mainFooter.style.display = 'block'; 
         setActiveNavLink('navDepartmentsLink');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -1330,9 +1334,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if(productDetailView) productDetailView.style.display = 'none';
         if(aboutUsView) aboutUsView.style.display = 'none';
         if(departmentsView) departmentsView.style.display = 'none';
+        if(specialSaleView) specialSaleView.style.display = 'none';
         if(contactView) contactView.style.display = 'block';
-        if(mainFooter) mainFooter.style.display = 'none'; // 🔴 مخفی کردن فوتر فقط در صفحه تماس
+        if(mainFooter) mainFooter.style.display = 'none'; 
         setActiveNavLink('navContactLink');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showSpecialSale() {
+        if(mainLandingView) mainLandingView.style.display = 'none';
+        if(productDetailView) productDetailView.style.display = 'none';
+        if(aboutUsView) aboutUsView.style.display = 'none';
+        if(departmentsView) departmentsView.style.display = 'none';
+        if(contactView) contactView.style.display = 'none';
+        if(specialSaleView) specialSaleView.style.display = 'block';
+        if(mainFooter) mainFooter.style.display = 'block';
+        setActiveNavLink('navSpecialSaleLink');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -1345,13 +1362,51 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'navHomeLink', action: (e) => { e.preventDefault(); showMainLanding(); window.scrollTo({top:0, behavior:'smooth'}); } },
         { id: 'navAboutLink', action: (e) => { e.preventDefault(); showAboutUs(); } },
         { id: 'navDepartmentsLink', action: (e) => { e.preventDefault(); showDepartments(); } },
-        { id: 'navContactLink', action: (e) => { e.preventDefault(); showContactUs(); } }
+        { id: 'navContactLink', action: (e) => { e.preventDefault(); showContactUs(); } },
+        { id: 'navSpecialSaleLink', action: (e) => { e.preventDefault(); showSpecialSale(); } }
     ];
 
-   clickMap.forEach(map => {
+    clickMap.forEach(map => {
         const btn = document.getElementById(map.id);
         if (btn) btn.addEventListener('click', map.action);
     });
+
+    // ==========================================================================
+    // تایمر شمارش معکوس بخش فروش ویژه
+    // ==========================================================================
+    function initCountdownTimer() {
+        const daysEl = document.getElementById('cd-days');
+        const hoursEl = document.getElementById('cd-hours');
+        const minsEl = document.getElementById('cd-minutes');
+        const secsEl = document.getElementById('cd-seconds');
+        
+        if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
+
+        let endOfferTime = new Date();
+        endOfferTime.setDate(endOfferTime.getDate() + 10);
+        endOfferTime.setHours(23, 47, 59, 999);
+
+        const timerInterval = setInterval(() => {
+            const timeNow = new Date().getTime();
+            const difference = endOfferTime.getTime() - timeNow;
+
+            if (difference < 0) {
+                clearInterval(timerInterval);
+                return;
+            }
+
+            const totalDays = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const totalHours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const totalMinutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const totalSeconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            daysEl.innerText = totalDays < 10 ? '0' + totalDays : totalDays;
+            hoursEl.innerText = totalHours < 10 ? '0' + totalHours : totalHours;
+            minsEl.innerText = totalMinutes < 10 ? '0' + totalMinutes : totalMinutes;
+            secsEl.innerText = totalSeconds < 10 ? '0' + totalSeconds : totalSeconds;
+        }, 1000);
+    }
+    initCountdownTimer();
 
     const crumbProductsBtn = document.getElementById('crumbProductsBtn');
     if(crumbProductsBtn) crumbProductsBtn.addEventListener('click', () => {
