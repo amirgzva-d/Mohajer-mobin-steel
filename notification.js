@@ -1,3 +1,4 @@
+console.log("notification.js loaded");
 // وارد کردن ماژول‌های فایربیس
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-messaging.js";
