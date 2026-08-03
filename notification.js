@@ -20,7 +20,7 @@ const messaging = getMessaging(app);
 const db = getFirestore(app);
 
 // ⚠️ کلید VAPID خود را اینجا قرار دهید ⚠️
-const VAPID_KEY = "YOUR_VAPID_KEY_HERE";
+const VAPID_KEY = "BG0jPjyUSCcW85BHFb5QVk1KmGSpRK84rlyHnuxTSfXEjXmAN1I5DYno6nnpmkBWy7aNHCG1Gga7IUD1J44Z_XQ";
 
 // عناصر DOM (ارتباط با HTML)
 const notifyBtn = document.getElementById('btn-notify-price');
