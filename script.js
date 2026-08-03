@@ -1,27 +1,3 @@
-// ==========================================================================
-// Firebase Initialization & Imports
-// ==========================================================================
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-messaging.js";
-import { getFirestore, doc, setDoc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-const firebaseConfig = {
-    apiKey: "AIzaSyAv1nf2Fa2upW4OZ-RTDEn98YNbn7WngfQ",
-    authDomain: "steel-price-notify.firebaseapp.com",
-    projectId: "steel-price-notify",
-    storageBucket: "steel-price-notify.firebasestorage.app",
-    messagingSenderId: "31744693392",
-    appId: "1:31744693392:web:6bbf4d7f7f8c6843d7f415",
-    measurementId: "G-2V24CVNSCW"
-};
-
-const app = initializeApp(firebaseConfig);
-const messaging = getMessaging(app);
-const db = getFirestore(app);
-
-// ⚠️ بسیار مهم: کلید VAPID خود را از تنظیمات فایربیس بگیرید و اینجا قرار دهید ⚠️
-const VAPID_KEY = "YOUR_VAPID_KEY_HERE";
-
 document.addEventListener('DOMContentLoaded', () => {
 
     // ذخیره کلید محصول فعال
@@ -66,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'round', 'slab', 'rebar', 'angle', 'channels', 'beams', 
         'pipes', 'tubes', 'flat', 'plates', 'coils', 'wires'
     ];
+
 
     // ==========================================================================
     // پایگاه داده کامل مشخصات محصولات
@@ -860,7 +837,7 @@ document.addEventListener('DOMContentLoaded', () => {
             dir: 'rtl',
             'nav-home': 'الرئيسية', 'nav-products': 'المنتجات', 'nav-departments': 'قسم', 'nav-about': 'من نحن', 'nav-contact': 'اتصل بنا',
             'btn-quote': 'احصل على سعر', 
-            'hero-title-combined': 'فولاذ مهاجر مبین',
+            'hero-title-combined': 'فولاذ مهاجر مبين',
             'hero-export': 'مُصدِّر لجميع مقاطع الصلب',
             'hero-desc': 'شركة تابعة لمجموعة مهاجر التجارية',
             'btn-explore': 'استكشف المنتجات', 'btn-catalog': 'تنزيل الكتالوج', 'trusted-title': 'محل ثقة رواد الصناعة', 'trusted-desc': 'تقديم التميز في جميع أنحاء العالم.',
@@ -1042,7 +1019,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'dept1-bullet1': 'Поставка и торговля химическим и полимерным сырьем', 'dept1-bullet2': 'Создание стабильной и надежной цепочки поставок', 'dept1-bullet3': 'Управление рисками и поддержка на мировых рынках', 'dept1-bullet4': 'Предоставление коммерческих решений под нужды клиентов',
             'dept2-title': 'Металлургия', 'dept2-desc': 'Сталелитейная промышленность является основой нашей деятельности. Специализируясь на поставке и дистрибуции различной стальной продукции, от заготовок и слябов до балок и листов, мы предоставляем надежные решения для промышленных и строительных проектов в глобальном масштабе.',
             'dept2-bullet1': 'Поставка стальной продукции премиум-качества', 'dept2-bullet2': 'Широкая международная сеть поставок и дистрибуции', 'dept2-bullet3': 'Конкурентоспособные цены и своевременная доставка', 'dept2-bullet4': 'Поддержка промышленных и строительных проектов любого масштаба',
-            'dept3-title': 'Пищевая промышленность', 'dept3-desc': 'В отделе пищевой промышленности мы предлагаем высококачественные сельскохозяйственные и пищевые продукты на международных рынках путем создания глобальной сети надежных поставщиков и производителей. Строгое управление цепочкой поставок, контроль качества и профессиона логистика гарантируют безопасную доставку в соответствии с мировыми стандартами.',
+            'dept3-title': 'Пищевая промышленность', 'dept3-desc': 'В отделе пищевой промышленности мы предлагаем высококачественные сельскохозяйственные и пищевые продукты на международных рынках путем создания глобальной сети надежных поставщиков и производителей. Строгое управление цепочкой поставок, контроль качества и профессиональная логистика гарантируют безопасную доставку в соответствии с мировыми стандартами.',
             'dept3-bullet1': 'Международные поставки и торговля пищевой и сельскохозяйственной продукцией', 'dept3-bullet2': 'Конترل качества и соответствие международным стандартам', 'dept3-bullet3': 'Профессиональное управление логистикой и цепочкой поставок', 'dept3-bullet4': 'Гарантия свежести, безопасности и своевременной доставки',
             'btn-learn-more': 'Подробнее',
 
@@ -1314,7 +1291,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     // متدهای نمایش صفحات
     // ==========================================================================
-    const mainFooter = document.getElementById('mainFooter');
+const mainFooter = document.getElementById('mainFooter');
 
     function showMainLanding() {
         if(productDetailView) productDetailView.style.display = 'none';
@@ -1454,6 +1431,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const section = document.getElementById('catalogSectionAnchor');
         if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
+
 
     // ==========================================================================
     // منطق اسلایدر مقاصد صادراتی (Drag & Auto-Scroll)
@@ -1811,3 +1789,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+});
