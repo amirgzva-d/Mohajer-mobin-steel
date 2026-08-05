@@ -43,11 +43,16 @@
 <meta name="theme-color" content="#0B1121">    
 
 <!-- OneSignal Web Push Notifications -->
-<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.js" defer></script>
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" async="async"></script>
 <script>
   window.OneSignalDeferred = window.OneSignalDeferred || [];
+  
+  // Global variable to store the initialized OneSignal instance
+  let oneSignalInstance = null;
+  
+  // Initialize function to be called when SDK loads
   OneSignalDeferred.push(async function(OneSignal) {
-    OneSignal.init({
+    await OneSignal.init({
       appId: "23462615-e153-4d74-a245-ca705cb1d11d",
       serviceWorkerPath: "/OneSignalSDKWorker.js",
       serviceWorkerScope: "/",
@@ -56,6 +61,14 @@
         enable: false
       }
     });
+    
+    // Store the initialized instance globally
+    oneSignalInstance = OneSignal;
+    
+    console.log('OneSignal initialized successfully');
+    
+    // Dispatch custom event when OneSignal is fully ready
+    window.dispatchEvent(new CustomEvent('OneSignalReady', { detail: OneSignal }));
   });
 </script>
     
@@ -2988,7 +3001,7 @@
     </div>
 
     <script>
-    // OneSignal Notification Setup
+    // OneSignal Notification Setup - Using official v16 architecture
     document.addEventListener('DOMContentLoaded', function() {
         const btnNotifyPrice = document.getElementById('btn-notify-price');
         const notifyModal = document.getElementById('notifyModal');
@@ -2996,11 +3009,63 @@
         const submitNotifyBtn = document.getElementById('submitNotifyBtn');
         const notifyMessage = document.getElementById('notifyMessage');
 
+        // Disable button until OneSignal is ready
+        if (btnNotifyPrice) {
+            btnNotifyPrice.disabled = true;
+            btnNotifyPrice.style.opacity = '0.5';
+            btnNotifyPrice.style.cursor = 'not-allowed';
+        }
+
+        // Wait for OneSignal to be fully initialized using the global instance
+        function waitForOneSignal() {
+            return new Promise(function(resolve, reject) {
+                // Check if already initialized via global instance
+                if (window.oneSignalInstance) {
+                    resolve(window.oneSignalInstance);
+                    return;
+                }
+                
+                // Listen for the custom ready event
+                var readyHandler = function(e) {
+                    resolve(e.detail);
+                };
+                window.addEventListener('OneSignalReady', readyHandler, { once: true });
+                
+                // Timeout after 15 seconds
+                setTimeout(function() {
+                    reject(new Error('OneSignal initialization timeout'));
+                }, 15000);
+            });
+        }
+
+        // Enable button once OneSignal is ready
+        waitForOneSignal().then(function(OneSignal) {
+            if (btnNotifyPrice) {
+                btnNotifyPrice.disabled = false;
+                btnNotifyPrice.style.opacity = '1';
+                btnNotifyPrice.style.cursor = 'pointer';
+            }
+            console.log('OneSignal is ready, button enabled');
+        }).catch(function(error) {
+            console.error('Error waiting for OneSignal:', error);
+            if (btnNotifyPrice) {
+                btnNotifyPrice.disabled = true;
+                btnNotifyPrice.title = 'خطا در بارگذاری سیستم اعلان‌ها';
+                btnNotifyPrice.textContent = '❌ خطا در بارگذاری';
+            }
+        });
+
         // Open modal when clicking the price notification button
         if (btnNotifyPrice) {
-            btnNotifyPrice.addEventListener('click', function() {
-                if (notifyModal) {
-                    notifyModal.style.display = 'flex';
+            btnNotifyPrice.addEventListener('click', async function() {
+                try {
+                    // Wait for OneSignal to be ready before opening modal
+                    await waitForOneSignal();
+                    if (notifyModal) {
+                        notifyModal.style.display = 'flex';
+                    }
+                } catch (error) {
+                    showMessage('خطا در برقراری ارتباط با سیستم اعلان‌ها. لطفاً صفحه را رفرش کنید.', 'error');
                 }
             });
         }
@@ -3023,24 +3088,27 @@
             });
         }
 
-        // Handle subscription button click
+        // Handle subscription button click - MUST use oneSignalInstance from OneSignalDeferred
         if (submitNotifyBtn) {
             submitNotifyBtn.addEventListener('click', async function() {
-                if (!window.OneSignal) {
-                    showMessage('خطا: SDK وان‌سیگنال بارگذاری نشده است.', 'error');
-                    return;
-                }
-
                 try {
-                    // Request notification permission
-                    await window.OneSignal.Notifications.requestPermission();
+                    // Wait for OneSignal to be ready and get the instance
+                    var OneSignal = await waitForOneSignal();
+                    
+                    if (!OneSignal) {
+                        showMessage('خطا: SDK وان‌سیگنال بارگذاری نشده است.', 'error');
+                        return;
+                    }
+
+                    // Request notification permission using the initialized instance
+                    await OneSignal.Notifications.requestPermission();
                     
                     // Check if user is subscribed
-                    const isSubscribed = await window.OneSignal.Notifications.isPushNotificationsEnabled();
+                    var isSubscribed = await OneSignal.Notifications.isPushNotificationsEnabled();
                     
                     if (isSubscribed) {
                         showMessage('✅ اعلان‌ها با موفقیت فعال شدند!', 'success');
-                        setTimeout(() => {
+                        setTimeout(function() {
                             if (notifyModal) notifyModal.style.display = 'none';
                         }, 2000);
                     } else {
@@ -3048,7 +3116,11 @@
                     }
                 } catch (error) {
                     console.error('OneSignal error:', error);
-                    showMessage('❌ خطا در فعال‌سازی اعلان. لطفاً دوباره تلاش کنید.', 'error');
+                    if (error.message && error.message.includes('permission')) {
+                        showMessage('❌ دسترسی اعلان داده نشد. لطفاً از تنظیمات مرورگر اجازه دهید.', 'error');
+                    } else {
+                        showMessage('❌ خطا در فعال‌سازی اعلان. لطفاً دوباره تلاش کنید.', 'error');
+                    }
                 }
             });
         }
