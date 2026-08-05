@@ -1469,15 +1469,11 @@ html[dir="rtl"] .copyright-content {
    SPECIAL SALE SECTION (REDESIGN MATCHING IMAGE)
    ========================================================================== */
 
-/* استایل دکمه فروش ویژه در منو (بدون تغییر) */
+/* استایل دکمه بازار در منو */
 .special-offer-nav {
-    display: flex !important; align-items: center; gap: 6px; color: var(--primary-gold) !important; font-weight: 800 !important;
+    display: flex !important; align-items: center; gap: 6px; color: var(--text-light-gray) !important; font-weight: 600 !important;
 }
 .special-offer-nav::after { display: none !important; }
-.special-offer-nav .fire-icon { color: #f97316; fill: #f97316; animation: flicker 1.5s infinite alternate; }
-.special-offer-nav .hot-badge { background-color: #ef4444; color: white; font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: bold; letter-spacing: 0.5px; animation: pulse 2s infinite; font-family: 'Inter', sans-serif; }
-@keyframes flicker { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0.8; transform: scale(1.1); } }
-@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); box-shadow: 0 0 8px rgba(239, 68, 68, 0.6); } 100% { transform: scale(1); } }
 
 /* --- استایل های اصلی صفحه جدید --- */
 .ss-new-view {
