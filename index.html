@@ -40,9 +40,24 @@
 
 <link rel="icon" type="image/png" sizes="512x512" href="/512.png">
 
-<link rel="manifest" href="/site.webmanifest">
-
 <meta name="theme-color" content="#0B1121">    
+
+<!-- OneSignal Web Push Notifications -->
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    OneSignal.init({
+      appId: "23462615-e153-4d74-a245-ca705cb1d11d",
+      serviceWorkerPath: "/OneSignalSDKWorker.js",
+      serviceWorkerScope: "/",
+      autoResubscribe: true,
+      notifyButton: {
+        enable: false
+      }
+    });
+  });
+</script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -2964,25 +2979,89 @@
         <div class="notify-modal-box">
             <span id="closeNotifyModal" class="notify-close">&times;</span>
             <h3>فعال‌سازی اطلاع‌رسانی قیمت</h3>
-            <p>برای دریافت جدیدترین قیمت‌های فولاد، اطلاعات خود را وارد کنید.</p>
-            <div class="notify-form-group">
-                <input type="text" id="notifyName" placeholder="نام و نام خانوادگی" required>
-            </div>
-            <div class="notify-form-group">
-                <input type="tel" id="notifyPhone" placeholder="شماره موبایل (مثال: 09123456789)" required>
-            </div>
-            <div class="notify-form-group">
-                <input type="email" id="notifyEmail" placeholder="ایمیل (اختیاری)">
-            </div>
+            <p>برای دریافت جدیدترین قیمت‌های فولاد، اجازه دسترسی به اعلان‌ها را بدهید.</p>
             <button id="submitNotifyBtn" class="ss-btn-fill" style="width: 100%; justify-content: center; margin-top: 10px;">
-                ثبت و دریافت اعلان
+                فعال‌سازی اعلان‌ها
             </button>
             <p id="notifyMessage" style="font-size: 12px; margin-top: 10px; text-align: center; display: none;"></p>
         </div>
     </div>
 
-    <!-- اضافه کردن فایل جاوااسکریپت فایربیس به صورت ماژول -->
-    <script type="module" src="notification.js"></script>
+    <script>
+    // OneSignal Notification Setup
+    document.addEventListener('DOMContentLoaded', function() {
+        const btnNotifyPrice = document.getElementById('btn-notify-price');
+        const notifyModal = document.getElementById('notifyModal');
+        const closeNotifyModal = document.getElementById('closeNotifyModal');
+        const submitNotifyBtn = document.getElementById('submitNotifyBtn');
+        const notifyMessage = document.getElementById('notifyMessage');
+
+        // Open modal when clicking the price notification button
+        if (btnNotifyPrice) {
+            btnNotifyPrice.addEventListener('click', function() {
+                if (notifyModal) {
+                    notifyModal.style.display = 'flex';
+                }
+            });
+        }
+
+        // Close modal
+        if (closeNotifyModal) {
+            closeNotifyModal.addEventListener('click', function() {
+                if (notifyModal) {
+                    notifyModal.style.display = 'none';
+                }
+            });
+        }
+
+        // Close modal when clicking outside
+        if (notifyModal) {
+            notifyModal.addEventListener('click', function(e) {
+                if (e.target === notifyModal) {
+                    notifyModal.style.display = 'none';
+                }
+            });
+        }
+
+        // Handle subscription button click
+        if (submitNotifyBtn) {
+            submitNotifyBtn.addEventListener('click', async function() {
+                if (!window.OneSignal) {
+                    showMessage('خطا: SDK وان‌سیگنال بارگذاری نشده است.', 'error');
+                    return;
+                }
+
+                try {
+                    // Request notification permission
+                    await window.OneSignal.Notifications.requestPermission();
+                    
+                    // Check if user is subscribed
+                    const isSubscribed = await window.OneSignal.Notifications.isPushNotificationsEnabled();
+                    
+                    if (isSubscribed) {
+                        showMessage('✅ اعلان‌ها با موفقیت فعال شدند!', 'success');
+                        setTimeout(() => {
+                            if (notifyModal) notifyModal.style.display = 'none';
+                        }, 2000);
+                    } else {
+                        showMessage('❌ دسترسی اعلان رد شد. لطفاً از تنظیمات مرورگر اجازه دهید.', 'error');
+                    }
+                } catch (error) {
+                    console.error('OneSignal error:', error);
+                    showMessage('❌ خطا در فعال‌سازی اعلان. لطفاً دوباره تلاش کنید.', 'error');
+                }
+            });
+        }
+
+        function showMessage(text, type) {
+            if (notifyMessage) {
+                notifyMessage.textContent = text;
+                notifyMessage.style.display = 'block';
+                notifyMessage.style.color = type === 'success' ? '#10B981' : '#EF4444';
+            }
+        }
+    });
+    </script>
 
 </body>
 </html>
