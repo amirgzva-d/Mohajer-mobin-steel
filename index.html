@@ -54,6 +54,23 @@
                     enable: false
                 }
             });
+            
+            // After initialization completes, enable the notification button
+            var btnNotifyPrice = document.getElementById('btn-notify-price');
+            if (btnNotifyPrice) {
+                btnNotifyPrice.disabled = false;
+                btnNotifyPrice.style.opacity = '1';
+                btnNotifyPrice.style.cursor = 'pointer';
+                btnNotifyPrice.title = 'فعال‌سازی اطلاع‌رسانی قیمت';
+                
+                // Attach click handler to open modal
+                btnNotifyPrice.addEventListener('click', function() {
+                    var notifyModal = document.getElementById('notifyModal');
+                    if (notifyModal) {
+                        notifyModal.style.display = 'flex';
+                    }
+                });
+            }
         });
     </script>
     
@@ -2986,7 +3003,7 @@
     </div>
 
     <script>
-    // OneSignal Notification Button - Official v16
+    // OneSignal Notification Button - Official v16 Implementation
     document.addEventListener('DOMContentLoaded', function() {
         const btnNotifyPrice = document.getElementById('btn-notify-price');
         const notifyModal = document.getElementById('notifyModal');
@@ -2994,7 +3011,7 @@
         const submitNotifyBtn = document.getElementById('submitNotifyBtn');
         const notifyMessage = document.getElementById('notifyMessage');
 
-        // Disable button until OneSignal is ready
+        // Keep button disabled until OneSignal initialization completes
         if (btnNotifyPrice) {
             btnNotifyPrice.disabled = true;
             btnNotifyPrice.style.opacity = '0.5';
@@ -3002,64 +3019,7 @@
             btnNotifyPrice.title = 'در حال بارگذاری سیستم اعلان‌ها...';
         }
 
-        // Wait for OneSignal to be fully initialized
-        function waitForOneSignal() {
-            return new Promise(function(resolve, reject) {
-                var checkCount = 0;
-                var maxChecks = 50;
-                
-                var checkInterval = setInterval(function() {
-                    checkCount++;
-                    
-                    if (typeof OneSignal !== 'undefined' && OneSignal.initialized) {
-                        clearInterval(checkInterval);
-                        resolve(OneSignal);
-                        return;
-                    }
-                    
-                    if (checkCount >= maxChecks) {
-                        clearInterval(checkInterval);
-                        reject(new Error('OneSignal initialization timeout'));
-                    }
-                }, 200);
-            });
-        }
-
-        // Enable button once OneSignal is ready
-        waitForOneSignal().then(function() {
-            if (btnNotifyPrice) {
-                btnNotifyPrice.disabled = false;
-                btnNotifyPrice.style.opacity = '1';
-                btnNotifyPrice.style.cursor = 'pointer';
-                btnNotifyPrice.title = 'فعال‌سازی اطلاع‌رسانی قیمت';
-            }
-            console.log('✅ OneSignal is ready, button enabled');
-        }).catch(function(error) {
-            console.error('❌ Error waiting for OneSignal:', error);
-            if (btnNotifyPrice) {
-                btnNotifyPrice.disabled = true;
-                btnNotifyPrice.style.opacity = '0.5';
-                btnNotifyPrice.style.cursor = 'not-allowed';
-                btnNotifyPrice.title = 'خطا در بارگذاری سیستم اعلان‌ها';
-                btnNotifyPrice.textContent = '❌ خطا در بارگذاری';
-            }
-        });
-
-        // Open modal when clicking the price notification button
-        if (btnNotifyPrice) {
-            btnNotifyPrice.addEventListener('click', async function() {
-                try {
-                    await waitForOneSignal();
-                    if (notifyModal) {
-                        notifyModal.style.display = 'flex';
-                    }
-                } catch (error) {
-                    showMessage('خطا در برقراری ارتباط با سیستم اعلان‌ها. لطفاً صفحه را رفرش کنید.', 'error');
-                }
-            });
-        }
-
-        // Close modal
+        // Close modal handlers
         if (closeNotifyModal) {
             closeNotifyModal.addEventListener('click', function() {
                 if (notifyModal) {
@@ -3077,30 +3037,31 @@
             });
         }
 
-        // Handle subscription button click
+        // Handle subscription button click - uses OneSignal from global scope after init
         if (submitNotifyBtn) {
             submitNotifyBtn.addEventListener('click', async function() {
                 try {
-                    var OneSignalInstance = await waitForOneSignal();
+                    // OneSignal is available globally after initialization in OneSignalDeferred
+                    if (typeof OneSignal === 'undefined') {
+                        throw new Error('SDK وان‌سیگنال بارگذاری نشده است');
+                    }
                     
-                    var permission = await OneSignalInstance.Notifications.requestPermission();
-                    var isSubscribed = await OneSignalInstance.Notifications.isPushNotificationsEnabled();
+                    var permission = await OneSignal.Notifications.requestPermission();
+                    var isSubscribed = await OneSignal.Notifications.isPushEnabled();
                     
-                    if (isSubscribed) {
-                        showMessage('✅ اعلان‌ها با موفقیت فعال شدند!', 'success');
+                    if (permission === 'granted' && isSubscribed) {
+                        showMessage('✅ موفقیت‌آمیز!\n\nشما با موفقیت در اطلاع‌رسانی قیمت‌ها مشترک شدید.\nاکنون نوتیفیکیشن‌های ما را دریافت خواهید کرد.', 'success');
                         setTimeout(function() {
                             if (notifyModal) notifyModal.style.display = 'none';
-                        }, 2000);
+                        }, 2500);
+                    } else if (permission === 'denied') {
+                        showMessage('❌ رد شد\n\nشما درخواست نوتیفیکیشن را رد کردید.\nبرای دریافت اطلاع‌رسانی قیمت‌ها، باید مجوز را بپذیرید.\nمی‌توانید از تنظیمات مرورگر خود مجوز را فعال کنید.', 'error');
                     } else {
-                        showMessage('❌ دسترسی اعلان رد شد. لطفاً از تنظیمات مرورگر اجازه دهید.', 'error');
+                        showMessage('⚠️ توجه\n\nمجوز صادر شد، اما اشتراک کامل نشد.\nلطفاً دوباره تلاش کنید یا تنظیمات مرورگر خود را بررسی کنید.', 'error');
                     }
                 } catch (error) {
                     console.error('OneSignal error:', error);
-                    if (error.message && (error.message.includes('permission') || error.message.includes('denied'))) {
-                        showMessage('❌ دسترسی اعلان داده نشد. لطفاً از تنظیمات مرورگر اجازه دهید.', 'error');
-                    } else {
-                        showMessage('❌ خطا در فعال‌سازی اعلان. لطفاً دوباره تلاش کنید.', 'error');
-                    }
+                    showMessage('❌ خطا\n\nمشکلی در درخواست مجوز رخ داد.\nلطفاً دوباره تلاش کنید یا تنظیمات مرورگر خود را بررسی کنید.', 'error');
                 }
             });
         }
@@ -3110,6 +3071,7 @@
                 notifyMessage.textContent = text;
                 notifyMessage.style.display = 'block';
                 notifyMessage.style.color = type === 'success' ? '#10B981' : '#EF4444';
+                notifyMessage.style.whiteSpace = 'pre-line';
             }
         }
     });
