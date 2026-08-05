@@ -42,44 +42,18 @@
 
 <meta name="theme-color" content="#0B1121">    
 
-    <!-- OneSignal Web Push Notifications - Official v16 Implementation -->
+    <!-- OneSignal Web Push Notifications - Official v16 -->
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
     <script>
-        // Global variable to store the initialized OneSignal instance
-        window.oneSignalInstance = null;
-        window.oneSignalReady = false;
-        
-        // Initialize OneSignal using the official deferred pattern
         window.OneSignalDeferred = window.OneSignalDeferred || [];
         OneSignalDeferred.push(async function(OneSignal) {
-            try {
-                await OneSignal.init({
-                    appId: "23462615-e153-4d74-a245-ca705cb1d11d",
-                    serviceWorkerPath: "/OneSignalSDKWorker.js",
-                    serviceWorkerScope: "/",
-                    autoResubscribe: true,
-                    promptOptions: {
-                        native: {
-                            alwaysShow: false
-                        }
-                    },
-                    notifyButton: {
-                        enable: false
-                    }
-                });
-                
-                // Store the initialized instance globally
-                window.oneSignalInstance = OneSignal;
-                window.oneSignalReady = true;
-                
-                console.log('✅ OneSignal initialized successfully');
-                
-                // Dispatch custom event when OneSignal is fully ready
-                window.dispatchEvent(new CustomEvent('OneSignalReady'));
-            } catch (error) {
-                console.error('❌ OneSignal initialization error:', error);
-                window.dispatchEvent(new CustomEvent('OneSignalError', { detail: error }));
-            }
+            await OneSignal.init({
+                appId: "23462615-e153-4d74-a245-ca705cb1d11d",
+                safari_web_id: "web.onesignal.auto.424123c9-df63-4140-aac8-764c37d1fc19",
+                notifyButton: {
+                    enable: false
+                }
+            });
         });
     </script>
     
@@ -3012,7 +2986,7 @@
     </div>
 
     <script>
-    // OneSignal Notification Setup - Official v16 Architecture
+    // OneSignal Notification Button - Official v16
     document.addEventListener('DOMContentLoaded', function() {
         const btnNotifyPrice = document.getElementById('btn-notify-price');
         const notifyModal = document.getElementById('notifyModal');
@@ -3031,26 +3005,23 @@
         // Wait for OneSignal to be fully initialized
         function waitForOneSignal() {
             return new Promise(function(resolve, reject) {
-                // Check if already initialized via global instance
-                if (window.oneSignalInstance && window.oneSignalReady) {
-                    resolve(window.oneSignalInstance);
-                    return;
-                }
+                var checkCount = 0;
+                var maxChecks = 50;
                 
-                // Listen for the custom ready event
-                var readyHandler = function() {
-                    if (window.oneSignalInstance) {
-                        resolve(window.oneSignalInstance);
-                    } else {
-                        reject(new Error('OneSignal instance not available'));
+                var checkInterval = setInterval(function() {
+                    checkCount++;
+                    
+                    if (typeof OneSignal !== 'undefined' && OneSignal.initialized) {
+                        clearInterval(checkInterval);
+                        resolve(OneSignal);
+                        return;
                     }
-                };
-                window.addEventListener('OneSignalReady', readyHandler, { once: true });
-                
-                // Timeout after 15 seconds
-                setTimeout(function() {
-                    reject(new Error('OneSignal initialization timeout'));
-                }, 15000);
+                    
+                    if (checkCount >= maxChecks) {
+                        clearInterval(checkInterval);
+                        reject(new Error('OneSignal initialization timeout'));
+                    }
+                }, 200);
             });
         }
 
@@ -3078,7 +3049,6 @@
         if (btnNotifyPrice) {
             btnNotifyPrice.addEventListener('click', async function() {
                 try {
-                    // Wait for OneSignal to be ready before opening modal
                     await waitForOneSignal();
                     if (notifyModal) {
                         notifyModal.style.display = 'flex';
@@ -3111,19 +3081,10 @@
         if (submitNotifyBtn) {
             submitNotifyBtn.addEventListener('click', async function() {
                 try {
-                    // Wait for OneSignal to be ready and get the instance
-                    var OneSignal = await waitForOneSignal();
+                    var OneSignalInstance = await waitForOneSignal();
                     
-                    if (!OneSignal) {
-                        showMessage('خطا: SDK وان‌سیگنال بارگذاری نشده است.', 'error');
-                        return;
-                    }
-
-                    // Request notification permission using the initialized instance
-                    var permission = await OneSignal.Notifications.requestPermission();
-                    
-                    // Check if user is subscribed
-                    var isSubscribed = await OneSignal.Notifications.isPushNotificationsEnabled();
+                    var permission = await OneSignalInstance.Notifications.requestPermission();
+                    var isSubscribed = await OneSignalInstance.Notifications.isPushNotificationsEnabled();
                     
                     if (isSubscribed) {
                         showMessage('✅ اعلان‌ها با موفقیت فعال شدند!', 'success');
