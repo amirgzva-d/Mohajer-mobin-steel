@@ -1775,3 +1775,10 @@ html[dir="rtl"] .copyright-content {
 }
 .notify-msg-success { color: #10b981; }
 .notify-msg-error { color: #ef4444; }
+
+/* Price notification permission feedback */
+.ss-btn-outline.notification-enabled {
+    color: #047857;
+    border-color: #10b981;
+    background: #ecfdf5;
+}
