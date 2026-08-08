@@ -64,7 +64,7 @@
         <button data-target="contactView"><span>تماس با ما</span><small>Contact</small></button>
       </div>
       <div class="user-card">
-        <span class="avatar">AM</span><span><strong>مدیر سایت</strong><small>نسخه نمایشی محلی</small></span><button title="خروج">⋮</button>
+        <span class="avatar">AM</span><span><strong>مدیر سایت</strong><small>متصل به انتشار عمومی</small></span><button id="logoutBtn" title="خروج" aria-label="خروج از پنل">خروج</button>
       </div>
     </aside>
 
@@ -106,11 +106,15 @@
         </div>
         <div class="form-actions"><button type="button" class="button ghost" id="duplicateBtn">کپی کادر</button><button type="button" class="button ghost" id="resetBtn">لغو</button><button type="submit" class="button primary">اعمال تغییر</button></div>
       </form>
-      <div class="inspector-note"><strong>نسخه نمایشی امن</strong><p>تغییرات فعلاً فقط به‌صورت پیش‌نویس در همین مرورگر ذخیره می‌شوند. اتصال انتشار عمومی در مرحله ورود امن انجام می‌شود.</p></div>
+      <div class="inspector-note"><strong>انتشار عمومی</strong><p>«اعمال تغییر» پیش‌نویس را ذخیره می‌کند و دکمه «انتشار» آن را برای تمام بازدیدکنندگان سایت منتشر می‌کند.</p></div>
     </aside>
   </div>
   <div class="toast" id="toast" role="status"></div>
-  <dialog id="publishDialog"><div class="dialog-icon">🔒</div><h2>اتصال امن موردنیاز است</h2><p>ظاهر پنل آماده است. برای انتشار عمومی، ابتدا باید ورود مدیر و پایگاه داده Firebase متصل شود تا هیچ فرد ناشناسی نتواند سایت را تغییر دهد.</p><div><button class="button secondary" id="closeDialog">متوجه شدم</button></div></dialog>
+  <dialog id="publishDialog"><div class="dialog-icon">🌐</div><h2>انتشار روی سایت اصلی</h2><p>با تأیید انتشار، پیش‌نویس فعلی برای تمام بازدیدکنندگان سایت نمایش داده می‌شود.</p><div><button class="button secondary" id="closeDialog">انصراف</button><button class="button primary" id="confirmPublishBtn">تأیید و انتشار</button></div></dialog>
+  <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore-compat.js"></script>
+  <script src="../firebase-config.js"></script>
   <script src="admin.js"></script>
 </body>
 </html>

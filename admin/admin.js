@@ -21,7 +21,10 @@
   const charCount = $('#charCount');
   const toast = $('#toast');
   const draftsKey = 'mohajer-admin-drafts-v2';
-  const passwordHash = '63fdad0b466972006b3954137e79874ec179241fbad5489009023804e39eb6e5';
+  const adminEmail = 'amirgzva@gmail.com';
+  const firebaseApp = firebase.apps.length ? firebase.app() : firebase.initializeApp(window.MOHAJER_FIREBASE_CONFIG);
+  const auth = firebaseApp.auth();
+  const db = firebaseApp.firestore();
   let selected = null;
   let original = null;
   let selectedType = 'text';
@@ -33,20 +36,31 @@
     clearTimeout(notify.timer);
     notify.timer = setTimeout(() => toast.classList.remove('show'), 2600);
   };
-  const saveDrafts = () => {
+  const saveDraftsLocally = () => {
     localStorage.setItem(draftsKey, JSON.stringify(drafts));
     $('#saveState').innerHTML = '<i></i> پیش‌نویس ذخیره شد';
+  };
+  const saveDrafts = async () => {
+    saveDraftsLocally();
+    await db.collection('siteContent').doc('draft').set({
+      content: drafts,
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+      updatedBy: auth.currentUser.uid
+    });
   };
   const rgbToHex = rgb => {
     const values = rgb?.match(/\d+/g);
     return values ? `#${values.slice(0, 3).map(value => Number(value).toString(16).padStart(2, '0')).join('')}` : '#ffffff';
   };
+ w4j61d-codex/add-management-panel-section
+
   const hash = async value => {
     const bytes = new TextEncoder().encode(value);
     const digest = await crypto.subtle.digest('SHA-256', bytes);
     return [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, '0')).join('');
   };
 
+ main
   function setPasswordVisibility(showPassword) {
     const input = $('#adminPassword');
     const toggle = $('#togglePassword');
@@ -74,7 +88,8 @@
   };
 
   function applyDraft(doc, draft) {
-    const element = doc.querySelector(draft.selector);
+    let element;
+    try { element = doc.querySelector(draft.selector); } catch { return; }
     if (!element) return;
     if (draft.type === 'image') element.src = draft.content;
     else if (draft.type === 'text') element.innerHTML = draft.content;
@@ -161,6 +176,18 @@
     submit.disabled = true;
     $('#loginError').textContent = '';
     try {
+ w4j61d-codex/add-management-panel-section
+      await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
+      await auth.signInWithEmailAndPassword(adminEmail, $('#adminPassword').value);
+      $('#adminPassword').value = '';
+      setPasswordVisibility(false);
+    } catch (error) {
+      console.error('Admin login failed:', error);
+      $('#loginError').textContent = error.code === 'auth/invalid-credential'
+        ? 'رمز عبور صحیح نیست.'
+        : 'ورود انجام نشد؛ اتصال اینترنت و تنظیمات Firebase را بررسی کنید.';
+      $('#adminPassword').select();
+
       if (await hash($('#adminPassword').value) === passwordHash) {
         sessionStorage.setItem('mohajer-admin-auth', 'true');
         $('#loginGate').classList.add('hidden');
@@ -174,14 +201,35 @@
     } catch (error) {
       console.error('Admin login failed:', error);
       $('#loginError').textContent = 'ورود انجام نشد؛ لطفاً صفحه را دوباره بارگذاری کنید.';
+ main
     }
     submit.disabled = false;
   });
   $('#togglePassword').addEventListener('click', () => setPasswordVisibility($('#adminPassword').type === 'password'));
+ w4j61d-codex/add-management-panel-section
+  auth.onAuthStateChanged(async user => {
+    const loggedIn = Boolean(user && user.email === adminEmail);
+    $('#loginGate').classList.toggle('hidden', loggedIn);
+    $('#adminShell').classList.toggle('locked', !loggedIn);
+    if (!loggedIn) return;
+    try {
+      const snapshot = await db.collection('siteContent').doc('draft').get();
+      if (snapshot.exists && snapshot.data().content) {
+        drafts = snapshot.data().content;
+        saveDraftsLocally();
+        if (iframe.contentDocument) applyDrafts(iframe.contentDocument);
+      }
+    } catch (error) {
+      console.error('Drafts could not be loaded:', error);
+      notify('پیش‌نویس محلی نمایش داده شد؛ اتصال Firestore را بررسی کنید');
+    }
+  });
+
   if (sessionStorage.getItem('mohajer-admin-auth') === 'true') {
     $('#loginGate').classList.add('hidden');
     $('#adminShell').classList.remove('locked');
   }
+ main
 
   iframe.addEventListener('load', preparePreview);
   content.addEventListener('input', () => { updateCount(); if (selectedType === 'text') selected.innerHTML = content.value.replace(/\n/g, '<br>'); });
@@ -204,14 +252,20 @@
     if (selected) selected.style.textAlign = btn.dataset.align;
   }));
 
-  form.addEventListener('submit', event => {
+  form.addEventListener('submit', async event => {
     event.preventDefault();
     if (!selected) return;
     const draft = draftFromSelection();
     applyDraft(iframe.contentDocument, draft);
     drafts[draft.selector] = draft;
-    saveDrafts();
-    notify('تغییر روی پیش‌نمایش زنده اعمال و ذخیره شد');
+    try {
+      await saveDrafts();
+      notify('پیش‌نویس در Firebase ذخیره شد');
+    } catch (error) {
+      console.error('Draft could not be saved:', error);
+      saveDraftsLocally();
+      notify('ذخیره Firebase ناموفق بود؛ قوانین Firestore را بررسی کنید');
+    }
   });
   $('#resetBtn').addEventListener('click', () => { restoreOriginal(); form.classList.add('hidden'); empty.classList.remove('hidden'); selected = null; notify('تغییر لغو شد'); });
   $('#duplicateBtn').addEventListener('click', () => {
@@ -276,4 +330,38 @@
   const dialog = $('#publishDialog');
   $('#publishBtn').addEventListener('click', () => dialog.showModal());
   $('#closeDialog').addEventListener('click', () => dialog.close());
+ w4j61d-codex/add-management-panel-section
+  $('#confirmPublishBtn').addEventListener('click', async () => {
+    const button = $('#confirmPublishBtn');
+    if (Object.values(drafts).some(draft => String(draft.content || '').startsWith('data:'))) {
+      notify('برای انتشار تصویر، آدرس اینترنتی تصویر را وارد کنید');
+      dialog.close();
+      return;
+    }
+    button.disabled = true;
+    try {
+      const batch = db.batch();
+      const published = db.collection('siteContent').doc('published');
+      const version = db.collection('siteVersions').doc();
+      const payload = {
+        content: drafts,
+        publishedAt: firebase.firestore.FieldValue.serverTimestamp(),
+        publishedBy: auth.currentUser.uid
+      };
+      batch.set(published, payload);
+      batch.set(version, payload);
+      await batch.commit();
+      dialog.close();
+      $('#saveState').innerHTML = '<i></i> روی سایت منتشر شد';
+      notify('تغییرات با موفقیت روی سایت اصلی منتشر شد');
+    } catch (error) {
+      console.error('Publish failed:', error);
+      notify('انتشار ناموفق بود؛ قوانین Firestore را فعال کنید');
+    } finally {
+      button.disabled = false;
+    }
+  });
+  $('#logoutBtn').addEventListener('click', () => auth.signOut());
+
+ main
 })();
