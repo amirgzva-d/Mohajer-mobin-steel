@@ -11,7 +11,23 @@
   <link rel="stylesheet" href="admin.css">
 </head>
 <body>
+ codex-zw7it5
+  <section class="login-gate" id="loginGate">
+    <form class="login-card" id="loginForm">
+      <span class="brand-mark">M</span>
+      <small>MOHAJER CONTENT STUDIO</small>
+      <h1>ورود به پنل مدیریت</h1>
+      <p>برای مدیریت محتوای سایت رمز عبور را وارد کنید.</p>
+      <label for="adminPassword">رمز عبور</label>
+      <div class="password-field"><input id="adminPassword" type="password" autocomplete="current-password" required autofocus><button type="button" id="togglePassword" aria-label="نمایش رمز">◉</button></div>
+      <span class="login-error" id="loginError"></span>
+      <button class="button primary" type="submit">ورود به پنل</button>
+    </form>
+  </section>
+  <div class="admin-shell locked" id="adminShell">
+=======
   <div class="admin-shell">
+ main
     <header class="topbar">
       <a class="brand" href="../" aria-label="بازگشت به سایت">
         <span class="brand-mark">M</span><span><strong>MOHAJER</strong><small>Content Studio</small></span>
@@ -35,7 +51,11 @@
 
     <aside class="sidebar">
       <div class="sidebar-title"><span>مدیریت محتوا</span><button class="icon-button" id="collapseSidebar">☰</button></div>
+ codex-zw7it5
+      <nav class="main-nav" id="contentNav">
+=======
       <nav class="main-nav">
+ main
         <button class="active" data-panel="pages"><span class="nav-icon">◇</span><span>صفحات سایت</span></button>
         <button data-panel="products"><span class="nav-icon">□</span><span>محصولات</span><b>12</b></button>
         <button data-panel="media"><span class="nav-icon">▧</span><span>تصاویر و رسانه</span></button>
@@ -86,7 +106,17 @@
         <div class="field image-field hidden" id="imageField"><label for="imageInput">آدرس تصویر</label><input id="imageInput" type="url" dir="ltr"><label class="upload-label">انتخاب تصویر<input id="imageUpload" type="file" accept="image/*"></label></div>
         <div class="field"><label>تراز متن</label><div class="segmented"><button type="button" data-align="right">راست</button><button type="button" data-align="center">وسط</button><button type="button" data-align="left">چپ</button></div></div>
         <div class="field"><label for="colorInput">رنگ متن</label><div class="color-row"><input id="colorInput" type="color" value="#111827"><input id="colorText" value="#111827" dir="ltr"></div></div>
+ codex-zw7it5
+        <div class="field container-field hidden" id="containerField">
+          <label for="backgroundColor">پس‌زمینه کادر</label><div class="color-row"><input id="backgroundColor" type="color" value="#ffffff"><input id="backgroundText" value="#ffffff" dir="ltr"></div>
+          <label for="backgroundImage">تصویر پس‌زمینه</label><input id="backgroundImage" type="url" dir="ltr" placeholder="https://...">
+          <div class="size-grid"><label>عرض<input id="elementWidth" type="number" min="40" placeholder="خودکار"></label><label>ارتفاع<input id="elementHeight" type="number" min="30" placeholder="خودکار"></label><label>گردی گوشه<input id="borderRadius" type="number" min="0" value="0"></label></div>
+          <small>دستگیره پایین کادر را در پیش‌نمایش بکشید تا اندازه آن با موس تغییر کند.</small>
+        </div>
+        <div class="form-actions"><button type="button" class="button ghost" id="duplicateBtn">کپی کادر</button><button type="button" class="button ghost" id="resetBtn">لغو</button><button type="submit" class="button primary">اعمال تغییر</button></div>
+=======
         <div class="form-actions"><button type="button" class="button ghost" id="resetBtn">لغو تغییر</button><button type="submit" class="button primary">اعمال تغییر</button></div>
+ main
       </form>
       <div class="inspector-note"><strong>نسخه نمایشی امن</strong><p>تغییرات فعلاً فقط به‌صورت پیش‌نویس در همین مرورگر ذخیره می‌شوند. اتصال انتشار عمومی در مرحله ورود امن انجام می‌شود.</p></div>
     </aside>
