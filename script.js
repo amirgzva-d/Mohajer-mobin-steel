@@ -613,6 +613,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const translations = {
         en: {
             dir: 'ltr',
+            'so-billet-100': '100×100 Steel Billet', 'so-billet-125': '125×125 Steel Billet', 'so-induction': '5SP - Induction', 'so-city-isfahan': 'Isfahan', 'so-city-semnan': 'Semnan', 'so-city-saveh': 'Saveh', 'so-city-yazd': 'Yazd', 'so-city-qom': 'Qom',
+            'nav-special-text': 'Special Sale', 'so-top-label': 'TODAY’S STEEL OFFERS', 'so-main-title': 'Daily <span>Steel Prices</span>', 'so-sub-title': 'Today’s Special Offers', 'so-desc': 'The latest prices and the best steel purchasing opportunities', 'so-quality-title': 'Guaranteed Quality', 'so-quality-desc': 'International standards', 'so-export-title': 'Export Ready', 'so-export-desc': 'Standard packaging', 'so-price-title': 'Competitive Prices', 'so-price-desc': 'Current market rates', 'so-product-day': 'PRODUCT OF THE DAY', 'so-today-special': 'Today’s Special', 'so-product-name': '5SP Steel Billet', 'so-product-specs': '130 × 130 mm &nbsp;|&nbsp; Grade: 5SP', 'so-discount': '6% decrease', 'so-currency': 'IRR / ton', 'so-request-price': 'Request Price', 'so-today': 'Today, 27 July 2025', 'so-updated': 'Last updated: 17:00', 'so-notify': '🔔 Price Notifications', 'so-col-product': 'Product', 'so-col-analysis': 'Grade', 'so-col-delivery': 'Delivery Location', 'so-col-price': 'Price (IRR / ton)', 'so-col-change': 'Price Change', 'so-col-actions': 'Actions', 'so-unavailable': 'Unavailable', 'so-order': 'Place Order', 'so-buy': 'Buy', 'so-view-all': 'View All Products', 'so-price-note': 'Prices are updated daily and may change during the day.', 'notify-granted': 'Notifications enabled', 'notify-denied': 'Notification permission was not granted. Please enable it in your browser settings.', 'notify-unsupported': 'Your browser does not support notifications.', 'notify-secure': 'Notifications require a secure HTTPS connection.', 'notify-title': 'Mohajer Mobin Steel', 'notify-body': 'Price notifications have been enabled.',
             'nav-home': 'Home', 'nav-products': 'Products', 'nav-departments': 'Department', 'nav-about': 'About Us', 'nav-contact': 'Contact',
             'btn-quote': 'Get a Quote', 
             'hero-title-combined': 'MOHAJER MOBIN STEEL',
@@ -724,6 +726,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         fa: {
             dir: 'rtl',
+            'so-billet-100': 'شمش فولاد 100×100', 'so-billet-125': 'شمش فولاد 125×125', 'so-induction': '5SP - القایی', 'so-city-isfahan': 'اصفهان', 'so-city-semnan': 'سمنان', 'so-city-saveh': 'ساوه', 'so-city-yazd': 'یزد', 'so-city-qom': 'قم',
+            'nav-special-text': 'فروش ویژه', 'so-top-label': 'پیشنهادهای امروز فولاد', 'so-main-title': 'قیمت\u200cهای روز <span>فولاد</span>', 'so-sub-title': 'پیشنهادات ویژه امروز', 'so-desc': 'به\u200cروزترین قیمت\u200cها و بهترین فرصت\u200cهای خرید محصولات فولادی', 'so-quality-title': 'کیفیت تضمینی', 'so-quality-desc': 'استاندارد جهانی', 'so-export-title': 'آماده برای صادرات', 'so-export-desc': 'بسته\u200cبندی استاندارد', 'so-price-title': 'قیمت رقابتی', 'so-price-desc': 'به\u200cروز در بازار', 'so-product-day': 'محصول روز', 'so-today-special': 'ویژه امروز', 'so-product-name': 'شمش فولاد 5SP', 'so-product-specs': '130 × 130 میلی\u200cمتر &nbsp;|&nbsp; گرید: 5SP', 'so-discount': '۶٪ کاهش', 'so-currency': 'ریال / تن', 'so-request-price': 'درخواست قیمت', 'so-today': 'امروز، ۵ مرداد ۱۴۰۴', 'so-updated': 'آخرین بروزرسانی: ۱۷:۰۰', 'so-notify': '🔔 اطلاع\u200cرسانی قیمت', 'so-col-product': 'محصول', 'so-col-analysis': 'آنالیز', 'so-col-delivery': 'محل تحویل', 'so-col-price': 'قیمت (ریال / تن)', 'so-col-change': 'تغییر قیمت', 'so-col-actions': 'اقدامات', 'so-unavailable': 'ناموجود', 'so-order': 'ثبت سفارش', 'so-buy': 'خرید', 'so-view-all': 'مشاهده همه محصولات', 'so-price-note': 'قیمت\u200cها به صورت روزانه بروزرسانی می\u200cشوند و ممکن است در طول روز تغییر کنند.', 'notify-granted': 'اعلان\u200cها فعال شد', 'notify-denied': 'اجازه ارسال اعلان داده نشد. لطفاً آن را از تنظیمات مرورگر فعال کنید.', 'notify-unsupported': 'مرورگر شما از اعلان\u200cها پشتیبانی نمی\u200cکند.', 'notify-secure': 'اعلان\u200cها به اتصال امن HTTPS نیاز دارند.', 'notify-title': 'فولاد مهاجر مبین', 'notify-body': 'اطلاع\u200cرسانی قیمت برای شما فعال شد.',
             'nav-home': 'خانه', 'nav-products': 'محصولات', 'nav-departments': 'دپارتمان', 'nav-about': 'درباره ما', 'nav-contact': 'تماس با ما',
             'btn-quote': 'دریافت قیمت', 
             'hero-title-combined': 'فولاد مهاجر مبین',
@@ -835,6 +839,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         ar: {
             dir: 'rtl',
+            'so-billet-100': 'كتلة فولاذ 100×100', 'so-billet-125': 'كتلة فولاذ 125×125', 'so-induction': '5SP - حثي', 'so-city-isfahan': 'أصفهان', 'so-city-semnan': 'سمنان', 'so-city-saveh': 'ساوه', 'so-city-yazd': 'يزد', 'so-city-qom': 'قم',
+            'nav-special-text': 'عروض خاصة', 'so-top-label': 'عروض الصلب اليوم', 'so-main-title': 'أسعار <span>الصلب اليومية</span>', 'so-sub-title': 'عروض اليوم الخاصة', 'so-desc': 'أحدث الأسعار وأفضل فرص شراء منتجات الصلب', 'so-quality-title': 'جودة مضمونة', 'so-quality-desc': 'معايير عالمية', 'so-export-title': 'جاهز للتصدير', 'so-export-desc': 'تغليف قياسي', 'so-price-title': 'أسعار تنافسية', 'so-price-desc': 'محدثة حسب السوق', 'so-product-day': 'منتج اليوم', 'so-today-special': 'عرض اليوم', 'so-product-name': 'كتلة فولاذ 5SP', 'so-product-specs': '130 × 130 مم &nbsp;|&nbsp; الدرجة: 5SP', 'so-discount': 'انخفاض 6٪', 'so-currency': 'ريال / طن', 'so-request-price': 'طلب السعر', 'so-today': 'اليوم، 27 يوليو 2025', 'so-updated': 'آخر تحديث: 17:00', 'so-notify': '🔔 إشعارات الأسعار', 'so-col-product': 'المنتج', 'so-col-analysis': 'الدرجة', 'so-col-delivery': 'مكان التسليم', 'so-col-price': 'السعر (ريال / طن)', 'so-col-change': 'تغير السعر', 'so-col-actions': 'الإجراءات', 'so-unavailable': 'غير متوفر', 'so-order': 'تقديم طلب', 'so-buy': 'شراء', 'so-view-all': 'عرض جميع المنتجات', 'so-price-note': 'تُحدَّث الأسعار يومياً وقد تتغير خلال اليوم.', 'notify-granted': 'تم تفعيل الإشعارات', 'notify-denied': 'لم يتم منح إذن الإشعارات. يرجى تفعيله من إعدادات المتصفح.', 'notify-unsupported': 'متصفحك لا يدعم الإشعارات.', 'notify-secure': 'تتطلب الإشعارات اتصال HTTPS آمناً.', 'notify-title': 'مهاجر مبين للصلب', 'notify-body': 'تم تفعيل إشعارات الأسعار.',
             'nav-home': 'الرئيسية', 'nav-products': 'المنتجات', 'nav-departments': 'قسم', 'nav-about': 'من نحن', 'nav-contact': 'اتصل بنا',
             'btn-quote': 'احصل على سعر', 
             'hero-title-combined': 'فولاذ مهاجر مبين',
@@ -945,6 +951,8 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         ru: {
             dir: 'ltr',
+            'so-billet-100': 'Стальная заготовка 100×100', 'so-billet-125': 'Стальная заготовка 125×125', 'so-induction': '5SP — индукционная', 'so-city-isfahan': 'Исфахан', 'so-city-semnan': 'Семнан', 'so-city-saveh': 'Саве', 'so-city-yazd': 'Йезд', 'so-city-qom': 'Кум',
+            'nav-special-text': 'Спецпредложения', 'so-top-label': 'ПРЕДЛОЖЕНИЯ НА СТАЛЬ СЕГОДНЯ', 'so-main-title': 'Ежедневные <span>цены на сталь</span>', 'so-sub-title': 'Специальные предложения сегодня', 'so-desc': 'Актуальные цены и лучшие возможности для покупки стальной продукции', 'so-quality-title': 'Гарантия качества', 'so-quality-desc': 'Международные стандарты', 'so-export-title': 'Готово к экспорту', 'so-export-desc': 'Стандартная упаковка', 'so-price-title': 'Конкурентные цены', 'so-price-desc': 'Актуально для рынка', 'so-product-day': 'ПРОДУКТ ДНЯ', 'so-today-special': 'Предложение дня', 'so-product-name': 'Стальная заготовка 5SP', 'so-product-specs': '130 × 130 мм &nbsp;|&nbsp; Марка: 5SP', 'so-discount': 'снижение на 6%', 'so-currency': 'риал / тонна', 'so-request-price': 'Запросить цену', 'so-today': 'Сегодня, 27 июля 2025', 'so-updated': 'Последнее обновление: 17:00', 'so-notify': '🔔 Уведомления о ценах', 'so-col-product': 'Продукт', 'so-col-analysis': 'Марка', 'so-col-delivery': 'Место поставки', 'so-col-price': 'Цена (риал / тонна)', 'so-col-change': 'Изменение цены', 'so-col-actions': 'Действия', 'so-unavailable': 'Нет в наличии', 'so-order': 'Оформить заказ', 'so-buy': 'Купить', 'so-view-all': 'Посмотреть все продукты', 'so-price-note': 'Цены обновляются ежедневно и могут меняться в течение дня.', 'notify-granted': 'Уведомления включены', 'notify-denied': 'Разрешение на уведомления не предоставлено. Включите его в настройках браузера.', 'notify-unsupported': 'Ваш браузер не поддерживает уведомления.', 'notify-secure': 'Для уведомлений требуется защищённое HTTPS-соединение.', 'notify-title': 'Mohajer Mobin Steel', 'notify-body': 'Уведомления о ценах включены.',
             'nav-home': 'Главная', 'nav-products': 'Продукция', 'nav-departments': 'Отдел', 'nav-about': 'О нас', 'nav-contact': 'Контакты',
             'btn-quote': 'Запросить расчет', 
             'hero-title-combined': 'MOHAJER MOBIN STEEL',
@@ -1716,6 +1724,48 @@ const mainFooter = document.getElementById('mainFooter');
     if (videoModal) {
         videoModal.addEventListener('click', (e) => {
             if (e.target === videoModal) shutVideoModal();
+        });
+    }
+
+    // ==========================================================================
+    // اجازه اعلان قیمت (Browser Notifications)
+    // ==========================================================================
+    const notifyPriceButton = document.getElementById('btn-notify-price');
+
+    if (notifyPriceButton) {
+        notifyPriceButton.addEventListener('click', async () => {
+            const lang = localStorage.getItem('selectedLanguage') || 'en';
+            const t = translations[lang] || translations.en;
+
+            if (!window.isSecureContext) {
+                alert(t['notify-secure']);
+                return;
+            }
+
+            if (!('Notification' in window)) {
+                alert(t['notify-unsupported']);
+                return;
+            }
+
+            try {
+                const permission = await Notification.requestPermission();
+
+                if (permission !== 'granted') {
+                    alert(t['notify-denied']);
+                    return;
+                }
+
+                notifyPriceButton.textContent = `✓ ${t['notify-granted']}`;
+                notifyPriceButton.classList.add('notification-enabled');
+                notifyPriceButton.setAttribute('aria-pressed', 'true');
+                new Notification(t['notify-title'], {
+                    body: t['notify-body'],
+                    icon: '192.png'
+                });
+            } catch (error) {
+                console.error('Unable to request notification permission:', error);
+                alert(t['notify-denied']);
+            }
         });
     }
 
