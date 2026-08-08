@@ -40,43 +40,9 @@
 
 <link rel="icon" type="image/png" sizes="512x512" href="/512.png">
 
-<meta name="theme-color" content="#0B1121">    
+<link rel="manifest" href="/site.webmanifest">
 
-    <!-- OneSignal Web Push Notifications - Official v16 -->
-    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-    <script>
-        window.OneSignalDeferred = window.OneSignalDeferred || [];
-        OneSignalDeferred.push(async function(OneSignal) {
-            await OneSignal.init({
-                appId: "23462615-e153-4d74-a245-ca705cb1d11d",
-                safari_web_id: "web.onesignal.auto.424123c9-df63-4140-aac8-764c37d1fc19",
-                notifyButton: {
-                    enable: false
-                }
-            });
-            
-            // After initialization completes, enable the notification button - ONLY request permission
-            var btnNotifyPrice = document.getElementById('btn-notify-price');
-            if (btnNotifyPrice) {
-                btnNotifyPrice.disabled = false;
-                btnNotifyPrice.style.opacity = '1';
-                btnNotifyPrice.style.cursor = 'pointer';
-                btnNotifyPrice.title = 'فعال‌سازی اطلاع‌رسانی قیمت';
-                
-                // Attach click handler to ONLY request permission, no other action
-                btnNotifyPrice.addEventListener('click', async function() {
-                    try {
-                        if (typeof OneSignal === 'undefined') {
-                            throw new Error('SDK وان‌سیگنال بارگذاری نشده است');
-                        }
-                        await OneSignal.Notifications.requestPermission();
-                    } catch (error) {
-                        console.error('OneSignal error:', error);
-                    }
-                });
-            }
-        });
-    </script>
+<meta name="theme-color" content="#0B1121">    
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1681,7 +1647,9 @@
             <a href="#contactView" id="navContactLink" data-key="nav-contact">Contact</a>
             <!-- اضافه شدن دکمه فروش ویژه به منو -->
             <a href="#specialSaleView" id="navSpecialSaleLink" class="special-offer-nav">
+                <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fire-icon"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg>
                 <span data-key="nav-special-text">فروش ویژه</span>
+                <span class="hot-badge">HOT</span>
             </a>
             <a href="https://wa.me/message/4XJJK7VC6GWYD1" target="_blank" rel="noopener noreferrer" class="btn-quote mobile-only-quote" style="text-decoration: none;">
                 <span data-key="btn-quote">Get a Quote</span>
@@ -2785,9 +2753,13 @@
                     </div>
                 </div>
                 <div class="ss-toolbar-left">
-<button id="btn-notify-price" class="ss-btn-outline" type="button">
+<button id="btn-notify-price" class="ss-btn-outline">
     🔔 اطلاع‌رسانی قیمت
 </button>
+                  <button class="ss-btn-fill">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                        محاسبه کرایه حمل
+                    </button>
                 </div>
             </div>
 
@@ -2986,94 +2958,286 @@
     </footer>
 
     <script src="script.js"></script>
-
-    <!-- Modal اطلاع رسانی قیمت -->
-    <div id="notifyModal" class="notify-modal-overlay" style="display: none;">
-        <div class="notify-modal-box">
-            <span id="closeNotifyModal" class="notify-close">&times;</span>
-            <h3>فعال‌سازی اطلاع‌رسانی قیمت</h3>
-            <p>برای دریافت جدیدترین قیمت‌های فولاد، اجازه دسترسی به اعلان‌ها را بدهید.</p>
-            <button id="submitNotifyBtn" class="ss-btn-fill" style="width: 100%; justify-content: center; margin-top: 10px;">
-                فعال‌سازی اعلان‌ها
-            </button>
-            <p id="notifyMessage" style="font-size: 12px; margin-top: 10px; text-align: center; display: none;"></p>
-        </div>
-    </div>
-
-    <script>
-    // OneSignal Notification Button - Official v16 Implementation
-    document.addEventListener('DOMContentLoaded', function() {
-        const btnNotifyPrice = document.getElementById('btn-notify-price');
-        const notifyModal = document.getElementById('notifyModal');
-        const closeNotifyModal = document.getElementById('closeNotifyModal');
-        const submitNotifyBtn = document.getElementById('submitNotifyBtn');
-        const notifyMessage = document.getElementById('notifyMessage');
-
-        // Keep button disabled until OneSignal initialization completes
-        if (btnNotifyPrice) {
-            btnNotifyPrice.disabled = true;
-            btnNotifyPrice.style.opacity = '0.5';
-            btnNotifyPrice.style.cursor = 'not-allowed';
-            btnNotifyPrice.title = 'در حال بارگذاری سیستم اعلان‌ها...';
-        }
-
-        // Close modal handlers
-        if (closeNotifyModal) {
-            closeNotifyModal.addEventListener('click', function() {
-                if (notifyModal) {
-                    notifyModal.style.display = 'none';
-                }
-            });
-        }
-
-        // Close modal when clicking outside
-        if (notifyModal) {
-            notifyModal.addEventListener('click', function(e) {
-                if (e.target === notifyModal) {
-                    notifyModal.style.display = 'none';
-                }
-            });
-        }
-
-        // Handle subscription button click - uses OneSignal from global scope after init
-        if (submitNotifyBtn) {
-            submitNotifyBtn.addEventListener('click', async function() {
-                try {
-                    // OneSignal is available globally after initialization in OneSignalDeferred
-                    if (typeof OneSignal === 'undefined') {
-                        throw new Error('SDK وان‌سیگنال بارگذاری نشده است');
-                    }
-                    
-                    var permission = await OneSignal.Notifications.requestPermission();
-                    var isSubscribed = await OneSignal.Notifications.isPushEnabled();
-                    
-                    if (permission === 'granted' && isSubscribed) {
-                        showMessage('✅ موفقیت‌آمیز!\n\nشما با موفقیت در اطلاع‌رسانی قیمت‌ها مشترک شدید.\nاکنون نوتیفیکیشن‌های ما را دریافت خواهید کرد.', 'success');
-                        setTimeout(function() {
-                            if (notifyModal) notifyModal.style.display = 'none';
-                        }, 2500);
-                    } else if (permission === 'denied') {
-                        showMessage('❌ رد شد\n\nشما درخواست نوتیفیکیشن را رد کردید.\nبرای دریافت اطلاع‌رسانی قیمت‌ها، باید مجوز را بپذیرید.\nمی‌توانید از تنظیمات مرورگر خود مجوز را فعال کنید.', 'error');
-                    } else {
-                        showMessage('⚠️ توجه\n\nمجوز صادر شد، اما اشتراک کامل نشد.\nلطفاً دوباره تلاش کنید یا تنظیمات مرورگر خود را بررسی کنید.', 'error');
-                    }
-                } catch (error) {
-                    console.error('OneSignal error:', error);
-                    showMessage('❌ خطا\n\nمشکلی در درخواست مجوز رخ داد.\nلطفاً دوباره تلاش کنید یا تنظیمات مرورگر خود را بررسی کنید.', 'error');
-                }
-            });
-        }
-
-        function showMessage(text, type) {
-            if (notifyMessage) {
-                notifyMessage.textContent = text;
-                notifyMessage.style.display = 'block';
-                notifyMessage.style.color = type === 'success' ? '#10B981' : '#EF4444';
-                notifyMessage.style.whiteSpace = 'pre-line';
-            }
-        }
-    });
-    </script>
-
 </body>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+
+  "name":"Mohajer Mobin Steel",
+
+  "alternateName":"Mohajer Steel",
+
+  "url":"https://mohajer-steel.com/",
+
+  "logo":"https://mohajer-steel.com/512.png",
+
+  "image":"https://mohajer-steel.com/512.png",
+
+  "description":"International steel exporter and supplier of billet, rebar, beam, slab, steel sheet, pipe, profile, angle, channel, strip, wire rod and steel products.",
+
+  "foundingLocation":"Mashhad, Iran",
+
+  "areaServed":"Worldwide",
+
+  "knowsAbout":[
+    "Steel",
+    "Steel Export",
+    "Steel Trading",
+    "Billet",
+    "Rebar",
+    "Beam",
+    "Slab",
+    "Steel Sheet",
+    "Pipe",
+    "Profile",
+    "Angle",
+    "Channel",
+    "Strip",
+    "Wire Rod",
+    "فولاد",
+    "شمش",
+    "میلگرد",
+    "تیرآهن",
+    "اسلب",
+    "ورق",
+    "لوله",
+    "پروفیل",
+    "نبشی",
+    "ناودانی",
+    "تسمه",
+    "مفتول",
+    "کلاف",
+    "صادرات فولاد",
+    "تجارت فولاد"
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+
+  "name":"Mohajer Mobin Steel",
+
+  "alternateName":"Mohajer Steel",
+
+  "url":"https://mohajer-steel.com/",
+
+  "inLanguage":[
+    "fa",
+    "en"
+  ],
+
+  "publisher":{
+    "@type":"Organization",
+    "name":"Mohajer Mobin Steel"
+  },
+
+  "about":[
+    "Steel",
+    "Steel Export",
+    "Steel Trading",
+    "Billet",
+    "Rebar",
+    "Beam",
+    "Steel Sheet",
+    "Slab",
+    "Pipe",
+    "Profile",
+    "Channel",
+    "Angle",
+    "Wire Rod",
+    "Steel Coil",
+    "فولاد",
+    "شمش",
+    "میلگرد",
+    "تیرآهن",
+    "ورق",
+    "اسلب",
+    "نبشی",
+    "ناودانی",
+    "لوله",
+    "پروفیل",
+    "کلاف",
+    "مفتول",
+    "تسمه",
+    "صادرات فولاد",
+    "تجارت فولاد"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"LocalBusiness",
+
+  "name":"Mohajer Mobin Steel",
+
+  "image":"https://mohajer-steel.com/512.png",
+
+  "url":"https://mohajer-steel.com/",
+
+  "telephone":"+98 51 3705 7124-5",
+
+  "telephone":"+98 915 302 7342",
+
+  "email":"info@mohajer-steel.com",
+
+  "address":{
+      "@type":"PostalAddress",
+      "addressCountry":"IR",
+      "addressLocality":"Mashhad"
+  },
+
+  "areaServed":"Worldwide",
+
+  "priceRange":"$$",
+
+  "description":"Steel exporter and supplier of billet, rebar, slab, beam, steel sheet, pipe, profile, angle, channel, strip, wire rod and steel products.",
+
+  "keywords":[
+      "Steel",
+      "Steel Export",
+      "Billet",
+      "Rebar",
+      "Beam",
+      "Slab",
+      "Steel Sheet",
+      "Pipe",
+      "Profile",
+      "Angle",
+      "Channel",
+      "Wire Rod",
+      "Steel Coil",
+      "فولاد",
+      "صادرات فولاد",
+      "شمش",
+      "میلگرد",
+      "تیرآهن",
+      "ورق",
+      "اسلب",
+      "نبشی",
+      "ناودانی",
+      "لوله",
+      "پروفیل",
+      "تسمه",
+      "مفتول",
+      "کلاف"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ItemList",
+  "name":"Steel Products",
+  "itemListElement":[
+    {
+      "@type":"ListItem",
+      "position":1,
+      "name":"Steel Billet"
+    },
+    {
+      "@type":"ListItem",
+      "position":2,
+      "name":"Rebar"
+    },
+    {
+      "@type":"ListItem",
+      "position":3,
+      "name":"Steel Beam"
+    },
+    {
+      "@type":"ListItem",
+      "position":4,
+      "name":"Steel Slab"
+    },
+    {
+      "@type":"ListItem",
+      "position":5,
+      "name":"Steel Sheet"
+    },
+    {
+      "@type":"ListItem",
+      "position":6,
+      "name":"Steel Pipe"
+    },
+    {
+      "@type":"ListItem",
+      "position":7,
+      "name":"Steel Profile"
+    },
+    {
+      "@type":"ListItem",
+      "position":8,
+      "name":"Steel Angle"
+    },
+    {
+      "@type":"ListItem",
+      "position":9,
+      "name":"Steel Channel"
+    },
+    {
+      "@type":"ListItem",
+      "position":10,
+      "name":"Steel Strip"
+    },
+    {
+      "@type":"ListItem",
+      "position":11,
+      "name":"Wire Rod"
+    },
+    {
+      "@type":"ListItem",
+      "position":12,
+      "name":"Steel Coil"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "@id":"https://mohajer-steel.com/#organization",
+
+  "name":"Mohajer Mobin Steel",
+
+  "url":"https://mohajer-steel.com/",
+
+  "logo":{
+    "@type":"ImageObject",
+    "url":"https://mohajer-steel.com/512.png",
+    "width":512,
+    "height":512
+  },
+
+  "image":"https://mohajer-steel.com/512.png"
+}
+  <!-- Modal اطلاع رسانی قیمت -->
+<div id="notifyModal" class="notify-modal-overlay" style="display: none;">
+    <div class="notify-modal-box">
+        <span id="closeNotifyModal" class="notify-close">&times;</span>
+        <h3>فعال‌سازی اطلاع‌رسانی قیمت</h3>
+        <p>برای دریافت جدیدترین قیمت‌های فولاد، اطلاعات خود را وارد کنید.</p>
+        <div class="notify-form-group">
+            <input type="text" id="notifyName" placeholder="نام و نام خانوادگی" required>
+        </div>
+        <div class="notify-form-group">
+            <input type="tel" id="notifyPhone" placeholder="شماره موبایل (مثال: 09123456789)" required>
+        </div>
+        <button id="submitNotifyBtn" class="ss-btn-fill" style="width: 100%; justify-content: center; margin-top: 10px;">
+            ثبت و دریافت اعلان
+        </button>
+        <p id="notifyMessage" style="font-size: 12px; margin-top: 10px; text-align: center; display: none;"></p>
+    </div>
+</div>
+
+<!-- اضافه کردن فایل جاوااسکریپت فایربیس به صورت ماژول -->
+<script type="module" src="notification.js">
+</script>
 </html>
+
