@@ -613,7 +613,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const translations = {
         en: {
             dir: 'ltr',
-            'nav-home': 'Home', 'nav-products': 'Products', 'nav-departments': 'Department', 'nav-about': 'About Us', 'nav-contact': 'Contact', 'nav-special-text': 'Special Sale',
+            'nav-home': 'Home', 'nav-products': 'Products', 'nav-departments': 'Department', 'nav-about': 'About Us', 'nav-contact': 'Contact',
             'btn-quote': 'Get a Quote', 
             'hero-title-combined': 'MOHAJER MOBIN STEEL',
             'hero-export': 'Exporter of all steel products',
@@ -835,7 +835,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         ar: {
             dir: 'rtl',
-            'nav-home': 'الرئيسية', 'nav-products': 'المنتجات', 'nav-departments': 'قسم', 'nav-about': 'من نحن', 'nav-contact': 'اتصل بنا', 'nav-special-text': 'عرض خاص',
+            'nav-home': 'الرئيسية', 'nav-products': 'المنتجات', 'nav-departments': 'قسم', 'nav-about': 'من نحن', 'nav-contact': 'اتصل بنا',
             'btn-quote': 'احصل على سعر', 
             'hero-title-combined': 'فولاذ مهاجر مبين',
             'hero-export': 'مُصدِّر لجميع مقاطع الصلب',
@@ -945,7 +945,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         ru: {
             dir: 'ltr',
-            'nav-home': 'Главная', 'nav-products': 'Продукция', 'nav-departments': 'Отдел', 'nav-about': 'О нас', 'nav-contact': 'Контакты', 'nav-special-text': 'Специальная продажа',
+            'nav-home': 'Главная', 'nav-products': 'Продукция', 'nav-departments': 'Отдел', 'nav-about': 'О нас', 'nav-contact': 'Контакты',
             'btn-quote': 'Запросить расчет', 
             'hero-title-combined': 'MOHAJER MOBIN STEEL',
             'hero-export': 'Экспортер всего стального проката',
