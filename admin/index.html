@@ -8,10 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="admin-panel.css?v=20260809-clean">
 </head>
 <body>
- codex-zw7it5
   <section class="login-gate" id="loginGate">
     <form class="login-card" id="loginForm">
       <span class="brand-mark">M</span>
@@ -19,15 +18,18 @@
       <h1>ورود به پنل مدیریت</h1>
       <p>برای مدیریت محتوای سایت رمز عبور را وارد کنید.</p>
       <label for="adminPassword">رمز عبور</label>
-      <div class="password-field"><input id="adminPassword" type="password" autocomplete="current-password" required autofocus><button type="button" id="togglePassword" aria-label="نمایش رمز">◉</button></div>
-      <span class="login-error" id="loginError"></span>
+      <div class="password-field">
+        <input id="adminPassword" type="password" autocomplete="current-password" required autofocus>
+        <button type="button" id="togglePassword" aria-label="نمایش رمز" aria-pressed="false">
+          <svg class="eye-open" aria-hidden="true" viewBox="0 0 24 24"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.8"/></svg>
+          <svg class="eye-closed" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 3l18 18M10.6 6.2A10.7 10.7 0 0 1 12 6c6 0 9.5 6 9.5 6a16.5 16.5 0 0 1-2.2 2.8M6.2 6.2C3.8 8 2.5 12 2.5 12s3.5 6 9.5 6c1.4 0 2.7-.3 3.8-.8M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+        </button>
+      </div>
+      <span class="login-error" id="loginError" role="alert" aria-live="polite"></span>
       <button class="button primary" type="submit">ورود به پنل</button>
     </form>
   </section>
   <div class="admin-shell locked" id="adminShell">
-=======
-  <div class="admin-shell">
- main
     <header class="topbar">
       <a class="brand" href="../" aria-label="بازگشت به سایت">
         <span class="brand-mark">M</span><span><strong>MOHAJER</strong><small>Content Studio</small></span>
@@ -51,11 +53,7 @@
 
     <aside class="sidebar">
       <div class="sidebar-title"><span>مدیریت محتوا</span><button class="icon-button" id="collapseSidebar">☰</button></div>
- codex-zw7it5
       <nav class="main-nav" id="contentNav">
-=======
-      <nav class="main-nav">
- main
         <button class="active" data-panel="pages"><span class="nav-icon">◇</span><span>صفحات سایت</span></button>
         <button data-panel="products"><span class="nav-icon">□</span><span>محصولات</span><b>12</b></button>
         <button data-panel="media"><span class="nav-icon">▧</span><span>تصاویر و رسانه</span></button>
@@ -72,7 +70,7 @@
         <button data-target="contactView"><span>تماس با ما</span><small>Contact</small></button>
       </div>
       <div class="user-card">
-        <span class="avatar">AM</span><span><strong>مدیر سایت</strong><small>نسخه نمایشی محلی</small></span><button title="خروج">⋮</button>
+        <span class="avatar">AM</span><span><strong>مدیر سایت</strong><small>متصل به انتشار عمومی</small></span><button id="logoutBtn" title="خروج" aria-label="خروج از پنل">خروج</button>
       </div>
     </aside>
 
@@ -106,7 +104,6 @@
         <div class="field image-field hidden" id="imageField"><label for="imageInput">آدرس تصویر</label><input id="imageInput" type="url" dir="ltr"><label class="upload-label">انتخاب تصویر<input id="imageUpload" type="file" accept="image/*"></label></div>
         <div class="field"><label>تراز متن</label><div class="segmented"><button type="button" data-align="right">راست</button><button type="button" data-align="center">وسط</button><button type="button" data-align="left">چپ</button></div></div>
         <div class="field"><label for="colorInput">رنگ متن</label><div class="color-row"><input id="colorInput" type="color" value="#111827"><input id="colorText" value="#111827" dir="ltr"></div></div>
- codex-zw7it5
         <div class="field container-field hidden" id="containerField">
           <label for="backgroundColor">پس‌زمینه کادر</label><div class="color-row"><input id="backgroundColor" type="color" value="#ffffff"><input id="backgroundText" value="#ffffff" dir="ltr"></div>
           <label for="backgroundImage">تصویر پس‌زمینه</label><input id="backgroundImage" type="url" dir="ltr" placeholder="https://...">
@@ -114,15 +111,16 @@
           <small>دستگیره پایین کادر را در پیش‌نمایش بکشید تا اندازه آن با موس تغییر کند.</small>
         </div>
         <div class="form-actions"><button type="button" class="button ghost" id="duplicateBtn">کپی کادر</button><button type="button" class="button ghost" id="resetBtn">لغو</button><button type="submit" class="button primary">اعمال تغییر</button></div>
-=======
-        <div class="form-actions"><button type="button" class="button ghost" id="resetBtn">لغو تغییر</button><button type="submit" class="button primary">اعمال تغییر</button></div>
- main
       </form>
-      <div class="inspector-note"><strong>نسخه نمایشی امن</strong><p>تغییرات فعلاً فقط به‌صورت پیش‌نویس در همین مرورگر ذخیره می‌شوند. اتصال انتشار عمومی در مرحله ورود امن انجام می‌شود.</p></div>
+      <div class="inspector-note"><strong>انتشار عمومی</strong><p>«اعمال تغییر» پیش‌نویس را ذخیره می‌کند و دکمه «انتشار» آن را برای تمام بازدیدکنندگان سایت منتشر می‌کند.</p></div>
     </aside>
   </div>
   <div class="toast" id="toast" role="status"></div>
-  <dialog id="publishDialog"><div class="dialog-icon">🔒</div><h2>اتصال امن موردنیاز است</h2><p>ظاهر پنل آماده است. برای انتشار عمومی، ابتدا باید ورود مدیر و پایگاه داده Firebase متصل شود تا هیچ فرد ناشناسی نتواند سایت را تغییر دهد.</p><div><button class="button secondary" id="closeDialog">متوجه شدم</button></div></dialog>
-  <script src="admin.js"></script>
+  <dialog id="publishDialog"><div class="dialog-icon">🌐</div><h2>انتشار روی سایت اصلی</h2><p>با تأیید انتشار، پیش‌نویس فعلی برای تمام بازدیدکنندگان سایت نمایش داده می‌شود.</p><div><button class="button secondary" id="closeDialog">انصراف</button><button class="button primary" id="confirmPublishBtn">تأیید و انتشار</button></div></dialog>
+  <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore-compat.js"></script>
+  <script src="../firebase-config.js?v=20260809-theme"></script>
+  <script src="admin-panel.js?v=20260809-clean"></script>
 </body>
 </html>
