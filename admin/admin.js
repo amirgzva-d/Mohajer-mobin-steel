@@ -52,6 +52,23 @@
     const values = rgb?.match(/\d+/g);
     return values ? `#${values.slice(0, 3).map(value => Number(value).toString(16).padStart(2, '0')).join('')}` : '#ffffff';
   };
+ afrcxk-codex/add-management-panel-section
+  function setPasswordVisibility(showPassword) {
+    const input = $('#adminPassword');
+    const toggle = $('#togglePassword');
+    input.type = showPassword ? 'text' : 'password';
+    toggle.setAttribute('aria-pressed', String(showPassword));
+    toggle.setAttribute('aria-label', showPassword ? 'پنهان کردن رمز' : 'نمایش رمز');
+    input.focus({ preventScroll: true });
+  }
+
+  const loginErrorMessage = error => {
+    const invalidCodes = ['auth/invalid-credential', 'auth/invalid-login-credentials', 'auth/wrong-password', 'auth/user-not-found'];
+    if (invalidCodes.includes(error.code)) return 'رمز عبور صحیح نیست.';
+    if (error.code === 'auth/too-many-requests') return 'تلاش‌های ناموفق زیاد بود؛ چند دقیقه بعد دوباره امتحان کنید.';
+    if (error.code === 'auth/network-request-failed') return 'ارتباط با سرور برقرار نشد؛ اینترنت یا VPN را بررسی کنید.';
+    return 'ورود انجام نشد؛ لطفاً صفحه را تازه‌سازی و دوباره تلاش کنید.';
+
  ojq6c3-codex/add-management-panel-section
 
  w4j61d-codex/add-management-panel-section
@@ -60,6 +77,7 @@
     const bytes = new TextEncoder().encode(value);
     const digest = await crypto.subtle.digest('SHA-256', bytes);
     return [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, '0')).join('');
+ main
   };
 
  main
@@ -177,11 +195,17 @@
     event.preventDefault();
     const submit = event.currentTarget.querySelector('button[type=submit]');
     submit.disabled = true;
+ afrcxk-codex/add-management-panel-section
+    submit.textContent = 'در حال ورود…';
+    $('#loginError').textContent = '';
+    try {
+
     $('#loginError').textContent = '';
     try {
  ojq6c3-codex/add-management-panel-section
 
  w4j61d-codex/add-management-panel-section
+ main
  main
       await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
       await auth.signInWithEmailAndPassword(adminEmail, $('#adminPassword').value);
@@ -189,9 +213,13 @@
       setPasswordVisibility(false);
     } catch (error) {
       console.error('Admin login failed:', error);
+ afrcxk-codex/add-management-panel-section
+      $('#loginError').textContent = loginErrorMessage(error);
+
       $('#loginError').textContent = error.code === 'auth/invalid-credential'
         ? 'رمز عبور صحیح نیست.'
         : 'ورود انجام نشد؛ اتصال اینترنت و تنظیمات Firebase را بررسی کنید.';
+ main
       $('#adminPassword').select();
 
       if (await hash($('#adminPassword').value) === passwordHash) {
@@ -210,7 +238,28 @@
  main
     }
     submit.disabled = false;
+    submit.textContent = 'ورود به پنل';
   });
+  $('#togglePassword').addEventListener('click', () => setPasswordVisibility($('#adminPassword').type === 'password'));
+  auth.onAuthStateChanged(async user => {
+    const loggedIn = Boolean(user && user.email === adminEmail);
+    $('#loginGate').classList.toggle('hidden', loggedIn);
+    $('#adminShell').classList.toggle('locked', !loggedIn);
+    if (!loggedIn) return;
+    try {
+      const snapshot = await db.collection('siteContent').doc('draft').get();
+      if (snapshot.exists && snapshot.data().content) {
+        drafts = snapshot.data().content;
+        saveDraftsLocally();
+        if (iframe.contentDocument) applyDrafts(iframe.contentDocument);
+      }
+    } catch (error) {
+      console.error('Drafts could not be loaded:', error);
+      notify('پیش‌نویس محلی نمایش داده شد؛ اتصال Firestore را بررسی کنید');
+    }
+  });
+ afrcxk-codex/add-management-panel-section
+
   $('#togglePassword').addEventListener('click', () => setPasswordVisibility($('#adminPassword').type === 'password'));
  ojq6c3-codex/add-management-panel-section
 
@@ -240,6 +289,7 @@
     $('#loginGate').classList.add('hidden');
     $('#adminShell').classList.remove('locked');
   }
+ main
  main
  main
 
@@ -342,6 +392,8 @@
   const dialog = $('#publishDialog');
   $('#publishBtn').addEventListener('click', () => dialog.showModal());
   $('#closeDialog').addEventListener('click', () => dialog.close());
+ afrcxk-codex/add-management-panel-section
+
  ojq6c3-codex/add-management-panel-section
 
  w4j61d-codex/add-management-panel-section
@@ -377,9 +429,12 @@
     }
   });
   $('#logoutBtn').addEventListener('click', () => auth.signOut());
+ afrcxk-codex/add-management-panel-section
+
  ojq6c3-codex/add-management-panel-section
 
 
+ main
  main
  main
 })();

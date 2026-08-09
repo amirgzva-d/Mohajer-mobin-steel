@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="admin.css?v=20260809-theme">
 </head>
 <body>
   <section class="login-gate" id="loginGate">
@@ -18,8 +18,19 @@
       <h1>ورود به پنل مدیریت</h1>
       <p>برای مدیریت محتوای سایت رمز عبور را وارد کنید.</p>
       <label for="adminPassword">رمز عبور</label>
+ afrcxk-codex/add-management-panel-section
+      <div class="password-field">
+        <input id="adminPassword" type="password" autocomplete="current-password" required autofocus>
+        <button type="button" id="togglePassword" aria-label="نمایش رمز" aria-pressed="false">
+          <svg class="eye-open" aria-hidden="true" viewBox="0 0 24 24"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.8"/></svg>
+          <svg class="eye-closed" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 3l18 18M10.6 6.2A10.7 10.7 0 0 1 12 6c6 0 9.5 6 9.5 6a16.5 16.5 0 0 1-2.2 2.8M6.2 6.2C3.8 8 2.5 12 2.5 12s3.5 6 9.5 6c1.4 0 2.7-.3 3.8-.8M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+        </button>
+      </div>
+      <span class="login-error" id="loginError" role="alert" aria-live="polite"></span>
+
       <div class="password-field"><input id="adminPassword" type="password" autocomplete="current-password" required autofocus><button type="button" id="togglePassword" aria-label="نمایش رمز" aria-pressed="false"><span aria-hidden="true">👁</span></button></div>
       <span class="login-error" id="loginError"></span>
+ main
       <button class="button primary" type="submit">ورود به پنل</button>
     </form>
   </section>
@@ -114,11 +125,16 @@
   <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore-compat.js"></script>
+ afrcxk-codex/add-management-panel-section
+  <script src="../firebase-config.js?v=20260809-theme"></script>
+  <script src="admin.js?v=20260809-theme"></script>
+
  ojq6c3-codex/add-management-panel-section
   <script src="../firebase-config.js?v=20260809"></script>
   <script src="admin.js?v=20260809"></script>
 <script src="../firebase-config.js"></script>
   <script src="admin.js"></script>
+ main
  main
 </body>
 </html>
