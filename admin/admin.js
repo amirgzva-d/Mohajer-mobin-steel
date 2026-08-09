@@ -1,5 +1,4 @@
 (() => {
- codex-zw7it5
   const $ = selector => document.querySelector(selector);
   const iframe = $('#sitePreview');
   const loading = $('#previewLoading');
@@ -22,7 +21,10 @@
   const charCount = $('#charCount');
   const toast = $('#toast');
   const draftsKey = 'mohajer-admin-drafts-v2';
-  const passwordHash = '63fdad0b466972006b3954137e79874ec179241fbad5489009023804e39eb6e5';
+  const adminEmail = 'amirgzva@gmail.com';
+  const firebaseApp = firebase.apps.length ? firebase.app() : firebase.initializeApp(window.MOHAJER_FIREBASE_CONFIG);
+  const auth = firebaseApp.auth();
+  const db = firebaseApp.firestore();
   let selected = null;
   let original = null;
   let selectedType = 'text';
@@ -34,18 +36,37 @@
     clearTimeout(notify.timer);
     notify.timer = setTimeout(() => toast.classList.remove('show'), 2600);
   };
-  const saveDrafts = () => {
+  const saveDraftsLocally = () => {
     localStorage.setItem(draftsKey, JSON.stringify(drafts));
     $('#saveState').innerHTML = '<i></i> پیش‌نویس ذخیره شد';
+  };
+  const saveDrafts = async () => {
+    saveDraftsLocally();
+    await db.collection('siteContent').doc('draft').set({
+      content: drafts,
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+      updatedBy: auth.currentUser.uid
+    });
   };
   const rgbToHex = rgb => {
     const values = rgb?.match(/\d+/g);
     return values ? `#${values.slice(0, 3).map(value => Number(value).toString(16).padStart(2, '0')).join('')}` : '#ffffff';
   };
-  const hash = async value => {
-    const bytes = new TextEncoder().encode(value);
-    const digest = await crypto.subtle.digest('SHA-256', bytes);
-    return [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, '0')).join('');
+  function setPasswordVisibility(showPassword) {
+    const input = $('#adminPassword');
+    const toggle = $('#togglePassword');
+    input.type = showPassword ? 'text' : 'password';
+    toggle.setAttribute('aria-pressed', String(showPassword));
+    toggle.setAttribute('aria-label', showPassword ? 'پنهان کردن رمز' : 'نمایش رمز');
+    input.focus({ preventScroll: true });
+  }
+
+  const loginErrorMessage = error => {
+    const invalidCodes = ['auth/invalid-credential', 'auth/invalid-login-credentials', 'auth/wrong-password', 'auth/user-not-found'];
+    if (invalidCodes.includes(error.code)) return 'رمز عبور صحیح نیست.';
+    if (error.code === 'auth/too-many-requests') return 'تلاش‌های ناموفق زیاد بود؛ چند دقیقه بعد دوباره امتحان کنید.';
+    if (error.code === 'auth/network-request-failed') return 'ارتباط با سرور برقرار نشد؛ اینترنت یا VPN را بررسی کنید.';
+    return 'ورود انجام نشد؛ لطفاً صفحه را تازه‌سازی و دوباره تلاش کنید.';
   };
   const uniqueSelector = element => {
     if (element.dataset.key) return `[data-key="${CSS.escape(element.dataset.key)}"]`;
@@ -65,7 +86,8 @@
   };
 
   function applyDraft(doc, draft) {
-    const element = doc.querySelector(draft.selector);
+    let element;
+    try { element = doc.querySelector(draft.selector); } catch { return; }
     if (!element) return;
     if (draft.type === 'image') element.src = draft.content;
     else if (draft.type === 'text') element.innerHTML = draft.content;
@@ -74,53 +96,12 @@
   }
   function applyDrafts(doc) { Object.values(drafts).forEach(draft => applyDraft(doc, draft)); }
 
-  const iframe = document.querySelector('#sitePreview');
-  const loading = document.querySelector('#previewLoading');
-  const frame = document.querySelector('#previewFrame');
-  const form = document.querySelector('#editorForm');
-  const empty = document.querySelector('#emptyInspector');
-  const title = document.querySelector('#elementTitle');
-  const content = document.querySelector('#contentInput');
-  const imageField = document.querySelector('#imageField');
-  const imageInput = document.querySelector('#imageInput');
-  const color = document.querySelector('#colorInput');
-  const colorText = document.querySelector('#colorText');
-  const charCount = document.querySelector('#charCount');
-  const toast = document.querySelector('#toast');
-  const draftsKey = 'mohajer-admin-drafts-v1';
-  let selected = null;
-  let original = null;
-  let drafts = JSON.parse(localStorage.getItem(draftsKey) || '{}');
-
-  const notify = message => {
-    toast.textContent = message; toast.classList.add('show');
-    clearTimeout(notify.timer); notify.timer = setTimeout(() => toast.classList.remove('show'), 2600);
-  };
-  const saveDrafts = () => {
-    localStorage.setItem(draftsKey, JSON.stringify(drafts));
-    document.querySelector('#saveState').innerHTML = '<i></i> پیش‌نویس ذخیره شد';
-  };
-  const selectorFor = element => element.dataset.key ? `[data-key="${CSS.escape(element.dataset.key)}"]` : null;
-
-  function applyDrafts(doc) {
-    Object.entries(drafts).forEach(([key, value]) => {
-      const element = doc.querySelector(`[data-key="${CSS.escape(key)}"]`);
-      if (!element) return;
-      if (value.type === 'image') element.src = value.content;
-      else element.innerHTML = value.content;
-      if (value.color) element.style.color = value.color;
-      if (value.align) element.style.textAlign = value.align;
-    });
-  }
-main
-
   function preparePreview() {
     loading.style.display = 'none';
     const doc = iframe.contentDocument;
     if (!doc) return;
     applyDrafts(doc);
     const style = doc.createElement('style');
- codex-zw7it5
     style.textContent = `[data-key],img,section,.product-card,.ss-product-card,.feature-item-new,.dept-card{cursor:pointer!important;transition:outline .15s,box-shadow .15s}[data-key]:hover,img:hover,section:hover,.product-card:hover,.ss-product-card:hover,.feature-item-new:hover,.dept-card:hover{outline:2px solid #3478f6!important;outline-offset:3px!important;box-shadow:0 0 0 5px #3478f633!important}.admin-selected-element{outline:3px solid #3478f6!important;outline-offset:3px!important}.admin-resizable{resize:both!important;overflow:auto!important;min-width:40px!important;min-height:30px!important}`;
     doc.head.append(style);
     doc.addEventListener('click', event => {
@@ -131,19 +112,10 @@ main
       event.preventDefault();
       event.stopPropagation();
       selectElement(element);
-
-    style.textContent = `[data-key],img{cursor:pointer!important;transition:outline .15s,box-shadow .15s}[data-key]:hover,img:hover{outline:2px solid #3478f6!important;outline-offset:3px!important;box-shadow:0 0 0 5px #3478f633!important}`;
-    doc.head.append(style);
-    doc.addEventListener('click', event => {
-      const element = event.target.closest('[data-key], img');
-      if (!element) return;
-      event.preventDefault(); event.stopPropagation(); selectElement(element);
-> main
     }, true);
   }
 
   function selectElement(element) {
- codex-zw7it5
     selected?.classList.remove('admin-selected-element');
     selected = element;
     selected.classList.add('admin-selected-element');
@@ -200,22 +172,39 @@ main
     event.preventDefault();
     const submit = event.currentTarget.querySelector('button[type=submit]');
     submit.disabled = true;
-    if (await hash($('#adminPassword').value) === passwordHash) {
-      sessionStorage.setItem('mohajer-admin-auth', 'true');
-      $('#loginGate').classList.add('hidden');
-      $('#adminShell').classList.remove('locked');
+    submit.textContent = 'در حال ورود…';
+    $('#loginError').textContent = '';
+    try {
+      await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
+      await auth.signInWithEmailAndPassword(adminEmail, $('#adminPassword').value);
       $('#adminPassword').value = '';
-    } else {
-      $('#loginError').textContent = 'رمز عبور صحیح نیست.';
+      setPasswordVisibility(false);
+    } catch (error) {
+      console.error('Admin login failed:', error);
+      $('#loginError').textContent = loginErrorMessage(error);
       $('#adminPassword').select();
     }
     submit.disabled = false;
+    submit.textContent = 'ورود به پنل';
   });
-  $('#togglePassword').addEventListener('click', () => $('#adminPassword').type = $('#adminPassword').type === 'password' ? 'text' : 'password');
-  if (sessionStorage.getItem('mohajer-admin-auth') === 'true') {
-    $('#loginGate').classList.add('hidden');
-    $('#adminShell').classList.remove('locked');
-  }
+  $('#togglePassword').addEventListener('click', () => setPasswordVisibility($('#adminPassword').type === 'password'));
+  auth.onAuthStateChanged(async user => {
+    const loggedIn = Boolean(user && user.email === adminEmail);
+    $('#loginGate').classList.toggle('hidden', loggedIn);
+    $('#adminShell').classList.toggle('locked', !loggedIn);
+    if (!loggedIn) return;
+    try {
+      const snapshot = await db.collection('siteContent').doc('draft').get();
+      if (snapshot.exists && snapshot.data().content) {
+        drafts = snapshot.data().content;
+        saveDraftsLocally();
+        if (iframe.contentDocument) applyDrafts(iframe.contentDocument);
+      }
+    } catch (error) {
+      console.error('Drafts could not be loaded:', error);
+      notify('پیش‌نویس محلی نمایش داده شد؛ اتصال Firestore را بررسی کنید');
+    }
+  });
 
   iframe.addEventListener('load', preparePreview);
   content.addEventListener('input', () => { updateCount(); if (selectedType === 'text') selected.innerHTML = content.value.replace(/\n/g, '<br>'); });
@@ -238,14 +227,20 @@ main
     if (selected) selected.style.textAlign = btn.dataset.align;
   }));
 
-  form.addEventListener('submit', event => {
+  form.addEventListener('submit', async event => {
     event.preventDefault();
     if (!selected) return;
     const draft = draftFromSelection();
     applyDraft(iframe.contentDocument, draft);
     drafts[draft.selector] = draft;
-    saveDrafts();
-    notify('تغییر روی پیش‌نمایش زنده اعمال و ذخیره شد');
+    try {
+      await saveDrafts();
+      notify('پیش‌نویس در Firebase ذخیره شد');
+    } catch (error) {
+      console.error('Draft could not be saved:', error);
+      saveDraftsLocally();
+      notify('ذخیره Firebase ناموفق بود؛ قوانین Firestore را بررسی کنید');
+    }
   });
   $('#resetBtn').addEventListener('click', () => { restoreOriginal(); form.classList.add('hidden'); empty.classList.remove('hidden'); selected = null; notify('تغییر لغو شد'); });
   $('#duplicateBtn').addEventListener('click', () => {
@@ -310,84 +305,35 @@ main
   const dialog = $('#publishDialog');
   $('#publishBtn').addEventListener('click', () => dialog.showModal());
   $('#closeDialog').addEventListener('click', () => dialog.close());
-=======
-    selected = element;
-    const isImage = element.tagName === 'IMG';
-    original = { content: isImage ? element.src : element.innerHTML, color: element.style.color, align: element.style.textAlign };
-    title.textContent = isImage ? 'ویرایش تصویر' : (element.dataset.key || 'ویرایش متن');
-    empty.classList.add('hidden'); form.classList.remove('hidden');
-    imageField.classList.toggle('hidden', !isImage);
-    content.closest('.field').classList.toggle('hidden', isImage);
-    if (isImage) imageInput.value = element.src;
-    else { content.value = element.innerText.trim(); updateCount(); }
-    const computed = iframe.contentWindow.getComputedStyle(element);
-    color.value = rgbToHex(computed.color); colorText.value = color.value;
-    document.querySelectorAll('[data-align]').forEach(btn => btn.classList.toggle('active', btn.dataset.align === computed.textAlign));
-  }
-
-  function updateCount() { charCount.textContent = `${content.value.length.toLocaleString('fa-IR')} نویسه`; }
-  function rgbToHex(rgb) {
-    const values = rgb.match(/\d+/g); if (!values) return '#111827';
-    return '#' + values.slice(0, 3).map(v => Number(v).toString(16).padStart(2, '0')).join('');
-  }
-
-  iframe.addEventListener('load', preparePreview);
-  content.addEventListener('input', updateCount);
-  color.addEventListener('input', () => colorText.value = color.value);
-  colorText.addEventListener('change', () => { if (/^#[0-9a-f]{6}$/i.test(colorText.value)) color.value = colorText.value; });
-  document.querySelectorAll('[data-align]').forEach(btn => btn.addEventListener('click', () => {
-    document.querySelectorAll('[data-align]').forEach(item => item.classList.remove('active')); btn.classList.add('active');
-  }));
-
-  form.addEventListener('submit', event => {
-    event.preventDefault(); if (!selected) return;
-    const isImage = selected.tagName === 'IMG';
-    const value = isImage ? imageInput.value : content.value.replace(/\n/g, '<br>');
-    if (isImage) selected.src = value; else selected.innerHTML = value;
-    selected.style.color = color.value;
-    const activeAlign = document.querySelector('[data-align].active');
-    if (activeAlign) selected.style.textAlign = activeAlign.dataset.align;
-    const key = selected.dataset.key;
-    if (key) drafts[key] = { type: isImage ? 'image' : 'text', content: value, color: color.value, align: activeAlign?.dataset.align || '' };
-    saveDrafts(); notify('تغییر به‌عنوان پیش‌نویس ذخیره شد');
-  });
-
-  document.querySelector('#resetBtn').addEventListener('click', () => {
-    if (!selected || !original) return;
-    if (selected.tagName === 'IMG') selected.src = original.content; else selected.innerHTML = original.content;
-    selected.style.color = original.color; selected.style.textAlign = original.align;
-    selectElement(selected); notify('تغییر لغو شد');
-  });
-  document.querySelector('#closeInspector').addEventListener('click', () => {
-    selected = null; form.classList.add('hidden'); empty.classList.remove('hidden'); title.textContent = 'یک عنصر انتخاب کنید';
-  });
-  document.querySelector('#imageUpload').addEventListener('change', event => {
-    const file = event.target.files[0]; if (!file) return;
-    if (file.size > 2 * 1024 * 1024) return notify('حجم تصویر باید کمتر از ۲ مگابایت باشد');
-    const reader = new FileReader(); reader.onload = () => imageInput.value = reader.result; reader.readAsDataURL(file);
-  });
-  document.querySelectorAll('[data-device]').forEach(btn => btn.addEventListener('click', () => {
-    document.querySelectorAll('[data-device]').forEach(item => item.classList.remove('active')); btn.classList.add('active');
-    frame.className = `preview-frame ${btn.dataset.device}`;
-  }));
-  document.querySelectorAll('#pageList button').forEach(btn => btn.addEventListener('click', () => {
-    document.querySelectorAll('#pageList button').forEach(item => item.classList.remove('active')); btn.classList.add('active');
-    document.querySelector('#currentPageName').textContent = btn.querySelector('span').textContent;
-    const doc = iframe.contentDocument;
-    const target = doc?.getElementById(btn.dataset.target);
-    if (target) {
-      const navMap = {specialSaleView:'navSpecialSaleLink',aboutUsView:'navAboutLink',departmentsView:'navDepartmentsLink',contactView:'navContactLink'};
-      const nav = navMap[btn.dataset.target] && doc.getElementById(navMap[btn.dataset.target]);
-      if (nav) nav.click(); else target.scrollIntoView({behavior:'smooth'});
+  $('#confirmPublishBtn').addEventListener('click', async () => {
+    const button = $('#confirmPublishBtn');
+    if (Object.values(drafts).some(draft => String(draft.content || '').startsWith('data:'))) {
+      notify('برای انتشار تصویر، آدرس اینترنتی تصویر را وارد کنید');
+      dialog.close();
+      return;
     }
-  }));
-  document.querySelector('#languageSelect').addEventListener('change', event => {
-    const item = iframe.contentDocument?.querySelector(`[data-lang="${event.target.value}"]`); if (item) item.click();
-    notify(`زبان پیش‌نمایش به ${event.target.options[event.target.selectedIndex].text} تغییر کرد`);
+    button.disabled = true;
+    try {
+      const batch = db.batch();
+      const published = db.collection('siteContent').doc('published');
+      const version = db.collection('siteVersions').doc();
+      const payload = {
+        content: drafts,
+        publishedAt: firebase.firestore.FieldValue.serverTimestamp(),
+        publishedBy: auth.currentUser.uid
+      };
+      batch.set(published, payload);
+      batch.set(version, payload);
+      await batch.commit();
+      dialog.close();
+      $('#saveState').innerHTML = '<i></i> روی سایت منتشر شد';
+      notify('تغییرات با موفقیت روی سایت اصلی منتشر شد');
+    } catch (error) {
+      console.error('Publish failed:', error);
+      notify('انتشار ناموفق بود؛ قوانین Firestore را فعال کنید');
+    } finally {
+      button.disabled = false;
+    }
   });
-  document.querySelector('#previewBtn').addEventListener('click', () => window.open('../', '_blank', 'noopener'));
-  const dialog = document.querySelector('#publishDialog');
-  document.querySelector('#publishBtn').addEventListener('click', () => dialog.showModal());
-  document.querySelector('#closeDialog').addEventListener('click', () => dialog.close());
->>>>>>> main
+  $('#logoutBtn').addEventListener('click', () => auth.signOut());
 })();
