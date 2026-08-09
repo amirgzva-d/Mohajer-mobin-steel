@@ -52,6 +52,8 @@
     const values = rgb?.match(/\d+/g);
     return values ? `#${values.slice(0, 3).map(value => Number(value).toString(16).padStart(2, '0')).join('')}` : '#ffffff';
   };
+ ojq6c3-codex/add-management-panel-section
+
  w4j61d-codex/add-management-panel-section
 
   const hash = async value => {
@@ -60,6 +62,7 @@
     return [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, '0')).join('');
   };
 
+ main
  main
   function setPasswordVisibility(showPassword) {
     const input = $('#adminPassword');
@@ -176,7 +179,10 @@
     submit.disabled = true;
     $('#loginError').textContent = '';
     try {
+ ojq6c3-codex/add-management-panel-section
+
  w4j61d-codex/add-management-panel-section
+ main
       await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
       await auth.signInWithEmailAndPassword(adminEmail, $('#adminPassword').value);
       $('#adminPassword').value = '';
@@ -206,7 +212,10 @@
     submit.disabled = false;
   });
   $('#togglePassword').addEventListener('click', () => setPasswordVisibility($('#adminPassword').type === 'password'));
+ ojq6c3-codex/add-management-panel-section
+
  w4j61d-codex/add-management-panel-section
+ main
   auth.onAuthStateChanged(async user => {
     const loggedIn = Boolean(user && user.email === adminEmail);
     $('#loginGate').classList.toggle('hidden', loggedIn);
@@ -224,11 +233,14 @@
       notify('پیش‌نویس محلی نمایش داده شد؛ اتصال Firestore را بررسی کنید');
     }
   });
+ ojq6c3-codex/add-management-panel-section
+
 
   if (sessionStorage.getItem('mohajer-admin-auth') === 'true') {
     $('#loginGate').classList.add('hidden');
     $('#adminShell').classList.remove('locked');
   }
+ main
  main
 
   iframe.addEventListener('load', preparePreview);
@@ -330,7 +342,10 @@
   const dialog = $('#publishDialog');
   $('#publishBtn').addEventListener('click', () => dialog.showModal());
   $('#closeDialog').addEventListener('click', () => dialog.close());
+ ojq6c3-codex/add-management-panel-section
+
  w4j61d-codex/add-management-panel-section
+ main
   $('#confirmPublishBtn').addEventListener('click', async () => {
     const button = $('#confirmPublishBtn');
     if (Object.values(drafts).some(draft => String(draft.content || '').startsWith('data:'))) {
@@ -362,6 +377,9 @@
     }
   });
   $('#logoutBtn').addEventListener('click', () => auth.signOut());
+ ojq6c3-codex/add-management-panel-section
 
+
+ main
  main
 })();
