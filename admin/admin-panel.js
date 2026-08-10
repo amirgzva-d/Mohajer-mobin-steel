@@ -235,7 +235,7 @@
     drafts[draft.selector] = draft;
     try {
       await saveDrafts();
-      notify('پیش‌نویس در Firebase ذخیره شد');
+      notify('پیش‌نویس ذخیره شد؛ برای نمایش روی سایت، دکمه انتشار را بزنید');
     } catch (error) {
       console.error('Draft could not be saved:', error);
       saveDraftsLocally();
@@ -307,6 +307,11 @@
   $('#closeDialog').addEventListener('click', () => dialog.close());
   $('#confirmPublishBtn').addEventListener('click', async () => {
     const button = $('#confirmPublishBtn');
+    if (!Object.keys(drafts).length) {
+      notify('هنوز تغییری ثبت نشده؛ ابتدا یک متن یا تصویر را ویرایش و اعمال کنید');
+      dialog.close();
+      return;
+    }
     if (Object.values(drafts).some(draft => String(draft.content || '').startsWith('data:'))) {
       notify('برای انتشار تصویر، آدرس اینترنتی تصویر را وارد کنید');
       dialog.close();
