@@ -20,20 +20,18 @@
   const borderRadius = $('#borderRadius');
   const charCount = $('#charCount');
   const toast = $('#toast');
-  const draftsKey = 'mohajer-admin-drafts-v2';
+  const githubRepo = 'amirgzva-d/Mohajer-mobin-steel';
+  const githubBranch = 'main';
+  const githubSourcePath = 'index.html';
+  const githubTokenKey = 'mohajer-github-token-v1';
   const adminEmail = 'amirgzva@gmail.com';
   const firebaseApp = firebase.apps.length ? firebase.app() : firebase.initializeApp(window.MOHAJER_FIREBASE_CONFIG);
   const auth = firebaseApp.auth();
-  const db = firebaseApp.firestore();
   let selected = null;
   let original = null;
   let selectedType = 'text';
   let changedStyles = new Set();
-  const loadLocalDrafts = () => {
-    try { return JSON.parse(localStorage.getItem(draftsKey) || '{}'); }
-    catch { localStorage.removeItem(draftsKey); return {}; }
-  };
-  let drafts = loadLocalDrafts();
+  let drafts = {};
   let undoStack = [];
   let redoStack = [];
   const cloneDrafts = value => JSON.parse(JSON.stringify(value));
@@ -48,23 +46,79 @@
     clearTimeout(notify.timer);
     notify.timer = setTimeout(() => toast.classList.remove('show'), 2600);
   };
-  const saveDraftsLocally = () => {
-    try {
-      localStorage.setItem(draftsKey, JSON.stringify(drafts));
-      $('#saveState').innerHTML = '<i></i> پیش‌نویس ذخیره شد';
-      return true;
-    } catch (error) {
-      console.error('Local draft could not be saved:', error);
-      return false;
-    }
+  const markChangesReady = () => {
+    const count = Object.keys(drafts).length.toLocaleString('fa-IR');
+    $('#saveState').innerHTML = `<i></i> ${count} تغییر آماده انتشار`;
   };
-  const saveDraftsRemotely = async () => {
-    if (!auth.currentUser) throw new Error('Admin is not authenticated.');
-    await db.collection('siteContent').doc('draft').set({
-      content: drafts,
-      updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
-      updatedBy: auth.currentUser.uid
+  const githubHeaders = token => ({
+    Accept: 'application/vnd.github+json',
+    Authorization: `Bearer ${token}`,
+    'X-GitHub-Api-Version': '2022-11-28'
+  });
+  const readGithubResponse = async response => {
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      const error = new Error(data.message || `GitHub request failed (${response.status})`);
+      error.status = response.status;
+      throw error;
+    }
+    return data;
+  };
+  const decodeBase64Utf8 = value => {
+    const binary = atob(String(value || '').replace(/\s/g, ''));
+    const bytes = Uint8Array.from(binary, character => character.charCodeAt(0));
+    return new TextDecoder().decode(bytes);
+  };
+  const encodeBase64Utf8 = value => {
+    const bytes = new TextEncoder().encode(value);
+    let binary = '';
+    const chunkSize = 0x8000;
+    for (let offset = 0; offset < bytes.length; offset += chunkSize) {
+      binary += String.fromCharCode(...bytes.subarray(offset, offset + chunkSize));
+    }
+    return btoa(binary);
+  };
+  const applyDraftsToSource = source => {
+    const parsed = new DOMParser().parseFromString(source, 'text/html');
+    let appliedCount = 0;
+    Object.values(drafts).forEach(draft => {
+      let element;
+      try { element = parsed.querySelector(draft.selector); } catch { return; }
+      if (!element) return;
+
+      if (draft.type === 'image') element.setAttribute('src', draft.content);
+      else if (draft.type === 'text') setTextContent(element, draft.content);
+
+      const styles = draft.type === 'text' && draft.schemaVersion !== 3 ? {} : draft.styles;
+      Object.entries(styles || {}).forEach(([property, value]) => {
+        if (!value) return;
+        const cssProperty = property.replace(/[A-Z]/g, match => `-${match.toLowerCase()}`);
+        element.style.setProperty(cssProperty, value, property.startsWith('background') ? 'important' : '');
+      });
+      appliedCount += 1;
     });
+    if (!appliedCount) throw new Error('هیچ‌کدام از بخش‌های انتخاب‌شده در index.html پیدا نشد.');
+    return `<!DOCTYPE html>\n${parsed.documentElement.outerHTML}\n`;
+  };
+  const publishToGithub = async token => {
+    const endpoint = `https://api.github.com/repos/${githubRepo}/contents/${githubSourcePath}`;
+    const currentResponse = await fetch(`${endpoint}?ref=${encodeURIComponent(githubBranch)}`, {
+      headers: githubHeaders(token)
+    });
+    const currentFile = await readGithubResponse(currentResponse);
+    const source = decodeBase64Utf8(currentFile.content);
+    const updatedSource = applyDraftsToSource(source);
+    const updateResponse = await fetch(endpoint, {
+      method: 'PUT',
+      headers: { ...githubHeaders(token), 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: 'ویرایش مستقیم محتوای سایت از پنل مدیریت',
+        content: encodeBase64Utf8(updatedSource),
+        sha: currentFile.sha,
+        branch: githubBranch
+      })
+    });
+    return readGithubResponse(updateResponse);
   };
   const rgbToHex = rgb => {
     const values = rgb?.match(/\d+/g);
@@ -87,16 +141,29 @@
     return 'ورود انجام نشد؛ لطفاً صفحه را تازه‌سازی و دوباره تلاش کنید.';
   };
   const uniqueSelector = element => {
-    if (element.dataset.key) return `[data-key="${CSS.escape(element.dataset.key)}"]`;
+    const doc = element.ownerDocument;
+    if (element.dataset.key) {
+      const keySelector = `[data-key="${CSS.escape(element.dataset.key)}"]`;
+      if (doc.querySelectorAll(keySelector).length === 1) return keySelector;
+    }
     if (element.id) return `#${CSS.escape(element.id)}`;
     const parts = [];
     let node = element;
-    while (node && node !== node.ownerDocument.body && parts.length < 5) {
+    while (node && node !== doc.body && parts.length < 8) {
+      if (node.id) {
+        parts.unshift(`#${CSS.escape(node.id)}`);
+        break;
+      }
+      if (node.dataset.key) {
+        const keySelector = `[data-key="${CSS.escape(node.dataset.key)}"]`;
+        if (doc.querySelectorAll(keySelector).length === 1) {
+          parts.unshift(keySelector);
+          break;
+        }
+      }
       let part = node.tagName.toLowerCase();
-      const usefulClass = [...node.classList].find(name => !name.startsWith('admin-'));
-      if (usefulClass) part += `.${CSS.escape(usefulClass)}`;
       const siblings = [...node.parentElement.children].filter(item => item.tagName === node.tagName);
-      if (siblings.length > 1) part += `:nth-of-type(${siblings.indexOf(node) + 1})`;
+      part += `:nth-of-type(${siblings.indexOf(node) + 1})`;
       parts.unshift(part);
       node = node.parentElement;
     }
@@ -229,20 +296,6 @@
     const loggedIn = Boolean(user);
     $('#loginGate').classList.toggle('hidden', loggedIn);
     $('#adminShell').classList.toggle('locked', !loggedIn);
-    if (!loggedIn) return;
-    try {
-      const snapshot = await db.collection('siteContent').doc('draft').get();
-      if (snapshot.exists && snapshot.data().content) {
-        // Local edits may be created while Firestore is still loading. Never let
-        // an older remote snapshot erase those pending edits.
-        drafts = { ...snapshot.data().content, ...drafts };
-        saveDraftsLocally();
-        if (iframe.contentDocument) applyDrafts(iframe.contentDocument);
-      }
-    } catch (error) {
-      console.error('Drafts could not be loaded:', error);
-      notify('پیش‌نویس محلی نمایش داده شد؛ اتصال Firestore را بررسی کنید');
-    }
   });
 
   iframe.addEventListener('load', preparePreview);
@@ -290,26 +343,12 @@
     button.textContent = 'در حال ذخیره…';
     try {
       drafts[draft.selector] = draft;
-      if (!saveDraftsLocally()) {
-        drafts = previousDrafts;
-        notify('فضای ذخیره مرورگر کافی نیست؛ تصویر کوچک‌تری انتخاب کنید');
-        return;
-      }
-
       applyDraft(iframe.contentDocument, draft);
       undoStack.push(previousDrafts);
       redoStack = [];
       updateHistoryButtons();
+      markChangesReady();
       notify('تغییر ذخیره شد؛ اکنون می‌توانید انتشار را بزنید');
-
-      try {
-        await saveDraftsRemotely();
-      } catch (error) {
-        // The local draft remains publishable/retryable; a network failure must
-        // never make Apply look as if it did nothing.
-        console.error('Remote draft could not be saved:', error);
-        notify('تغییر در مرورگر ذخیره شد؛ اتصال سرور را بررسی و دوباره انتشار را بزنید');
-      }
     } finally {
       button.disabled = false;
       button.textContent = 'اعمال تغییر';
@@ -323,13 +362,12 @@
   });
   const restoreDraftSnapshot = snapshot => {
     drafts = cloneDrafts(snapshot);
-    saveDraftsLocally();
-    saveDraftsRemotely().catch(error => console.error('History state could not be synced:', error));
     iframe.contentWindow.location.reload();
     selected = null;
     form.classList.add('hidden');
     empty.classList.remove('hidden');
     updateHistoryButtons();
+    markChangesReady();
   };
   $('#undoBtn').addEventListener('click', () => {
     if (!undoStack.length) return;
@@ -392,7 +430,7 @@
       products: () => document.querySelector('#pageList [data-target="catalogSectionAnchor"]').click(),
       media: () => { notify('روی هر تصویر در پیش‌نمایش کلیک کنید تا مدیریت شود'); iframe.contentDocument?.querySelector('img')?.scrollIntoView({ behavior: 'smooth', block: 'center' }); },
       translations: () => { $('#languageSelect').focus(); notify('زبان محتوا را از فهرست بالای پیش‌نمایش انتخاب کنید'); },
-      history: () => notify(`${Object.keys(drafts).length.toLocaleString('fa-IR')} پیش‌نویس در این مرورگر ذخیره شده است`)
+      history: () => notify(`${Object.keys(drafts).length.toLocaleString('fa-IR')} تغییر در همین جلسه آماده انتشار است`)
     };
     actions[btn.dataset.panel]?.();
   }));
@@ -409,41 +447,52 @@
 
   $('#previewBtn').addEventListener('click', () => window.open('../', '_blank', 'noopener'));
   const dialog = $('#publishDialog');
+  const githubTokenInput = $('#githubTokenInput');
+  if (localStorage.getItem(githubTokenKey)) githubTokenInput.placeholder = 'توکن قبلی ذخیره شده است';
   $('#publishBtn').addEventListener('click', () => dialog.showModal());
   $('#closeDialog').addEventListener('click', () => dialog.close());
   $('#confirmPublishBtn').addEventListener('click', async () => {
     const button = $('#confirmPublishBtn');
-    // Recover the last locally-applied draft if an asynchronous Firestore read
-    // completed between Apply and Publish.
-    if (!Object.keys(drafts).length) {
-      drafts = loadLocalDrafts();
-    }
     if (!Object.keys(drafts).length) {
       notify('هنوز تغییری ثبت نشده؛ ابتدا یک متن یا تصویر را ویرایش و اعمال کنید');
       dialog.close();
       return;
     }
+    const token = githubTokenInput.value.trim() || localStorage.getItem(githubTokenKey) || '';
+    if (!token) {
+      notify('توکن GitHub را وارد کنید');
+      githubTokenInput.focus();
+      return;
+    }
     button.disabled = true;
+    button.textContent = 'در حال ثبت در GitHub…';
     try {
-      const batch = db.batch();
-      const published = db.collection('siteContent').doc('published');
-      const version = db.collection('siteVersions').doc();
-      const payload = {
-        content: drafts,
-        publishedAt: firebase.firestore.FieldValue.serverTimestamp(),
-        publishedBy: auth.currentUser.uid
-      };
-      batch.set(published, payload);
-      batch.set(version, payload);
-      await batch.commit();
+      await publishToGithub(token);
+      localStorage.setItem(githubTokenKey, token);
+      githubTokenInput.value = '';
+      githubTokenInput.placeholder = 'توکن قبلی ذخیره شده است';
+      drafts = {};
+      undoStack = [];
+      redoStack = [];
+      updateHistoryButtons();
       dialog.close();
-      $('#saveState').innerHTML = '<i></i> روی سایت منتشر شد';
-      notify('تغییرات با موفقیت روی سایت اصلی منتشر شد');
+      $('#saveState').innerHTML = '<i></i> در کد اصلی ذخیره شد';
+      notify('متن و تغییرات مستقیماً در index.html ثبت شد');
     } catch (error) {
       console.error('Publish failed:', error);
-      notify('انتشار ناموفق بود؛ قوانین Firestore را فعال کنید');
+      if (error.status === 401 || error.status === 403) {
+        localStorage.removeItem(githubTokenKey);
+        githubTokenInput.value = '';
+        githubTokenInput.placeholder = 'توکن معتبر GitHub را وارد کنید';
+        notify('توکن GitHub معتبر نیست یا اجازه ویرایش ندارد');
+      } else if (error.status === 409) {
+        notify('کد سایت هم‌زمان تغییر کرده؛ دوباره انتشار را بزنید');
+      } else {
+        notify(error.message || 'ثبت تغییرات در GitHub انجام نشد');
+      }
     } finally {
       button.disabled = false;
+      button.textContent = 'تأیید و انتشار';
     }
   });
   $('#logoutBtn').addEventListener('click', async () => {
