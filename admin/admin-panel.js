@@ -29,6 +29,14 @@
   let original = null;
   let selectedType = 'text';
   let drafts = JSON.parse(localStorage.getItem(draftsKey) || '{}');
+  let undoStack = [];
+  let redoStack = [];
+  let passwordSubmitted = false;
+  const cloneDrafts = value => JSON.parse(JSON.stringify(value));
+  const updateHistoryButtons = () => {
+    $('#undoBtn').disabled = undoStack.length === 0;
+    $('#redoBtn').disabled = redoStack.length === 0;
+  };
 
   const notify = message => {
     toast.textContent = message;
@@ -119,6 +127,7 @@
     selected?.classList.remove('admin-selected-element');
     selected = element;
     selected.classList.add('admin-selected-element');
+    document.body.classList.add('inspector-open');
     const isImage = element.tagName === 'IMG';
     const isText = Boolean(element.dataset.key) && !isImage;
     selectedType = isImage ? 'image' : isText ? 'text' : 'container';
@@ -130,7 +139,6 @@
     content.closest('.field').classList.toggle('hidden', !isText);
     imageField.classList.toggle('hidden', !isImage);
     containerField.classList.toggle('hidden', isText);
-    $('#duplicateBtn').classList.toggle('hidden', isText || isImage);
     if (isText) { content.value = element.innerText.trim(); updateCount(); }
     if (isImage) imageInput.value = element.src;
     color.value = rgbToHex(computed.color); colorText.value = color.value;
@@ -175,11 +183,13 @@
     submit.textContent = 'در حال ورود…';
     $('#loginError').textContent = '';
     try {
-      await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
+      await auth.setPersistence(firebase.auth.Auth.Persistence.NONE);
+      passwordSubmitted = true;
       await auth.signInWithEmailAndPassword(adminEmail, $('#adminPassword').value);
       $('#adminPassword').value = '';
       setPasswordVisibility(false);
     } catch (error) {
+      passwordSubmitted = false;
       console.error('Admin login failed:', error);
       $('#loginError').textContent = loginErrorMessage(error);
       $('#adminPassword').select();
@@ -189,7 +199,11 @@
   });
   $('#togglePassword').addEventListener('click', () => setPasswordVisibility($('#adminPassword').type === 'password'));
   auth.onAuthStateChanged(async user => {
-    const loggedIn = Boolean(user && user.email === adminEmail);
+    if (user && !passwordSubmitted) {
+      await auth.signOut();
+      return;
+    }
+    const loggedIn = Boolean(user && user.email === adminEmail && passwordSubmitted);
     $('#loginGate').classList.toggle('hidden', loggedIn);
     $('#adminShell').classList.toggle('locked', !loggedIn);
     if (!loggedIn) return;
@@ -232,33 +246,48 @@
     if (!selected) return;
     const draft = draftFromSelection();
     applyDraft(iframe.contentDocument, draft);
+    undoStack.push(cloneDrafts(drafts));
+    redoStack = [];
     drafts[draft.selector] = draft;
+    updateHistoryButtons();
     try {
       await saveDrafts();
- ndut4v-codex/add-management-panel-section
       notify('پیش‌نویس ذخیره شد؛ برای نمایش روی سایت، دکمه انتشار را بزنید');
-
-      notify('پیش‌نویس در Firebase ذخیره شد');
- main
     } catch (error) {
       console.error('Draft could not be saved:', error);
       saveDraftsLocally();
       notify('ذخیره Firebase ناموفق بود؛ قوانین Firestore را بررسی کنید');
     }
   });
-  $('#resetBtn').addEventListener('click', () => { restoreOriginal(); form.classList.add('hidden'); empty.classList.remove('hidden'); selected = null; notify('تغییر لغو شد'); });
-  $('#duplicateBtn').addEventListener('click', () => {
-    if (!selected || selectedType !== 'container') return;
-    const clone = selected.cloneNode(true);
-    clone.classList.remove('admin-selected-element');
-    selected.after(clone);
-    notify('یک کپی از کادر اضافه شد؛ انتشار دائمی در مرحله پایگاه داده فعال می‌شود');
+  const restoreDraftSnapshot = snapshot => {
+    drafts = cloneDrafts(snapshot);
+    saveDraftsLocally();
+    saveDrafts().catch(error => console.error('History state could not be synced:', error));
+    iframe.contentWindow.location.reload();
+    selected = null;
+    form.classList.add('hidden');
+    empty.classList.remove('hidden');
+    updateHistoryButtons();
+  };
+  $('#undoBtn').addEventListener('click', () => {
+    if (!undoStack.length) return;
+    redoStack.push(cloneDrafts(drafts));
+    restoreDraftSnapshot(undoStack.pop());
+    notify('آخرین تغییر بازگردانده شد');
   });
-  $('#closeInspector').addEventListener('click', () => { selected?.classList.remove('admin-selected-element'); selected = null; form.classList.add('hidden'); empty.classList.remove('hidden'); elementTitle.textContent = 'یک عنصر انتخاب کنید'; });
+  $('#redoBtn').addEventListener('click', () => {
+    if (!redoStack.length) return;
+    undoStack.push(cloneDrafts(drafts));
+    restoreDraftSnapshot(redoStack.pop());
+    notify('تغییر دوباره اعمال شد');
+  });
+
+  $('#resetBtn').addEventListener('click', () => { restoreOriginal(); form.classList.add('hidden'); empty.classList.remove('hidden'); selected = null; notify('تغییر لغو شد'); });
+  $('#closeInspector').addEventListener('click', () => { document.body.classList.remove('inspector-open'); selected?.classList.remove('admin-selected-element'); selected = null; form.classList.add('hidden'); empty.classList.remove('hidden'); elementTitle.textContent = 'یک عنصر انتخاب کنید'; });
   $('#imageUpload').addEventListener('change', event => {
     const file = event.target.files[0];
     if (!file) return;
-    if (file.size > 2 * 1024 * 1024) return notify('حجم تصویر باید کمتر از ۲ مگابایت باشد');
+    if (file.size > 500 * 1024) return notify('حجم تصویر باید کمتر از ۵۰۰ کیلوبایت باشد');
     const reader = new FileReader();
     reader.onload = () => { imageInput.value = reader.result; if (selectedType === 'image') selected.src = reader.result; };
     reader.readAsDataURL(file);
@@ -305,23 +334,25 @@
     };
     actions[btn.dataset.panel]?.();
   }));
+  $('#collapseSidebar').addEventListener('click', () => {
+    if (window.matchMedia('(max-width: 800px)').matches) {
+      document.body.classList.toggle('sidebar-open');
+    } else {
+      document.body.classList.toggle('sidebar-collapsed');
+    }
+  });
+  document.querySelectorAll('#pageList button, #contentNav button').forEach(button => button.addEventListener('click', () => {
+    if (window.matchMedia('(max-width: 800px)').matches) document.body.classList.remove('sidebar-open');
+  }));
+
   $('#previewBtn').addEventListener('click', () => window.open('../', '_blank', 'noopener'));
   const dialog = $('#publishDialog');
   $('#publishBtn').addEventListener('click', () => dialog.showModal());
   $('#closeDialog').addEventListener('click', () => dialog.close());
   $('#confirmPublishBtn').addEventListener('click', async () => {
     const button = $('#confirmPublishBtn');
-
-    ndut4v-codex/add-management-panel-section
     if (!Object.keys(drafts).length) {
       notify('هنوز تغییری ثبت نشده؛ ابتدا یک متن یا تصویر را ویرایش و اعمال کنید');
-      dialog.close();
-      return;
-    }
-    
- main
-    if (Object.values(drafts).some(draft => String(draft.content || '').startsWith('data:'))) {
-      notify('برای انتشار تصویر، آدرس اینترنتی تصویر را وارد کنید');
       dialog.close();
       return;
     }
@@ -348,5 +379,9 @@
       button.disabled = false;
     }
   });
-  $('#logoutBtn').addEventListener('click', () => auth.signOut());
+  $('#logoutBtn').addEventListener('click', async () => {
+    await auth.signOut();
+    sessionStorage.clear();
+    location.reload();
+  });
 })();

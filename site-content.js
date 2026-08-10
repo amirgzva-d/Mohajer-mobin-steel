@@ -25,7 +25,7 @@
       }
       if (!element) return;
 
-      if (draft.type === 'image' && /^https?:\/\//i.test(draft.content || '')) {
+      if (draft.type === 'image' && /^(https?:\/\/|data:image\/(png|jpeg|webp|gif);base64,)/i.test(draft.content || '')) {
         element.src = draft.content;
       } else if (draft.type === 'text') {
         setSafeText(element, draft.content);
