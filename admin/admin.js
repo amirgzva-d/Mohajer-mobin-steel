@@ -52,6 +52,16 @@
     const values = rgb?.match(/\d+/g);
     return values ? `#${values.slice(0, 3).map(value => Number(value).toString(16).padStart(2, '0')).join('')}` : '#ffffff';
   };
+ ndut4v-codex/add-management-panel-section
+
+ c87y1t-codex/add-management-panel-section
+
+ f5sn2z-codex/add-management-panel-section
+
+ afrcxk-codex/add-management-panel-section
+ main
+ main
+ main
   function setPasswordVisibility(showPassword) {
     const input = $('#adminPassword');
     const toggle = $('#togglePassword');
@@ -67,7 +77,38 @@
     if (error.code === 'auth/too-many-requests') return 'تلاش‌های ناموفق زیاد بود؛ چند دقیقه بعد دوباره امتحان کنید.';
     if (error.code === 'auth/network-request-failed') return 'ارتباط با سرور برقرار نشد؛ اینترنت یا VPN را بررسی کنید.';
     return 'ورود انجام نشد؛ لطفاً صفحه را تازه‌سازی و دوباره تلاش کنید.';
+ ndut4v-codex/add-management-panel-section
+
+ c87y1t-codex/add-management-panel-section
+
+ f5sn2z-codex/add-management-panel-section
+
+
+ ojq6c3-codex/add-management-panel-section
+
+ w4j61d-codex/add-management-panel-section
+
+  const hash = async value => {
+    const bytes = new TextEncoder().encode(value);
+    const digest = await crypto.subtle.digest('SHA-256', bytes);
+    return [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, '0')).join('');
+ main
+ main
+ main
+ main
   };
+
+ main
+ main
+  function setPasswordVisibility(showPassword) {
+    const input = $('#adminPassword');
+    const toggle = $('#togglePassword');
+    input.type = showPassword ? 'text' : 'password';
+    toggle.setAttribute('aria-pressed', String(showPassword));
+    toggle.setAttribute('aria-label', showPassword ? 'پنهان کردن رمز' : 'نمایش رمز');
+    toggle.querySelector('span').textContent = showPassword ? '🙈' : '👁';
+    input.focus({ preventScroll: true });
+  }
   const uniqueSelector = element => {
     if (element.dataset.key) return `[data-key="${CSS.escape(element.dataset.key)}"]`;
     if (element.id) return `#${CSS.escape(element.id)}`;
@@ -172,17 +213,77 @@
     event.preventDefault();
     const submit = event.currentTarget.querySelector('button[type=submit]');
     submit.disabled = true;
+ ndut4v-codex/add-management-panel-section
     submit.textContent = 'در حال ورود…';
     $('#loginError').textContent = '';
     try {
+
+ c87y1t-codex/add-management-panel-section
+    submit.textContent = 'در حال ورود…';
+    $('#loginError').textContent = '';
+    try {
+
+ f5sn2z-codex/add-management-panel-section
+    submit.textContent = 'در حال ورود…';
+    $('#loginError').textContent = '';
+    try {
+
+ afrcxk-codex/add-management-panel-section
+    submit.textContent = 'در حال ورود…';
+    $('#loginError').textContent = '';
+    try {
+
+    $('#loginError').textContent = '';
+    try {
+ ojq6c3-codex/add-management-panel-section
+
+ w4j61d-codex/add-management-panel-section
+ main
+ main
+ main
+ main
+ main
       await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
       await auth.signInWithEmailAndPassword(adminEmail, $('#adminPassword').value);
       $('#adminPassword').value = '';
       setPasswordVisibility(false);
     } catch (error) {
       console.error('Admin login failed:', error);
+ ndut4v-codex/add-management-panel-section
       $('#loginError').textContent = loginErrorMessage(error);
+
+ c87y1t-codex/add-management-panel-section
+      $('#loginError').textContent = loginErrorMessage(error);
+
+ f5sn2z-codex/add-management-panel-section
+      $('#loginError').textContent = loginErrorMessage(error);
+
+ afrcxk-codex/add-management-panel-section
+      $('#loginError').textContent = loginErrorMessage(error);
+
+      $('#loginError').textContent = error.code === 'auth/invalid-credential'
+        ? 'رمز عبور صحیح نیست.'
+        : 'ورود انجام نشد؛ اتصال اینترنت و تنظیمات Firebase را بررسی کنید.';
+ main
+ main
+ main
+ main
       $('#adminPassword').select();
+
+      if (await hash($('#adminPassword').value) === passwordHash) {
+        sessionStorage.setItem('mohajer-admin-auth', 'true');
+        $('#loginGate').classList.add('hidden');
+        $('#adminShell').classList.remove('locked');
+        $('#adminPassword').value = '';
+        setPasswordVisibility(false);
+      } else {
+        $('#loginError').textContent = 'رمز عبور صحیح نیست.';
+        $('#adminPassword').select();
+      }
+    } catch (error) {
+      console.error('Admin login failed:', error);
+      $('#loginError').textContent = 'ورود انجام نشد؛ لطفاً صفحه را دوباره بارگذاری کنید.';
+ main
     }
     submit.disabled = false;
     submit.textContent = 'ورود به پنل';
@@ -204,7 +305,53 @@
       console.error('Drafts could not be loaded:', error);
       notify('پیش‌نویس محلی نمایش داده شد؛ اتصال Firestore را بررسی کنید');
     }
+ ndut4v-codex/add-management-panel-section
   });
+
+ c87y1t-codex/add-management-panel-section
+  });
+
+ f5sn2z-codex/add-management-panel-section
+  });
+
+  });
+ afrcxk-codex/add-management-panel-section
+
+  $('#togglePassword').addEventListener('click', () => setPasswordVisibility($('#adminPassword').type === 'password'));
+ ojq6c3-codex/add-management-panel-section
+
+ w4j61d-codex/add-management-panel-section
+ main
+  auth.onAuthStateChanged(async user => {
+    const loggedIn = Boolean(user && user.email === adminEmail);
+    $('#loginGate').classList.toggle('hidden', loggedIn);
+    $('#adminShell').classList.toggle('locked', !loggedIn);
+    if (!loggedIn) return;
+    try {
+      const snapshot = await db.collection('siteContent').doc('draft').get();
+      if (snapshot.exists && snapshot.data().content) {
+        drafts = snapshot.data().content;
+        saveDraftsLocally();
+        if (iframe.contentDocument) applyDrafts(iframe.contentDocument);
+      }
+    } catch (error) {
+      console.error('Drafts could not be loaded:', error);
+      notify('پیش‌نویس محلی نمایش داده شد؛ اتصال Firestore را بررسی کنید');
+    }
+  });
+ ojq6c3-codex/add-management-panel-section
+
+
+  if (sessionStorage.getItem('mohajer-admin-auth') === 'true') {
+    $('#loginGate').classList.add('hidden');
+    $('#adminShell').classList.remove('locked');
+  }
+ main
+ main
+ main
+ main
+ main
+ main
 
   iframe.addEventListener('load', preparePreview);
   content.addEventListener('input', () => { updateCount(); if (selectedType === 'text') selected.innerHTML = content.value.replace(/\n/g, '<br>'); });
@@ -305,6 +452,21 @@
   const dialog = $('#publishDialog');
   $('#publishBtn').addEventListener('click', () => dialog.showModal());
   $('#closeDialog').addEventListener('click', () => dialog.close());
+ ndut4v-codex/add-management-panel-section
+
+ c87y1t-codex/add-management-panel-section
+
+ f5sn2z-codex/add-management-panel-section
+
+ afrcxk-codex/add-management-panel-section
+
+ ojq6c3-codex/add-management-panel-section
+
+ w4j61d-codex/add-management-panel-section
+ main
+ main
+ main
+ main
   $('#confirmPublishBtn').addEventListener('click', async () => {
     const button = $('#confirmPublishBtn');
     if (Object.values(drafts).some(draft => String(draft.content || '').startsWith('data:'))) {
@@ -336,4 +498,18 @@
     }
   });
   $('#logoutBtn').addEventListener('click', () => auth.signOut());
+ ndut4v-codex/add-management-panel-section
+
+ c87y1t-codex/add-management-panel-section
+
+ f5sn2z-codex/add-management-panel-section
+ afrcxk-codex/add-management-panel-section
+ ojq6c3-codex/add-management-panel-section
+    
+ main
+ main
+ main
+ main
+ main
+ main
 })();

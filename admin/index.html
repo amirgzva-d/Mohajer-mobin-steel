@@ -4,9 +4,174 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
+ ndut4v-codex/add-management-panel-section
   <title>در حال انتقال به پنل مدیریت…</title>
   <meta http-equiv="refresh" content="0;url=panel.html">
   <script>window.location.replace('panel.html');</script>
 </head>
 <body><p><a href="panel.html">ورود به پنل مدیریت</a></p></body>
+
+  <title>پنل مدیریت | فولاد مهاجر مبین</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+ c87y1t-codex/add-management-panel-section
+  <link rel="stylesheet" href="admin-panel.css?v=20260809-clean">
+
+ f5sn2z-codex/add-management-panel-section
+  <link rel="stylesheet" href="admin.css?v=20260809-white-login">
+
+  <link rel="stylesheet" href="admin.css?v=20260809-theme">
+ main
+ main
+</head>
+<body>
+  <section class="login-gate" id="loginGate">
+    <form class="login-card" id="loginForm">
+      <span class="brand-mark">M</span>
+      <small>MOHAJER CONTENT STUDIO</small>
+      <h1>ورود به پنل مدیریت</h1>
+      <p>برای مدیریت محتوای سایت رمز عبور را وارد کنید.</p>
+      <label for="adminPassword">رمز عبور</label>
+ c87y1t-codex/add-management-panel-section
+
+ f5sn2z-codex/add-management-panel-section
+
+ afrcxk-codex/add-management-panel-section> main
+ main
+      <div class="password-field">
+        <input id="adminPassword" type="password" autocomplete="current-password" required autofocus>
+        <button type="button" id="togglePassword" aria-label="نمایش رمز" aria-pressed="false">
+          <svg class="eye-open" aria-hidden="true" viewBox="0 0 24 24"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.8"/></svg>
+          <svg class="eye-closed" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 3l18 18M10.6 6.2A10.7 10.7 0 0 1 12 6c6 0 9.5 6 9.5 6a16.5 16.5 0 0 1-2.2 2.8M6.2 6.2C3.8 8 2.5 12 2.5 12s3.5 6 9.5 6c1.4 0 2.7-.3 3.8-.8M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>
+        </button>
+      </div>
+      <span class="login-error" id="loginError" role="alert" aria-live="polite"></span>
+ c87y1t-codex/add-management-panel-section
+
+ f5sn2z-codex/add-management-panel-section
+
+
+      <div class="password-field"><input id="adminPassword" type="password" autocomplete="current-password" required autofocus><button type="button" id="togglePassword" aria-label="نمایش رمز" aria-pressed="false"><span aria-hidden="true">👁</span></button></div>
+      <span class="login-error" id="loginError"></span>
+ main
+ main
+ main
+      <button class="button primary" type="submit">ورود به پنل</button>
+    </form>
+  </section>
+  <div class="admin-shell locked" id="adminShell">
+    <header class="topbar">
+      <a class="brand" href="../" aria-label="بازگشت به سایت">
+        <span class="brand-mark">M</span><span><strong>MOHAJER</strong><small>Content Studio</small></span>
+      </a>
+      <div class="topbar-center">
+        <button class="icon-button" id="undoBtn" title="بازگشت" disabled>↶</button>
+        <button class="icon-button" id="redoBtn" title="انجام مجدد" disabled>↷</button>
+        <span class="separator"></span>
+        <div class="device-switcher" aria-label="اندازه پیش‌نمایش">
+          <button data-device="mobile" title="موبایل">▯</button>
+          <button data-device="tablet" title="تبلت">▭</button>
+          <button class="active" data-device="desktop" title="دسکتاپ">▰</button>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <span class="save-state" id="saveState"><i></i> همه تغییرات ذخیره شده</span>
+        <button class="button secondary" id="previewBtn">مشاهده سایت</button>
+        <button class="button primary" id="publishBtn">انتشار</button>
+      </div>
+    </header>
+
+    <aside class="sidebar">
+      <div class="sidebar-title"><span>مدیریت محتوا</span><button class="icon-button" id="collapseSidebar">☰</button></div>
+      <nav class="main-nav" id="contentNav">
+        <button class="active" data-panel="pages"><span class="nav-icon">◇</span><span>صفحات سایت</span></button>
+        <button data-panel="products"><span class="nav-icon">□</span><span>محصولات</span><b>12</b></button>
+        <button data-panel="media"><span class="nav-icon">▧</span><span>تصاویر و رسانه</span></button>
+        <button data-panel="translations"><span class="nav-icon">文</span><span>ترجمه‌ها</span></button>
+        <button data-panel="history"><span class="nav-icon">↺</span><span>تاریخچه</span></button>
+      </nav>
+      <div class="page-list" id="pageList">
+        <p>صفحه موردنظر</p>
+        <button class="active" data-target="mainLandingView"><span>صفحه اصلی</span><small>Home</small></button>
+        <button data-target="catalogSectionAnchor"><span>محصولات</span><small>Products</small></button>
+        <button data-target="specialSaleView"><span>فروش ویژه</span><small>Special Sale</small></button>
+        <button data-target="aboutUsView"><span>درباره ما</span><small>About</small></button>
+        <button data-target="departmentsView"><span>دپارتمان‌ها</span><small>Departments</small></button>
+        <button data-target="contactView"><span>تماس با ما</span><small>Contact</small></button>
+      </div>
+      <div class="user-card">
+        <span class="avatar">AM</span><span><strong>مدیر سایت</strong><small>متصل به انتشار عمومی</small></span><button id="logoutBtn" title="خروج" aria-label="خروج از پنل">خروج</button>
+      </div>
+    </aside>
+
+    <main class="workspace">
+      <div class="workspace-toolbar">
+        <div class="breadcrumb"><span>صفحات</span><b>/</b><strong id="currentPageName">صفحه اصلی</strong></div>
+        <div class="language-picker">
+          <label for="languageSelect">زبان محتوا</label>
+          <select id="languageSelect">
+            <option value="fa">فارسی — FA</option><option value="en">English — EN</option>
+            <option value="ar">العربية — AR</option><option value="ru">Русский — RU</option>
+          </select>
+        </div>
+      </div>
+      <div class="canvas-area">
+        <div class="canvas-hint">روی متن یا تصویر دلخواه کلیک کنید تا ویرایش شود</div>
+        <div class="preview-frame desktop" id="previewFrame">
+          <div class="browser-bar"><span></span><span></span><span></span><div>mohajer-steel.com</div></div>
+          <iframe id="sitePreview" src="../" title="پیش‌نمایش زنده سایت"></iframe>
+          <div class="loading" id="previewLoading"><span></span>در حال بارگذاری سایت…</div>
+        </div>
+      </div>
+    </main>
+
+    <aside class="inspector">
+      <div class="inspector-head"><div><small>تنظیمات عنصر</small><h2 id="elementTitle">یک عنصر انتخاب کنید</h2></div><button class="icon-button" id="closeInspector">×</button></div>
+      <div class="empty-inspector" id="emptyInspector"><span>✦</span><h3>ویرایش مستقیم و آسان</h3><p>از پیش‌نمایش وسط صفحه روی یک متن یا تصویر کلیک کنید.</p></div>
+      <form class="editor-form hidden" id="editorForm">
+        <input type="hidden" id="elementKey">
+        <div class="field"><label for="contentInput">محتوا</label><textarea id="contentInput" rows="6"></textarea><small id="charCount">۰ نویسه</small></div>
+        <div class="field image-field hidden" id="imageField"><label for="imageInput">آدرس تصویر</label><input id="imageInput" type="url" dir="ltr"><label class="upload-label">انتخاب تصویر<input id="imageUpload" type="file" accept="image/*"></label></div>
+        <div class="field"><label>تراز متن</label><div class="segmented"><button type="button" data-align="right">راست</button><button type="button" data-align="center">وسط</button><button type="button" data-align="left">چپ</button></div></div>
+        <div class="field"><label for="colorInput">رنگ متن</label><div class="color-row"><input id="colorInput" type="color" value="#111827"><input id="colorText" value="#111827" dir="ltr"></div></div>
+        <div class="field container-field hidden" id="containerField">
+          <label for="backgroundColor">پس‌زمینه کادر</label><div class="color-row"><input id="backgroundColor" type="color" value="#ffffff"><input id="backgroundText" value="#ffffff" dir="ltr"></div>
+          <label for="backgroundImage">تصویر پس‌زمینه</label><input id="backgroundImage" type="url" dir="ltr" placeholder="https://...">
+          <div class="size-grid"><label>عرض<input id="elementWidth" type="number" min="40" placeholder="خودکار"></label><label>ارتفاع<input id="elementHeight" type="number" min="30" placeholder="خودکار"></label><label>گردی گوشه<input id="borderRadius" type="number" min="0" value="0"></label></div>
+          <small>دستگیره پایین کادر را در پیش‌نمایش بکشید تا اندازه آن با موس تغییر کند.</small>
+        </div>
+        <div class="form-actions"><button type="button" class="button ghost" id="duplicateBtn">کپی کادر</button><button type="button" class="button ghost" id="resetBtn">لغو</button><button type="submit" class="button primary">اعمال تغییر</button></div>
+      </form>
+      <div class="inspector-note"><strong>انتشار عمومی</strong><p>«اعمال تغییر» پیش‌نویس را ذخیره می‌کند و دکمه «انتشار» آن را برای تمام بازدیدکنندگان سایت منتشر می‌کند.</p></div>
+    </aside>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <dialog id="publishDialog"><div class="dialog-icon">🌐</div><h2>انتشار روی سایت اصلی</h2><p>با تأیید انتشار، پیش‌نویس فعلی برای تمام بازدیدکنندگان سایت نمایش داده می‌شود.</p><div><button class="button secondary" id="closeDialog">انصراف</button><button class="button primary" id="confirmPublishBtn">تأیید و انتشار</button></div></dialog>
+  <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore-compat.js"></script>
+ c87y1t-codex/add-management-panel-section
+  <script src="../firebase-config.js?v=20260809-theme"></script>
+  <script src="admin-panel.js?v=20260809-clean"></script>
+
+ f5sn2z-codex/add-management-panel-section
+  <script src="../firebase-config.js?v=20260809-theme"></script>
+  <script src="admin.js?v=20260809-theme"></script>
+
+ afrcxk-codex/add-management-panel-section
+  <script src="../firebase-config.js?v=20260809-theme"></script>
+  <script src="admin.js?v=20260809-theme"></script>
+
+ ojq6c3-codex/add-management-panel-section
+  <script src="../firebase-config.js?v=20260809"></script>
+  <script src="admin.js?v=20260809"></script>
+<script src="../firebase-config.js"></script>
+  <script src="admin.js"></script>
+ main
+ main
+ main
+ main
+</body>
+ main
 </html>
