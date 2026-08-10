@@ -28,10 +28,6 @@
   let selected = null;
   let original = null;
   let selectedType = 'text';
- 42wlk3-codex/corrige-el-error-de-la-seccion-de-inicio-de-sesion
-  let changedStyles = new Set();
-
- main
   const loadLocalDrafts = () => {
     try { return JSON.parse(localStorage.getItem(draftsKey) || '{}'); }
     catch { localStorage.removeItem(draftsKey); return {}; }
@@ -112,8 +108,7 @@
     if (!element) return;
     if (draft.type === 'image') element.src = draft.content;
     else if (draft.type === 'text') element.innerHTML = draft.content;
-    const styles = draft.type === 'text' && draft.schemaVersion !== 2 ? {} : draft.styles;
-    Object.entries(styles || {}).forEach(([property, value]) => { if (value) element.style.setProperty(property.replace(/[A-Z]/g, match => `-${match.toLowerCase()}`), value, property.startsWith('background') ? 'important' : ''); });
+    Object.entries(draft.styles || {}).forEach(([property, value]) => { if (value) element.style.setProperty(property.replace(/[A-Z]/g, match => `-${match.toLowerCase()}`), value, property.startsWith('background') ? 'important' : ''); });
     if (draft.resizable) element.classList.add('admin-resizable');
   }
   function applyDrafts(doc) { Object.values(drafts).forEach(draft => applyDraft(doc, draft)); }
@@ -145,7 +140,6 @@
     const isImage = element.tagName === 'IMG';
     const isText = Boolean(element.dataset.key) && !isImage;
     selectedType = isImage ? 'image' : isText ? 'text' : 'container';
-    changedStyles = new Set();
     const computed = iframe.contentWindow.getComputedStyle(element);
     original = { html: element.innerHTML, src: element.src, style: element.getAttribute('style') || '', className: element.className };
     elementTitle.textContent = selectedType === 'image' ? 'ویرایش تصویر' : selectedType === 'container' ? 'ویرایش کادر یا بنر' : (element.dataset.key || 'ویرایش متن');
@@ -177,7 +171,7 @@
   }
   function draftFromSelection() {
     const selector = uniqueSelector(selected);
-    const availableStyles = {
+    const styles = {
       color: color.value,
       textAlign: document.querySelector('[data-align].active')?.dataset.align || '',
       backgroundColor: backgroundColor.value,
@@ -188,10 +182,7 @@
       height: elementHeight.value ? `${elementHeight.value}px` : '',
       borderRadius: `${borderRadius.value || 0}px`
     };
-    const styles = Object.fromEntries(
-      Object.entries(availableStyles).filter(([property]) => changedStyles.has(property))
-    );
-    return { selector, type: selectedType, content: selectedType === 'image' ? imageInput.value : content.value.replace(/\n/g, '<br>'), styles, resizable: selectedType === 'container', schemaVersion: 2 };
+    return { selector, type: selectedType, content: selectedType === 'image' ? imageInput.value : content.value.replace(/\n/g, '<br>'), styles, resizable: selectedType === 'container' };
   }
 
   $('#loginForm').addEventListener('submit', async event => {
@@ -240,14 +231,13 @@
 
   iframe.addEventListener('load', preparePreview);
   content.addEventListener('input', () => { updateCount(); if (selectedType === 'text') selected.innerHTML = content.value.replace(/\n/g, '<br>'); });
-  color.addEventListener('input', () => { changedStyles.add('color'); colorText.value = color.value; if (selected) selected.style.color = color.value; });
-  colorText.addEventListener('change', () => { if (/^#[0-9a-f]{6}$/i.test(colorText.value)) { changedStyles.add('color'); color.value = colorText.value; selected.style.color = color.value; } });
-  backgroundColor.addEventListener('input', () => { changedStyles.add('backgroundColor'); backgroundText.value = backgroundColor.value; if (selected) selected.style.setProperty('background-color', backgroundColor.value, 'important'); });
-  backgroundText.addEventListener('change', () => { if (/^#[0-9a-f]{6}$/i.test(backgroundText.value)) { changedStyles.add('backgroundColor'); backgroundColor.value = backgroundText.value; selected.style.setProperty('background-color', backgroundColor.value, 'important'); } });
-  backgroundImage.addEventListener('input', () => { changedStyles.add('backgroundImage'); changedStyles.add('backgroundSize'); changedStyles.add('backgroundPosition'); if (selected) { selected.style.setProperty('background-image', backgroundImage.value ? `url("${backgroundImage.value}")` : 'none', 'important'); selected.style.backgroundSize = 'cover'; selected.style.backgroundPosition = 'center'; } });
+  color.addEventListener('input', () => { colorText.value = color.value; if (selected) selected.style.color = color.value; });
+  colorText.addEventListener('change', () => { if (/^#[0-9a-f]{6}$/i.test(colorText.value)) { color.value = colorText.value; selected.style.color = color.value; } });
+  backgroundColor.addEventListener('input', () => { backgroundText.value = backgroundColor.value; if (selected) selected.style.setProperty('background-color', backgroundColor.value, 'important'); });
+  backgroundText.addEventListener('change', () => { if (/^#[0-9a-f]{6}$/i.test(backgroundText.value)) { backgroundColor.value = backgroundText.value; selected.style.setProperty('background-color', backgroundColor.value, 'important'); } });
+  backgroundImage.addEventListener('input', () => { if (selected) { selected.style.setProperty('background-image', backgroundImage.value ? `url("${backgroundImage.value}")` : 'none', 'important'); selected.style.backgroundSize = 'cover'; selected.style.backgroundPosition = 'center'; } });
   [elementWidth, elementHeight, borderRadius].forEach(input => input.addEventListener('input', () => {
     if (!selected) return;
-    changedStyles.add(input === elementWidth ? 'width' : input === elementHeight ? 'height' : 'borderRadius');
     selected.style.width = elementWidth.value ? `${elementWidth.value}px` : '';
     selected.style.height = elementHeight.value ? `${elementHeight.value}px` : '';
     selected.style.borderRadius = `${borderRadius.value || 0}px`;
@@ -255,7 +245,6 @@
   }));
   imageInput.addEventListener('input', () => { if (selectedType === 'image') selected.src = imageInput.value; });
   document.querySelectorAll('[data-align]').forEach(btn => btn.addEventListener('click', () => {
-    changedStyles.add('textAlign');
     document.querySelectorAll('[data-align]').forEach(item => item.classList.remove('active'));
     btn.classList.add('active');
     if (selected) selected.style.textAlign = btn.dataset.align;
