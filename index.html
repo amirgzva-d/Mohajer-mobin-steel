@@ -1,8 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" class="site-content-loading">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Prevent the static translation from flashing before a published admin
+           override has been read from Firestore. site-content.js always removes
+           this class, including when the network is unavailable. */
+        html.site-content-loading body { visibility: hidden; }
+    </style>
+    <noscript><style>html.site-content-loading body { visibility: visible; }</style></noscript>
     <meta name="description" content="Mohajer Mobin Steel is an international steel export company supplying billet, rebar, beam, slab, wire rod, pipe, profile, channel, angle, strip and steel products worldwide. فولاد مهاجر مبین، صادرات فولاد، شمش، میلگرد، تیرآهن، ورق، اسلب، لوله، پروفیل، نبشی، ناودانی، تسمه، مفتول، کلاف.">
 <meta name="keywords" content="Mohajer Mobin Steel,Mohajer Steel,Steel Export,Steel Trading,Steel Supplier,Steel Products,Steel Company,Billet,Rebar,Beam,Slab,Wire Rod,Pipe,Profile,Angle,Channel,Strip,فولاد,فولاد مهاجر مبین,صادرات فولاد,تجارت فولاد,شمش,میلگرد,تیرآهن,ورق,اسلب,لوله,پروفیل,نبشی,ناودانی,تسمه,مفتول,کلاف">
 
@@ -2952,6 +2959,10 @@
     </footer>
 
     <script src="script.js?v=20260810-admin-repair"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js?v=20260810-admin-repair"></script>
+    <script src="site-content.js?v=20260810-no-content-flash"></script>
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",

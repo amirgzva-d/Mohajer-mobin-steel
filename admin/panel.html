@@ -58,7 +58,7 @@
         <button data-panel="products"><span class="nav-icon">□</span><span>محصولات</span><b>12</b></button>
         <button data-panel="media"><span class="nav-icon">▧</span><span>تصاویر و رسانه</span></button>
         <button data-panel="translations"><span class="nav-icon">文</span><span>ترجمه‌ها</span></button>
-        <button data-panel="history"><span class="nav-icon">↺</span><span>تغییرات جاری</span></button>
+        <button data-panel="history"><span class="nav-icon">↺</span><span>تاریخچه</span></button>
       </nav>
       <div class="page-list" id="pageList">
         <p>صفحه موردنظر</p>
@@ -112,24 +112,15 @@
         </div>
         <div class="form-actions"><button type="button" class="button ghost" id="resetBtn">لغو</button><button type="button" class="button primary" id="applyChangesBtn">اعمال تغییر</button></div>
       </form>
-      <div class="inspector-note"><strong>انتشار مستقیم</strong><p>«اعمال تغییر» ویرایش را آماده می‌کند و «انتشار» همان مقدار قبلی را مستقیماً در فایل اصلی index.html جایگزین می‌کند.</p></div>
+      <div class="inspector-note"><strong>انتشار عمومی</strong><p>«اعمال تغییر» پیش‌نویس را ذخیره می‌کند و دکمه «انتشار» آن را برای تمام بازدیدکنندگان سایت منتشر می‌کند.</p></div>
     </aside>
   </div>
   <div class="toast" id="toast" role="status"></div>
-  <dialog id="publishDialog">
-    <div class="dialog-icon">🌐</div>
-    <h2>ثبت مستقیم در کد اصلی</h2>
-    <p>با تأیید انتشار، متن و تغییرات انتخاب‌شده مستقیماً در فایل index.html جایگزین و روی شاخه main ذخیره می‌شود.</p>
-    <label class="github-token-field" for="githubTokenInput">
-      <span>GitHub Token</span>
-      <input id="githubTokenInput" type="password" dir="ltr" autocomplete="off" placeholder="github_pat_...">
-      <small>توکن باید برای همین مخزن دسترسی Contents: Read and write داشته باشد.</small>
-    </label>
-    <div><button class="button secondary" id="closeDialog">انصراف</button><button class="button primary" id="confirmPublishBtn">تأیید و انتشار</button></div>
-  </dialog>
+  <dialog id="publishDialog"><div class="dialog-icon">🌐</div><h2>انتشار روی سایت اصلی</h2><p>با تأیید انتشار، پیش‌نویس فعلی برای تمام بازدیدکنندگان سایت نمایش داده می‌شود.</p><div><button class="button secondary" id="closeDialog">انصراف</button><button class="button primary" id="confirmPublishBtn">تأیید و انتشار</button></div></dialog>
   <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore-compat.js"></script>
   <script src="../firebase-config.js?v=20260810-admin-repair"></script>
-  <script src="admin-panel.js?v=20260810-direct-github-publish"></script>
+  <script src="admin-panel.js?v=20260810-text-content-fix"></script>
 </body>
 </html>
