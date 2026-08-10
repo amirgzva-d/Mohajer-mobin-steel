@@ -1,5 +1,13 @@
 (() => {
-  if (!window.firebase || !window.MOHAJER_FIREBASE_CONFIG) return;
+  const revealSite = () => document.documentElement.classList.remove('site-content-loading');
+  // Do not leave the page hidden if Firebase is blocked or a request stalls.
+  const revealTimeout = window.setTimeout(revealSite, 2500);
+
+  if (!window.firebase || !window.MOHAJER_FIREBASE_CONFIG) {
+    window.clearTimeout(revealTimeout);
+    revealSite();
+    return;
+  }
 
   const app = firebase.apps.length
     ? firebase.app()
@@ -47,7 +55,11 @@
       .then(snapshot => {
         if (snapshot.exists) applyPublishedContent(snapshot.data().content);
       })
-      .catch(error => console.warn('Published site content could not be loaded.', error));
+      .catch(error => console.warn('Published site content could not be loaded.', error))
+      .finally(() => {
+        window.clearTimeout(revealTimeout);
+        revealSite();
+      });
   };
 
   if (document.readyState === 'loading') {
