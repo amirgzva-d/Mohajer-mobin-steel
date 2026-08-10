@@ -31,7 +31,11 @@
         setSafeText(element, draft.content);
       }
 
-      Object.entries(draft.styles || {}).forEach(([property, value]) => {
+      // Drafts created by the old editor copied every computed style into a
+      // text-only edit. Ignore those legacy text styles so changing wording can
+      // never unexpectedly change its color, background, or dimensions.
+      const styles = draft.type === 'text' && draft.schemaVersion !== 2 ? {} : draft.styles;
+      Object.entries(styles || {}).forEach(([property, value]) => {
         if (!value || !/^(color|textAlign|backgroundColor|backgroundImage|backgroundSize|backgroundPosition|width|height|borderRadius)$/.test(property)) return;
         element.style[property] = value;
       });

@@ -28,10 +28,14 @@
   let selected = null;
   let original = null;
   let selectedType = 'text';
-  let drafts = JSON.parse(localStorage.getItem(draftsKey) || '{}');
+  let changedStyles = new Set();
+  const loadLocalDrafts = () => {
+    try { return JSON.parse(localStorage.getItem(draftsKey) || '{}'); }
+    catch { localStorage.removeItem(draftsKey); return {}; }
+  };
+  let drafts = loadLocalDrafts();
   let undoStack = [];
   let redoStack = [];
-  let passwordSubmitted = false;
   const cloneDrafts = value => JSON.parse(JSON.stringify(value));
   const updateHistoryButtons = () => {
     $('#undoBtn').disabled = undoStack.length === 0;
@@ -105,7 +109,8 @@
     if (!element) return;
     if (draft.type === 'image') element.src = draft.content;
     else if (draft.type === 'text') element.innerHTML = draft.content;
-    Object.entries(draft.styles || {}).forEach(([property, value]) => { if (value) element.style.setProperty(property.replace(/[A-Z]/g, match => `-${match.toLowerCase()}`), value, property.startsWith('background') ? 'important' : ''); });
+    const styles = draft.type === 'text' && draft.schemaVersion !== 2 ? {} : draft.styles;
+    Object.entries(styles || {}).forEach(([property, value]) => { if (value) element.style.setProperty(property.replace(/[A-Z]/g, match => `-${match.toLowerCase()}`), value, property.startsWith('background') ? 'important' : ''); });
     if (draft.resizable) element.classList.add('admin-resizable');
   }
   function applyDrafts(doc) { Object.values(drafts).forEach(draft => applyDraft(doc, draft)); }
@@ -137,6 +142,7 @@
     const isImage = element.tagName === 'IMG';
     const isText = Boolean(element.dataset.key) && !isImage;
     selectedType = isImage ? 'image' : isText ? 'text' : 'container';
+    changedStyles = new Set();
     const computed = iframe.contentWindow.getComputedStyle(element);
     original = { html: element.innerHTML, src: element.src, style: element.getAttribute('style') || '', className: element.className };
     elementTitle.textContent = selectedType === 'image' ? 'ویرایش تصویر' : selectedType === 'container' ? 'ویرایش کادر یا بنر' : (element.dataset.key || 'ویرایش متن');
@@ -145,15 +151,7 @@
     content.closest('.field').classList.toggle('hidden', !isText);
     imageField.classList.toggle('hidden', !isImage);
     containerField.classList.toggle('hidden', isText);
- codex-0ws8ki
     if (isText) { content.value = (element.innerText || element.textContent || '').trim(); updateCount(); }
-
- codex-uhtyfq
-    if (isText) { content.value = (element.innerText || element.textContent || '').trim(); updateCount(); }
-
-    if (isText) { content.value = element.innerText.trim(); updateCount(); }
- main
- main
     if (isImage) imageInput.value = element.src;
     color.value = rgbToHex(computed.color); colorText.value = color.value;
     backgroundColor.value = computed.backgroundColor === 'rgba(0, 0, 0, 0)' ? '#ffffff' : rgbToHex(computed.backgroundColor);
@@ -176,7 +174,7 @@
   }
   function draftFromSelection() {
     const selector = uniqueSelector(selected);
-    const styles = {
+    const availableStyles = {
       color: color.value,
       textAlign: document.querySelector('[data-align].active')?.dataset.align || '',
       backgroundColor: backgroundColor.value,
@@ -187,7 +185,10 @@
       height: elementHeight.value ? `${elementHeight.value}px` : '',
       borderRadius: `${borderRadius.value || 0}px`
     };
-    return { selector, type: selectedType, content: selectedType === 'image' ? imageInput.value : content.value.replace(/\n/g, '<br>'), styles, resizable: selectedType === 'container' };
+    const styles = Object.fromEntries(
+      Object.entries(availableStyles).filter(([property]) => changedStyles.has(property))
+    );
+    return { selector, type: selectedType, content: selectedType === 'image' ? imageInput.value : content.value.replace(/\n/g, '<br>'), styles, resizable: selectedType === 'container', schemaVersion: 2 };
   }
 
   $('#loginForm').addEventListener('submit', async event => {
@@ -197,13 +198,11 @@
     submit.textContent = 'در حال ورود…';
     $('#loginError').textContent = '';
     try {
-      await auth.setPersistence(firebase.auth.Auth.Persistence.NONE);
-      passwordSubmitted = true;
+      await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
       await auth.signInWithEmailAndPassword(adminEmail, $('#adminPassword').value);
       $('#adminPassword').value = '';
       setPasswordVisibility(false);
     } catch (error) {
-      passwordSubmitted = false;
       console.error('Admin login failed:', error);
       $('#loginError').textContent = loginErrorMessage(error);
       $('#adminPassword').select();
@@ -213,11 +212,11 @@
   });
   $('#togglePassword').addEventListener('click', () => setPasswordVisibility($('#adminPassword').type === 'password'));
   auth.onAuthStateChanged(async user => {
-    if (user && !passwordSubmitted) {
+    if (user && user.email !== adminEmail) {
       await auth.signOut();
       return;
     }
-    const loggedIn = Boolean(user && user.email === adminEmail && passwordSubmitted);
+    const loggedIn = Boolean(user);
     $('#loginGate').classList.toggle('hidden', loggedIn);
     $('#adminShell').classList.toggle('locked', !loggedIn);
     if (!loggedIn) return;
@@ -238,13 +237,14 @@
 
   iframe.addEventListener('load', preparePreview);
   content.addEventListener('input', () => { updateCount(); if (selectedType === 'text') selected.innerHTML = content.value.replace(/\n/g, '<br>'); });
-  color.addEventListener('input', () => { colorText.value = color.value; if (selected) selected.style.color = color.value; });
-  colorText.addEventListener('change', () => { if (/^#[0-9a-f]{6}$/i.test(colorText.value)) { color.value = colorText.value; selected.style.color = color.value; } });
-  backgroundColor.addEventListener('input', () => { backgroundText.value = backgroundColor.value; if (selected) selected.style.setProperty('background-color', backgroundColor.value, 'important'); });
-  backgroundText.addEventListener('change', () => { if (/^#[0-9a-f]{6}$/i.test(backgroundText.value)) { backgroundColor.value = backgroundText.value; selected.style.setProperty('background-color', backgroundColor.value, 'important'); } });
-  backgroundImage.addEventListener('input', () => { if (selected) { selected.style.setProperty('background-image', backgroundImage.value ? `url("${backgroundImage.value}")` : 'none', 'important'); selected.style.backgroundSize = 'cover'; selected.style.backgroundPosition = 'center'; } });
+  color.addEventListener('input', () => { changedStyles.add('color'); colorText.value = color.value; if (selected) selected.style.color = color.value; });
+  colorText.addEventListener('change', () => { if (/^#[0-9a-f]{6}$/i.test(colorText.value)) { changedStyles.add('color'); color.value = colorText.value; selected.style.color = color.value; } });
+  backgroundColor.addEventListener('input', () => { changedStyles.add('backgroundColor'); backgroundText.value = backgroundColor.value; if (selected) selected.style.setProperty('background-color', backgroundColor.value, 'important'); });
+  backgroundText.addEventListener('change', () => { if (/^#[0-9a-f]{6}$/i.test(backgroundText.value)) { changedStyles.add('backgroundColor'); backgroundColor.value = backgroundText.value; selected.style.setProperty('background-color', backgroundColor.value, 'important'); } });
+  backgroundImage.addEventListener('input', () => { changedStyles.add('backgroundImage'); changedStyles.add('backgroundSize'); changedStyles.add('backgroundPosition'); if (selected) { selected.style.setProperty('background-image', backgroundImage.value ? `url("${backgroundImage.value}")` : 'none', 'important'); selected.style.backgroundSize = 'cover'; selected.style.backgroundPosition = 'center'; } });
   [elementWidth, elementHeight, borderRadius].forEach(input => input.addEventListener('input', () => {
     if (!selected) return;
+    changedStyles.add(input === elementWidth ? 'width' : input === elementHeight ? 'height' : 'borderRadius');
     selected.style.width = elementWidth.value ? `${elementWidth.value}px` : '';
     selected.style.height = elementHeight.value ? `${elementHeight.value}px` : '';
     selected.style.borderRadius = `${borderRadius.value || 0}px`;
@@ -252,6 +252,7 @@
   }));
   imageInput.addEventListener('input', () => { if (selectedType === 'image') selected.src = imageInput.value; });
   document.querySelectorAll('[data-align]').forEach(btn => btn.addEventListener('click', () => {
+    changedStyles.add('textAlign');
     document.querySelectorAll('[data-align]').forEach(item => item.classList.remove('active'));
     btn.classList.add('active');
     if (selected) selected.style.textAlign = btn.dataset.align;
@@ -266,10 +267,6 @@
 
     const previousDrafts = cloneDrafts(drafts);
     const draft = draftFromSelection();
- codex-0ws8ki
-
- codex-uhtyfq
- main
     if (!draft.selector) {
       notify('این بخش قابل ذخیره نیست؛ یک متن یا تصویر دیگر را انتخاب کنید');
       return;
@@ -281,7 +278,6 @@
 
     button.disabled = true;
     button.textContent = 'در حال ذخیره…';
- codex-0ws8ki
     try {
       drafts[draft.selector] = draft;
       if (!saveDraftsLocally()) {
@@ -307,53 +303,6 @@
     } finally {
       button.disabled = false;
       button.textContent = 'اعمال تغییر';
-
-    try {
-      drafts[draft.selector] = draft;
-      if (!saveDraftsLocally()) {
-        drafts = previousDrafts;
-        notify('فضای ذخیره مرورگر کافی نیست؛ تصویر کوچک‌تری انتخاب کنید');
-        return;
-      }
-
-      applyDraft(iframe.contentDocument, draft);
-      undoStack.push(previousDrafts);
-      redoStack = [];
-      updateHistoryButtons();
-      notify('تغییر ذخیره شد؛ اکنون می‌توانید انتشار را بزنید');
-
-      try {
-        await saveDraftsRemotely();
-      } catch (error) {
-        // The local draft remains publishable/retryable; a network failure must
-        // never make Apply look as if it did nothing.
-        console.error('Remote draft could not be saved:', error);
-        notify('تغییر در مرورگر ذخیره شد؛ اتصال سرور را بررسی و دوباره انتشار را بزنید');
-      }
-    } finally {
-      button.disabled = false;
-      button.textContent = 'اعمال تغییر';
-
-    applyDraft(iframe.contentDocument, draft);
-    undoStack.push(cloneDrafts(drafts));
-    redoStack = [];
-    drafts[draft.selector] = draft;
-    updateHistoryButtons();
- codex-12aue3
-    // Persist synchronously before waiting for the network so Publish can always
-    // see the edit, even on a slow or temporarily unavailable connection.
-    saveDraftsLocally();
-
- main
-    try {
-      await saveDrafts();
-      notify('پیش‌نویس ذخیره شد؛ برای نمایش روی سایت، دکمه انتشار را بزنید');
-    } catch (error) {
-      console.error('Draft could not be saved:', error);
-      saveDraftsLocally();
-      notify('ذخیره Firebase ناموفق بود؛ قوانین Firestore را بررسی کنید');
- main
- main
     }
   };
 
@@ -365,15 +314,7 @@
   const restoreDraftSnapshot = snapshot => {
     drafts = cloneDrafts(snapshot);
     saveDraftsLocally();
- codex-0ws8ki
     saveDraftsRemotely().catch(error => console.error('History state could not be synced:', error));
-
- codex-uhtyfq
-    saveDraftsRemotely().catch(error => console.error('History state could not be synced:', error));
-
-    saveDrafts().catch(error => console.error('History state could not be synced:', error));
- main
- main
     iframe.contentWindow.location.reload();
     selected = null;
     form.classList.add('hidden');
@@ -385,10 +326,6 @@
     redoStack.push(cloneDrafts(drafts));
     restoreDraftSnapshot(undoStack.pop());
     notify('آخرین تغییر بازگردانده شد');
- codex-0ws8ki
-
- codex-uhtyfq
- main
   });
   $('#redoBtn').addEventListener('click', () => {
     if (!redoStack.length) return;
@@ -397,18 +334,6 @@
     notify('تغییر دوباره اعمال شد');
   });
 
- codex-0ws8ki
-
-  });
-  $('#redoBtn').addEventListener('click', () => {
-    if (!redoStack.length) return;
-    undoStack.push(cloneDrafts(drafts));
-    restoreDraftSnapshot(redoStack.pop());
-    notify('تغییر دوباره اعمال شد');
-  });
- main
-
- main
   $('#resetBtn').addEventListener('click', () => { restoreOriginal(); form.classList.add('hidden'); empty.classList.remove('hidden'); selected = null; notify('تغییر لغو شد'); });
   $('#closeInspector').addEventListener('click', () => { document.body.classList.remove('inspector-open'); selected?.classList.remove('admin-selected-element'); selected = null; form.classList.add('hidden'); empty.classList.remove('hidden'); elementTitle.textContent = 'یک عنصر انتخاب کنید'; });
   $('#imageUpload').addEventListener('change', event => {
@@ -478,41 +403,16 @@
   $('#closeDialog').addEventListener('click', () => dialog.close());
   $('#confirmPublishBtn').addEventListener('click', async () => {
     const button = $('#confirmPublishBtn');
- codex-0ws8ki
     // Recover the last locally-applied draft if an asynchronous Firestore read
     // completed between Apply and Publish.
     if (!Object.keys(drafts).length) {
-      try { drafts = JSON.parse(localStorage.getItem(draftsKey) || '{}'); } catch { drafts = {}; }
+      drafts = loadLocalDrafts();
     }
-
- codex-uhtyfq
-    // Recover the last locally-applied draft if an asynchronous Firestore read
-    // completed between Apply and Publish.
-
- codex-12aue3
-    // Recover the last locally-applied draft if an asynchronous Firestore read
-    // completed between Apply and Publish.
-
- main
-    if (!Object.keys(drafts).length) {
-      try { drafts = JSON.parse(localStorage.getItem(draftsKey) || '{}'); } catch { drafts = {}; }
-    }
- codex-12aue3
- main
-    if (!Object.keys(drafts).length) {
-      try { drafts = JSON.parse(localStorage.getItem(draftsKey) || '{}'); } catch { drafts = {}; }
-    }
- codex-uhtyfq
- main
     if (!Object.keys(drafts).length) {
       notify('هنوز تغییری ثبت نشده؛ ابتدا یک متن یا تصویر را ویرایش و اعمال کنید');
       dialog.close();
       return;
     }
-
-
- main
- main
     button.disabled = true;
     try {
       const batch = db.batch();
