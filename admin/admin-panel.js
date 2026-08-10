@@ -28,10 +28,7 @@
   let selected = null;
   let original = null;
   let selectedType = 'text';
- 42wlk3-codex/corrige-el-error-de-la-seccion-de-inicio-de-sesion
   let changedStyles = new Set();
-
- main
   const loadLocalDrafts = () => {
     try { return JSON.parse(localStorage.getItem(draftsKey) || '{}'); }
     catch { localStorage.removeItem(draftsKey); return {}; }
@@ -111,12 +108,22 @@
     try { element = doc.querySelector(draft.selector); } catch { return; }
     if (!element) return;
     if (draft.type === 'image') element.src = draft.content;
-    else if (draft.type === 'text') element.innerHTML = draft.content;
-    const styles = draft.type === 'text' && draft.schemaVersion !== 2 ? {} : draft.styles;
+    else if (draft.type === 'text') setTextContent(element, draft.content);
+    // Text styles are trusted only for drafts made by the current editor. Older
+    // versions accidentally saved computed colors/backgrounds on a text edit.
+    const styles = draft.type === 'text' && draft.schemaVersion !== 3 ? {} : draft.styles;
     Object.entries(styles || {}).forEach(([property, value]) => { if (value) element.style.setProperty(property.replace(/[A-Z]/g, match => `-${match.toLowerCase()}`), value, property.startsWith('background') ? 'important' : ''); });
     if (draft.resizable) element.classList.add('admin-resizable');
   }
   function applyDrafts(doc) { Object.values(drafts).forEach(draft => applyDraft(doc, draft)); }
+  function setTextContent(element, value) {
+    const lines = String(value || '').split(/<br\s*\/?>/i);
+    element.replaceChildren();
+    lines.forEach((line, index) => {
+      if (index) element.append(element.ownerDocument.createElement('br'));
+      element.append(element.ownerDocument.createTextNode(line));
+    });
+  }
 
   function preparePreview() {
     loading.style.display = 'none';
@@ -191,7 +198,7 @@
     const styles = Object.fromEntries(
       Object.entries(availableStyles).filter(([property]) => changedStyles.has(property))
     );
-    return { selector, type: selectedType, content: selectedType === 'image' ? imageInput.value : content.value.replace(/\n/g, '<br>'), styles, resizable: selectedType === 'container', schemaVersion: 2 };
+    return { selector, type: selectedType, content: selectedType === 'image' ? imageInput.value : content.value.replace(/\n/g, '<br>'), styles, resizable: selectedType === 'container', schemaVersion: 3 };
   }
 
   $('#loginForm').addEventListener('submit', async event => {
@@ -239,7 +246,7 @@
   });
 
   iframe.addEventListener('load', preparePreview);
-  content.addEventListener('input', () => { updateCount(); if (selectedType === 'text') selected.innerHTML = content.value.replace(/\n/g, '<br>'); });
+  content.addEventListener('input', () => { updateCount(); if (selectedType === 'text') setTextContent(selected, content.value.replace(/\n/g, '<br>')); });
   color.addEventListener('input', () => { changedStyles.add('color'); colorText.value = color.value; if (selected) selected.style.color = color.value; });
   colorText.addEventListener('change', () => { if (/^#[0-9a-f]{6}$/i.test(colorText.value)) { changedStyles.add('color'); color.value = colorText.value; selected.style.color = color.value; } });
   backgroundColor.addEventListener('input', () => { changedStyles.add('backgroundColor'); backgroundText.value = backgroundColor.value; if (selected) selected.style.setProperty('background-color', backgroundColor.value, 'important'); });
