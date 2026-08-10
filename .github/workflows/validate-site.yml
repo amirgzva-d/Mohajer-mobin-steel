@@ -1,0 +1,25 @@
+name: Validate static site
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject unresolved merge artifacts
+        shell: bash
+        run: |
+          if rg -n '^(<<<<<<<|=======|>>>>>>>)( |$)|^[[:space:]]*(codex-[a-z0-9]+|main)[[:space:]]*$' --glob '!*.png' --glob '!*.jpg' .; then
+            echo 'Unresolved merge artifacts were found.' >&2
+            exit 1
+          fi
+      - name: Validate JavaScript syntax
+        run: |
+          node --check script.js
+          node --check site-content.js
+          node --check admin/admin-panel.js
+      - name: Validate web manifest JSON
+        run: python -m json.tool site.webmanifest >/dev/null
