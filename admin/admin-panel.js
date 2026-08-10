@@ -45,11 +45,17 @@
     notify.timer = setTimeout(() => toast.classList.remove('show'), 2600);
   };
   const saveDraftsLocally = () => {
-    localStorage.setItem(draftsKey, JSON.stringify(drafts));
-    $('#saveState').innerHTML = '<i></i> پیش‌نویس ذخیره شد';
+    try {
+      localStorage.setItem(draftsKey, JSON.stringify(drafts));
+      $('#saveState').innerHTML = '<i></i> پیش‌نویس ذخیره شد';
+      return true;
+    } catch (error) {
+      console.error('Local draft could not be saved:', error);
+      return false;
+    }
   };
-  const saveDrafts = async () => {
-    saveDraftsLocally();
+  const saveDraftsRemotely = async () => {
+    if (!auth.currentUser) throw new Error('Admin is not authenticated.');
     await db.collection('siteContent').doc('draft').set({
       content: drafts,
       updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
@@ -139,7 +145,11 @@
     content.closest('.field').classList.toggle('hidden', !isText);
     imageField.classList.toggle('hidden', !isImage);
     containerField.classList.toggle('hidden', isText);
+ codex-uhtyfq
+    if (isText) { content.value = (element.innerText || element.textContent || '').trim(); updateCount(); }
+
     if (isText) { content.value = element.innerText.trim(); updateCount(); }
+ main
     if (isImage) imageInput.value = element.src;
     color.value = rgbToHex(computed.color); colorText.value = color.value;
     backgroundColor.value = computed.backgroundColor === 'rgba(0, 0, 0, 0)' ? '#ffffff' : rgbToHex(computed.backgroundColor);
@@ -243,10 +253,53 @@
     if (selected) selected.style.textAlign = btn.dataset.align;
   }));
 
-  form.addEventListener('submit', async event => {
-    event.preventDefault();
-    if (!selected) return;
+  const applyChanges = async () => {
+    const button = $('#applyChangesBtn');
+    if (!selected || !selected.isConnected) {
+      notify('ابتدا یک متن یا تصویر را از پیش‌نمایش انتخاب کنید');
+      return;
+    }
+
+    const previousDrafts = cloneDrafts(drafts);
     const draft = draftFromSelection();
+ codex-uhtyfq
+    if (!draft.selector) {
+      notify('این بخش قابل ذخیره نیست؛ یک متن یا تصویر دیگر را انتخاب کنید');
+      return;
+    }
+    if (draft.type === 'image' && !draft.content.trim()) {
+      notify('آدرس یا فایل تصویر را انتخاب کنید');
+      return;
+    }
+
+    button.disabled = true;
+    button.textContent = 'در حال ذخیره…';
+    try {
+      drafts[draft.selector] = draft;
+      if (!saveDraftsLocally()) {
+        drafts = previousDrafts;
+        notify('فضای ذخیره مرورگر کافی نیست؛ تصویر کوچک‌تری انتخاب کنید');
+        return;
+      }
+
+      applyDraft(iframe.contentDocument, draft);
+      undoStack.push(previousDrafts);
+      redoStack = [];
+      updateHistoryButtons();
+      notify('تغییر ذخیره شد؛ اکنون می‌توانید انتشار را بزنید');
+
+      try {
+        await saveDraftsRemotely();
+      } catch (error) {
+        // The local draft remains publishable/retryable; a network failure must
+        // never make Apply look as if it did nothing.
+        console.error('Remote draft could not be saved:', error);
+        notify('تغییر در مرورگر ذخیره شد؛ اتصال سرور را بررسی و دوباره انتشار را بزنید');
+      }
+    } finally {
+      button.disabled = false;
+      button.textContent = 'اعمال تغییر';
+
     applyDraft(iframe.contentDocument, draft);
     undoStack.push(cloneDrafts(drafts));
     redoStack = [];
@@ -265,12 +318,23 @@
       console.error('Draft could not be saved:', error);
       saveDraftsLocally();
       notify('ذخیره Firebase ناموفق بود؛ قوانین Firestore را بررسی کنید');
+ main
     }
+  };
+
+  $('#applyChangesBtn').addEventListener('click', applyChanges);
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    applyChanges();
   });
   const restoreDraftSnapshot = snapshot => {
     drafts = cloneDrafts(snapshot);
     saveDraftsLocally();
+ codex-uhtyfq
+    saveDraftsRemotely().catch(error => console.error('History state could not be synced:', error));
+
     saveDrafts().catch(error => console.error('History state could not be synced:', error));
+ main
     iframe.contentWindow.location.reload();
     selected = null;
     form.classList.add('hidden');
@@ -282,6 +346,7 @@
     redoStack.push(cloneDrafts(drafts));
     restoreDraftSnapshot(undoStack.pop());
     notify('آخرین تغییر بازگردانده شد');
+ codex-uhtyfq
   });
   $('#redoBtn').addEventListener('click', () => {
     if (!redoStack.length) return;
@@ -289,6 +354,15 @@
     restoreDraftSnapshot(redoStack.pop());
     notify('تغییر دوباره اعمال شد');
   });
+
+  });
+  $('#redoBtn').addEventListener('click', () => {
+    if (!redoStack.length) return;
+    undoStack.push(cloneDrafts(drafts));
+    restoreDraftSnapshot(redoStack.pop());
+    notify('تغییر دوباره اعمال شد');
+  });
+ main
 
   $('#resetBtn').addEventListener('click', () => { restoreOriginal(); form.classList.add('hidden'); empty.classList.remove('hidden'); selected = null; notify('تغییر لغو شد'); });
   $('#closeInspector').addEventListener('click', () => { document.body.classList.remove('inspector-open'); selected?.classList.remove('admin-selected-element'); selected = null; form.classList.add('hidden'); empty.classList.remove('hidden'); elementTitle.textContent = 'یک عنصر انتخاب کنید'; });
@@ -359,6 +433,10 @@
   $('#closeDialog').addEventListener('click', () => dialog.close());
   $('#confirmPublishBtn').addEventListener('click', async () => {
     const button = $('#confirmPublishBtn');
+ codex-uhtyfq
+    // Recover the last locally-applied draft if an asynchronous Firestore read
+    // completed between Apply and Publish.
+
  codex-12aue3
     // Recover the last locally-applied draft if an asynchronous Firestore read
     // completed between Apply and Publish.
@@ -368,12 +446,19 @@
       try { drafts = JSON.parse(localStorage.getItem(draftsKey) || '{}'); } catch { drafts = {}; }
     }
  codex-12aue3
+ main
+    if (!Object.keys(drafts).length) {
+      try { drafts = JSON.parse(localStorage.getItem(draftsKey) || '{}'); } catch { drafts = {}; }
+    }
+ codex-uhtyfq
     if (!Object.keys(drafts).length) {
       notify('هنوز تغییری ثبت نشده؛ ابتدا یک متن یا تصویر را ویرایش و اعمال کنید');
       dialog.close();
       return;
     }
 
+
+ main
  main
     button.disabled = true;
     try {
