@@ -28,7 +28,10 @@
   let selected = null;
   let original = null;
   let selectedType = 'text';
+ 42wlk3-codex/corrige-el-error-de-la-seccion-de-inicio-de-sesion
   let changedStyles = new Set();
+
+ main
   const loadLocalDrafts = () => {
     try { return JSON.parse(localStorage.getItem(draftsKey) || '{}'); }
     catch { localStorage.removeItem(draftsKey); return {}; }
