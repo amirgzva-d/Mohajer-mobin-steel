@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="admin-panel.css?v=20260809-save-fix">
+  <link rel="stylesheet" href="admin-panel.css?v=20260810-apply-rewrite">
 </head>
 <body>
   <section class="login-gate" id="loginGate">
@@ -98,7 +98,7 @@
     <aside class="inspector">
       <div class="inspector-head"><div><small>تنظیمات عنصر</small><h2 id="elementTitle">یک عنصر انتخاب کنید</h2></div><button class="icon-button" id="closeInspector">×</button></div>
       <div class="empty-inspector" id="emptyInspector"><span>✦</span><h3>ویرایش مستقیم و آسان</h3><p>از پیش‌نمایش وسط صفحه روی یک متن یا تصویر کلیک کنید.</p></div>
-      <form class="editor-form hidden" id="editorForm">
+      <form class="editor-form hidden" id="editorForm" novalidate>
         <input type="hidden" id="elementKey">
         <div class="field"><label for="contentInput">محتوا</label><textarea id="contentInput" rows="6"></textarea><small id="charCount">۰ نویسه</small></div>
         <div class="field image-field hidden" id="imageField"><label for="imageInput">آدرس تصویر</label><input id="imageInput" type="url" dir="ltr"><label class="upload-label">انتخاب تصویر<input id="imageUpload" type="file" accept="image/*"></label></div>
@@ -110,7 +110,7 @@
           <div class="size-grid"><label>عرض<input id="elementWidth" type="number" min="40" placeholder="خودکار"></label><label>ارتفاع<input id="elementHeight" type="number" min="30" placeholder="خودکار"></label><label>گردی گوشه<input id="borderRadius" type="number" min="0" value="0"></label></div>
           <small>دستگیره پایین کادر را در پیش‌نمایش بکشید تا اندازه آن با موس تغییر کند.</small>
         </div>
-        <div class="form-actions"><button type="button" class="button ghost" id="duplicateBtn">کپی کادر</button><button type="button" class="button ghost" id="resetBtn">لغو</button><button type="submit" class="button primary">اعمال تغییر</button></div>
+        <div class="form-actions"><button type="button" class="button ghost" id="resetBtn">لغو</button><button type="button" class="button primary" id="applyChangesBtn">اعمال تغییر</button></div>
       </form>
       <div class="inspector-note"><strong>انتشار عمومی</strong><p>«اعمال تغییر» پیش‌نویس را ذخیره می‌کند و دکمه «انتشار» آن را برای تمام بازدیدکنندگان سایت منتشر می‌کند.</p></div>
     </aside>
@@ -120,7 +120,7 @@
   <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore-compat.js"></script>
-  <script src="../firebase-config.js?v=20260809-theme"></script>
-  <script src="admin-panel.js?v=20260809-save-fix"></script>
+  <script src="../firebase-config.js?v=20260810-apply-rewrite"></script>
+  <script src="admin-panel.js?v=20260810-apply-rewrite"></script>
 </body>
 </html>
