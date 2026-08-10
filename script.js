@@ -1763,7 +1763,7 @@ const mainFooter = document.getElementById('mainFooter');
                     ? firebase.app()
                     : firebase.initializeApp(window.MOHAJER_FIREBASE_CONFIG);
                 const serviceWorkerRegistration = await navigator.serviceWorker.register('/firebase-messaging-sw.js');
-                const messaging = app.messaging();
+                const messaging = firebase.messaging();
                 const registrationToken = await messaging.getToken({
                     vapidKey: 'BBKWsNMOiMh0lPYMbZACxraLzJyhkQG9S_1SRZMMqx-tNAX9EXRn69UE6le8CSMFSkPYN0KfHM1PvF3ipWAfGzo',
                     serviceWorkerRegistration
