@@ -145,7 +145,11 @@
     content.closest('.field').classList.toggle('hidden', !isText);
     imageField.classList.toggle('hidden', !isImage);
     containerField.classList.toggle('hidden', isText);
+ codex-uhtyfq
     if (isText) { content.value = (element.innerText || element.textContent || '').trim(); updateCount(); }
+
+    if (isText) { content.value = element.innerText.trim(); updateCount(); }
+ main
     if (isImage) imageInput.value = element.src;
     color.value = rgbToHex(computed.color); colorText.value = color.value;
     backgroundColor.value = computed.backgroundColor === 'rgba(0, 0, 0, 0)' ? '#ffffff' : rgbToHex(computed.backgroundColor);
@@ -258,6 +262,7 @@
 
     const previousDrafts = cloneDrafts(drafts);
     const draft = draftFromSelection();
+ codex-uhtyfq
     if (!draft.selector) {
       notify('این بخش قابل ذخیره نیست؛ یک متن یا تصویر دیگر را انتخاب کنید');
       return;
@@ -294,6 +299,26 @@
     } finally {
       button.disabled = false;
       button.textContent = 'اعمال تغییر';
+
+    applyDraft(iframe.contentDocument, draft);
+    undoStack.push(cloneDrafts(drafts));
+    redoStack = [];
+    drafts[draft.selector] = draft;
+    updateHistoryButtons();
+ codex-12aue3
+    // Persist synchronously before waiting for the network so Publish can always
+    // see the edit, even on a slow or temporarily unavailable connection.
+    saveDraftsLocally();
+
+ main
+    try {
+      await saveDrafts();
+      notify('پیش‌نویس ذخیره شد؛ برای نمایش روی سایت، دکمه انتشار را بزنید');
+    } catch (error) {
+      console.error('Draft could not be saved:', error);
+      saveDraftsLocally();
+      notify('ذخیره Firebase ناموفق بود؛ قوانین Firestore را بررسی کنید');
+ main
     }
   };
 
@@ -305,7 +330,11 @@
   const restoreDraftSnapshot = snapshot => {
     drafts = cloneDrafts(snapshot);
     saveDraftsLocally();
+ codex-uhtyfq
     saveDraftsRemotely().catch(error => console.error('History state could not be synced:', error));
+
+    saveDrafts().catch(error => console.error('History state could not be synced:', error));
+ main
     iframe.contentWindow.location.reload();
     selected = null;
     form.classList.add('hidden');
@@ -317,6 +346,7 @@
     redoStack.push(cloneDrafts(drafts));
     restoreDraftSnapshot(undoStack.pop());
     notify('آخرین تغییر بازگردانده شد');
+ codex-uhtyfq
   });
   $('#redoBtn').addEventListener('click', () => {
     if (!redoStack.length) return;
@@ -324,6 +354,15 @@
     restoreDraftSnapshot(redoStack.pop());
     notify('تغییر دوباره اعمال شد');
   });
+
+  });
+  $('#redoBtn').addEventListener('click', () => {
+    if (!redoStack.length) return;
+    undoStack.push(cloneDrafts(drafts));
+    restoreDraftSnapshot(redoStack.pop());
+    notify('تغییر دوباره اعمال شد');
+  });
+ main
 
   $('#resetBtn').addEventListener('click', () => { restoreOriginal(); form.classList.add('hidden'); empty.classList.remove('hidden'); selected = null; notify('تغییر لغو شد'); });
   $('#closeInspector').addEventListener('click', () => { document.body.classList.remove('inspector-open'); selected?.classList.remove('admin-selected-element'); selected = null; form.classList.add('hidden'); empty.classList.remove('hidden'); elementTitle.textContent = 'یک عنصر انتخاب کنید'; });
@@ -394,16 +433,33 @@
   $('#closeDialog').addEventListener('click', () => dialog.close());
   $('#confirmPublishBtn').addEventListener('click', async () => {
     const button = $('#confirmPublishBtn');
+ codex-uhtyfq
     // Recover the last locally-applied draft if an asynchronous Firestore read
     // completed between Apply and Publish.
+
+ codex-12aue3
+    // Recover the last locally-applied draft if an asynchronous Firestore read
+    // completed between Apply and Publish.
+
+ main
     if (!Object.keys(drafts).length) {
       try { drafts = JSON.parse(localStorage.getItem(draftsKey) || '{}'); } catch { drafts = {}; }
     }
+ codex-12aue3
+ main
+    if (!Object.keys(drafts).length) {
+      try { drafts = JSON.parse(localStorage.getItem(draftsKey) || '{}'); } catch { drafts = {}; }
+    }
+ codex-uhtyfq
     if (!Object.keys(drafts).length) {
       notify('هنوز تغییری ثبت نشده؛ ابتدا یک متن یا تصویر را ویرایش و اعمال کنید');
       dialog.close();
       return;
     }
+
+
+ main
+ main
     button.disabled = true;
     try {
       const batch = db.batch();
