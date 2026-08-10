@@ -235,7 +235,11 @@
     drafts[draft.selector] = draft;
     try {
       await saveDrafts();
+ ndut4v-codex/add-management-panel-section
+      notify('پیش‌نویس ذخیره شد؛ برای نمایش روی سایت، دکمه انتشار را بزنید');
+
       notify('پیش‌نویس در Firebase ذخیره شد');
+ main
     } catch (error) {
       console.error('Draft could not be saved:', error);
       saveDraftsLocally();
@@ -307,6 +311,15 @@
   $('#closeDialog').addEventListener('click', () => dialog.close());
   $('#confirmPublishBtn').addEventListener('click', async () => {
     const button = $('#confirmPublishBtn');
+
+    ndut4v-codex/add-management-panel-section
+    if (!Object.keys(drafts).length) {
+      notify('هنوز تغییری ثبت نشده؛ ابتدا یک متن یا تصویر را ویرایش و اعمال کنید');
+      dialog.close();
+      return;
+    }
+    
+ main
     if (Object.values(drafts).some(draft => String(draft.content || '').startsWith('data:'))) {
       notify('برای انتشار تصویر، آدرس اینترنتی تصویر را وارد کنید');
       dialog.close();

@@ -52,11 +52,14 @@
     const values = rgb?.match(/\d+/g);
     return values ? `#${values.slice(0, 3).map(value => Number(value).toString(16).padStart(2, '0')).join('')}` : '#ffffff';
   };
+ ndut4v-codex/add-management-panel-section
+
  c87y1t-codex/add-management-panel-section
 
  f5sn2z-codex/add-management-panel-section
 
  afrcxk-codex/add-management-panel-section
+ main
  main
  main
   function setPasswordVisibility(showPassword) {
@@ -74,6 +77,8 @@
     if (error.code === 'auth/too-many-requests') return 'تلاش‌های ناموفق زیاد بود؛ چند دقیقه بعد دوباره امتحان کنید.';
     if (error.code === 'auth/network-request-failed') return 'ارتباط با سرور برقرار نشد؛ اینترنت یا VPN را بررسی کنید.';
     return 'ورود انجام نشد؛ لطفاً صفحه را تازه‌سازی و دوباره تلاش کنید.';
+ ndut4v-codex/add-management-panel-section
+
  c87y1t-codex/add-management-panel-section
 
  f5sn2z-codex/add-management-panel-section
@@ -87,6 +92,7 @@
     const bytes = new TextEncoder().encode(value);
     const digest = await crypto.subtle.digest('SHA-256', bytes);
     return [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, '0')).join('');
+ main
  main
  main
  main
@@ -207,6 +213,11 @@
     event.preventDefault();
     const submit = event.currentTarget.querySelector('button[type=submit]');
     submit.disabled = true;
+ ndut4v-codex/add-management-panel-section
+    submit.textContent = 'در حال ورود…';
+    $('#loginError').textContent = '';
+    try {
+
  c87y1t-codex/add-management-panel-section
     submit.textContent = 'در حال ورود…';
     $('#loginError').textContent = '';
@@ -231,12 +242,16 @@
  main
  main
  main
+ main
       await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
       await auth.signInWithEmailAndPassword(adminEmail, $('#adminPassword').value);
       $('#adminPassword').value = '';
       setPasswordVisibility(false);
     } catch (error) {
       console.error('Admin login failed:', error);
+ ndut4v-codex/add-management-panel-section
+      $('#loginError').textContent = loginErrorMessage(error);
+
  c87y1t-codex/add-management-panel-section
       $('#loginError').textContent = loginErrorMessage(error);
 
@@ -249,6 +264,7 @@
       $('#loginError').textContent = error.code === 'auth/invalid-credential'
         ? 'رمز عبور صحیح نیست.'
         : 'ورود انجام نشد؛ اتصال اینترنت و تنظیمات Firebase را بررسی کنید.';
+ main
  main
  main
  main
@@ -289,6 +305,9 @@
       console.error('Drafts could not be loaded:', error);
       notify('پیش‌نویس محلی نمایش داده شد؛ اتصال Firestore را بررسی کنید');
     }
+ ndut4v-codex/add-management-panel-section
+  });
+
  c87y1t-codex/add-management-panel-section
   });
 
@@ -327,6 +346,7 @@
     $('#loginGate').classList.add('hidden');
     $('#adminShell').classList.remove('locked');
   }
+ main
  main
  main
  main
@@ -432,6 +452,8 @@
   const dialog = $('#publishDialog');
   $('#publishBtn').addEventListener('click', () => dialog.showModal());
   $('#closeDialog').addEventListener('click', () => dialog.close());
+ ndut4v-codex/add-management-panel-section
+
  c87y1t-codex/add-management-panel-section
 
  f5sn2z-codex/add-management-panel-section
@@ -441,6 +463,7 @@
  ojq6c3-codex/add-management-panel-section
 
  w4j61d-codex/add-management-panel-section
+ main
  main
  main
  main
@@ -475,12 +498,15 @@
     }
   });
   $('#logoutBtn').addEventListener('click', () => auth.signOut());
+ ndut4v-codex/add-management-panel-section
+
  c87y1t-codex/add-management-panel-section
 
  f5sn2z-codex/add-management-panel-section
  afrcxk-codex/add-management-panel-section
  ojq6c3-codex/add-management-panel-section
     
+ main
  main
  main
  main
