@@ -252,9 +252,12 @@
     redoStack = [];
     drafts[draft.selector] = draft;
     updateHistoryButtons();
+ codex-12aue3
     // Persist synchronously before waiting for the network so Publish can always
     // see the edit, even on a slow or temporarily unavailable connection.
     saveDraftsLocally();
+
+ main
     try {
       await saveDrafts();
       notify('پیش‌نویس ذخیره شد؛ برای نمایش روی سایت، دکمه انتشار را بزنید');
@@ -356,16 +359,22 @@
   $('#closeDialog').addEventListener('click', () => dialog.close());
   $('#confirmPublishBtn').addEventListener('click', async () => {
     const button = $('#confirmPublishBtn');
+ codex-12aue3
     // Recover the last locally-applied draft if an asynchronous Firestore read
     // completed between Apply and Publish.
+
+ main
     if (!Object.keys(drafts).length) {
       try { drafts = JSON.parse(localStorage.getItem(draftsKey) || '{}'); } catch { drafts = {}; }
     }
+ codex-12aue3
     if (!Object.keys(drafts).length) {
       notify('هنوز تغییری ثبت نشده؛ ابتدا یک متن یا تصویر را ویرایش و اعمال کنید');
       dialog.close();
       return;
     }
+
+ main
     button.disabled = true;
     try {
       const batch = db.batch();
