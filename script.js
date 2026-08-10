@@ -1728,7 +1728,7 @@ const mainFooter = document.getElementById('mainFooter');
     }
 
     // ==========================================================================
-    // اجازه اعلان قیمت (Browser Notifications)
+    // اعلان قیمت با Firebase Cloud Messaging
     // ==========================================================================
     const notifyPriceButton = document.getElementById('btn-notify-price');
 
@@ -1755,15 +1755,35 @@ const mainFooter = document.getElementById('mainFooter');
                     return;
                 }
 
+                if (!('serviceWorker' in navigator) || !window.firebase || !window.MOHAJER_FIREBASE_CONFIG) {
+                    throw new Error('Firebase Messaging is not available.');
+                }
+
+                const app = firebase.apps.length
+                    ? firebase.app()
+                    : firebase.initializeApp(window.MOHAJER_FIREBASE_CONFIG);
+                const serviceWorkerRegistration = await navigator.serviceWorker.register('/firebase-messaging-sw.js');
+                const messaging = app.messaging();
+                const registrationToken = await messaging.getToken({
+                    vapidKey: 'BBKWsNMOiMh0lPYMbZACxraLzJyhkQG9S_1SRZMMqx-tNAX9EXRn69UE6le8CSMFSkPYN0KfHM1PvF3ipWAfGzo',
+                    serviceWorkerRegistration
+                });
+
+                if (!registrationToken) {
+                    throw new Error('Firebase did not return a registration token.');
+                }
+
                 notifyPriceButton.textContent = `✓ ${t['notify-granted']}`;
                 notifyPriceButton.classList.add('notification-enabled');
                 notifyPriceButton.setAttribute('aria-pressed', 'true');
-                new Notification(t['notify-title'], {
+                await serviceWorkerRegistration.showNotification(t['notify-title'], {
                     body: t['notify-body'],
-                    icon: '192.png'
+                    icon: '/192.png',
+                    badge: '/192.png',
+                    data: { url: '/' }
                 });
             } catch (error) {
-                console.error('Unable to request notification permission:', error);
+                console.error('Unable to enable Firebase price notifications:', error);
                 alert(t['notify-denied']);
             }
         });
