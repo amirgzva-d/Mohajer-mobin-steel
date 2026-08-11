@@ -162,7 +162,7 @@
             border-radius: 50%;
         }
 
-        .nav-links { display: flex; gap: 32px; align-items: center; transition: all 0.3s ease; }
+        .nav-links { display: flex; gap: 24px; align-items: center; transition: all 0.3s ease; }
         html[dir="rtl"] .nav-links { direction: rtl; }
 
         .nav-links a {
@@ -1057,6 +1057,42 @@
         /* ==========================================================================
            Media Queries & MOBILE FIX (Premium Responsive)
            ========================================================================== */
+        @media (max-width: 1280px) {
+            .mobile-menu-toggle { display: block; }
+            .main-header { padding: 16px 4%; }
+            .main-header.scrolled { padding: 12px 4%; }
+            .header-actions { gap: 12px; }
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                max-height: 0;
+                padding: 0 6%;
+                overflow: hidden;
+                opacity: 0;
+                visibility: hidden;
+                flex-direction: column;
+                gap: 12px;
+                background: var(--bg-dark-section);
+                border-top: 1px solid var(--border-dark);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+                z-index: 999;
+                transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, padding 0.4s ease, visibility 0.3s;
+            }
+            .nav-links.active { max-height: 620px; padding: 20px 6%; opacity: 1; visibility: visible; }
+            html[dir="rtl"] .nav-links { right: 0; left: auto; }
+            .nav-links a {
+                width: 100%;
+                padding: 10px 0;
+                color: var(--text-white);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                font-size: 14px;
+                font-weight: 700;
+                text-align: center;
+            }
+        }
+
         @media (max-width: 1200px) {
             .catalog-grid { grid-template-columns: repeat(3, 1fr); }
         }
@@ -1105,7 +1141,7 @@
             .mobile-only-quote { display: flex !important; width: 100%; justify-content: center; margin-top: 12px; background: var(--primary-gold); color: var(--bg-dark-section); border: none; }
             
             .nav-links { position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-dark-section); flex-direction: column; padding: 0 6%; max-height: 0; overflow: hidden; opacity: 0; visibility: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, padding 0.4s ease, visibility 0.3s; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); gap: 12px; border-top: 1px solid var(--border-dark); z-index: 999; display: flex !important; }
-            .nav-links.active { max-height: 500px; opacity: 1; visibility: visible; padding: 20px 6%; }
+            .nav-links.active { max-height: 620px; opacity: 1; visibility: visible; padding: 20px 6%; }
             html[dir="rtl"] .nav-links { right: 0; left: auto; }
             .nav-links a { font-size: 14px !important; font-weight: 700 !important; padding: 10px 0 !important; width: 100%; text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: var(--text-white); }
 
@@ -1660,6 +1696,7 @@
             <a href="#departments" id="navDepartmentsLink" data-key="nav-departments">Department</a>
             <a href="#about" id="navAboutLink" data-key="nav-about">About Us</a>
             <a href="#contactView" id="navContactLink" data-key="nav-contact">Contact</a>
+            <a href="loading-transport/" id="navTransportLink" data-key="nav-transport">Loading &amp; Transport Services</a>
             <!-- اضافه شدن دکمه فروش ویژه به منو -->
             <a href="#specialSaleView" id="navSpecialSaleLink" class="special-offer-nav">
                 <span data-key="nav-special-text">فروش ویژه</span>
