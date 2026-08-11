@@ -1782,3 +1782,7 @@ html[dir="rtl"] .copyright-content {
     border-color: #10b981;
     background: #ecfdf5;
 }
+
+/* Crawlable product URLs overlay the existing interactive cards without changing their appearance. */
+.catalog-card.new-style { position: relative; }
+.catalog-product-url { position: absolute; inset: 0; z-index: 2; border-radius: inherit; }
