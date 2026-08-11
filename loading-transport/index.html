@@ -1,147 +1,618 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#020912" />
-  <meta name="description" content="خدمات تخصصی بارگیری، زنجیره تأمین و حمل‌ونقل محصولات فولادی فولاد مهاجر مبین" />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="fa_IR" />
-  <meta property="og:title" content="خدمات بارگیری و حمل‌ونقل | فولاد مهاجر مبین" />
-  <meta property="og:description" content="از کارخانه تا بندر؛ زنجیره تأمین و حمل‌ونقل فولاد برای بازارهای جهانی" />
-  <meta property="og:image" content="https://mohajer-steel.com/loading-transport/assets/mohajer-cinematic-fullsite-v3.jpg" />
-  <link rel="canonical" href="https://mohajer-steel.com/loading-transport/" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/32.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/180.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-  <link rel="preload" as="image" href="./assets/mohajer-cinematic-fullsite-v3.jpg" type="image/jpeg" fetchpriority="high" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#030a12">
+  <meta name="description" content="خدمات تخصصی بارگیری، زنجیره تأمین و حمل‌ونقل محصولات فولادی فولاد مهاجر مبین؛ از کارخانه تا بندر و بازارهای جهانی.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fa_IR">
+  <meta property="og:title" content="خدمات بارگیری و حمل‌ونقل | فولاد مهاجر مبین">
+  <meta property="og:description" content="قدرت تأمین؛ دقت در تحویل. راهکار یکپارچه بارگیری و حمل‌ونقل محصولات فولادی.">
+  <meta property="og:image" content="https://mohajer-steel.com/loading-transport/assets/hero-industrial.webp">
+  <link rel="canonical" href="https://mohajer-steel.com/loading-transport/">
+  <link rel="icon" href="/32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/180.png" sizes="180x180">
+  <link rel="preload" href="./assets/hero-industrial.webp" as="image" type="image/webp" fetchpriority="high">
   <title>خدمات بارگیری و حمل‌ونقل | فولاد مهاجر مبین</title>
 
   <style>
-    :root {
-      color-scheme: dark;
-      --page-bg: #01070e;
-      --focus: #f4b83f;
+    @font-face{font-family:"Noto Arabic";src:url("./assets/NotoSansArabic-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+    @font-face{font-family:"Noto Arabic";src:url("./assets/NotoSansArabic-Bold.ttf") format("truetype");font-weight:700 900;font-display:swap}
+
+    :root{
+      --ink:#02070d;
+      --navy:#06111d;
+      --navy-2:#091827;
+      --panel:#0b1b2b;
+      --panel-2:#0e2133;
+      --line:rgba(175,204,230,.14);
+      --line-strong:rgba(194,217,238,.26);
+      --white:#f6f8fb;
+      --muted:#9eafc0;
+      --muted-2:#71869a;
+      --gold:#dca238;
+      --gold-light:#f4c965;
+      --blue:#2b80cf;
+      --green:#4fd1a3;
+      --shadow:0 28px 80px rgba(0,0,0,.38);
+      --radius:22px;
     }
 
-    * { box-sizing: border-box; }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;background:var(--ink);scrollbar-color:#9b732d #07111c}
+    body{margin:0;min-width:320px;overflow-x:hidden;background:var(--ink);color:var(--white);font-family:"Noto Arabic",Tahoma,sans-serif;-webkit-font-smoothing:antialiased}
+    body::selection{background:var(--gold);color:#06101a}
+    a{color:inherit;text-decoration:none}
+    button,input{font:inherit}
+    button{color:inherit}
+    img{display:block;max-width:100%}
+    svg{display:block}
 
-    html {
-      width: 100%;
-      margin: 0;
-      background: var(--page-bg);
-      scroll-behavior: smooth;
-      scrollbar-color: #b9862e #06111e;
+    .scroll-progress{position:fixed;inset:0 0 auto;z-index:1000;height:3px;background:rgba(255,255,255,.035)}
+    .scroll-progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--blue),var(--gold-light));box-shadow:0 0 18px rgba(244,201,101,.55)}
+
+    .shell{width:min(1680px,calc(100% - 96px));margin-inline:auto}
+    .section{position:relative;padding:138px 0;isolation:isolate}
+    .section::before{content:"";position:absolute;inset:0;z-index:-2;pointer-events:none}
+
+    .site-header{position:fixed;top:22px;right:48px;left:48px;z-index:100;height:76px;display:grid;grid-template-columns:220px minmax(650px,1fr) auto;align-items:center;padding:0 18px 0 24px;direction:ltr;border:1px solid rgba(181,205,229,.17);border-radius:18px;background:rgba(3,11,20,.76);box-shadow:0 18px 60px rgba(0,0,0,.2);backdrop-filter:blur(18px);transition:top .35s ease,height .35s ease,background .35s ease,box-shadow .35s ease}
+    .site-header.scrolled{top:10px;height:68px;background:rgba(3,10,18,.94);box-shadow:0 18px 55px rgba(0,0,0,.44)}
+    .site-header::after{content:"";position:absolute;top:-1px;left:42px;width:210px;height:1px;background:linear-gradient(90deg,transparent,var(--blue),var(--gold),transparent)}
+    .brand{display:flex;width:208px;height:60px;align-items:center;overflow:hidden;border-radius:12px}
+    .brand img{width:202px;height:auto}
+    .nav-links{height:100%;display:flex;align-items:center;justify-content:center;gap:19px;direction:rtl}
+    .nav-link{position:relative;padding:11px 0;color:#b3c0cd;font-size:12px;font-weight:700;white-space:nowrap;transition:color .25s ease}
+    .nav-link:hover,.nav-link.active{color:#fff}
+    .nav-link::after{content:"";position:absolute;right:50%;left:50%;bottom:0;height:2px;border-radius:4px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:right .28s ease,left .28s ease}
+    .nav-link:hover::after,.nav-link.active::after{right:0;left:0}
+    .nav-link.special{color:var(--gold-light)}
+    .nav-actions{display:flex;align-items:center;gap:9px;direction:rtl}
+    .header-quote{height:42px;display:inline-flex;align-items:center;gap:9px;padding:0 18px;border-radius:10px;background:linear-gradient(135deg,var(--gold-light),#cd8a24);color:#07101a;font-size:11px;font-weight:900;box-shadow:0 10px 30px rgba(210,144,34,.2);transition:transform .25s ease,box-shadow .25s ease}
+    .header-quote:hover{transform:translateY(-2px);box-shadow:0 14px 35px rgba(210,144,34,.32)}
+    .icon-button{width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(199,218,237,.2);border-radius:10px;background:rgba(255,255,255,.025);cursor:pointer;transition:border-color .25s ease,background .25s ease}
+    .icon-button:hover{border-color:rgba(244,201,101,.5);background:rgba(244,201,101,.07)}
+    .lang-chip{height:42px;min-width:49px;display:grid;place-items:center;border:1px solid rgba(199,218,237,.2);border-radius:10px;color:#dfe8f1;font-size:11px;font-weight:800}
+    .menu-toggle{display:none}
+
+    .hero{position:relative;min-height:960px;height:100svh;isolation:isolate;overflow:hidden;background:#020811}
+    .hero-media{position:absolute;inset:-3%;z-index:-6;width:106%;height:106%;object-fit:cover;object-position:center;filter:saturate(.9) contrast(1.04) brightness(.77);animation:heroDrift 20s ease-in-out infinite alternate;will-change:transform}
+    .hero::before{content:"";position:absolute;inset:0;z-index:-5;background:linear-gradient(90deg,rgba(1,6,12,.97) 0%,rgba(2,8,15,.88) 28%,rgba(2,8,15,.32) 55%,rgba(1,5,10,.12) 78%),linear-gradient(180deg,rgba(1,6,13,.76) 0,transparent 22%,transparent 67%,rgba(1,6,12,.94) 100%),radial-gradient(circle at 64% 38%,rgba(33,115,194,.12),transparent 34%)}
+    .hero::after{content:"";position:absolute;inset:0;z-index:-4;opacity:.14;background-image:linear-gradient(rgba(115,164,207,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(115,164,207,.18) 1px,transparent 1px);background-size:72px 72px;mask-image:linear-gradient(90deg,#000,transparent 62%)}
+    .hero-light{position:absolute;z-index:-3;top:-15%;left:9%;width:4px;height:130%;transform:rotate(22deg);background:linear-gradient(180deg,transparent,rgba(67,145,220,.45),rgba(244,188,73,.16),transparent);filter:blur(2px);animation:lightSweep 9s ease-in-out infinite alternate}
+    .hero-scan{position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 36%,rgba(255,255,255,.035) 48%,transparent 58%);transform:translateX(-100%);animation:scan 8s ease-in-out infinite}
+    .hero-inner{height:100%;min-height:960px;display:flex;align-items:center;justify-content:flex-start;padding:150px 7% 190px;direction:ltr}
+    .hero-copy{width:min(700px,50vw);direction:rtl;text-align:right}
+    .eyebrow{display:flex;align-items:center;gap:11px;margin-bottom:24px;color:#b6c6d6;font-size:12px;font-weight:700;letter-spacing:.4px}
+    .eyebrow .pulse{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(79,209,163,.5);animation:pulse 2s infinite}
+    .hero h1{margin:0;font-size:clamp(50px,4.4vw,84px);line-height:1.28;letter-spacing:-3.2px;text-wrap:balance}
+    .hero h1 .line{display:block}
+    .hero h1 .accent{display:block;margin-top:5px;color:var(--gold-light);font-size:.61em;letter-spacing:-1.7px}
+    .hero-lead{width:min(590px,100%);margin:27px 0 0;color:#bdc9d5;font-size:16px;line-height:2.15}
+    .hero-actions{display:flex;gap:12px;margin-top:34px}
+    .button{height:54px;display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:0 25px;border:1px solid transparent;border-radius:11px;background:linear-gradient(135deg,var(--gold-light),#d18f28);color:#07101a;font-size:12px;font-weight:900;cursor:pointer;box-shadow:0 16px 40px rgba(209,143,40,.2);transition:transform .3s ease,box-shadow .3s ease,filter .3s ease}
+    .button:hover{transform:translateY(-3px);filter:brightness(1.06);box-shadow:0 22px 48px rgba(209,143,40,.32)}
+    .button.ghost{border-color:rgba(198,218,238,.3);background:rgba(5,15,26,.4);color:#eef4fa;box-shadow:none;backdrop-filter:blur(8px)}
+    .button.ghost:hover{border-color:rgba(244,201,101,.55);background:rgba(244,201,101,.06)}
+    .hero-stats{display:flex;margin-top:38px;padding-top:29px;border-top:1px solid rgba(183,207,229,.14)}
+    .hero-stat{min-width:138px;padding:0 24px;border-left:1px solid rgba(183,207,229,.14)}
+    .hero-stat:first-child{padding-right:0}
+    .hero-stat:last-child{border:0}
+    .hero-stat strong{display:block;color:#fff;font-size:28px;line-height:1.2;font-variant-numeric:tabular-nums}
+    .hero-stat span{display:block;margin-top:7px;color:#8297aa;font-size:10px}
+    .scene-code{position:absolute;right:3%;top:48%;display:flex;align-items:center;gap:13px;writing-mode:vertical-rl;color:#6d8093;font:700 9px/1.2 monospace;letter-spacing:2px}
+    .scene-code::before{content:"";width:1px;height:84px;background:linear-gradient(var(--gold),transparent)}
+    .scroll-cue{position:absolute;left:3.3%;bottom:164px;display:flex;align-items:center;gap:11px;color:#8092a3;font-size:9px;letter-spacing:1.6px;transform:rotate(-90deg);transform-origin:left bottom}
+    .scroll-cue i{width:50px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+
+    .capability-strip{position:absolute;right:4.5%;bottom:28px;left:4.5%;z-index:4;display:grid;grid-template-columns:repeat(5,1fr);min-height:118px;border:1px solid rgba(177,203,227,.14);border-radius:17px;background:rgba(3,12,22,.82);box-shadow:var(--shadow);backdrop-filter:blur(16px);overflow:hidden}
+    .capability{position:relative;display:flex;align-items:center;gap:15px;padding:24px 27px;border-left:1px solid rgba(177,203,227,.1);transition:background .3s ease}
+    .capability:last-child{border:0}
+    .capability:hover{background:rgba(46,126,202,.075)}
+    .capability svg{width:28px;height:28px;color:var(--gold-light);flex:0 0 auto}
+    .capability strong{display:block;font-size:11px}
+    .capability span{display:block;margin-top:5px;color:#7f94a8;font-size:9px;line-height:1.7}
+
+    .kicker{display:flex;align-items:center;gap:12px;margin-bottom:18px;color:var(--gold-light);font-size:10px;font-weight:900;letter-spacing:.8px}
+    .kicker::before{content:"";width:38px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+    .section-title{margin:0;color:#fff;font-size:clamp(36px,3.1vw,61px);line-height:1.45;letter-spacing:-2px;text-wrap:balance}
+    .section-lead{margin:22px 0 0;color:var(--muted);font-size:14px;line-height:2.25}
+
+    .supply-section{background:var(--navy)}
+    .supply-section::before{background:radial-gradient(circle at 18% 28%,rgba(35,115,190,.11),transparent 30%),linear-gradient(180deg,transparent,rgba(0,0,0,.14))}
+    .supply-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:90px;direction:ltr}
+    .supply-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;direction:rtl}
+    .supply-card{position:relative;min-height:190px;padding:28px 27px;border:1px solid var(--line);border-radius:17px;background:linear-gradient(145deg,rgba(12,31,49,.96),rgba(6,20,33,.88));overflow:hidden;transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease}
+    .supply-card::before{content:"";position:absolute;top:0;right:0;width:72px;height:2px;background:linear-gradient(90deg,var(--gold),transparent)}
+    .supply-card::after{content:attr(data-index);position:absolute;left:18px;bottom:8px;color:rgba(173,204,230,.055);font-size:70px;font-weight:900;line-height:1}
+    .supply-card:hover{transform:translateY(-8px);border-color:rgba(244,201,101,.31);box-shadow:0 25px 55px rgba(0,0,0,.25)}
+    .supply-icon{width:46px;height:46px;display:grid;place-items:center;margin-bottom:20px;border-radius:13px;background:rgba(44,128,207,.11);color:var(--gold-light)}
+    .supply-icon svg{width:23px;height:23px}
+    .supply-card h3{margin:0;font-size:14px}
+    .supply-card p{margin:10px 0 0;color:#8196aa;font-size:11px;line-height:2}
+    .supply-copy{direction:rtl;text-align:right}
+    .supply-copy .section-lead{max-width:610px}
+    .supply-points{display:grid;gap:13px;margin-top:29px}
+    .supply-point{display:flex;align-items:center;gap:12px;color:#c4d0db;font-size:11px}
+    .supply-point i{width:22px;height:22px;display:grid;place-items:center;border-radius:50%;background:rgba(79,209,163,.1);color:var(--green);font-style:normal;font-size:10px}
+    .ghost-title{position:absolute;right:0;bottom:5px;left:0;z-index:-1;color:rgba(168,199,225,.025);font:900 clamp(70px,9vw,168px)/1 Arial,sans-serif;text-align:center;white-space:nowrap;letter-spacing:-7px;overflow:hidden}
+
+    .precision-section{padding-top:128px;background:#02080e}
+    .precision-section::before{background:radial-gradient(circle at 70% 55%,rgba(26,105,179,.09),transparent 35%)}
+    .section-heading-row{display:grid;grid-template-columns:1.2fr .8fr;align-items:end;gap:70px;margin-bottom:58px}
+    .section-heading-row .section-lead{margin:0;text-align:left}
+    .steel-stage{position:relative;min-height:680px;border:1px solid var(--line);border-radius:24px;background:#030910;box-shadow:0 40px 100px rgba(0,0,0,.34);overflow:hidden;isolation:isolate}
+    .steel-stage::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,rgba(2,8,14,.97) 0,rgba(2,8,14,.65) 28%,rgba(2,8,14,.06) 68%),linear-gradient(180deg,rgba(2,8,14,.18),rgba(2,8,14,.75)),url("./assets/steel-stage.webp") center/cover no-repeat;filter:saturate(.85) contrast(1.05)}
+    .steel-stage::after{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(124,164,198,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(124,164,198,.07) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(90deg,#000,transparent 74%)}
+    .stage-specs{position:absolute;top:44px;bottom:92px;left:38px;width:285px;padding:28px 24px;border:1px solid rgba(177,204,228,.16);border-radius:16px;background:rgba(5,17,29,.84);backdrop-filter:blur(14px)}
+    .stage-specs .mini{color:var(--gold-light);font-size:9px;font-weight:900;letter-spacing:1px}
+    .stage-specs h3{margin:12px 0 27px;font-size:19px}
+    .spec-row{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid rgba(177,204,228,.1);font-size:10px}
+    .spec-row span{color:#778da0}
+    .spec-row strong{color:#e4ebf1}
+    .quality-meter{margin-top:26px}
+    .quality-meter div{display:flex;justify-content:space-between;color:#8498aa;font-size:9px}
+    .quality-meter i{display:block;height:4px;margin-top:9px;border-radius:4px;background:linear-gradient(90deg,var(--green) 0 92%,rgba(255,255,255,.08) 92%);box-shadow:0 0 16px rgba(79,209,163,.2)}
+    .stage-tag{position:absolute;display:flex;align-items:center;gap:9px;padding:8px 12px;border:1px solid rgba(244,201,101,.3);border-radius:20px;background:rgba(3,10,18,.78);color:#e8eef4;font-size:9px;backdrop-filter:blur(8px);animation:tagFloat 4s ease-in-out infinite}
+    .stage-tag::before{content:"";width:8px;height:8px;border:2px solid var(--gold-light);border-radius:50%;box-shadow:0 0 14px var(--gold)}
+    .tag-one{top:38%;right:34%;animation-delay:.4s}
+    .tag-two{top:58%;right:13%;animation-delay:1.2s}
+    .tag-three{bottom:24%;right:48%;animation-delay:2s}
+    .stage-data{position:absolute;right:0;bottom:0;left:0;display:grid;grid-template-columns:repeat(4,1fr);min-height:68px;border-top:1px solid rgba(177,204,228,.12);background:rgba(3,11,20,.78);backdrop-filter:blur(10px)}
+    .stage-data div{display:flex;align-items:center;justify-content:center;gap:10px;border-left:1px solid rgba(177,204,228,.1);font-size:9px;color:#7e93a6}
+    .stage-data div:last-child{border:0}
+    .stage-data strong{color:#ecf2f7;font-size:11px}
+
+    .market-section{background:var(--navy)}
+    .market-section::before{background:radial-gradient(circle at 72% 20%,rgba(37,119,197,.11),transparent 28%)}
+    .market-watermark{position:absolute;top:20px;right:0;left:0;z-index:-1;color:rgba(178,205,229,.025);font:900 clamp(68px,10vw,180px)/1 Arial,sans-serif;text-align:center;letter-spacing:-7px;white-space:nowrap;overflow:hidden}
+    .market-grid{display:grid;grid-template-columns:1.55fr .85fr;gap:16px;margin-top:56px;direction:ltr}
+    .price-table-card,.quick-quote{direction:rtl;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,rgba(12,31,49,.97),rgba(6,19,31,.95));box-shadow:0 25px 65px rgba(0,0,0,.2);overflow:hidden}
+    .table-toolbar{min-height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 25px;border-bottom:1px solid var(--line)}
+    .table-toolbar h3{margin:0;font-size:14px}
+    .price-tabs{display:flex;gap:7px}
+    .price-tab{height:34px;padding:0 15px;border:1px solid rgba(184,209,231,.16);border-radius:8px;background:transparent;color:#8da1b3;font-size:9px;cursor:pointer;transition:.25s ease}
+    .price-tab:hover,.price-tab.active{border-color:rgba(244,201,101,.38);background:rgba(244,201,101,.1);color:var(--gold-light)}
+    .price-table-wrap{overflow-x:auto}
+    .price-table{width:100%;border-collapse:collapse;min-width:650px}
+    .price-table th{height:50px;padding:0 19px;color:#71879a;font-size:9px;font-weight:700;text-align:right;background:rgba(1,8,14,.2)}
+    .price-table td{height:67px;padding:0 19px;border-top:1px solid rgba(177,204,228,.085);color:#c5d0da;font-size:10px;white-space:nowrap}
+    .price-table tbody tr{transition:background .25s ease}
+    .price-table tbody tr:hover{background:rgba(44,128,207,.05)}
+    .price-table .price{color:#fff;font-weight:900;font-size:12px;font-variant-numeric:tabular-nums}
+    .price-table .up{color:var(--green)}
+    .price-table .down{color:#ff8e79}
+    .price-table .order{height:30px;display:inline-flex;align-items:center;padding:0 12px;border:1px solid rgba(244,201,101,.25);border-radius:7px;color:var(--gold-light);font-size:8px;transition:.25s ease}
+    .price-table .order:hover{background:var(--gold-light);color:#07101a}
+    .quick-quote{padding:30px 29px;display:flex;flex-direction:column}
+    .quote-badge{align-self:flex-start;padding:7px 12px;border-radius:20px;background:rgba(244,201,101,.12);color:var(--gold-light);font-size:8px;font-weight:900}
+    .quick-quote h3{margin:26px 0 7px;font-size:25px}
+    .quick-quote .grade{color:#8296a9;font-size:10px}
+    .quote-number{margin:28px 0 24px;padding:21px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .quote-number small{display:block;color:#708599;font-size:9px}
+    .quote-number strong{display:block;margin-top:7px;color:#fff;font-size:27px;font-variant-numeric:tabular-nums}
+    .quote-form{display:grid;gap:9px;margin-top:auto}
+    .quote-form input{height:47px;width:100%;padding:0 15px;border:1px solid rgba(184,209,231,.15);border-radius:9px;outline:0;background:rgba(2,9,16,.35);color:#fff;font-size:10px;transition:border-color .25s ease}
+    .quote-form input:focus{border-color:rgba(244,201,101,.5)}
+    .quote-form .button{width:100%;height:49px;border:0}
+
+    .legacy-section{background:#02070d}
+    .legacy-section::before{background:radial-gradient(circle at 20% 50%,rgba(210,154,53,.08),transparent 31%),radial-gradient(circle at 78% 36%,rgba(36,112,184,.07),transparent 27%)}
+    .legacy-grid{display:grid;grid-template-columns:.8fr 1.2fr;align-items:center;gap:100px;direction:ltr}
+    .legacy-emblem{position:relative;min-height:470px;display:grid;place-items:center}
+    .legacy-rings{position:relative;width:330px;height:330px;display:grid;place-items:center;border:1px solid rgba(220,162,56,.18);border-radius:50%;background:radial-gradient(circle,rgba(220,162,56,.055),transparent 60%)}
+    .legacy-rings::before,.legacy-rings::after{content:"";position:absolute;border-radius:50%;border:1px dashed rgba(220,162,56,.2)}
+    .legacy-rings::before{inset:27px;animation:spin 26s linear infinite}
+    .legacy-rings::after{inset:61px;animation:spinReverse 18s linear infinite}
+    .legacy-rings strong{color:var(--gold-light);font-size:79px;line-height:1;text-shadow:0 0 35px rgba(220,162,56,.24)}
+    .legacy-rings span{position:absolute;bottom:92px;color:#8c9bac;font-size:10px}
+    .orbit-dot{position:absolute;top:50%;left:50%;width:8px;height:8px;margin:-4px;border-radius:50%;background:var(--gold-light);box-shadow:0 0 18px var(--gold);animation:orbit 13s linear infinite}
+    .legacy-copy{direction:rtl;text-align:right}
+    .legacy-quote{margin-top:31px;padding:21px 23px;border-right:2px solid var(--gold);background:linear-gradient(90deg,transparent,rgba(220,162,56,.055));color:#c1ccd6;font-size:12px;line-height:2.2}
+    .legacy-timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:37px}
+    .legacy-time{position:relative;padding-top:22px;border-top:1px solid rgba(177,204,228,.15)}
+    .legacy-time::before{content:"";position:absolute;top:-4px;right:0;width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 14px rgba(220,162,56,.45)}
+    .legacy-time strong{display:block;color:#fff;font-size:14px}
+    .legacy-time span{display:block;margin-top:8px;color:#71869a;font-size:9px;line-height:1.7}
+
+    .export-section{min-height:830px;display:flex;align-items:center;background:#06111d;overflow:hidden}
+    .export-section::before{background:linear-gradient(90deg,rgba(3,10,18,.98),rgba(3,10,18,.72) 48%,rgba(3,10,18,.25)),linear-gradient(180deg,rgba(3,10,18,.45),rgba(3,10,18,.9)),url("./assets/steel-stage.webp") center/cover no-repeat;filter:saturate(.72) brightness(.75)}
+    .export-section::after{content:"";position:absolute;right:-12%;bottom:-35%;z-index:-1;width:75%;height:90%;border-radius:50%;background:radial-gradient(circle,rgba(31,115,191,.21),transparent 66%)}
+    .export-grid{display:grid;grid-template-columns:.95fr 1.05fr;align-items:center;gap:88px;direction:ltr}
+    .export-map{position:relative;min-height:480px;padding:32px;border:1px solid rgba(176,203,227,.15);border-radius:22px;background:rgba(3,12,21,.5);backdrop-filter:blur(8px);overflow:hidden}
+    .export-map svg{width:100%;height:100%;opacity:.68}
+    .route-line{fill:none;stroke:var(--gold);stroke-width:2;stroke-dasharray:8 11;animation:dash 8s linear infinite}
+    .map-node{fill:var(--gold-light);filter:drop-shadow(0 0 6px rgba(244,201,101,.8));animation:nodePulse 2.5s ease-in-out infinite}
+    .map-node:nth-of-type(2n){animation-delay:.8s}
+    .map-label{position:absolute;right:28px;bottom:24px;color:#778da1;font:700 8px/1.8 monospace;letter-spacing:1px}
+    .export-copy{direction:rtl;text-align:right}
+    .export-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:35px}
+    .export-metric{padding:21px 18px;border:1px solid rgba(177,204,228,.12);border-radius:13px;background:rgba(4,15,25,.46)}
+    .export-metric strong{display:block;color:var(--gold-light);font-size:23px}
+    .export-metric span{display:block;margin-top:6px;color:#7d91a4;font-size:9px;line-height:1.6}
+    .route-status{display:flex;align-items:center;gap:11px;margin-top:25px;color:#a9bac9;font-size:10px}
+    .route-status i{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(79,209,163,.5);animation:pulse 2s infinite}
+
+    .industries-section{background:#07131f}
+    .industries-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:56px;direction:ltr}
+    .industry-card{position:relative;height:520px;border:1px solid var(--line);border-radius:20px;overflow:hidden;isolation:isolate;box-shadow:0 24px 60px rgba(0,0,0,.2);transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .35s ease}
+    .industry-card:hover{transform:translateY(-12px);border-color:rgba(244,201,101,.35)}
+    .industry-card img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;filter:saturate(.72) brightness(.62);transition:transform .7s ease,filter .5s ease}
+    .industry-card:hover img{transform:scale(1.075);filter:saturate(.92) brightness(.72)}
+    .industry-card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent 20%,rgba(2,8,14,.2) 48%,rgba(2,8,14,.98) 100%)}
+    .industry-content{position:absolute;right:28px;bottom:28px;left:28px;direction:rtl;text-align:right}
+    .industry-content small{color:var(--gold-light);font:700 8px/1.2 Arial,sans-serif;letter-spacing:1.7px}
+    .industry-content h3{margin:10px 0 6px;font-size:24px}
+    .industry-content p{margin:0;color:#9cadbd;font-size:10px;line-height:2;transform:translateY(12px);opacity:.55;transition:.35s ease}
+    .industry-card:hover p{transform:none;opacity:1}
+    .industry-arrow{position:absolute;top:24px;left:24px;width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.18);border-radius:50%;background:rgba(2,8,14,.25);font-size:18px;backdrop-filter:blur(6px);transition:.35s ease}
+    .industry-card:hover .industry-arrow{border-color:var(--gold-light);background:var(--gold-light);color:#07101a;transform:rotate(-45deg)}
+
+    .contact-section{padding:105px 0;background:#02080e}
+    .contact-panel{position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:65px;align-items:center;padding:58px 64px;border:1px solid rgba(177,204,228,.16);border-radius:24px;background:linear-gradient(120deg,rgba(10,29,46,.96),rgba(5,18,30,.93));box-shadow:0 35px 90px rgba(0,0,0,.3);overflow:hidden;direction:ltr}
+    .contact-panel::before{content:"";position:absolute;top:-120px;right:-80px;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(39,123,203,.18),transparent 68%)}
+    .contact-copy{direction:rtl;text-align:right}
+    .contact-copy h2{margin:0;font-size:clamp(34px,3vw,57px);line-height:1.5;letter-spacing:-1.7px}
+    .contact-copy p{margin:17px 0 0;color:#96a9ba;font-size:12px;line-height:2.1}
+    .contact-actions{display:grid;gap:10px;direction:rtl}
+    .contact-action{min-height:67px;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:15px 20px;border:1px solid rgba(177,204,228,.15);border-radius:12px;background:rgba(2,9,16,.27);transition:transform .3s ease,border-color .3s ease,background .3s ease}
+    .contact-action:hover{transform:translateX(-5px);border-color:rgba(244,201,101,.42);background:rgba(244,201,101,.06)}
+    .contact-action.primary{border:0;background:linear-gradient(135deg,var(--gold-light),#cf8b25);color:#07101a}
+    .contact-action small{display:block;opacity:.62;font-size:8px}
+    .contact-action strong{display:block;margin-top:3px;font-size:11px}
+    .contact-action b{font-size:18px}
+
+    .site-footer{padding:70px 0 25px;background:#01060b;border-top:1px solid rgba(177,204,228,.09)}
+    .footer-grid{display:grid;grid-template-columns:1.35fr repeat(3,.75fr);gap:65px}
+    .footer-brand img{width:195px}
+    .footer-brand p{max-width:370px;margin:22px 0 0;color:#6f8396;font-size:10px;line-height:2}
+    .footer-col h4{margin:0 0 19px;color:#d8e2eb;font-size:11px}
+    .footer-col a,.footer-col span{display:block;margin:11px 0;color:#6f8396;font-size:9px;line-height:1.8;transition:color .25s ease}
+    .footer-col a:hover{color:var(--gold-light)}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:60px;padding-top:21px;border-top:1px solid rgba(177,204,228,.08);color:#55697b;font-size:8px;direction:ltr}
+    .back-top{position:fixed;right:22px;bottom:22px;z-index:90;width:45px;height:45px;display:grid;place-items:center;border:1px solid rgba(244,201,101,.3);border-radius:50%;background:rgba(4,14,24,.88);color:var(--gold-light);opacity:0;visibility:hidden;transform:translateY(15px);cursor:pointer;backdrop-filter:blur(9px);transition:.3s ease}
+    .back-top.visible{opacity:1;visibility:visible;transform:none}
+
+    .reveal{opacity:0;transform:translateY(36px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+    .reveal.from-left{transform:translateX(-45px)}
+    .reveal.from-right{transform:translateX(45px)}
+    .reveal.is-visible{opacity:1;transform:none}
+    .delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}
+
+    @keyframes heroDrift{0%{transform:scale(1.035) translate3d(0,0,0)}100%{transform:scale(1.09) translate3d(-1.2%,.7%,0)}}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(79,209,163,.55)}70%{box-shadow:0 0 0 10px rgba(79,209,163,0)}100%{box-shadow:0 0 0 0 rgba(79,209,163,0)}}
+    @keyframes lightSweep{0%{transform:translateX(-30vw) rotate(22deg);opacity:.1}50%{opacity:.75}100%{transform:translateX(42vw) rotate(22deg);opacity:.18}}
+    @keyframes scan{0%,55%{transform:translateX(-120%)}85%,100%{transform:translateX(120%)}}
+    @keyframes tagFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes spinReverse{to{transform:rotate(-360deg)}}
+    @keyframes orbit{from{transform:rotate(0) translateX(164px) rotate(0)}to{transform:rotate(360deg) translateX(164px) rotate(-360deg)}}
+    @keyframes dash{to{stroke-dashoffset:-190}}
+    @keyframes nodePulse{0%,100%{opacity:.65;transform:scale(.85)}50%{opacity:1;transform:scale(1.2)}}
+
+    @media(max-width:1450px){
+      .site-header{right:28px;left:28px;grid-template-columns:195px minmax(590px,1fr) auto}.nav-links{gap:14px}.nav-link{font-size:10.5px}.header-quote{padding:0 14px}.brand,.brand img{width:185px}.hero-copy{width:min(620px,48vw)}.hero h1{font-size:62px}.capability{padding:20px 19px}.shell{width:min(1400px,calc(100% - 70px))}
     }
-
-    body {
-      width: 100%;
-      min-height: 100vh;
-      margin: 0;
-      overflow-x: hidden;
-      background: var(--page-bg);
+    @media(max-width:1180px){
+      .site-header{right:18px;left:18px;grid-template-columns:1fr auto;height:70px}.brand,.brand img{width:180px}.nav-links{position:absolute;top:calc(100% + 9px);right:0;left:0;height:auto;max-height:0;padding:0 22px;overflow:hidden;opacity:0;visibility:hidden;flex-direction:column;align-items:stretch;gap:0;border:1px solid rgba(181,205,229,.17);border-radius:15px;background:rgba(3,11,20,.97);box-shadow:0 25px 60px rgba(0,0,0,.44);transition:max-height .4s ease,padding .4s ease,opacity .3s ease,visibility .3s}.nav-links.open{max-height:620px;padding:13px 22px;opacity:1;visibility:visible}.nav-link{width:100%;padding:11px 2px;border-bottom:1px solid rgba(255,255,255,.055);font-size:12px}.nav-link::after{display:none}.menu-toggle{display:grid}.header-quote{display:none}.hero-copy{width:600px}.hero h1{font-size:58px}.capability-strip{grid-template-columns:repeat(3,1fr)}.capability:nth-child(3){border-left:0}.capability-strip{bottom:20px}.hero{min-height:1080px;height:auto}.hero-inner{min-height:1080px;padding-bottom:340px}.supply-grid,.export-grid{grid-template-columns:1fr;gap:60px}.supply-copy,.export-copy{order:-1}.section-heading-row{grid-template-columns:1fr}.section-heading-row .section-lead{text-align:right}.market-grid{grid-template-columns:1fr}.legacy-grid{gap:50px}.industries-grid{grid-template-columns:repeat(2,1fr)}.industry-card:last-child{grid-column:span 2}.contact-panel{grid-template-columns:1fr}.footer-grid{grid-template-columns:repeat(2,1fr)}
     }
-
-    .reference-page {
-      position: relative;
-      width: 100%;
-      margin: 0 auto;
-      overflow: hidden;
-      background: var(--page-bg);
-      line-height: 0;
+    @media(max-width:820px){
+      .shell{width:calc(100% - 36px)}.section{padding:92px 0}.site-header{top:12px;right:10px;left:10px;padding:0 11px 0 16px}.lang-chip,.icon-button.exit{display:none}.hero{min-height:1120px}.hero-media{object-position:62% center}.hero::before{background:linear-gradient(180deg,rgba(1,6,12,.62),rgba(1,6,12,.74) 42%,rgba(1,6,12,.97) 100%),linear-gradient(90deg,rgba(1,6,12,.9),rgba(1,6,12,.2))}.hero-inner{min-height:1120px;padding:112px 18px 470px;align-items:flex-start}.hero-copy{width:100%;padding-top:45px}.hero h1{font-size:clamp(43px,10vw,65px);letter-spacing:-2px}.hero-lead{font-size:14px}.hero-actions{flex-direction:column}.button{width:100%}.hero-stats{justify-content:center}.hero-stat{min-width:0;flex:1;padding:0 10px;text-align:center}.hero-stat strong{font-size:23px}.hero-stat span{font-size:8px}.scene-code,.scroll-cue{display:none}.capability-strip{right:12px;left:12px;grid-template-columns:1fr 1fr}.capability{min-height:90px}.capability:nth-child(2n){border-left:0}.capability:last-child{grid-column:span 2}.supply-cards{grid-template-columns:1fr}.section-title{font-size:36px}.steel-stage{min-height:790px}.stage-specs{top:auto;right:18px;bottom:88px;left:18px;width:auto;height:290px}.tag-one{top:18%;right:12%}.tag-two{top:34%;right:42%}.tag-three{top:50%;right:18%}.stage-data{grid-template-columns:repeat(2,1fr)}.stage-data div{min-height:52px}.market-watermark,.ghost-title{display:none}.legacy-grid{grid-template-columns:1fr}.legacy-emblem{min-height:370px}.legacy-rings{width:270px;height:270px}.legacy-rings strong{font-size:64px}.legacy-rings span{bottom:71px}.orbit-dot{animation:none}.legacy-timeline{grid-template-columns:repeat(2,1fr)}.export-map{min-height:350px}.industries-grid{grid-template-columns:1fr}.industry-card,.industry-card:last-child{grid-column:auto;height:430px}.contact-panel{padding:36px 25px}.footer-grid{grid-template-columns:1fr}.footer-bottom{align-items:flex-start;flex-direction:column;gap:10px}.section-heading-row{gap:20px}.export-metrics{grid-template-columns:1fr}.price-table-card{border-radius:15px}.quick-quote{border-radius:15px}
     }
-
-    .reference-art {
-      display: block;
-      width: 100%;
-      height: auto;
-      margin: 0;
-      user-select: none;
-      -webkit-user-drag: none;
+    @media(max-width:520px){
+      .brand,.brand img{width:148px}.site-header{height:64px}.hero{min-height:1190px}.hero-inner{min-height:1190px;padding-bottom:530px}.hero-copy{padding-top:28px}.hero h1{font-size:41px;line-height:1.38}.hero h1 .accent{font-size:.58em}.eyebrow{font-size:9px}.hero-lead{font-size:12px;line-height:2}.capability-strip{grid-template-columns:1fr}.capability,.capability:nth-child(2n),.capability:last-child{grid-column:auto;border-left:0;border-bottom:1px solid rgba(177,203,227,.1)}.capability:last-child{border-bottom:0}.hero-stats{margin-top:28px}.supply-card{min-height:170px}.section-title{font-size:31px}.section-lead{font-size:12px}.table-toolbar{align-items:flex-start;flex-direction:column;gap:14px;padding:18px}.price-tabs{width:100%}.price-tab{flex:1}.legacy-rings{width:230px;height:230px}.legacy-rings strong{font-size:53px}.legacy-rings span{bottom:55px}.legacy-timeline{grid-template-columns:1fr}.industry-card{height:380px}.contact-copy h2{font-size:31px}.site-footer{padding-top:50px}
     }
-
-    .section-anchor {
-      position: absolute;
-      right: 0;
-      left: 0;
-      height: 1px;
-      pointer-events: none;
-      scroll-margin-top: 12px;
-    }
-
-    .hotspot {
-      position: absolute;
-      z-index: 2;
-      display: block;
-      overflow: hidden;
-      border: 0;
-      border-radius: 4px;
-      background: transparent;
-      color: transparent;
-      font-size: 0;
-      line-height: 0;
-      text-indent: -9999px;
-      cursor: pointer;
-    }
-
-    .hotspot:focus-visible {
-      outline: 3px solid var(--focus);
-      outline-offset: 2px;
-      background: rgba(244, 184, 63, .10);
-    }
-
-    .logo-hotspot { top: .48%; left: 3.1%; width: 15%; height: 1.45%; }
-    .quote-hotspot { top: .52%; right: 3.5%; width: 10.5%; height: 1.35%; }
-    .hero-quote-hotspot { top: 7.85%; left: 35.2%; width: 11.7%; height: 1.3%; }
-    .price-quote-hotspot { top: 45.82%; left: 59.1%; width: 35.4%; height: 1.15%; }
-    .contact-hotspot { top: 88.23%; left: 7.1%; width: 42.7%; height: 1.18%; }
-
-    .sr-only {
-      position: absolute !important;
-      width: 1px !important;
-      height: 1px !important;
-      padding: 0 !important;
-      margin: -1px !important;
-      overflow: hidden !important;
-      clip: rect(0, 0, 0, 0) !important;
-      white-space: nowrap !important;
-      border: 0 !important;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
+    @media(prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}
     }
   </style>
 </head>
 <body>
-  <main class="reference-page" aria-labelledby="pageTitle">
-    <h1 class="sr-only" id="pageTitle">خدمات بارگیری و حمل‌ونقل فولاد مهاجر مبین</h1>
-    <p class="sr-only">فولاد در مقیاس جهان؛ قدرت تأمین و دقت در تحویل، از کارخانه تا بندر و از ایران تا جهان.</p>
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
 
-    <img
-      class="reference-art"
-      src="./assets/mohajer-cinematic-fullsite-v3.jpg"
-      width="479"
-      height="2048"
-      fetchpriority="high"
-      decoding="async"
-      alt="نمای کامل سینمایی وب‌سایت فولاد مهاجر مبین شامل تأمین فولاد، کنترل استاندارد، قیمت روز، سابقه مجموعه، صادرات، حوزه‌های صنعتی و فرم تماس"
-    />
+  <header class="site-header" id="siteHeader">
+    <a class="brand" href="../" aria-label="صفحه اصلی فولاد مهاجر مبین"><img src="./assets/mohajer-logo.png" alt="فولاد مهاجر مبین" width="220" height="72"></a>
+    <nav class="nav-links" id="transportNav" aria-label="منوی اصلی">
+      <a class="nav-link" href="../">خانه</a>
+      <a class="nav-link" href="../#catalogSectionAnchor">محصولات</a>
+      <a class="nav-link" href="../#departments">دپارتمان‌ها</a>
+      <a class="nav-link" href="../#about">درباره ما</a>
+      <a class="nav-link active" href="./" aria-current="page">خدمات بارگیری و حمل‌ونقل</a>
+      <a class="nav-link" href="../#contactView">تماس با ما</a>
+      <a class="nav-link special" href="../#specialSaleView">فروش ویژه</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="header-quote" href="https://wa.me/message/4XJJK7VC6GWYD1" target="_blank" rel="noopener noreferrer">دریافت قیمت <span>←</span></a>
+      <span class="lang-chip" aria-label="زبان فارسی">FA</span>
+      <a class="icon-button exit" href="../" aria-label="بازگشت به سایت اصلی">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 8l4 4-4 4M18 12H7M10 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h5"/></svg>
+      </a>
+      <button class="icon-button menu-toggle" id="menuToggle" type="button" aria-label="باز کردن منو" aria-controls="transportNav" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </header>
 
-    <span class="section-anchor" id="top" style="top:0"></span>
-    <span class="section-anchor" id="supply-chain" style="top:13.4%"></span>
-    <span class="section-anchor" id="products" style="top:22.1%"></span>
-    <span class="section-anchor" id="daily-price" style="top:35.9%"></span>
-    <span class="section-anchor" id="experience" style="top:49.6%"></span>
-    <span class="section-anchor" id="export" style="top:61.1%"></span>
-    <span class="section-anchor" id="industries" style="top:74.4%"></span>
-    <span class="section-anchor" id="contact" style="top:87.4%"></span>
+  <main>
+    <section class="hero" id="top">
+      <img class="hero-media" src="./assets/hero-industrial.webp" alt="بارگیری کلاف فولادی با جرثقیل در انبار صنعتی" width="1672" height="941" fetchpriority="high">
+      <div class="hero-light" aria-hidden="true"></div>
+      <div class="hero-scan" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-copy reveal is-visible">
+          <div class="eyebrow"><span class="pulse"></span>زنجیره تأمین تخصصی فولاد • لجستیک هوشمند</div>
+          <h1><span class="line">فولاد؛ در مقیاس جهان</span><span class="accent">قدرت تأمین؛ دقت در تحویل</span></h1>
+          <p class="hero-lead">از انتخاب کارخانه و کنترل استاندارد تا بارگیری، اسناد و تحویل در مقصد؛ یک مسیر یکپارچه برای تجارت مطمئن فولاد.</p>
+          <div class="hero-actions">
+            <a class="button" href="https://wa.me/message/4XJJK7VC6GWYD1" target="_blank" rel="noopener noreferrer">شروع همکاری <span>←</span></a>
+            <a class="button ghost" href="#supply">مشاهده توانمندی‌ها <span>↓</span></a>
+          </div>
+          <div class="hero-stats" aria-label="آمار فعالیت">
+            <div class="hero-stat"><strong><span class="counter" data-count="70">۰</span>+</strong><span>سال تجربه تجاری</span></div>
+            <div class="hero-stat"><strong><span class="counter" data-count="18">۰</span></strong><span>مقصد صادراتی</span></div>
+            <div class="hero-stat"><strong><span class="counter" data-count="12">۰</span></strong><span>گروه محصول</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="scene-code" aria-hidden="true">MOHAJER / LOGISTICS / 2026</div>
+      <div class="scroll-cue" aria-hidden="true"><span>SCROLL TO EXPLORE</span><i></i></div>
 
-    <a class="hotspot logo-hotspot" href="../" aria-label="بازگشت به صفحه اصلی">صفحه اصلی</a>
-    <a class="hotspot quote-hotspot" href="https://wa.me/message/4XJJK7VC6GWYD1" target="_blank" rel="noopener noreferrer" aria-label="دریافت قیمت در واتساپ">دریافت قیمت</a>
-    <a class="hotspot hero-quote-hotspot" href="https://wa.me/message/4XJJK7VC6GWYD1" target="_blank" rel="noopener noreferrer" aria-label="استعلام سریع قیمت">استعلام سریع</a>
-    <a class="hotspot price-quote-hotspot" href="https://wa.me/message/4XJJK7VC6GWYD1" target="_blank" rel="noopener noreferrer" aria-label="استعلام سریع شمش فولادی">استعلام سریع شمش فولادی</a>
-    <a class="hotspot contact-hotspot" href="https://wa.me/message/4XJJK7VC6GWYD1" target="_blank" rel="noopener noreferrer" aria-label="شروع پروژه و تماس با فولاد مهاجر مبین">شروع پروژه</a>
+      <div class="capability-strip reveal delay-2">
+        <article class="capability"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 9l9-5 9 5-9 5-9-5zM5 12v5l7 4 7-4v-5"/></svg><div><strong>شناخت بازار</strong><span>پایش قیمت و ظرفیت کارخانه‌ها</span></div></article>
+        <article class="capability"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20V8l8-4 8 4v12M8 20v-7h8v7"/></svg><div><strong>تأمین مستقیم</strong><span>انتخاب منبع معتبر و مناسب</span></div></article>
+        <article class="capability"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 14h11V6H4v8zm11-5h3l3 4v4h-6V9zM7 20a2 2 0 100-4 2 2 0 000 4zm11 0a2 2 0 100-4 2 2 0 000 4z"/></svg><div><strong>بارگیری ایمن</strong><span>کنترل وزن، چیدمان و مهاربندی</span></div></article>
+        <article class="capability"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 3h10v4H7zM5 7h14v14H5zM8 12h8M8 16h5"/></svg><div><strong>اسناد صادراتی</strong><span>هماهنگی مدارک و تشریفات</span></div></article>
+        <article class="capability"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><div><strong>تحویل بین‌المللی</strong><span>پیگیری مسیر تا رسیدن به مقصد</span></div></article>
+      </div>
+    </section>
+
+    <section class="section supply-section" id="supply">
+      <div class="shell supply-grid">
+        <div class="supply-cards reveal from-left">
+          <article class="supply-card" data-index="01"><div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 18l4-5 4 3 4-7 4 9H4zM4 5h16"/></svg></div><h3>تحلیل و انتخاب منبع</h3><p>بررسی بازار، کارخانه، گرید و شرایط تجاری متناسب با سفارش.</p></article>
+          <article class="supply-card" data-index="02"><div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20V8l8-4 8 4v12M8 11h8M8 15h8"/></svg></div><h3>تأمین و آماده‌سازی</h3><p>تطبیق مشخصات فنی، ظرفیت تولید و برنامه تحویل کارخانه.</p></article>
+          <article class="supply-card" data-index="03"><div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 15h11V7H4v8zm11-5h3l3 4v4h-6v-8zM7 20a2 2 0 100-4 2 2 0 000 4zm11 0a2 2 0 100-4 2 2 0 000 4z"/></svg></div><h3>بارگیری و کنترل</h3><p>نظارت بر وزن، بسته‌بندی، چیدمان، مهاربندی و خروج بار.</p></article>
+          <article class="supply-card" data-index="04"><div class="supply-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 17h18l-2 3H5l-2-3zM7 17V8h10v9M10 8V4h4v4"/></svg></div><h3>حمل تا مقصد</h3><p>هماهنگی مسیر زمینی، ریلی یا دریایی و پیگیری مرحله‌به‌مرحله.</p></article>
+        </div>
+        <div class="supply-copy reveal from-right">
+          <div class="kicker">یک مسیر؛ یک مسئولیت</div>
+          <h2 class="section-title">زنجیره‌ای کامل از شناخت بازار تا تحویل</h2>
+          <p class="section-lead">هر سفارش فولادی فقط خرید کالا نیست؛ مجموعه‌ای از تصمیم‌های فنی، مالی و لجستیکی است. تیم ما تمام این مراحل را در یک ساختار شفاف مدیریت می‌کند.</p>
+          <div class="supply-points">
+            <div class="supply-point"><i>✓</i><span>یک تیم پاسخ‌گو از استعلام تا تحویل نهایی</span></div>
+            <div class="supply-point"><i>✓</i><span>گزارش وضعیت بار و هماهنگی مستمر با مشتری</span></div>
+            <div class="supply-point"><i>✓</i><span>کنترل ریسک زمان، کیفیت و هزینه حمل</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="ghost-title" aria-hidden="true">BUILT FOR GLOBAL TRADE</div>
+    </section>
+
+    <section class="section precision-section" id="products">
+      <div class="shell">
+        <div class="section-heading-row reveal">
+          <div><div class="kicker">کنترل کیفیت و مشخصات</div><h2 class="section-title">فولاد؛ دقیق، استاندارد و آماده صادرات</h2></div>
+          <p class="section-lead">مشخصات فنی، گرید، ابعاد، بسته‌بندی و شرایط بازرسی پیش از بارگیری کنترل و در اسناد سفارش ثبت می‌شود.</p>
+        </div>
+        <div class="steel-stage reveal delay-1">
+          <aside class="stage-specs">
+            <div class="mini">TECHNICAL DATA / 01</div>
+            <h3>کلاف فولادی صادراتی</h3>
+            <div class="spec-row"><span>گرید</span><strong>ST37 / ST52</strong></div>
+            <div class="spec-row"><span>استاندارد</span><strong>DIN / ASTM</strong></div>
+            <div class="spec-row"><span>بازرسی</span><strong>درخواست مشتری</strong></div>
+            <div class="spec-row"><span>بسته‌بندی</span><strong>صادراتی</strong></div>
+            <div class="quality-meter"><div><span>شاخص کنترل کیفیت</span><strong>۹۲٪</strong></div><i></i></div>
+          </aside>
+          <span class="stage-tag tag-one">کنترل سطح و ضخامت</span>
+          <span class="stage-tag tag-two">بسته‌بندی مقاوم</span>
+          <span class="stage-tag tag-three">تطبیق گواهی آنالیز</span>
+          <div class="stage-data"><div><strong>۰۱</strong><span>انتخاب محصول</span></div><div><strong>۰۲</strong><span>بازرسی فنی</span></div><div><strong>۰۳</strong><span>تأیید بسته‌بندی</span></div><div><strong>۰۴</strong><span>مجوز بارگیری</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section market-section" id="prices">
+      <div class="market-watermark" aria-hidden="true">MARKET INTELLIGENCE</div>
+      <div class="shell">
+        <div class="section-heading-row reveal">
+          <div><div class="kicker">تصمیم بر پایه داده</div><h2 class="section-title">قیمت روز؛ تصمیم سریع‌تر</h2></div>
+          <p class="section-lead">اطلاعات بازار و امکان تأمین روزانه بررسی می‌شود تا پیشنهاد تجاری دقیق‌تر و سریع‌تری دریافت کنید.</p>
+        </div>
+        <div class="market-grid">
+          <div class="price-table-card reveal from-left">
+            <div class="table-toolbar"><h3>آخرین وضعیت بازار شمش</h3><div class="price-tabs" role="tablist"><button class="price-tab active" data-grade="all" type="button">همه</button><button class="price-tab" data-grade="5sp" type="button">5SP</button><button class="price-tab" data-grade="3sp" type="button">3SP</button></div></div>
+            <div class="price-table-wrap">
+              <table class="price-table">
+                <thead><tr><th>محصول</th><th>گرید</th><th>محل تحویل</th><th>قیمت / تن</th><th>تغییر</th><th></th></tr></thead>
+                <tbody>
+                  <tr data-grade="5sp"><td>شمش ۱۲۵×۱۲۵</td><td>5SP</td><td>اصفهان</td><td class="price">۶۶۹,۰۰۰</td><td class="up">▲ ۰.۳٪</td><td><a class="order" href="https://wa.me/message/4XJJK7VC6GWYD1" target="_blank" rel="noopener noreferrer">استعلام</a></td></tr>
+                  <tr data-grade="5sp"><td>شمش ۱۳۰×۱۳۰</td><td>5SP</td><td>یزد</td><td class="price">۶۶۷,۰۰۰</td><td class="up">▲ ۰.۲٪</td><td><a class="order" href="https://wa.me/message/4XJJK7VC6GWYD1" target="_blank" rel="noopener noreferrer">استعلام</a></td></tr>
+                  <tr data-grade="3sp"><td>شمش ۱۵۰×۱۵۰</td><td>3SP</td><td>سمنان</td><td class="price">۶۶۲,۰۰۰</td><td class="down">▼ ۰.۱٪</td><td><a class="order" href="https://wa.me/message/4XJJK7VC6GWYD1" target="_blank" rel="noopener noreferrer">استعلام</a></td></tr>
+                  <tr data-grade="3sp"><td>شمش ۱۲۵×۱۲۵</td><td>3SP</td><td>قم</td><td class="price">۶۷۰,۰۰۰</td><td class="up">▲ ۰.۳٪</td><td><a class="order" href="https://wa.me/message/4XJJK7VC6GWYD1" target="_blank" rel="noopener noreferrer">استعلام</a></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <aside class="quick-quote reveal from-right">
+            <span class="quote-badge">پیشنهاد امروز</span>
+            <h3>شمش فولادی 5SP</h3>
+            <span class="grade">۱۳۰ × ۱۳۰ میلی‌متر • تحویل کارخانه</span>
+            <div class="quote-number"><small>قیمت نمونه بازار / ریال</small><strong>۶۶۷,۰۰۰</strong></div>
+            <form class="quote-form" id="quickQuoteForm">
+              <input id="quoteAmount" type="number" min="1" inputmode="numeric" placeholder="مقدار مورد نیاز (تن)" aria-label="مقدار مورد نیاز به تن">
+              <input id="quoteDestination" type="text" placeholder="شهر یا کشور مقصد" aria-label="مقصد تحویل">
+              <button class="button" type="submit">استعلام سریع <span>←</span></button>
+            </form>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section legacy-section" id="experience">
+      <div class="shell legacy-grid">
+        <div class="legacy-emblem reveal from-left">
+          <div class="legacy-rings"><span class="orbit-dot"></span><strong><span class="counter" data-count="70">۰</span>+</strong><span>سال اعتماد در تجارت</span></div>
+        </div>
+        <div class="legacy-copy reveal from-right">
+          <div class="kicker">ریشه در اعتماد</div>
+          <h2 class="section-title">ریشه‌دار در تجربه؛ آماده برای آینده</h2>
+          <p class="section-lead">مسیر گروه مهاجر از تجارت داخلی آغاز شد و با توسعه صادرات، شناخت بازارهای منطقه و ورود به صنایع راهبردی ادامه پیدا کرد.</p>
+          <blockquote class="legacy-quote">«اعتماد برای ما یک شعار نیست؛ نتیجهٔ تعهد مداوم به کیفیت، زمان و قولی است که به مشتری می‌دهیم.»</blockquote>
+          <div class="legacy-timeline"><div class="legacy-time"><strong>۱۳۳۰</strong><span>آغاز فعالیت تجاری</span></div><div class="legacy-time"><strong>۱۳۶۶</strong><span>ورود به بازار جهانی</span></div><div class="legacy-time"><strong>۱۳۹۷</strong><span>توسعه صنایع راهبردی</span></div><div class="legacy-time"><strong>امروز</strong><span>شبکه تأمین بین‌المللی</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section export-section" id="export">
+      <div class="shell export-grid">
+        <div class="export-map reveal from-left" aria-label="شبکه مسیرهای صادراتی">
+          <svg viewBox="0 0 700 420" role="img" aria-label="مسیرهای صادراتی از ایران">
+            <g fill="none" stroke="rgba(141,177,208,.25)" stroke-width="1"><path d="M40 135l78-52 79 18 37-44 88 21 54-45 86 35 35 61 75-17 83 48-18 63-72 16-35 74-86 8-57 52-71-48-83 16-49-58-82-32z"/><path d="M120 83l22 80-39 88M197 101l-14 106 51 114M322 78l12 95 43 70-10 80M462 68l-35 102 38 69M572 112l-40 99 5 72"/></g>
+            <path class="route-line" d="M365 225C300 170 234 145 158 142"/><path class="route-line" d="M365 225C432 170 485 148 558 157"/><path class="route-line" d="M365 225C420 270 495 284 582 270"/><path class="route-line" d="M365 225C310 282 239 299 167 281"/>
+            <circle class="map-node" cx="365" cy="225" r="7"/><circle class="map-node" cx="158" cy="142" r="5"/><circle class="map-node" cx="558" cy="157" r="5"/><circle class="map-node" cx="582" cy="270" r="5"/><circle class="map-node" cx="167" cy="281" r="5"/>
+          </svg>
+          <div class="map-label">ORIGIN: IRAN<br>ACTIVE EXPORT CORRIDORS: 18</div>
+        </div>
+        <div class="export-copy reveal from-right">
+          <div class="kicker">لجستیک فرامرزی</div>
+          <h2 class="section-title">از کارخانه تا بندر؛ از ایران تا جهان</h2>
+          <p class="section-lead">برنامه‌ریزی بارگیری، حمل داخلی، تشریفات صادرات و هماهنگی مسیر دریایی یا زمینی در یک جریان منظم انجام می‌شود.</p>
+          <div class="export-metrics"><div class="export-metric"><strong><span class="counter" data-count="18">۰</span></strong><span>مقصد صادراتی فعال</span></div><div class="export-metric"><strong>۳</strong><span>مسیر حمل زمینی، ریلی و دریایی</span></div><div class="export-metric"><strong>۲۴/۷</strong><span>پیگیری وضعیت محموله</span></div></div>
+          <div class="route-status"><i></i><span>شبکه هماهنگی حمل فعال است</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section industries-section" id="industries">
+      <div class="shell">
+        <div class="section-heading-row reveal">
+          <div><div class="kicker">گستره فعالیت گروه مهاجر</div><h2 class="section-title">سه صنعت؛ یک شبکه قدرتمند</h2></div>
+          <p class="section-lead">تجربه مشترک در تأمین، تجارت و صادرات، سه حوزه اصلی فعالیت گروه را به یک شبکه هماهنگ تبدیل کرده است.</p>
+        </div>
+        <div class="industries-grid">
+          <a class="industry-card reveal delay-1" href="../#catalogSectionAnchor"><img src="./assets/product-coil.webp" alt="محصولات فولادی" loading="lazy"><span class="industry-arrow">↗</span><div class="industry-content"><small>STEEL INDUSTRY</small><h3>صنعت فولاد</h3><p>تأمین شمش، مقاطع و محصولات فولادی برای بازار داخلی و صادرات.</p></div></a>
+          <a class="industry-card reveal delay-2" href="https://mtmp.ir" target="_blank" rel="noopener noreferrer"><img src="./assets/warehouse.webp" alt="صنایع پتروشیمی" loading="lazy"><span class="industry-arrow">↗</span><div class="industry-content"><small>PETROCHEMICAL</small><h3>صنایع پتروشیمی</h3><p>راهکارهای تجاری و زنجیره تأمین برای مواد و محصولات تخصصی.</p></div></a>
+          <a class="industry-card reveal delay-3" href="https://wa.me/message/4XJJK7VC6GWYD1" target="_blank" rel="noopener noreferrer"><img src="./assets/product-billet.webp" alt="صنایع غذایی و بازرگانی" loading="lazy"><span class="industry-arrow">↗</span><div class="industry-content"><small>FOOD &amp; TRADE</small><h3>صنایع غذایی</h3><p>شبکه تأمین و صادرات محصولات منتخب با استانداردهای بازار مقصد.</p></div></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="shell contact-panel reveal">
+        <div class="contact-copy"><div class="kicker">آماده شروع هستیم</div><h2>پروژه بعدی شما، از اینجا آغاز می‌شود</h2><p>نوع محصول، مقدار و مقصد را اعلام کنید؛ کارشناسان ما مناسب‌ترین مسیر تأمین و حمل را بررسی می‌کنند.</p></div>
+        <div class="contact-actions">
+          <a class="contact-action primary" href="https://wa.me/message/4XJJK7VC6GWYD1" target="_blank" rel="noopener noreferrer"><span><small>پاسخ سریع کارشناسان</small><strong>درخواست مشاوره و قیمت</strong></span><b>←</b></a>
+          <a class="contact-action" href="tel:+985137057124"><span><small>تماس با دفتر مرکزی</small><strong dir="ltr">+98 51 3705 7124-5</strong></span><b>☎</b></a>
+          <a class="contact-action" href="mailto:info@mohajer-group.com"><span><small>ارسال مشخصات سفارش</small><strong>info@mohajer-group.com</strong></span><b>✉</b></a>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="footer-grid">
+        <div class="footer-brand"><img src="./assets/mohajer-logo.png" alt="فولاد مهاجر مبین" width="220" height="72"><p>تأمین، تجارت و صادرات محصولات فولادی با تمرکز بر کیفیت، زمان‌بندی و تحویل مطمئن در بازارهای داخلی و بین‌المللی.</p></div>
+        <div class="footer-col"><h4>دسترسی سریع</h4><a href="../">خانه</a><a href="../#catalogSectionAnchor">محصولات</a><a href="../#about">درباره ما</a><a href="../#contactView">تماس با ما</a></div>
+        <div class="footer-col"><h4>خدمات</h4><a href="#supply">زنجیره تأمین</a><a href="#products">کنترل کیفیت</a><a href="#prices">قیمت روز</a><a href="#export">حمل بین‌المللی</a></div>
+        <div class="footer-col"><h4>اطلاعات تماس</h4><span dir="ltr">+98 51 3705 7124-5</span><span dir="ltr">+98 915 302 7342</span><a href="mailto:info@mohajer-group.com">info@mohajer-group.com</a><span>مشهد، بلوار جانباز، پاژ ۲</span></div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="currentYear"></span> Mohajer Mobin Steel. All rights reserved.</span><span>POWERED BY EXPERIENCE • BUILT FOR GLOBAL TRADE</span></div>
+    </div>
+  </footer>
+
+  <button class="back-top" id="backTop" type="button" aria-label="بازگشت به بالای صفحه">↑</button>
+
+  <script>
+    (() => {
+      const header = document.getElementById('siteHeader');
+      const progress = document.getElementById('scrollProgress');
+      const backTop = document.getElementById('backTop');
+      const menuButton = document.getElementById('menuToggle');
+      const menu = document.getElementById('transportNav');
+
+      const updateScroll = () => {
+        const max = document.documentElement.scrollHeight - innerHeight;
+        const ratio = max > 0 ? scrollY / max : 0;
+        progress.style.width = `${Math.min(100, ratio * 100)}%`;
+        header.classList.toggle('scrolled', scrollY > 60);
+        backTop.classList.toggle('visible', scrollY > 700);
+      };
+
+      addEventListener('scroll', updateScroll, { passive: true });
+      updateScroll();
+
+      menuButton.addEventListener('click', () => {
+        const open = menu.classList.toggle('open');
+        menuButton.setAttribute('aria-expanded', String(open));
+        menuButton.setAttribute('aria-label', open ? 'بستن منو' : 'باز کردن منو');
+      });
+      menu.addEventListener('click', event => {
+        if (event.target.closest('a')) {
+          menu.classList.remove('open');
+          menuButton.setAttribute('aria-expanded', 'false');
+        }
+      });
+      addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+          menu.classList.remove('open');
+          menuButton.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .12, rootMargin: '0px 0px -55px' });
+      document.querySelectorAll('.reveal:not(.is-visible)').forEach(element => revealObserver.observe(element));
+
+      const toPersian = value => String(value).replace(/\d/g, number => '۰۱۲۳۴۵۶۷۸۹'[number]);
+      const counterObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting || entry.target.dataset.started) return;
+          entry.target.dataset.started = 'true';
+          const target = Number(entry.target.dataset.count || 0);
+          const duration = 1350;
+          const start = performance.now();
+          const tick = now => {
+            const progressValue = Math.min(1, (now - start) / duration);
+            const eased = 1 - Math.pow(1 - progressValue, 3);
+            entry.target.textContent = toPersian(Math.round(target * eased));
+            if (progressValue < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+          counterObserver.unobserve(entry.target);
+        });
+      }, { threshold: .65 });
+      document.querySelectorAll('.counter').forEach(counter => counterObserver.observe(counter));
+
+      document.querySelectorAll('.price-tab').forEach(button => {
+        button.addEventListener('click', () => {
+          document.querySelectorAll('.price-tab').forEach(item => item.classList.remove('active'));
+          button.classList.add('active');
+          const grade = button.dataset.grade;
+          document.querySelectorAll('.price-table tbody tr').forEach(row => {
+            row.hidden = grade !== 'all' && row.dataset.grade !== grade;
+          });
+        });
+      });
+
+      document.getElementById('quickQuoteForm').addEventListener('submit', event => {
+        event.preventDefault();
+        const amount = document.getElementById('quoteAmount').value.trim() || 'نامشخص';
+        const destination = document.getElementById('quoteDestination').value.trim() || 'نامشخص';
+        const message = `سلام، برای شمش فولادی 5SP استعلام دارم.%0Aمقدار: ${encodeURIComponent(amount)} تن%0Aمقصد: ${encodeURIComponent(destination)}`;
+        window.open(`https://wa.me/989153027342?text=${message}`, '_blank', 'noopener,noreferrer');
+      });
+
+      backTop.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+    })();
+  </script>
 </body>
 </html>
