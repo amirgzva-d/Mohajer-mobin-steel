@@ -133,8 +133,24 @@ def related_links(current_slug: str) -> str:
     )
 
 
+def seo_title(product: dict) -> str:
+    priority_titles = {
+        "steel-billet": "خرید و صادرات شمش فولادی | قیمت شمش",
+        "rebar": "خرید و صادرات میلگرد | قیمت میلگرد فولادی",
+        "steel-plate": "خرید و صادرات ورق فولادی | قیمت ورق",
+    }
+    return priority_titles.get(product["slug"], f'خرید و صادرات {product["fa"]} | فولاد مهاجر مبین')
+
+
 def schema_for(product: dict) -> str:
     url = f'{BASE_URL}/products/{product["slug"]}/'
+    search_terms = list(dict.fromkeys([
+        f'خرید {product["fa"]}',
+        f'فروش {product["fa"]}',
+        f'قیمت {product["fa"]}',
+        f'صادرات {product["fa"]}',
+        *product["keywords"],
+    ]))
     faq = [
         (f'برای خرید {product["fa"]} چه اطلاعاتی لازم است؟', f'گرید، ابعاد، مقدار، استاندارد، محل تحویل و نیاز بازرسی را اعلام کنید تا امکان تأمین و پیشنهاد تجاری بررسی شود.'),
         (f'آیا {product["fa"]} برای صادرات عرضه می‌شود؟', 'بله؛ امکان صادرات پس از تأیید موجودی، مشخصات فنی، مقصد، روش حمل و الزامات اسنادی بررسی می‌شود.'),
@@ -143,6 +159,23 @@ def schema_for(product: dict) -> str:
     graph = {
         "@context": "https://schema.org",
         "@graph": [
+            {
+                "@type": "Organization",
+                "@id": f"{BASE_URL}/#organization",
+                "name": "Mohajer Mobin Steel | فولاد مهاجر مبین",
+                "url": f"{BASE_URL}/",
+                "logo": f"{BASE_URL}/512.png",
+            },
+            {
+                "@type": "WebPage",
+                "@id": f"{url}#webpage",
+                "url": url,
+                "name": seo_title(product),
+                "inLanguage": ["fa-IR", "en"],
+                "about": {"@id": f"{url}#product"},
+                "isPartOf": {"@id": f"{BASE_URL}/#website"},
+                "keywords": search_terms,
+            },
             {
                 "@type": "Product",
                 "@id": f"{url}#product",
@@ -182,9 +215,15 @@ def schema_for(product: dict) -> str:
 
 def render(product: dict) -> str:
     url = f'{BASE_URL}/products/{product["slug"]}/'
-    title = f'خرید و صادرات {product["fa"]} | فولاد مهاجر مبین'
-    description = f'تأمین، بازرگانی و صادرات {product["fa"]}؛ {product["grades"]}. بررسی مشخصات، شرایط تحویل و استعلام تجاری از فولاد مهاجر مبین.'
-    keywords = "، ".join(product["keywords"])
+    title = seo_title(product)
+    description = f'خرید، فروش، قیمت و صادرات {product["fa"]}؛ {product["grades"]}. بررسی مشخصات، شرایط تحویل و استعلام تخصصی از فولاد مهاجر مبین.'
+    keywords = "، ".join(dict.fromkeys([
+        f'خرید {product["fa"]}',
+        f'فروش {product["fa"]}',
+        f'قیمت {product["fa"]}',
+        f'صادرات {product["fa"]}',
+        *product["keywords"],
+    ]))
     return f'''<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
@@ -192,6 +231,7 @@ def render(product: dict) -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{esc(title)}</title>
   <meta name="description" content="{esc(description)}">
+  <meta name="keywords" content="{esc(keywords)}">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="{url}">
   <link rel="alternate" hreflang="fa-IR" href="{url}">
@@ -203,7 +243,13 @@ def render(product: dict) -> str:
   <meta property="og:description" content="{esc(description)}">
   <meta property="og:url" content="{url}">
   <meta property="og:image" content="{esc(product['image'])}">
+  <meta property="og:image:alt" content="{esc(product['fa'])} — فولاد مهاجر مبین">
+  <meta property="og:locale" content="fa_IR">
+  <meta property="og:locale:alternate" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{esc(title)}">
+  <meta name="twitter:description" content="{esc(description)}">
+  <meta name="twitter:image" content="{esc(product['image'])}">
   <link rel="icon" href="../../48.png">
   <link rel="stylesheet" href="../product-page.css?v=20260811">
   <script type="application/ld+json">{schema_for(product)}</script>

@@ -129,6 +129,9 @@
     loading.style.display = 'none';
     const doc = iframe.contentDocument;
     if (!doc) return;
+    // The transport service is intentionally unpublished in the public menu.
+    // Admins can still review the menu entry while previewing the homepage.
+    doc.getElementById('navTransportLink')?.removeAttribute('hidden');
     applyDrafts(doc);
     const style = doc.createElement('style');
     style.textContent = `[data-key],img,section,.product-card,.ss-product-card,.feature-item-new,.dept-card{cursor:pointer!important;transition:outline .15s,box-shadow .15s}[data-key]:hover,img:hover,section:hover,.product-card:hover,.ss-product-card:hover,.feature-item-new:hover,.dept-card:hover{outline:2px solid #3478f6!important;outline-offset:3px!important;box-shadow:0 0 0 5px #3478f633!important}.admin-selected-element{outline:3px solid #3478f6!important;outline-offset:3px!important}.admin-resizable{resize:both!important;overflow:auto!important;min-width:40px!important;min-height:30px!important}`;
@@ -377,6 +380,18 @@
     document.querySelectorAll('#pageList button').forEach(item => item.classList.remove('active'));
     btn.classList.add('active');
     $('#currentPageName').textContent = btn.querySelector('span').textContent;
+    if (btn.dataset.previewUrl) {
+      loading.style.display = 'flex';
+      iframe.src = btn.dataset.previewUrl;
+      return;
+    }
+    if (!iframe.contentWindow.location.pathname.endsWith('/admin/') &&
+        iframe.contentWindow.location.pathname !== '/') {
+      loading.style.display = 'flex';
+      iframe.src = '../';
+      iframe.addEventListener('load', () => showPage(btn.dataset.target), { once: true });
+      return;
+    }
     showPage(btn.dataset.target);
   }));
   $('#languageSelect').addEventListener('change', event => {
