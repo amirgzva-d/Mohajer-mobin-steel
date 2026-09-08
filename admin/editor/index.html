@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohajer Steel Content Studio Pro | Visual Website Editor</title>
+    
+    <!-- Canonical & Security -->
+    <link rel="canonical" href="https://mohajer-steel.com/admin/editor/">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/32.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Editor CSS -->
+    <link rel="stylesheet" href="editor.css">
+    
+    <!-- Main Site CSS (for preview consistency) -->
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="editor-body">
+    
+    <!-- Top Bar -->
+    <header class="editor-header">
+        <div class="editor-header-left">
+            <div class="brand-logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="6" fill="#C89845"/>
+                    <path d="M8 24V8L16 12L24 8V24" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="brand-text">MOHAJER STEEL</span>
+                <span class="brand-subtitle">Content Studio Pro</span>
+            </div>
+            
+            <div class="editor-actions">
+                <button class="btn-action" id="btnUndo" title="Undo (Ctrl+Z)">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="1 4 1 10 7 10"></polyline>
+                        <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                    </svg>
+                    <span>Undo</span>
+                </button>
+                <button class="btn-action" id="btnRedo" title="Redo (Ctrl+Y)">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="23 4 23 10 17 10"></polyline>
+                        <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                    </svg>
+                    <span>Redo</span>
+                </button>
+                <div class="action-divider"></div>
+                <button class="btn-action btn-save-draft" id="btnSaveDraft" title="Save Draft">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                        <polyline points="7 3 7 8 15 8"></polyline>
+                    </svg>
+                    <span>Save Draft</span>
+                </button>
+                <button class="btn-action btn-preview" id="btnPreview" title="Preview Draft">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    <span>Preview</span>
+                </button>
+                <button class="btn-action btn-publish" id="btnPublish" title="Publish Changes">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                    <span>Publish</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="editor-header-right">
+            <div class="device-toggle">
+                <button class="device-btn active" data-device="desktop" title="Desktop View">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                    </svg>
+                </button>
+                <button class="device-btn" data-device="tablet" title="Tablet View">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+                        <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                    </svg>
+                </button>
+                <button class="device-btn" data-device="mobile" title="Mobile View">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                        <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="user-menu">
+                <button class="user-avatar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Editor Layout -->
+    <div class="editor-container">
+        
+        <!-- Left Sidebar - Navigation -->
+        <aside class="sidebar sidebar-left">
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-header">Pages</div>
+                    <ul class="nav-list" id="pageList">
+                        <!-- Pages will be populated by JS -->
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-header">Tools</div>
+                    <ul class="nav-list">
+                        <li class="nav-item" data-panel="elements">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="14" width="7" height="7"></rect>
+                                <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+                            <span>Elements</span>
+                        </li>
+                        <li class="nav-item" data-panel="media">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                <polyline points="21 15 16 10 5 21"></polyline>
+                            </svg>
+                            <span>Media Library</span>
+                        </li>
+                        <li class="nav-item" data-panel="history">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <span>History</span>
+                        </li>
+                        <li class="nav-item" data-panel="seo">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            <span>SEO Manager</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-header">AI Assistant</div>
+                    <ul class="nav-list">
+                        <li class="nav-item" data-panel="ai" id="aiAssistantBtn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"></path>
+                                <path d="M9 12h6"></path>
+                                <path d="M12 9v6"></path>
+                            </svg>
+                            <span>AI Designer</span>
+                            <span class="badge-new">NEW</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-header">Settings</div>
+                    <ul class="nav-list">
+                        <li class="nav-item" data-panel="settings">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                            </svg>
+                            <span>Settings</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+        
+        <!-- Center - Preview Area -->
+        <main class="preview-area">
+            <div class="preview-toolbar">
+                <div class="preview-info">
+                    <span class="preview-label">Editing:</span>
+                    <select id="pageSelector" class="page-selector">
+                        <option value="/">Home Page</option>
+                        <option value="/products/steel-billet/" selected>Steel Billet</option>
+                        <option value="/products/steel-beam/">Steel Beam</option>
+                        <option value="/products/steel-pipe/">Steel Pipe</option>
+                        <option value="/products/rebar/">Rebar</option>
+                        <option value="/products/steel-plate/">Steel Plate</option>
+                        <option value="/products/steel-angle/">Steel Angle</option>
+                        <option value="/products/steel-channel/">Steel Channel</option>
+                        <option value="/products/steel-slab/">Steel Slab</option>
+                        <option value="/loading-transport/">Loading & Transport</option>
+                    </select>
+                    <span class="status-badge draft" id="draftStatus">Draft Mode</span>
+                </div>
+                <div class="zoom-controls">
+                    <button class="zoom-btn" id="zoomOut">−</button>
+                    <span class="zoom-level" id="zoomLevel">100%</span>
+                    <button class="zoom-btn" id="zoomIn">+</button>
+                </div>
+            </div>
+            
+            <div class="preview-canvas-wrapper">
+                <div class="preview-canvas" id="previewCanvas">
+                    <!-- Live preview will be injected here -->
+                    <iframe id="previewFrame" src="/" sandbox="allow-same-origin allow-scripts"></iframe>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Right Sidebar - Element Settings -->
+        <aside class="sidebar sidebar-right">
+            <div class="element-info" id="elementInfo">
+                <div class="element-header">
+                    <span class="element-type" id="elementType">No Element Selected</span>
+                    <div class="element-actions">
+                        <button class="icon-btn" id="btnDuplicate" title="Duplicate">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                        <button class="icon-btn" id="btnDelete" title="Delete">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="element-path" id="elementPath"></div>
+            </div>
+            
+            <div class="settings-panel" id="settingsPanel">
+                <!-- Content Section -->
+                <div class="setting-group collapsible" data-group="content">
+                    <div class="setting-header">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                        </svg>
+                        <span>Content</span>
+                        <svg class="collapse-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="setting-content">
+                        <div class="setting-field" data-field="textContent">
+                            <label>Text Content</label>
+                            <textarea id="textContent" rows="3"></textarea>
+                        </div>
+                        <div class="setting-field" data-field="htmlContent">
+                            <label>HTML (Advanced)</label>
+                            <textarea id="htmlContent" rows="2" class="code-input"></textarea>
+                        </div>
+                        <div class="setting-field" data-field="linkUrl">
+                            <label>Link URL</label>
+                            <input type="url" id="linkUrl" placeholder="https://...">
+                        </div>
+                        <div class="setting-field" data-field="linkTarget">
+                            <label>Link Target</label>
+                            <select id="linkTarget">
+                                <option value="">Same Window</option>
+                                <option value="_blank">New Tab</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Typography Section -->
+                <div class="setting-group collapsible" data-group="typography">
+                    <div class="setting-header">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="4 7 4 4 20 4 20 7"></polyline>
+                            <line x1="9" y1="20" x2="15" y2="20"></line>
+                            <line x1="12" y1="4" x2="12" y2="20"></line>
+                        </svg>
+                        <span>Typography</span>
+                        <svg class="collapse-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="setting-content">
+                        <div class="setting-field" data-field="fontFamily">
+                            <label>Font Family</label>
+                            <select id="fontFamily">
+                                <option value="">Default</option>
+                                <option value="'Inter', sans-serif">Inter</option>
+                                <option value="'Vazirmatn', sans-serif">Vazirmatn</option>
+                                <option value="'Lalezar', cursive">Lalezar</option>
+                                <option value="'Orbitron', sans-serif">Orbitron</option>
+                            </select>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-field" data-field="fontSize">
+                                <label>Font Size</label>
+                                <div class="input-with-unit">
+                                    <input type="number" id="fontSize" value="">
+                                    <select id="fontSizeUnit">
+                                        <option value="px">px</option>
+                                        <option value="rem">rem</option>
+                                        <option value="em">em</option>
+                                        <option value="%">%</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="setting-field" data-field="fontWeight">
+                                <label>Weight</label>
+                                <select id="fontWeight">
+                                    <option value="">Default</option>
+                                    <option value="300">Light</option>
+                                    <option value="400">Normal</option>
+                                    <option value="500">Medium</option>
+                                    <option value="600">Semi Bold</option>
+                                    <option value="700">Bold</option>
+                                    <option value="800">Extra Bold</option>
+                                    <option value="900">Black</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-field" data-field="lineHeight">
+                                <label>Line Height</label>
+                                <input type="number" id="lineHeight" step="0.1" value="">
+                            </div>
+                            <div class="setting-field" data-field="letterSpacing">
+                                <label>Letter Spacing</label>
+                                <div class="input-with-unit">
+                                    <input type="number" id="letterSpacing" step="0.1" value="">
+                                    <select id="letterSpacingUnit">
+                                        <option value="px">px</option>
+                                        <option value="em">em</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="setting-field" data-field="textAlign">
+                            <label>Text Align</label>
+                            <div class="button-group">
+                                <button class="toggle-btn" data-value="left">Left</button>
+                                <button class="toggle-btn" data-value="center">Center</button>
+                                <button class="toggle-btn" data-value="right">Right</button>
+                                <button class="toggle-btn" data-value="justify">Justify</button>
+                            </div>
+                        </div>
+                        <div class="setting-field" data-field="textTransform">
+                            <label>Text Transform</label>
+                            <select id="textTransform">
+                                <option value="">None</option>
+                                <option value="uppercase">Uppercase</option>
+                                <option value="lowercase">Lowercase</option>
+                                <option value="capitalize">Capitalize</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Colors Section -->
+                <div class="setting-group collapsible" data-group="colors">
+                    <div class="setting-header">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 2a10 10 0 0 1 10 10"></path>
+                        </svg>
+                        <span>Colors</span>
+                        <svg class="collapse-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="setting-content">
+                        <div class="setting-field" data-field="textColor">
+                            <label>Text Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" id="textColorPicker" value="#000000">
+                                <input type="text" id="textColor" class="color-input" value="" placeholder="#000000">
+                            </div>
+                        </div>
+                        <div class="setting-field" data-field="backgroundColor">
+                            <label>Background Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" id="bgColorPicker" value="#ffffff">
+                                <input type="text" id="backgroundColor" class="color-input" value="" placeholder="#ffffff">
+                            </div>
+                        </div>
+                        <div class="setting-field" data-field="borderColor">
+                            <label>Border Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" id="borderColorPicker" value="#000000">
+                                <input type="text" id="borderColor" class="color-input" value="" placeholder="#000000">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Background Section -->
+                <div class="setting-group collapsible" data-group="background">
+                    <div class="setting-header">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                            <polyline points="21 15 16 10 5 21"></polyline>
+                        </svg>
+                        <span>Background</span>
+                        <svg class="collapse-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="setting-content">
+                        <div class="setting-field" data-field="bgImage">
+                            <label>Background Image</label>
+                            <div class="image-upload-wrapper">
+                                <input type="text" id="bgImageUrl" placeholder="Image URL or upload">
+                                <button class="btn-upload" id="bgImageUploadBtn">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="17 8 12 3 7 8"></polyline>
+                                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                                    </svg>
+                                    Upload
+                                </button>
+                            </div>
+                        </div>
+                        <div class="setting-field" data-field="bgSize">
+                            <label>Background Size</label>
+                            <select id="bgSize">
+                                <option value="">Default</option>
+                                <option value="cover">Cover</option>
+                                <option value="contain">Contain</option>
+                                <option value="auto">Auto</option>
+                            </select>
+                        </div>
+                        <div class="setting-field" data-field="bgPosition">
+                            <label>Background Position</label>
+                            <select id="bgPosition">
+                                <option value="">Default</option>
+                                <option value="center center">Center</option>
+                                <option value="top left">Top Left</option>
+                                <option value="top center">Top Center</option>
+                                <option value="top right">Top Right</option>
+                                <option value="bottom left">Bottom Left</option>
+                                <option value="bottom center">Bottom Center</option>
+                                <option value="bottom right">Bottom Right</option>
+                            </select>
+                        </div>
+                        <div class="setting-field" data-field="bgRepeat">
+                            <label>Background Repeat</label>
+                            <select id="bgRepeat">
+                                <option value="">Default</option>
+                                <option value="no-repeat">No Repeat</option>
+                                <option value="repeat">Repeat</option>
+                                <option value="repeat-x">Repeat X</option>
+                                <option value="repeat-y">Repeat Y</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Border Section -->
+                <div class="setting-group collapsible" data-group="border">
+                    <div class="setting-header">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                </svg>
+                        <span>Border</span>
+                        <svg class="collapse-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="setting-content">
+                        <div class="setting-row">
+                            <div class="setting-field" data-field="borderWidth">
+                                <label>Width</label>
+                                <div class="input-with-unit">
+                                    <input type="number" id="borderWidth" value="">
+                                    <select id="borderWidthUnit">
+                                        <option value="px">px</option>
+                                        <option value="em">em</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="setting-field" data-field="borderStyle">
+                                <label>Style</label>
+                                <select id="borderStyle">
+                                    <option value="">None</option>
+                                    <option value="solid">Solid</option>
+                                    <option value="dashed">Dashed</option>
+                                    <option value="dotted">Dotted</option>
+                                    <option value="double">Double</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="setting-field" data-field="borderRadius">
+                            <label>Border Radius</label>
+                            <div class="input-with-unit">
+                                <input type="number" id="borderRadius" value="">
+                                <select id="borderRadiusUnit">
+                                    <option value="px">px</option>
+                                    <option value="%">%</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Shadow Section -->
+                <div class="setting-group collapsible" data-group="shadow">
+                    <div class="setting-header">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        <span>Shadow</span>
+                        <svg class="collapse-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="setting-content">
+                        <div class="setting-row">
+                            <div class="setting-field" data-field="shadowX">
+                                <label>X Offset</label>
+                                <input type="number" id="shadowX" value="0">
+                            </div>
+                            <div class="setting-field" data-field="shadowY">
+                                <label>Y Offset</label>
+                                <input type="number" id="shadowY" value="4">
+                            </div>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-field" data-field="shadowBlur">
+                                <label>Blur</label>
+                                <input type="number" id="shadowBlur" value="10">
+                            </div>
+                            <div class="setting-field" data-field="shadowSpread">
+                                <label>Spread</label>
+                                <input type="number" id="shadowSpread" value="0">
+                            </div>
+                        </div>
+                        <div class="setting-field" data-field="shadowColor">
+                            <label>Shadow Color</label>
+                            <div class="color-picker-wrapper">
+                                <input type="color" id="shadowColorPicker" value="#000000">
+                                <input type="text" id="shadowColor" class="color-input" value="rgba(0,0,0,0.1)" placeholder="rgba(0,0,0,0.1)">
+                            </div>
+                        </div>
+                        <button class="btn-apply-shadow" id="btnApplyShadow">Apply Shadow</button>
+                    </div>
+                </div>
+                
+                <!-- Spacing Section -->
+                <div class="setting-group collapsible" data-group="spacing">
+                    <div class="setting-header">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="3" y1="9" x2="21" y2="9"></line>
+                            <line x1="3" y1="15" x2="21" y2="15"></line>
+                            <line x1="9" y1="3" x2="9" y2="21"></line>
+                            <line x1="15" y1="3" x2="15" y2="21"></line>
+                        </svg>
+                        <span>Spacing</span>
+                        <svg class="collapse-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="setting-content">
+                        <div class="spacing-diagram">
+                            <div class="spacing-box">
+                                <div class="spacing-control spacing-margin">
+                                    <span class="spacing-label">Margin</span>
+                                    <input type="number" id="marginTop" placeholder="T" title="Margin Top">
+                                    <input type="number" id="marginRight" placeholder="R" title="Margin Right">
+                                    <input type="number" id="marginBottom" placeholder="B" title="Margin Bottom">
+                                    <input type="number" id="marginLeft" placeholder="L" title="Margin Left">
+                                </div>
+                                <div class="spacing-padding">
+                                    <span class="spacing-label">Padding</span>
+                                    <input type="number" id="paddingTop" placeholder="T" title="Padding Top">
+                                    <input type="number" id="paddingRight" placeholder="R" title="Padding Right">
+                                    <input type="number" id="paddingBottom" placeholder="B" title="Padding Bottom">
+                                    <input type="number" id="paddingLeft" placeholder="L" title="Padding Left">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="setting-field" data-field="gap">
+                            <label>Gap (Flex/Grid)</label>
+                            <div class="input-with-unit">
+                                <input type="number" id="gap" value="">
+                                <select id="gapUnit">
+                                    <option value="px">px</option>
+                                    <option value="rem">rem</option>
+                                    <option value="%">%</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Size Section -->
+                <div class="setting-group collapsible" data-group="size">
+                    <div class="setting-header">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 21H3V3h18v18z"></path>
+                            <path d="M3 9h18"></path>
+                            <path d="M9 21V3"></path>
+                        </svg>
+                        <span>Size & Position</span>
+                        <svg class="collapse-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="setting-content">
+                        <div class="setting-row">
+                            <div class="setting-field" data-field="width">
+                                <label>Width</label>
+                                <div class="input-with-unit">
+                                    <input type="text" id="width" placeholder="auto">
+                                    <select id="widthUnit">
+                                        <option value="px">px</option>
+                                        <option value="%">%</option>
+                                        <option value="rem">rem</option>
+                                        <option value="vw">vw</option>
+                                        <option value="auto" selected>auto</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="setting-field" data-field="height">
+                                <label>Height</label>
+                                <div class="input-with-unit">
+                                    <input type="text" id="height" placeholder="auto">
+                                    <select id="heightUnit">
+                                        <option value="px">px</option>
+                                        <option value="%">%</option>
+                                        <option value="rem">rem</option>
+                                        <option value="vh">vh</option>
+                                        <option value="auto" selected>auto</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-field" data-field="minWidth">
+                                <label>Min Width</label>
+                                <div class="input-with-unit">
+                                    <input type="text" id="minWidth" placeholder="none">
+                                    <select id="minWidthUnit">
+                                        <option value="px">px</option>
+                                        <option value="%">%</option>
+                                        <option value="rem">rem</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="setting-field" data-field="maxWidth">
+                                <label>Max Width</label>
+                                <div class="input-with-unit">
+                                    <input type="text" id="maxWidth" placeholder="none">
+                                    <select id="maxWidthUnit">
+                                        <option value="px">px</option>
+                                        <option value="%">%</option>
+                                        <option value="rem">rem</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="setting-field" data-field="display">
+                            <label>Display</label>
+                            <select id="display">
+                                <option value="">Default</option>
+                                <option value="block">Block</option>
+                                <option value="inline-block">Inline Block</option>
+                                <option value="flex">Flex</option>
+                                <option value="grid">Grid</option>
+                                <option value="none">None</option>
+                            </select>
+                        </div>
+                        <div class="setting-field" data-field="position">
+                            <label>Position</label>
+                            <select id="position">
+                                <option value="">Default</option>
+                                <option value="static">Static</option>
+                                <option value="relative">Relative</option>
+                                <option value="absolute">Absolute</option>
+                                <option value="fixed">Fixed</option>
+                                <option value="sticky">Sticky</option>
+                            </select>
+                        </div>
+                        <div class="setting-field" data-field="zIndex">
+                            <label>Z-Index</label>
+                            <input type="number" id="zIndex" placeholder="auto">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Animation Section -->
+                <div class="setting-group collapsible" data-group="animation">
+                    <div class="setting-header">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                        </svg>
+                        <span>Animation</span>
+                        <svg class="collapse-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="setting-content">
+                        <div class="setting-field" data-field="animationType">
+                            <label>Animation Type</label>
+                            <select id="animationType">
+                                <option value="">None</option>
+                                <option value="fade-in">Fade In</option>
+                                <option value="fade-up">Fade Up</option>
+                                <option value="fade-down">Fade Down</option>
+                                <option value="fade-left">Fade Left</option>
+                                <option value="fade-right">Fade Right</option>
+                                <option value="zoom-in">Zoom In</option>
+                                <option value="zoom-out">Zoom Out</option>
+                                <option value="slide-up">Slide Up</option>
+                                <option value="slide-down">Slide Down</option>
+                                <option value="slide-left">Slide Left</option>
+                                <option value="slide-right">Slide Right</option>
+                                <option value="bounce">Bounce</option>
+                                <option value="pulse">Pulse</option>
+                                <option value="rotate">Rotate</option>
+                            </select>
+                        </div>
+                        <div class="setting-row">
+                            <div class="setting-field" data-field="animationDuration">
+                                <label>Duration (ms)</label>
+                                <input type="number" id="animationDuration" value="600" min="100" max="5000">
+                            </div>
+                            <div class="setting-field" data-field="animationDelay">
+                                <label>Delay (ms)</label>
+                                <input type="number" id="animationDelay" value="0" min="0" max="5000">
+                            </div>
+                        </div>
+                        <div class="setting-field" data-field="animationEasing">
+                            <label>Easing</label>
+                            <select id="animationEasing">
+                                <option value="ease">Ease</option>
+                                <option value="linear">Linear</option>
+                                <option value="ease-in">Ease In</option>
+                                <option value="ease-out">Ease Out</option>
+                                <option value="ease-in-out">Ease In Out</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hover Effects Section -->
+                <div class="setting-group collapsible" data-group="hover">
+                    <div class="setting-header">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path>
+                        </svg>
+                        <span>Hover Effects</span>
+                        <svg class="collapse-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="setting-content">
+                        <div class="setting-field" data-field="hoverScale">
+                            <label>Scale on Hover</label>
+                            <input type="range" id="hoverScale" min="0.8" max="1.2" step="0.05" value="1">
+                            <span class="range-value" id="hoverScaleValue">1</span>
+                        </div>
+                        <div class="setting-field" data-field="hoverRotate">
+                            <label>Rotate on Hover (deg)</label>
+                            <input type="range" id="hoverRotate" min="-180" max="180" step="5" value="0">
+                            <span class="range-value" id="hoverRotateValue">0</span>
+                        </div>
+                        <div class="setting-field" data-field="hoverOpacity">
+                            <label>Opacity on Hover</label>
+                            <input type="range" id="hoverOpacity" min="0" max="1" step="0.1" value="1">
+                            <span class="range-value" id="hoverOpacityValue">1</span>
+                        </div>
+                        <div class="setting-field" data-field="hoverTransition">
+                            <label>Transition Duration (ms)</label>
+                            <input type="number" id="hoverTransition" value="300" min="0" max="2000">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Responsive Section -->
+                <div class="setting-group collapsible" data-group="responsive">
+                    <div class="setting-header">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                            <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                        </svg>
+                        <span>Responsive</span>
+                        <svg class="collapse-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="setting-content">
+                        <div class="responsive-tabs">
+                            <button class="responsive-tab active" data-breakpoint="desktop">Desktop</button>
+                            <button class="responsive-tab" data-breakpoint="tablet">Tablet</button>
+                            <button class="responsive-tab" data-breakpoint="mobile">Mobile</button>
+                        </div>
+                        <div class="responsive-settings">
+                            <p class="responsive-hint">Select a breakpoint above to set device-specific styles.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Advanced Section -->
+                <div class="setting-group collapsible" data-group="advanced">
+                    <div class="setting-header">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
+                        <span>Advanced</span>
+                        <svg class="collapse-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="setting-content">
+                        <div class="setting-field" data-field="customClass">
+                            <label>Custom CSS Class</label>
+                            <input type="text" id="customClass" placeholder="my-custom-class">
+                        </div>
+                        <div class="setting-field" data-field="customId">
+                            <label>Custom ID</label>
+                            <input type="text" id="customId" placeholder="my-element-id">
+                        </div>
+                        <div class="setting-field" data-field="customCss">
+                            <label>Custom CSS</label>
+                            <textarea id="customCss" rows="4" class="code-input" placeholder="/* Additional CSS */"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- AI Assistant Panel (Hidden by default) -->
+            <div class="ai-panel" id="aiPanel" style="display: none;">
+                <div class="ai-header">
+                    <h3>AI Design Assistant</h3>
+                    <button class="close-btn" id="closeAiPanel">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="ai-model-select">
+                    <label>AI Model</label>
+                    <select id="aiModel">
+                        <option value="qwen">Qwen</option>
+                        <option value="chatgpt">ChatGPT</option>
+                        <option value="claude">Claude</option>
+                    </select>
+                </div>
+                
+                <div class="ai-context" id="aiContext">
+                    <div class="context-item">
+                        <span class="context-label">Selected Element:</span>
+                        <span class="context-value" id="aiSelectedElement">None</span>
+                    </div>
+                    <div class="context-item">
+                        <span class="context-label">Element Type:</span>
+                        <span class="context-value" id="aiElementType">-</span>
+                    </div>
+                </div>
+                
+                <div class="ai-chat">
+                    <div class="ai-messages" id="aiMessages">
+                        <div class="ai-message ai-system">
+                            <p>Select an element on the page and describe what changes you'd like to make. For example:</p>
+                            <ul>
+                                <li>"Make this heading bigger and gold color"</li>
+                                <li>"Add a fade-up animation to this section"</li>
+                                <li>"Increase the spacing between cards"</li>
+                                <li>"Make this button more prominent on mobile"</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ai-input-area">
+                    <textarea id="aiInput" placeholder="Describe the changes you want..." rows="3"></textarea>
+                    <button class="btn-send" id="btnSendAi">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                        Send
+                    </button>
+                </div>
+                
+                <div class="ai-proposal" id="aiProposal" style="display: none;">
+                    <h4>Proposed Changes</h4>
+                    <div class="proposal-content" id="proposalContent"></div>
+                    <div class="proposal-actions">
+                        <button class="btn-cancel" id="btnCancelProposal">Cancel</button>
+                        <button class="btn-apply" id="btnApplyProposal">Apply Changes</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+    
+    <!-- Modals -->
+    <!-- Publish Confirmation Modal -->
+    <div class="modal" id="publishModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Publish Changes</h3>
+                <button class="modal-close" id="closePublishModal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="warning-box">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    <div>
+                        <strong>Are you sure you want to publish these changes?</strong>
+                        <p>This will update the live website. A backup of the current version will be created automatically.</p>
+                    </div>
+                </div>
+                <div class="backup-info">
+                    <h4>Backup Information</h4>
+                    <p>A version snapshot will be saved before publishing. You can rollback to any previous version at any time.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" id="cancelPublish">Cancel</button>
+                <button class="btn-confirm" id="confirmPublish">Confirm & Publish</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Media Library Modal -->
+    <div class="modal modal-large" id="mediaModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Media Library</h3>
+                <button class="modal-close" id="closeMediaModal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="media-toolbar">
+                    <button class="btn-upload-primary" id="btnUploadMedia">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        Upload Files
+                    </button>
+                    <input type="text" class="search-input" id="mediaSearch" placeholder="Search media...">
+                </div>
+                <div class="media-grid" id="mediaGrid">
+                    <!-- Media items will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- History Modal -->
+    <div class="modal" id="historyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Version History</h3>
+                <button class="modal-close" id="closeHistoryModal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="version-list" id="versionList">
+                    <!-- Versions will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- SEO Modal -->
+    <div class="modal modal-large" id="seoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>SEO Manager</h3>
+                <button class="modal-close" id="closeSeoModal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="seo-section">
+                    <h4>Basic SEO</h4>
+                    <div class="setting-field">
+                        <label>Meta Title</label>
+                        <input type="text" id="seoMetaTitle" placeholder="Page title for search engines">
+                    </div>
+                    <div class="setting-field">
+                        <label>Meta Description</label>
+                        <textarea id="seoMetaDescription" rows="3" placeholder="Page description for search engines"></textarea>
+                    </div>
+                    <div class="setting-field">
+                        <label>Canonical URL</label>
+                        <input type="url" id="seoCanonical" placeholder="https://mohajer-steel.com/page-url">
+                    </div>
+                </div>
+                <div class="seo-section">
+                    <h4>Social Media (Open Graph)</h4>
+                    <div class="setting-field">
+                        <label>OG Title</label>
+                        <input type="text" id="seoOgTitle" placeholder="Title for social media sharing">
+                    </div>
+                    <div class="setting-field">
+                        <label>OG Description</label>
+                        <textarea id="seoOgDescription" rows="3" placeholder="Description for social media sharing"></textarea>
+                    </div>
+                    <div class="setting-field">
+                        <label>OG Image</label>
+                        <div class="image-upload-wrapper">
+                            <input type="text" id="seoOgImage" placeholder="Image URL">
+                            <button class="btn-upload" id="ogImageSelectBtn">Select</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="seo-section">
+                    <h4>Indexing</h4>
+                    <div class="setting-field">
+                        <label>Robots Meta</label>
+                        <select id="seoRobots">
+                            <option value="index,follow">Index & Follow</option>
+                            <option value="noindex,follow">No Index & Follow</option>
+                            <option value="index,nofollow">Index & No Follow</option>
+                            <option value="noindex,nofollow">No Index & No Follow</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" id="cancelSeo">Cancel</button>
+                <button class="btn-confirm" id="saveSeo">Save SEO Settings</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+    
+    <!-- Editor JavaScript -->
+    <script src="editor.js"></script>
+</body>
+</html>
