@@ -21,5 +21,6 @@ jobs:
           node --check script.js
           node --check site-content.js
           node --check admin/admin-panel.js
+          node --check admin/editor/editor.js
       - name: Validate web manifest JSON
         run: python -m json.tool site.webmanifest >/dev/null
