@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>MOHAJER STEEL — Content Studio Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="editor.css?v=1">
+</head>
+<body>
+  <div id="loginGate" class="gate">
+    <form id="loginForm" class="login-card">
+      <div class="logo-mark">M</div><small>MOHAJER STEEL CONTENT STUDIO PRO</small>
+      <h1>ورود مدیر</h1><p>برای ورود از حساب مدیریت موجود استفاده کنید.</p>
+      <input id="adminPassword" type="password" autocomplete="current-password" placeholder="رمز عبور" required>
+      <div id="loginError" class="error"></div>
+      <button class="primary" type="submit">ورود</button>
+    </form>
+  </div>
+
+  <div id="app" class="app locked">
+    <header class="topbar">
+      <div class="brand"><div class="logo-mark small">M</div><div><strong>MOHAJER STEEL</strong><span>CONTENT STUDIO PRO</span></div></div>
+      <div class="toolbar">
+        <button id="undoBtn" disabled title="Undo">↶</button><button id="redoBtn" disabled title="Redo">↷</button>
+        <span class="divider"></span>
+        <button class="device active" data-device="desktop">Desktop</button><button class="device" data-device="tablet">Tablet</button><button class="device" data-device="mobile">Mobile</button>
+      </div>
+      <div class="actions"><span id="saveState" class="status">● آماده</span><button id="previewBtn">Preview</button><button id="saveBtn">Save Draft</button><button id="publishBtn" class="primary">🚀 Publish</button></div>
+    </header>
+
+    <div class="layout">
+      <aside class="left-panel">
+        <div class="panel-title">مدیریت</div>
+        <button class="nav active" data-view="pages">▣ <span>Pages</span></button>
+        <button class="nav" data-view="elements">＋ <span>Add Element</span></button>
+        <button class="nav" data-view="media">▧ <span>Media Library</span></button>
+        <button class="nav" data-view="history">↺ <span>History</span></button>
+        <button class="nav" data-view="seo">⌕ <span>SEO Manager</span></button>
+        <button class="nav" data-view="ai">✦ <span>AI Assistant</span></button>
+        <button class="nav" data-view="settings">⚙ <span>Settings</span></button>
+        <section id="leftContent" class="left-content"></section>
+      </aside>
+
+      <main class="canvas-wrap">
+        <div class="canvas-head"><div><b id="pageTitle">Steel Billet</b><span id="pagePath">/products/steel-billet/</span></div><button id="openLive">↗ Live page</button></div>
+        <div id="canvas" class="canvas desktop"><div class="frame"><div class="browser"><i></i><i></i><i></i><span>mohajer-steel.com/products/steel-billet/</span></div><iframe id="preview" title="Live website preview" src="../../products/steel-billet/"></iframe></div></div>
+      </main>
+
+      <aside class="right-panel">
+        <div class="inspector-head"><div><small>ELEMENT SETTINGS</small><h2 id="selectedTitle">یک عنصر انتخاب کنید</h2></div><button id="clearSelection">×</button></div>
+        <div id="emptyInspector" class="empty"><div>✦</div><p>روی یک عنصر داخل پیش‌نمایش کلیک کنید.</p></div>
+        <form id="inspector" class="inspector hidden">
+          <input id="selectedKey" type="hidden">
+          <details open><summary>Content</summary><div class="fields">
+            <label>Text / Content<textarea id="textValue" rows="5"></textarea></label>
+            <label>Link<input id="linkValue" type="url" placeholder="https://..."></label>
+            <label class="check"><input id="newTab" type="checkbox"> Open in new tab</label>
+          </div></details>
+          <details open><summary>Typography</summary><div class="grid2">
+            <label>Font size<input id="fontSize" placeholder="inherit"><select id="fontSizeUnit"><option>px</option><option>rem</option><option>em</option><option>%</option></select></label>
+            <label>Weight<select id="fontWeight"><option value="">inherit</option><option>400</option><option>500</option><option>600</option><option>700</option><option>800</option><option>900</option></select></label>
+            <label>Line height<input id="lineHeight" placeholder="normal"></label><label>Letter spacing<input id="letterSpacing" placeholder="normal"></label>
+            <label>Text align<select id="textAlign"><option value="">inherit</option><option>right</option><option>center</option><option>left</option></select></label>
+            <label>Transform<select id="textTransform"><option value="">none</option><option>uppercase</option><option>lowercase</option><option>capitalize</option></select></label>
+          </div></details>
+          <details><summary>Colors & Background</summary><div class="grid2">
+            <label>Text color<input id="textColor" type="color"><input id="textColorText" placeholder="#FFFFFF"></label>
+            <label>Background<input id="bgColor" type="color"><input id="bgColorText" placeholder="#000000"></label>
+            <label>Background image<input id="bgImage" type="url" placeholder="https://..."></label>
+            <label>Opacity<input id="opacity" type="number" min="0" max="1" step=".05"></label>
+          </div></details>
+          <details><summary>Spacing</summary><div class="grid2"><label>Margin<input id="margin" placeholder="0"></label><label>Padding<input id="padding" placeholder="0"></label><label>Gap<input id="gap" placeholder="0"></label></div></details>
+          <details><summary>Size & Position</summary><div class="grid2"><label>Width<input id="width" placeholder="auto"></label><label>Height<input id="height" placeholder="auto"></label><label>Min width<input id="minWidth"></label><label>Max width<input id="maxWidth"></label><label>Position<select id="position"><option value="">static</option><option>relative</option><option>absolute</option><option>fixed</option><option>sticky</option></select></label><label>Z-index<input id="zIndex"></label></div></details>
+          <details><summary>Border & Shadow</summary><div class="grid2"><label>Radius<input id="radius" placeholder="0"></label><label>Border<input id="border" placeholder="none"></label><label>Shadow<input id="shadow" placeholder="none"></label></div></details>
+          <details><summary>Animation / Hover</summary><div class="grid2"><label>Animation<select id="animation"><option value="">None</option><option>fadeIn</option><option>fadeUp</option><option>fadeDown</option><option>fadeLeft</option><option>fadeRight</option><option>zoomIn</option><option>zoomOut</option><option>slideUp</option><option>slideDown</option><option>slideLeft</option><option>slideRight</option><option>rotate</option><option>bounce</option></select></label><label>Duration<input id="animationDuration" placeholder="600ms"></label><label>Delay<input id="animationDelay" placeholder="0ms"></label><label>Hover scale<input id="hoverScale" placeholder="1"></label></div></details>
+          <details><summary>Responsive</summary><p class="hint">مقادیر این بخش برای دستگاه انتخاب‌شده ذخیره می‌شوند.</p><div class="grid2"><label>Font<input id="responsiveFont"></label><label>Width<input id="responsiveWidth"></label><label>Margin<input id="responsiveMargin"></label><label>Padding<input id="responsivePadding"></label></div></details>
+          <div class="inspector-actions"><button type="button" id="duplicateBtn">Duplicate</button><button type="button" id="deleteBtn" class="danger">Delete</button><button type="button" id="applyBtn" class="primary">Apply to Draft</button></div>
+        </form>
+      </aside>
+    </div>
+  </div>
+
+  <dialog id="publishDialog"><h2>🚀 انتشار نسخه Draft</h2><p>قبل از انتشار، یک Snapshot از نسخه منتشرشده ایجاد می‌شود. ادامه می‌دهید؟</p><div><button id="cancelPublish">Cancel</button><button id="confirmPublish" class="primary">Confirm & Publish</button></div></dialog>
+  <div id="toast" class="toast"></div>
+  <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore-compat.js"></script>
+  <script src="../../firebase-config.js?v=editor-pro-1"></script>
+  <script src="editor.js?v=editor-pro-1"></script>
+</body>
+</html>
