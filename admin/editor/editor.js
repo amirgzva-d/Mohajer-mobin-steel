@@ -1,625 +1,86 @@
 (() => {
-  'use strict';
-
-  /* MOHAJER STEEL VISUAL EDITOR PRO
-     Startup is deliberately defensive: the editor UI never disappears because
-     Firebase/Firestore/preview failed. Authentication unlocks the UI only after boot. */
-
-  const $ = id => document.getElementById(id);
-  const $$ = selector => Array.from(document.querySelectorAll(selector));
-  const clone = value => { try { return JSON.parse(JSON.stringify(value)); } catch { return value; } };
-  const DEFAULT_PAGE = '/products/steel-billet/';
-  const ADMIN_EMAIL = 'amirgzva@gmail.com';
-  const STORAGE = 'mohajer-editor-pro-draft-v9';
-
-  let auth = null;
-  let db = null;
-  let firebaseReady = false;
-  let iframe = null;
-  let selected = null;
-  let selectedKey = '';
-  let device = 'desktop';
-  let drafts = {};
-  let pageMeta = { seo: {}, structure: {}, pages: {} };
-  let pagePath = DEFAULT_PAGE;
-  let undo = [];
-  let redo = [];
-  let booted = false;
-  let previewReady = false;
-
-  const notify = message => {
-    const toast = $('toast');
-    if (!toast) return;
-    toast.textContent = String(message || '');
-    toast.classList.add('show');
-    clearTimeout(notify.timer);
-    notify.timer = setTimeout(() => toast.classList.remove('show'), 3200);
-  };
-
-  const setLoginMessage = message => {
-    const node = $('loginError');
-    if (node) node.textContent = String(message || '');
-  };
-
-  const showRuntimeError = (message, error) => {
-    console.error('[Mohajer Editor]', error || message);
-    const text = error?.message || String(message || 'خطای ناشناخته');
-    const app = $('app');
-    if (!app) return;
-    let banner = $('runtimeError');
-    if (!banner) {
-      banner = document.createElement('div');
-      banner.id = 'runtimeError';
-      banner.style.cssText = 'position:fixed;top:84px;left:50%;transform:translateX(-50%);z-index:9000;max-width:min(760px,calc(100% - 30px));background:#34151a;color:#ffd9dc;border:1px solid #ff657355;border-radius:12px;padding:12px 16px;box-shadow:0 12px 40px #0008;font:600 12px Vazirmatn,Tahoma,sans-serif;direction:rtl';
-      document.body.appendChild(banner);
-    }
-    banner.textContent = 'خطای داخلی پنل: ' + text;
-    clearTimeout(showRuntimeError.timer);
-    showRuntimeError.timer = setTimeout(() => banner.remove(), 9000);
-  };
-
-  window.addEventListener('error', event => {
-    if (event?.error) showRuntimeError('JavaScript error', event.error);
-  });
-  window.addEventListener('unhandledrejection', event => {
-    if (event?.reason) showRuntimeError('Promise error', event.reason);
-  });
-
-  const uid = () => 'me-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 9);
-  const esc = value => {
-    const text = String(value ?? '');
-    if (window.CSS?.escape) return window.CSS.escape(text);
-    return text.replace(/[^a-zA-Z0-9_-]/g, ch => '\\' + ch);
-  };
-  const safeSelector = selector => {
-    try { return document.querySelector(selector) ? selector : selector; } catch { return ''; }
-  };
-  const hex = value => {
-    const numbers = String(value || '').match(/\d+/g);
-    if (!numbers || numbers.length < 3) return '#000000';
-    return '#' + numbers.slice(0, 3).map(n => Number(n).toString(16).padStart(2, '0')).join('');
-  };
-
-  const styleMap = {
-    fontSize:'font-size', fontWeight:'font-weight', lineHeight:'line-height', letterSpacing:'letter-spacing',
-    textAlign:'text-align', textTransform:'text-transform', opacity:'opacity', margin:'margin', padding:'padding',
-    gap:'gap', width:'width', height:'height', minWidth:'min-width', maxWidth:'max-width', position:'position',
-    zIndex:'z-index', border:'border', borderRadius:'border-radius', boxShadow:'box-shadow', color:'color',
-    backgroundColor:'background-color', backgroundImage:'background-image', backgroundSize:'background-size',
-    backgroundPosition:'background-position', animationName:'animation-name', animationDuration:'animation-duration',
-    animationDelay:'animation-delay', animationFillMode:'animation-fill-mode'
-  };
-  const cssName = key => styleMap[key] || String(key).replace(/[A-Z]/g, c => '-' + c.toLowerCase());
-
-  const saveLocal = () => {
-    try {
-      localStorage.setItem(STORAGE, JSON.stringify({ drafts, pageMeta, pagePath }));
-    } catch (error) { console.warn('Local draft unavailable', error); }
-  };
-
-  const loadLocal = () => {
-    try {
-      const data = JSON.parse(localStorage.getItem(STORAGE) || '{}');
-      drafts = data && typeof data.drafts === 'object' ? data.drafts : {};
-      pageMeta = data && data.pageMeta && typeof data.pageMeta === 'object' ? data.pageMeta : { seo:{}, structure:[], pages:{} };
-      if (!Array.isArray(pageMeta.structure)) pageMeta.structure = [];
-      if (!pageMeta.seo) pageMeta.seo = {};
-      pagePath = typeof data.pagePath === 'string' ? data.pagePath : DEFAULT_PAGE;
-    } catch (error) {
-      console.warn('Local draft reset', error);
-      drafts = {};
-      pageMeta = { seo:{}, structure:[], pages:{} };
-      pagePath = DEFAULT_PAGE;
-    }
-  };
-
-  const historyButtons = () => {
-    if ($('undoBtn')) $('undoBtn').disabled = undo.length === 0;
-    if ($('redoBtn')) $('redoBtn').disabled = redo.length === 0;
-  };
-
-  const snapshotState = () => clone({ drafts, pageMeta, pagePath });
-  const pushUndo = () => {
-    undo.push(snapshotState());
-    if (undo.length > 50) undo.shift();
-    redo = [];
-    historyButtons();
-  };
-  const restore = snapshot => {
-    if (!snapshot) return;
-    drafts = clone(snapshot.drafts || {});
-    pageMeta = clone(snapshot.pageMeta || { seo:{}, structure:[], pages:{} });
-    pagePath = snapshot.pagePath || DEFAULT_PAGE;
-    saveLocal();
-    applyAll();
-    historyButtons();
-  };
-
-  const fallbackSelector = element => {
-    if (!element) return '';
-    if (element.dataset?.key) return `[data-key="${esc(element.dataset.key)}"]`;
-    if (element.id) return '#' + esc(element.id);
-    const parts = [];
-    let node = element;
-    while (node && node.parentElement && parts.length < 10) {
-      let part = node.tagName.toLowerCase();
-      const cls = Array.from(node.classList || []).find(name => !name.startsWith('admin-'));
-      if (cls) part += '.' + esc(cls);
-      const siblings = Array.from(node.parentElement.children).filter(item => item.tagName === node.tagName);
-      if (siblings.length > 1) part += ':nth-of-type(' + (siblings.indexOf(node) + 1) + ')';
-      parts.unshift(part);
-      node = node.parentElement;
-    }
-    return parts.join(' > ');
-  };
-
-  const ensureStableId = element => {
-    if (!element.dataset.mohajerEditorId) element.dataset.mohajerEditorId = uid();
-    return element.dataset.mohajerEditorId;
-  };
-  const stableSelector = element => `[data-mohajer-editor-id="${esc(ensureStableId(element))}"]`;
-
-  const elementType = element => {
-    if (!element) return 'container';
-    if (element.tagName === 'IMG') return 'image';
-    if (element.tagName === 'A') return 'link';
-    if (/^H[1-6]$/.test(element.tagName)) return 'heading';
-    if (element.tagName === 'P') return 'paragraph';
-    if (element.tagName === 'BUTTON') return 'button';
-    return element.dataset.editorType || 'container';
-  };
-
-  const resolveElement = (draft, doc) => {
-    if (!draft || !doc) return null;
-    let element = null;
-    try { if (draft.selector) element = doc.querySelector(draft.selector); } catch {}
-    if (!element) {
-      try { if (draft.fallbackSelector) element = doc.querySelector(draft.fallbackSelector); } catch {}
-    }
-    if (element && draft.stableId) element.dataset.mohajerEditorId = draft.stableId;
-    return element;
-  };
-
-  const safeText = (element, value) => {
-    element.replaceChildren();
-    String(value ?? '').split(/<br\s*\/?\s*>/i).forEach((line, index) => {
-      if (index) element.append(document.createElement('br'));
-      element.append(document.createTextNode(line));
-    });
-  };
-
-  const applyDraft = (draft, doc) => {
-    const element = resolveElement(draft, doc);
-    if (!element) return;
-    try {
-      if (draft.type === 'image' && draft.content) element.src = draft.content;
-      else if (['text','link','heading','paragraph','button'].includes(draft.type)) safeText(element, draft.content);
-      Object.entries(draft.styles || {}).forEach(([key, value]) => {
-        if (value !== '' && value != null) element.style.setProperty(cssName(key), String(value));
-      });
-      Object.entries(draft.responsive?.[device] || {}).forEach(([key, value]) => {
-        if (value) element.style.setProperty(cssName(key), String(value));
-      });
-      if (draft.hidden) element.style.setProperty('display', 'none', 'important');
-      if (draft.hover?.scale && draft.hover.scale !== '1') {
-        element.style.setProperty('--mohajer-hover-scale', draft.hover.scale);
-        element.dataset.mohajerHoverScale = draft.hover.scale;
-      }
-      if (draft.link && (element.tagName === 'A' || element.closest('a')) && /^(https?:\/\/|\/)/i.test(draft.link)) {
-        const link = element.tagName === 'A' ? element : element.closest('a');
-        link.setAttribute('href', draft.link);
-        if (draft.newTab) link.setAttribute('target', '_blank'); else link.removeAttribute('target');
-      }
-    } catch (error) { console.warn('Draft application skipped', error); }
-  };
-
-  const applyStructure = doc => {
-    const operations = Array.isArray(pageMeta.structure) ? pageMeta.structure : [];
-    operations.forEach(operation => {
-      if (!operation?.id) return;
-      try {
-        const marker = `[data-mohajer-created="${esc(operation.id)}"]`;
-        if (operation.action === 'delete') {
-          const element = doc.querySelector(marker) || (operation.selector ? doc.querySelector(operation.selector) : null) || (operation.fallbackSelector ? doc.querySelector(operation.fallbackSelector) : null);
-          element?.remove();
-          return;
-        }
-        if (operation.action === 'move') {
-          const element = doc.querySelector(operation.selector || marker);
-          const parent = (operation.parentSelector && doc.querySelector(operation.parentSelector)) || (operation.parentFallbackSelector && doc.querySelector(operation.parentFallbackSelector));
-          const before = operation.beforeSelector ? doc.querySelector(operation.beforeSelector) : null;
-          if (element && parent) parent.insertBefore(element, before?.parentElement === parent ? before : null);
-          return;
-        }
-        if (operation.action === 'add' && operation.html && !doc.querySelector(marker)) {
-          const parent = (operation.parentSelector && doc.querySelector(operation.parentSelector)) || (operation.parentFallbackSelector && doc.querySelector(operation.parentFallbackSelector)) || doc.body;
-          const template = doc.createElement('template');
-          template.innerHTML = String(operation.html).trim();
-          const element = template.content.firstElementChild;
-          if (!element) return;
-          element.dataset.mohajerCreated = operation.id;
-          if (operation.position === 'first') parent.insertBefore(element, parent.firstChild); else parent.appendChild(element);
-        }
-      } catch (error) { console.warn('Structure operation skipped', error); }
-    });
-  };
-
-  const applyAll = () => {
-    if (!iframe?.contentDocument) return;
-    const doc = iframe.contentDocument;
-    try {
-      Object.values(drafts).forEach(draft => applyDraft(draft, doc));
-      applyStructure(doc);
-      Object.values(drafts).forEach(draft => applyDraft(draft, doc));
-    } catch (error) { console.warn('Preview apply failed', error); }
-  };
-
-  const selectElement = element => {
-    if (!element || !element.ownerDocument) return;
-    try {
-      selected?.classList.remove('mohajer-selected');
-      selected = element;
-      selected.classList.add('mohajer-selected');
-      const stableId = ensureStableId(element);
-      const fallback = fallbackSelector(element);
-      selectedKey = stableSelector(element);
-      const type = elementType(element);
-      element.dataset.editorType = type;
-
-      $('selectedTitle').textContent = stableId;
-      $('selectedKey').value = selectedKey;
-      $('emptyInspector').classList.add('hidden');
-      $('inspector').classList.remove('hidden');
-
-      const computed = element.ownerDocument.defaultView.getComputedStyle(element);
-      const set = (id, value) => { if ($(id)) $(id).value = value ?? ''; };
-      set('fontSize', computed.fontSize); set('fontWeight', computed.fontWeight); set('lineHeight', computed.lineHeight); set('letterSpacing', computed.letterSpacing);
-      set('textAlign', computed.textAlign); set('textTransform', computed.textTransform); set('textColor', hex(computed.color)); set('textColorText', hex(computed.color));
-      set('bgColor', hex(computed.backgroundColor)); set('bgColorText', hex(computed.backgroundColor)); set('opacity', computed.opacity); set('margin', computed.margin); set('padding', computed.padding); set('gap', computed.gap);
-      set('width', computed.width); set('height', computed.height); set('minWidth', computed.minWidth); set('maxWidth', computed.maxWidth); set('position', computed.position); set('zIndex', computed.zIndex);
-      set('radius', computed.borderRadius); set('border', computed.border); set('shadow', computed.boxShadow);
-      set('bgImage', computed.backgroundImage === 'none' ? '' : computed.backgroundImage.replace(/^url\(["']?|["']?\)$/g, ''));
-      set('animation', computed.animationName === 'none' ? '' : computed.animationName); set('animationDuration', computed.animationDuration); set('animationDelay', computed.animationDelay);
-      set('hoverScale', drafts[selectedKey]?.hover?.scale || '1');
-      $('textValue').value = ['text','heading','paragraph','button'].includes(type) ? (element.innerText || element.textContent || '').trim() : '';
-      $('linkValue').value = element.tagName === 'A' ? (element.getAttribute('href') || '') : (element.closest('a')?.getAttribute('href') || '');
-      $('newTab').checked = (element.tagName === 'A' ? element.target : element.closest('a')?.target) === '_blank';
-      const responsive = drafts[selectedKey]?.responsive?.[device] || {};
-      set('responsiveFont', responsive.fontSize); set('responsiveWidth', responsive.width); set('responsiveMargin', responsive.margin); set('responsivePadding', responsive.padding);
-      if (!drafts[selectedKey]) drafts[selectedKey] = { selector:selectedKey, stableId, fallbackSelector:fallback, type, content:$('textValue').value, styles:{}, responsive:{}, schemaVersion:7 };
-    } catch (error) { showRuntimeError('انتخاب عنصر انجام نشد', error); }
-  };
-
-  const getStyles = () => {
-    const styles = {};
-    ['fontSize','fontWeight','lineHeight','letterSpacing','textAlign','textTransform','opacity','margin','padding','gap','width','height','minWidth','maxWidth','position','zIndex','border'].forEach(id => {
-      if ($(id)?.value) styles[id] = $(id).value;
-    });
-    styles.borderRadius = $('radius')?.value || '';
-    styles.boxShadow = $('shadow')?.value || '';
-    styles.color = $('textColor')?.value || '';
-    styles.backgroundColor = $('bgColor')?.value || '';
-    const image = $('bgImage')?.value || '';
-    if (image && /^https?:\/\//i.test(image)) {
-      styles.backgroundImage = `url("${image.replace(/["\\]/g, '')}")`;
-      styles.backgroundSize = 'cover';
-      styles.backgroundPosition = 'center';
-    }
-    const animation = $('animation')?.value || '';
-    if (animation) {
-      styles.animationName = animation;
-      styles.animationDuration = $('animationDuration')?.value || '600ms';
-      styles.animationDelay = $('animationDelay')?.value || '0ms';
-      styles.animationFillMode = 'both';
-    }
-    return styles;
-  };
-
-  const capture = () => {
-    if (!selected) return notify('ابتدا یک عنصر را انتخاب کنید');
-    pushUndo();
-    const type = elementType(selected);
-    const old = drafts[selectedKey] || {};
-    drafts[selectedKey] = {
-      ...old,
-      selector:selectedKey,
-      stableId:selected.dataset.mohajerEditorId,
-      fallbackSelector:old.fallbackSelector || fallbackSelector(selected),
-      type,
-      content:type === 'image' ? (selected.currentSrc || selected.src || '') : $('textValue').value.replace(/\n/g, '<br>'),
-      link:$('linkValue').value || '',
-      newTab:$('newTab').checked,
-      styles:{ ...(old.styles || {}), ...getStyles() },
-      responsive:{ ...(old.responsive || {}), [device]:{ fontSize:$('responsiveFont').value, width:$('responsiveWidth').value, margin:$('responsiveMargin').value, padding:$('responsivePadding').value } },
-      hover:{ scale:$('hoverScale').value || '1' },
-      schemaVersion:7
-    };
-    applyAll();
-    saveLocal();
-    $('saveState').textContent = '● Draft آماده است';
-    notify('تغییر در Draft اعمال شد');
-  };
-
-  const addElement = type => {
-    if (!selected) return notify('ابتدا یک Section یا Container را انتخاب کنید');
-    const doc = iframe?.contentDocument;
-    if (!doc) return notify('پیش‌نمایش هنوز آماده نیست');
-    pushUndo();
-    const tags = { Heading:'h2', Paragraph:'p', Text:'div', Button:'button', Link:'a', Image:'img', Divider:'hr', List:'ul', Icon:'span', Video:'div', Gallery:'div', FAQ:'div', Table:'div', Card:'div', Badge:'span', Statistic:'div', Section:'section', Container:'div', Logo:'div', Navigation:'nav', Footer:'footer' };
-    const element = doc.createElement(tags[type] || 'div');
-    const id = uid();
-    element.dataset.mohajerCreated = id;
-    element.dataset.mohajerEditorId = id;
-    element.dataset.editorType = type.toLowerCase();
-    if (type === 'Image') { element.src='https://placehold.co/800x450?text=Image'; element.alt=''; }
-    else if (type === 'Heading') element.textContent='عنوان جدید';
-    else if (type === 'Paragraph') element.textContent='متن جدید';
-    else if (type === 'Button') element.textContent='دکمه جدید';
-    else if (type === 'Link') { element.href='#'; element.textContent='لینک جدید'; }
-    else element.textContent=type;
-    element.style.cssText='padding:12px;margin:8px;border:1px dashed #999;min-height:20px';
-    selected.appendChild(element);
-    const key = stableSelector(element);
-    drafts[key] = { selector:key, stableId:id, fallbackSelector:key, type:elementType(element), content:element.tagName==='IMG'?element.src:element.textContent, styles:{padding:'12px',margin:'8px',border:'1px dashed #999'}, schemaVersion:7 };
-    pageMeta.structure.push({ action:'add', id, parentSelector:stableSelector(selected), parentFallbackSelector:fallbackSelector(selected), html:element.outerHTML, position:'last', schemaVersion:1 });
-    selectElement(element);
-    saveLocal();
-    notify(type + ' به Draft اضافه شد');
-  };
-
-  const duplicateSelected = () => {
-    if (!selected) return notify('عنصری انتخاب نشده است');
-    if (!selected.parentElement) return;
-    pushUndo();
-    const id = uid();
-    const copy = selected.cloneNode(true);
-    copy.dataset.mohajerCreated = id;
-    copy.dataset.mohajerEditorId = id;
-    selected.parentElement.insertBefore(copy, selected.nextSibling);
-    const key = stableSelector(copy);
-    const base = drafts[selectedKey] || { type:elementType(copy), content:copy.textContent, styles:{} };
-    drafts[key] = { ...clone(base), selector:key, stableId:id, fallbackSelector:key, schemaVersion:7 };
-    pageMeta.structure.push({ action:'add', id, parentSelector:stableSelector(selected.parentElement), parentFallbackSelector:fallbackSelector(selected.parentElement), html:copy.outerHTML, position:'last', schemaVersion:1 });
-    selectElement(copy);
-    saveLocal();
-    notify('کپی در Draft ساخته شد');
-  };
-
-  const deleteSelected = () => {
-    if (!selected) return;
-    if (!confirm('این عنصر از Draft حذف شود؟')) return;
-    pushUndo();
-    const id = selected.dataset.mohajerCreated || uid();
-    pageMeta.structure.push({ action:'delete', id, selector:selectedKey, fallbackSelector:drafts[selectedKey]?.fallbackSelector || fallbackSelector(selected), schemaVersion:1 });
-    delete drafts[selectedKey];
-    selected.remove();
-    selected = null;
-    selectedKey = '';
-    $('inspector').classList.add('hidden');
-    $('emptyInspector').classList.remove('hidden');
-    saveLocal();
-    notify('عنصر از Draft حذف شد');
-  };
-
-  const prepareIframe = () => {
-    if (!iframe?.contentDocument) return;
-    try {
-      const doc = iframe.contentDocument;
-      doc.getElementById('mohajer-editor-overlay')?.remove();
-      if (!doc.head) return;
-      const style = doc.createElement('style');
-      style.id = 'mohajer-editor-overlay';
-      style.textContent = '[data-key],[data-mohajer-editor-id],img,section,article,button,a,.product-card,.feature-item-new,.dept-card,.ss-product-card{cursor:pointer!important}[data-key]:hover,[data-mohajer-editor-id]:hover,img:hover,section:hover,article:hover,button:hover,a:hover,.product-card:hover,.feature-item-new:hover,.dept-card:hover,.ss-product-card:hover{outline:2px solid #3478f6!important;outline-offset:2px!important}.mohajer-selected{outline:3px solid #f2b941!important;outline-offset:3px!important}[data-mohajer-hover-scale]{transition:transform .2s ease}[data-mohajer-hover-scale]:hover{transform:scale(var(--mohajer-hover-scale,1.02))!important}';
-      doc.head.appendChild(style);
-      applyAll();
-      if (!doc.__mohajerEditorBound) {
-        doc.__mohajerEditorBound = true;
-        doc.addEventListener('click', event => {
-          const target = event.target;
-          const element = target?.closest?.('[data-mohajer-editor-id],[data-key],img,.product-card,.feature-item-new,.dept-card,.ss-product-card,section,article,button,a');
-          if (!element) return;
-          event.preventDefault();
-          event.stopPropagation();
-          selectElement(element);
-        }, true);
-      }
-      previewReady = true;
-      notify('پیش‌نمایش آماده است');
-    } catch (error) {
-      previewReady = false;
-      showRuntimeError('پیش‌نمایش سایت آماده نشد', error);
-    }
-  };
-
-  const renderPages = () => {
-    const box = $('leftContent');
-    box.innerHTML = '';
-    [['صفحه اصلی','/'],['Steel Billet','/products/steel-billet/'],['Steel Beam','/products/steel-beam/'],['Steel Pipe','/products/steel-pipe/'],['Rebar','/products/rebar/'],['Steel Plate','/products/steel-plate/'],['Steel Angle','/products/steel-angle/'],['Steel Channel','/products/steel-channel/'],['Steel Slab','/products/steel-slab/']].forEach(([name,path]) => {
-      const button = document.createElement('button');
-      button.className='page-item';
-      button.innerHTML = `${name}<small>${path}</small>`;
-      button.onclick = () => {
-        pagePath = path;
-        $('pageTitle').textContent = name;
-        $('pagePath').textContent = path;
-        if (path !== DEFAULT_PAGE) return notify('این نسخه فعلاً برای Steel Billet فعال است');
-        iframe.src = '../../products/steel-billet/?editorPreview=1&editorCache=4';
-        saveLocal();
-      };
-      box.append(button);
-    });
-  };
-
-  const renderElements = () => {
-    const box=$('leftContent');
-    box.innerHTML='<div class="hint" style="padding:8px 12px">برای افزودن، ابتدا عنصر والد را در Preview انتخاب کنید.</div>';
-    ['Section','Container','Heading','Paragraph','Text','Image','Button','Link','Icon','Card','Badge','Statistic','Table','List','Video','Gallery','FAQ','Divider','Logo','Navigation','Footer'].forEach(type => {
-      const button=document.createElement('button'); button.className='page-item'; button.textContent='＋ '+type; button.onclick=()=>addElement(type); box.append(button);
-    });
-  };
-
-  const renderMedia = () => {
-    const box=$('leftContent');
-    box.innerHTML='<div class="page-item"><b>Media Library</b><p class="hint">در این نسخه، تصویر با URL امن قابل جایگزینی است.</p></div>';
-    const input=document.createElement('input'); input.type='url'; input.placeholder='https://...'; input.style.cssText='width:100%;margin-top:8px'; box.firstChild.append(input);
-    const button=document.createElement('button'); button.className='page-item primary'; button.textContent='اعمال به Image انتخاب‌شده';
-    button.onclick=()=>{ if(!selected||selected.tagName!=='IMG')return notify('یک Image انتخاب کنید'); if(!/^https?:\/\//i.test(input.value))return notify('URL معتبر نیست'); pushUndo(); selected.src=input.value; capture(); };
-    box.firstChild.append(button);
-  };
-
-  const renderHistory = async () => {
-    const box=$('leftContent'); box.innerHTML='<div class="page-item">در حال بارگذاری تاریخچه…</div>';
-    if(!db){ box.innerHTML='<div class="page-item">تاریخچه آنلاین در دسترس نیست.</div>'; return; }
-    try {
-      const snapshot=await db.collection('siteVersions').orderBy('createdAt','desc').limit(30).get(); box.innerHTML='';
-      snapshot.forEach(item=>{
-        const value=item.data()||{}; const button=document.createElement('button'); button.className='page-item'; button.innerHTML=`<b>${value.versionId||item.id}</b><small>${value.page||''}</small>`;
-        button.onclick=()=>{if(!confirm('این نسخه فقط به Draft برگردد؟'))return;pushUndo();drafts=clone(value.content||{});pageMeta=clone(value.meta||{seo:{},structure:[]});saveLocal();applyAll();notify('Rollback به Draft انجام شد');}; box.append(button);
-      });
-      if(!snapshot.size)box.innerHTML='<div class="page-item">تاریخچه‌ای وجود ندارد.</div>';
-    } catch(error) { console.error(error); box.innerHTML='<div class="page-item">تاریخچه قابل دریافت نیست.</div>'; }
-  };
-
-  const renderSeo = () => {
-    const box=$('leftContent'); box.innerHTML=''; const wrap=document.createElement('div'); wrap.className='page-item';
-    wrap.innerHTML='<b>SEO Manager</b><p class="hint">SEO فقط در Draft ذخیره می‌شود و با Publish اعمال می‌شود.</p>';
-    [['title','Title'],['description','Description'],['canonical','Canonical'],['robots','Robots'],['ogTitle','OG Title'],['ogDescription','OG Description'],['ogImage','OG Image']].forEach(([key,label])=>{
-      const field=document.createElement('label'); field.textContent=label; const input=document.createElement('input'); input.value=pageMeta.seo?.[key]||''; input.onchange=()=>{pageMeta.seo={...(pageMeta.seo||{}),[key]:input.value};saveLocal();}; field.append(input); wrap.append(field);
-    });
-    const no=document.createElement('label'); no.className='check'; const checkbox=document.createElement('input'); checkbox.type='checkbox'; checkbox.checked=pageMeta.seo?.noindex===true; checkbox.onchange=()=>{pageMeta.seo={...(pageMeta.seo||{}),noindex:checkbox.checked,robots:checkbox.checked?'noindex,nofollow':(pageMeta.seo?.robots||'index,follow')};saveLocal();}; no.append(checkbox,document.createTextNode(' Noindex')); wrap.append(no); box.append(wrap);
-  };
-
-  const renderAi = () => {
-    const box=$('leftContent'); box.innerHTML='<div class="page-item"><b>AI Design Assistant</b><p class="hint">AI فقط Context عنصر انتخاب‌شده را می‌گیرد؛ پیشنهاد باید Patch باشد و Publish مستقیم ممنوع است.</p></div>';
-    if(!selected)return;
-    const button=document.createElement('button'); button.className='page-item primary'; button.textContent='کپی Context امن';
-    button.onclick=async()=>{const context={page:pagePath,elementId:selected.dataset.mohajerEditorId||null,type:elementType(selected),content:$('textValue').value,styles:drafts[selectedKey]?.styles||{},responsive:drafts[selectedKey]?.responsive||{},instruction:'Return proposal only. Never publish.'};try{await navigator.clipboard.writeText(JSON.stringify(context,null,2));notify('Context کپی شد');}catch{notify('Clipboard در این مرورگر در دسترس نیست');}};
-    box.append(button);
-  };
-
-  const renderSettings = () => { $('leftContent').innerHTML='<div class="page-item"><b>Editor Guard</b><p class="hint">Draft و Published جدا هستند. Publish قبل از نوشتن نسخه جدید، Snapshot نسخه قبلی را می‌سازد.</p></div>'; };
-  const navView = view => { $$('.nav').forEach(item=>item.classList.toggle('active',item.dataset.view===view)); ({pages:renderPages,elements:renderElements,media:renderMedia,history:renderHistory,seo:renderSeo,ai:renderAi,settings:renderSettings}[view]||renderSettings)(); };
-
-  const saveRemote = async () => {
-    if(!auth?.currentUser||!db)throw new Error('حساب مدیریت وارد نشده است');
-    await db.collection('siteContent').doc('draft').set({content:drafts,meta:pageMeta,page:pagePath,updatedAt:firebase.firestore.FieldValue.serverTimestamp(),updatedBy:auth.currentUser.uid,schemaVersion:7});
-  };
-
-  const publish = async () => {
-    if(!auth?.currentUser||!db)throw new Error('حساب مدیریت وارد نشده است');
-    const live=await db.collection('siteContent').doc('published').get();
-    const versionId='v-'+Date.now();
-    await db.collection('siteVersions').doc(versionId).set({content:live.exists?(live.data().content||{}):{},meta:live.exists?(live.data().meta||{}):{},page:pagePath,versionId,createdAt:firebase.firestore.FieldValue.serverTimestamp(),createdBy:auth.currentUser.uid,source:'pre-publish',schemaVersion:7});
-    await db.collection('siteContent').doc('published').set({content:drafts,meta:pageMeta,page:pagePath,updatedAt:firebase.firestore.FieldValue.serverTimestamp(),updatedBy:auth.currentUser.uid,versionId,schemaVersion:7});
-  };
-
-  const boot = async () => {
-    if(booted)return;
-    loadLocal();
-    if(firebaseReady&&db&&auth?.currentUser){
-      try {
-        const snapshot=await db.collection('siteContent').doc('draft').get();
-        if(snapshot.exists){
-          const data=snapshot.data()||{};
-          drafts={...(data.content||{}),...drafts};
-          pageMeta={...(data.meta||{}),...pageMeta};
-          if(!Array.isArray(pageMeta.structure))pageMeta.structure=[];
-          if(!pageMeta.seo)pageMeta.seo={};
-          pagePath=data.page||pagePath;
-        }
-      } catch(error) {
-        console.warn('Online draft unavailable; local draft will be used',error);
-        notify('Draft آنلاین در دسترس نبود؛ نسخه محلی استفاده شد.');
-      }
-    }
-    $('pageTitle').textContent=pagePath==='/'?'صفحه اصلی':'Steel Billet';
-    $('pagePath').textContent=pagePath;
-    saveLocal();
-    historyButtons();
-    renderPages();
-    booted=true;
-    $('saveState').textContent='● آماده';
-  };
-
-  const unlockAfterBoot = async user => {
-    if(!user){
-      booted=false;
-      $('app').classList.add('locked');
-      $('loginGate').classList.remove('hidden');
-      return;
-    }
-    // Critical fix: DO NOT hide the login gate until boot has completed.
-    try {
-      await boot();
-      $('app').classList.remove('locked');
-      $('loginGate').classList.add('hidden');
-      setLoginMessage('');
-      notify('پنل مدیریت آماده است');
-    } catch(error) {
-      $('app').classList.add('locked');
-      $('loginGate').classList.remove('hidden');
-      setLoginMessage('پنل نتوانست راه‌اندازی شود: ' + (error.message || 'خطای ناشناخته'));
-      showRuntimeError('Boot failed',error);
-    }
-  };
-
-  const wireUi = () => {
-    iframe=$('preview');
-    if(!iframe)throw new Error('Preview iframe not found');
-
-    $('loginForm')?.addEventListener('submit',async event=>{
-      event.preventDefault();
-      const button=event.currentTarget.querySelector('button');
-      button.disabled=true;
-      setLoginMessage('در حال ورود…');
-      try {
-        if(!auth)throw new Error('Firebase Auth آماده نیست');
-        await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
-        await auth.signInWithEmailAndPassword(ADMIN_EMAIL,$('adminPassword').value);
-      } catch(error) {
-        console.error(error);
-        setLoginMessage(error.code==='auth/too-many-requests'?'تلاش زیاد بود؛ چند دقیقه بعد دوباره امتحان کنید.':'ورود ناموفق بود؛ رمز پنل قبلی را بررسی کنید.');
-      } finally { button.disabled=false; }
-    });
-
-    auth.onAuthStateChanged(user=>{ unlockAfterBoot(user).catch(error=>showRuntimeError('Auth state failed',error)); });
-    iframe.addEventListener('load',prepareIframe);
-    qsa('.nav').forEach(item=>item.addEventListener('click',()=>navView(item.dataset.view)));
-    qsa('.device').forEach(item=>item.addEventListener('click',()=>{device=item.dataset.device;qsa('.device').forEach(x=>x.classList.toggle('active',x===item));$('canvas').className='canvas '+device;applyAll();if(selected)selectElement(selected);}));
-    $('applyBtn').onclick=capture;
-    $('saveBtn').onclick=async()=>{try{await saveRemote();saveLocal();$('saveState').textContent='● Draft ذخیره شد';notify('Draft در Firestore ذخیره شد');}catch(error){console.error(error);notify('ذخیره Draft ناموفق بود');}};
-    $('previewBtn').onclick=()=>{applyAll();notify(previewReady?'Preview به‌روزرسانی شد':'پیش‌نمایش هنوز آماده نیست');};
-    $('openLive').onclick=()=>window.open('https://mohajer-steel.com/products/steel-billet/','_blank');
-    $('publishBtn').onclick=()=>{if(typeof $('publishDialog').showModal==='function')$('publishDialog').showModal();};
-    $('cancelPublish').onclick=()=>$('publishDialog').close();
-    $('confirmPublish').onclick=async()=>{try{await saveRemote();await publish();$('publishDialog').close();notify('انتشار موفق بود');}catch(error){console.error(error);notify('انتشار ناموفق بود: '+(error.message||''));}};
-    $('clearSelection').onclick=()=>{selected?.classList.remove('mohajer-selected');selected=null;selectedKey='';$('inspector').classList.add('hidden');$('emptyInspector').classList.remove('hidden');};
-    $('duplicateBtn').onclick=duplicateSelected;
-    $('deleteBtn').onclick=deleteSelected;
-    $('undoBtn').onclick=()=>{if(!undo.length)return;redo.push(snapshotState());restore(undo.pop());};
-    $('redoBtn').onclick=()=>{if(!redo.length)return;undo.push(snapshotState());restore(redo.pop());};
-    ['textColor','textColorText'].forEach(id=>$(id)?.addEventListener('input',event=>{if(id==='textColor')$('textColorText').value=event.target.value;else $('textColor').value=event.target.value;}));
-    ['bgColor','bgColorText'].forEach(id=>$(id)?.addEventListener('input',event=>{if(id==='bgColor')$('bgColorText').value=event.target.value;else $('bgColor').value=event.target.value;}));
-    window.addEventListener('beforeunload',saveLocal);
-  };
-
-  const start = () => {
-    try {
-      if(!window.firebase)throw new Error('Firebase SDK لود نشده است.');
-      if(!window.MOHAJER_FIREBASE_CONFIG)throw new Error('Firebase configuration لود نشده است.');
-      const firebaseApp=firebase.apps.length?firebase.app():firebase.initializeApp(window.MOHAJER_FIREBASE_CONFIG);
-      auth=firebaseApp.auth();
-      db=firebaseApp.firestore();
-      firebaseReady=true;
-      wireUi();
-    } catch(error) {
-      // Keep the login UI visible instead of turning the whole page black.
-      $('app').classList.add('locked');
-      $('loginGate').classList.remove('hidden');
-      setLoginMessage('راه‌اندازی سرویس مدیریت ناموفق بود.');
-      showRuntimeError('Editor startup failed',error);
-    }
-  };
-
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
+'use strict';
+const $=id=>document.getElementById(id), $$=s=>Array.from(document.querySelectorAll(s));
+const DEFAULT_PAGES=[
+ {path:'/',title:'صفحه اصلی',indexable:true,enabled:true},
+ {path:'/products/steel-billet/',title:'شمش فولادی',indexable:true,enabled:true},
+ {path:'/products/steel-beam/',title:'تیرآهن',indexable:true,enabled:true},
+ {path:'/products/steel-pipe/',title:'لوله فولادی',indexable:true,enabled:true},
+ {path:'/products/rebar/',title:'میلگرد',indexable:true,enabled:true},
+ {path:'/products/steel-plate/',title:'ورق فولادی',indexable:true,enabled:true},
+ {path:'/products/steel-angle/',title:'نبشی',indexable:true,enabled:true},
+ {path:'/loading-transport/',title:'بارگیری و حمل',indexable:true,enabled:true}
+];
+const ADMIN_EMAIL='amirgzva@gmail.com', STORAGE='mohajer-editor-pro-v10', AIKEY='mohajer-editor-ai-v1';
+let auth=null,db=null,booted=false,iframe=null,selected=null,selectedKey='',pagePath='/',device='desktop',drafts={},pageMeta={pages:{},seo:{},structure:[]},undo=[],redo=[],previewReady=false,dragState=null,selectMode=true;
+const clone=x=>{try{return JSON.parse(JSON.stringify(x))}catch{return x}};
+const uid=()=>`me-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,8)}`;
+const esc=x=>window.CSS?.escape?CSS.escape(String(x)):String(x).replace(/[^a-zA-Z0-9_-]/g,'\\$&');
+const notify=m=>{const t=$('toast');if(!t)return;t.textContent=m;t.classList.add('show');clearTimeout(notify.t);notify.t=setTimeout(()=>t.classList.remove('show'),3000)};
+const errorBox=(m,e)=>{console.error(m,e);notify('خطا: '+(e?.message||m));};
+window.addEventListener('error',e=>e.error&&errorBox('خطای JavaScript',e.error));
+window.addEventListener('unhandledrejection',e=>e.reason&&errorBox('خطای Promise',e.reason));
+const defaultPageMeta=()=>{const pages={};DEFAULT_PAGES.forEach(p=>pages[p.path]={...p});return pages};
+const normalize=()=>{if(!pageMeta||typeof pageMeta!=='object')pageMeta={};if(!pageMeta.pages||typeof pageMeta.pages!=='object')pageMeta.pages=defaultPageMeta();DEFAULT_PAGES.forEach(p=>{if(!pageMeta.pages[p.path])pageMeta.pages[p.path]={...p}});if(!Array.isArray(pageMeta.structure))pageMeta.structure=[];if(!pageMeta.seo)pageMeta.seo={}};
+const saveLocal=()=>{try{localStorage.setItem(STORAGE,JSON.stringify({drafts,pageMeta,pagePath}))}catch(e){console.warn(e)}};
+const loadLocal=()=>{try{const d=JSON.parse(localStorage.getItem(STORAGE)||'{}');drafts=d.drafts&&typeof d.drafts==='object'?d.drafts:{};pageMeta=d.pageMeta&&typeof d.pageMeta==='object'?d.pageMeta:{};pagePath=d.pagePath||'/'}catch{drafts={};pageMeta={}}normalize()};
+const pageData=path=>{if(!drafts[path])drafts[path]={};return drafts[path]};
+const currentDraft=()=>pageData(pagePath);
+const selectorFor=el=>{if(!el)return'';if(!el.dataset.mohajerEditorId)el.dataset.mohajerEditorId=uid();return `[data-mohajer-editor-id="${esc(el.dataset.mohajerEditorId)}"]`};
+const fallbackFor=el=>{if(!el)return'';if(el.dataset.key)return`[data-key="${esc(el.dataset.key)}"]`;if(el.id)return'#'+esc(el.id);let p=[],n=el;while(n&&n.parentElement&&p.length<8){let s=n.tagName.toLowerCase();const c=Array.from(n.classList||[]).find(x=>!x.startsWith('admin-'));if(c)s+='.'+esc(c);const same=Array.from(n.parentElement.children).filter(x=>x.tagName===n.tagName);if(same.length>1)s+=`:nth-of-type(${same.indexOf(n)+1})`;p.unshift(s);n=n.parentElement}return p.join(' > ')};
+const typeOf=el=>{if(!el)return'container';if(el.tagName==='IMG')return'image';if(el.tagName==='A')return'link';if(/^H[1-6]$/.test(el.tagName))return'heading';if(el.tagName==='P')return'paragraph';if(el.tagName==='BUTTON')return'button';return'text'};
+const textOf=el=>{if(!el)return'';return(el.innerText||el.textContent||'').trim()};
+const safeUrl=u=>/^(https?:\/\/|\/|#)/i.test(String(u||''));
+const cssMap={fontSize:'font-size',fontWeight:'font-weight',lineHeight:'line-height',letterSpacing:'letter-spacing',textAlign:'text-align',textTransform:'text-transform',opacity:'opacity',margin:'margin',padding:'padding',gap:'gap',width:'width',height:'height',minWidth:'min-width',maxWidth:'max-width',position:'position',zIndex:'z-index',border:'border',borderRadius:'border-radius',boxShadow:'box-shadow',color:'color',backgroundColor:'background-color',backgroundImage:'background-image',backgroundSize:'background-size',backgroundPosition:'background-position',animationName:'animation-name',animationDuration:'animation-duration',animationDelay:'animation-delay',animationFillMode:'animation-fill-mode'};
+const cssName=k=>cssMap[k]||String(k).replace(/[A-Z]/g,m=>'-'+m.toLowerCase());
+const rgbHex=v=>{const m=String(v||'').match(/\d+/g);return m&&m.length>=3?'#'+m.slice(0,3).map(x=>Number(x).toString(16).padStart(2,'0')).join(''):'#000000'};
+const snapshot=()=>clone({drafts,pageMeta,pagePath});
+const pushUndo=()=>{undo.push(snapshot());if(undo.length>40)undo.shift();redo=[];historyButtons()};
+const restore=s=>{if(!s)return;drafts=clone(s.drafts||{});pageMeta=clone(s.pageMeta||{});pagePath=s.pagePath||'/';normalize();saveLocal();loadPage(pagePath,true);historyButtons()};
+const historyButtons=()=>{$('undoBtn').disabled=!undo.length;$('redoBtn').disabled=!redo.length};
+const currentMeta=()=>pageMeta.pages[pagePath]||{path:pagePath,title:pagePath,indexable:true,enabled:true};
+const titleFor=p=>pageMeta.pages[p]?.title||DEFAULT_PAGES.find(x=>x.path===p)?.title||p;
+const renderPages=()=>{$('leftContent').innerHTML='<div class="section-actions"><button id="addPageBtn">＋ صفحه جدید</button><input id="pagePathInput" placeholder="/products/example/"></div>'+Object.values(pageMeta.pages).map(p=>`<div class="page-item ${p.path===pagePath?'selected':''}" data-page="${esc(p.path)}"><b>${p.title||p.path}</b><small>${p.path}</small><div class="page-controls"><button class="page-open" title="باز کردن">↗</button><button class="page-index ${p.indexable!==false?'on':''}" title="نمایش در گوگل">👁</button><button class="page-enabled ${p.enabled!==false?'on':''}" title="فعال/غیرفعال">●</button></div></div>`).join('');
+$$('.page-item').forEach(x=>x.onclick=e=>{if(e.target.closest('.page-controls'))return;loadPage(x.dataset.page)});
+$$('.page-open').forEach((b,i)=>b.onclick=e=>{e.stopPropagation();loadPage(Object.values(pageMeta.pages)[i].path)});
+$$('.page-index').forEach((b,i)=>b.onclick=e=>{e.stopPropagation();const p=Object.values(pageMeta.pages)[i];pushUndo();p.indexable=p.indexable===false;saveLocal();renderPages();notify(p.indexable?'صفحه برای Google قابل ایندکس شد':'صفحه روی noindex قرار گرفت')});
+$$('.page-enabled').forEach((b,i)=>b.onclick=e=>{e.stopPropagation();const p=Object.values(pageMeta.pages)[i];pushUndo();p.enabled=p.enabled===false;saveLocal();renderPages();notify(p.enabled?'صفحه فعال شد':'صفحه در مدیریت غیرفعال شد')});
+$('addPageBtn').onclick=()=>{const p=($('pagePathInput').value||'').trim();if(!/^\//.test(p)||!p.endsWith('/'))return notify('مسیر باید مثل /products/new/ باشد');if(pageMeta.pages[p])return notify('این صفحه وجود دارد');pushUndo();pageMeta.pages[p]={path:p,title:p,indexable:false,enabled:true};saveLocal();renderPages();loadPage(p)} };
+const renderElements=()=>{const groups=[['متن و محتوا',['Heading','Paragraph','Text','Button','Link']],['رسانه',['Image','Video','Gallery','Icon']],['ساختار',['Section','Container','Divider','Card','List','Table','FAQ','Statistic','Badge','Navigation','Footer']]];$('leftContent').innerHTML=groups.map(g=>`<div class="element-group"><b>${g[0]}</b><div class="element-buttons">${g[1].map(x=>`<button data-add="${x}">${x}</button>`).join('')}</div></div>`).join('')+`<p class="hint">عنصر به بخش انتخاب‌شده اضافه می‌شود و همان لحظه در پیش‌نمایش قابل ویرایش است.</p>`;$$('[data-add]').forEach(b=>b.onclick=()=>addElement(b.dataset.add))};
+const renderMedia=()=>{$('leftContent').innerHTML='<div class="media-box"><p>برای تصویر، آدرس مستقیم فایل را وارد کنید.</p><input id="mediaUrl" placeholder="https://.../image.webp"><button id="insertMedia">افزودن تصویر</button></div><div class="media-box"><p>تصاویر استفاده‌شده در Draft</p>'+Object.values(currentDraft()).filter(x=>x.type==='image').map(x=>`<small>${x.content||''}</small>`).join('<hr>')+'</div>';$('insertMedia').onclick=()=>{if(!selected)return notify('ابتدا یک بخش را انتخاب کنید');const u=$('mediaUrl').value.trim();if(!/^https?:\/\//i.test(u))return notify('آدرس تصویر معتبر نیست');$('textValue').value='';applyFields({content:u,type:'image'});notify('تصویر در پیش‌نمایش قرار گرفت')}};
+const renderHistory=()=>{$('leftContent').innerHTML=`<div class="history-box"><button id="undoBig">↶ بازگشت</button><button id="redoBig">↷ تکرار</button><p>تعداد نسخه‌های موقت: ${undo.length}</p><p class="hint">Draft در مرورگر و Firestore ذخیره می‌شود. انتشار، نسخه قبلی را Snapshot می‌کند.</p></div>`;$('undoBig').onclick=()=>{$('undoBtn').click()};$('redoBig').onclick=()=>{$('redoBtn').click()}};
+const renderSeo=()=>{const m=currentMeta();$('leftContent').innerHTML=`<div class="seo-box"><h3>${m.title||pagePath}</h3><label>عنوان SEO<input id="seoTitle" value="${esc(m.seoTitle||'')}"></label><label>توضیحات<input id="seoDescription" value="${esc(m.seoDescription||'')}"></label><label>Canonical<input id="seoCanonical" value="${esc(m.canonical||'')}"></label><label class="switch-row"><input id="seoIndexable" type="checkbox" ${m.indexable!==false?'checked':''}> <span>اجازه نمایش در Google</span></label><p class="hint">خاموش‌کردن این گزینه noindex را روی صفحه منتشرشده می‌گذارد. حذف فوری نتیجه‌ای که قبلاً در Google ثبت شده تضمین نمی‌شود و ممکن است نیاز به Search Console داشته باشد.</p><button id="saveSeo" class="primary">ذخیره تنظیمات SEO</button></div>`;$('saveSeo').onclick=()=>{pushUndo();Object.assign(m,{seoTitle:$('seoTitle').value,seoDescription:$('seoDescription').value,canonical:$('seoCanonical').value,indexable:$('seoIndexable').checked});saveLocal();notify('تنظیمات SEO ذخیره شد')}};
+const aiConfig=()=>{try{return JSON.parse(localStorage.getItem(AIKEY)||'{}')}catch{return{}}};
+const renderAi=()=>{const c=aiConfig(), provider=c.provider||'openai';$('leftContent').innerHTML=`<div class="ai-box"><h3>دستیار هوش مصنوعی</h3><p class="hint">AI فقط پیشنهاد می‌دهد؛ تغییرات تا وقتی شما «اعمال پیشنهاد» نزنید وارد Draft نمی‌شوند.</p><label>ارائه‌دهنده<select id="aiProvider"><option value="openai">ChatGPT / OpenAI</option><option value="anthropic">Claude</option><option value="qwen">Qwen</option></select></label><label>مدل<input id="aiModel" value="${esc(c.model||'')}"></label><label>API Key<input id="aiKey" type="password" value="${esc(c.key||'')}" placeholder="کلید فقط در مرورگر شما ذخیره می‌شود"></label><label>Proxy اختیاری<input id="aiProxy" value="${esc(c.proxy||'')}" placeholder="https://your-server.example/api/ai"></label><button id="saveAi">ذخیره اتصال</button><div class="ai-actions"><button id="analyzePage">🔎 تحلیل صفحه</button><button id="analyzeElement">✦ تحلیل عنصر انتخاب‌شده</button></div><div id="aiResult" class="ai-result">${c.key?'اتصال تنظیم شده است.':'ابتدا API Key را وارد کنید.'}</div></div>`;$('aiProvider').value=provider;$('saveAi').onclick=()=>{localStorage.setItem(AIKEY,JSON.stringify({provider:$('aiProvider').value,model:$('aiModel').value,key:$('aiKey').value,proxy:$('aiProxy').value}));notify('اتصال AI ذخیره شد')};$('analyzePage').onclick=()=>aiAnalyze(false);$('analyzeElement').onclick=()=>aiAnalyze(true)};
+const navView=v=>{const map={pages:renderPages,elements:renderElements,media:renderMedia,history:renderHistory,seo:renderSeo,ai:renderAi,settings:renderSettings};$$('.nav').forEach(n=>n.classList.toggle('active',n.dataset.view===v));(map[v]||renderSettings)()};
+const renderSettings=()=>{$('leftContent').innerHTML=`<div class="settings-box"><h3>تنظیمات پنل</h3><p>زبان پنل: فارسی</p><button id="resetLocal">پاک‌کردن Draft محلی</button><button id="refreshPreview">بارگذاری دوباره صفحه</button><p class="hint">صفحه اصلی و نسخه فعلی سایت بدون Publish تغییر نمی‌کنند.</p></div>`;$('resetLocal').onclick=()=>{if(confirm('Draft محلی پاک شود؟')){localStorage.removeItem(STORAGE);location.reload()}};$('refreshPreview').onclick=()=>loadPage(pagePath)};
+const loadPage=(path,fromRestore=false)=>{if(!/^\//.test(path))return;pagePath=path;selected=null;selectedKey='';$('inspector').classList.add('hidden');$('emptyInspector').classList.remove('hidden');$('pageTitle').textContent=titleFor(path);$('pagePath').textContent=path;$('browserPath').textContent='mohajer-steel.com'+path;iframe.src=path+(path.includes('?')?'&':'?')+'editorPreview=1&editorCache=5&t='+Date.now();renderPages();if(!fromRestore)saveLocal()};
+const resolveDraft=(d,doc)=>{let el=null;try{if(d.selector)el=doc.querySelector(d.selector)}catch{}if(!el)try{if(d.fallbackSelector)el=doc.querySelector(d.fallbackSelector)}catch{}if(el&&d.stableId)el.dataset.mohajerEditorId=d.stableId;return el};
+const setText=(el,v)=>{el.replaceChildren();String(v??'').split(/<br\s*\/?\s*>/i).forEach((s,i)=>{if(i)el.append(document.createElement('br'));el.append(document.createTextNode(s))})};
+const applyDraft=(d,doc)=>{const el=resolveDraft(d,doc);if(!el)return;try{if(d.type==='image'&&d.content)el.src=d.content;else if(['text','heading','paragraph','button','link'].includes(d.type))setText(el,d.content);Object.entries(d.styles||{}).forEach(([k,v])=>{if(v!==''&&v!=null)el.style.setProperty(cssName(k),v)});const r=d.responsive?.[device]||{};Object.entries(r).forEach(([k,v])=>{if(v)el.style.setProperty(cssName(k),v)});if(d.hidden)el.style.setProperty('display','none','important');if(d.link&&(el.tagName==='A'||el.closest('a'))&&safeUrl(d.link)){const a=el.tagName==='A'?el:el.closest('a');a.href=d.link;if(d.newTab)a.target='_blank';else a.removeAttribute('target')}if(d.alt&&el.tagName==='IMG')el.alt=d.alt;if(d.customCss){el.setAttribute('data-mohajer-custom-css',d.customCss)}}catch(e){console.warn(e)}};
+const applyAll=()=>{if(!iframe?.contentDocument)return;const doc=iframe.contentDocument;Object.values(currentDraft()).forEach(d=>applyDraft(d,doc));applyStructure(doc);installEditorOverlay(doc)};
+const applyStructure=doc=>{(pageMeta.structure||[]).filter(x=>x.page===pagePath).forEach(o=>{try{const marker=`[data-mohajer-created="${esc(o.id)}"]`;if(o.action==='delete'){(doc.querySelector(marker)||doc.querySelector(o.selector)||doc.querySelector(o.fallbackSelector))?.remove();return}if(o.action==='move'){const el=doc.querySelector(o.selector)||doc.querySelector(o.fallbackSelector),par=doc.querySelector(o.parentSelector)||doc.querySelector(o.parentFallbackSelector);if(el&&par)par.appendChild(el);return}if(o.action==='add'&&!doc.querySelector(marker)){const par=doc.querySelector(o.parentSelector)||doc.querySelector(o.parentFallbackSelector)||doc.body,t=document.createElement('template');t.innerHTML=o.html;const el=t.content.firstElementChild;if(el){el.dataset.mohajerCreated=o.id;par.appendChild(el)}}}catch(e){console.warn(e)}})};
+const installEditorOverlay=doc=>{if(!doc.body)return;doc.getElementById('mohajer-editor-style')?.remove();const st=doc.createElement('style');st.id='mohajer-editor-style';st.textContent='[data-mohajer-editor-id], [data-key], h1,h2,h3,h4,h5,h6,p,span,a,button,img,section,article,header,footer,main,nav,li,.product-card,.feature-item-new,.dept-card,.ss-product-card{cursor:pointer!important} .mohajer-hover-target:hover{outline:2px solid #3478f6!important;outline-offset:2px!important}.mohajer-selected{outline:3px solid #f0b83f!important;outline-offset:3px!important}.mohajer-selection-box{position:absolute!important;z-index:2147483646!important;border:2px solid #f0b83f!important;pointer-events:none!important;box-sizing:border-box!important}.mohajer-handle{position:absolute!important;width:10px!important;height:10px!important;background:#f0b83f!important;border:2px solid #10151b!important;border-radius:50%!important;pointer-events:auto!important}.mh-nw{left:-7px;top:-7px}.mh-n{left:calc(50% - 5px);top:-7px}.mh-ne{right:-7px;top:-7px}.mh-e{right:-7px;top:calc(50% - 5px)}.mh-se{right:-7px;bottom:-7px}.mh-s{left:calc(50% - 5px);bottom:-7px}.mh-sw{left:-7px;bottom:-7px}.mh-w{left:-7px;top:calc(50% - 5px}';doc.head.appendChild(st);
+if(!doc.__mohajerBound){doc.__mohajerBound=true;doc.addEventListener('click',e=>{if(!selectMode)return;const target=e.target;if(target.closest('.mohajer-selection-box'))return;const el=target.closest('[data-mohajer-editor-id],[data-key],h1,h2,h3,h4,h5,h6,p,span,a,button,img,section,article,header,footer,main,nav,li,.product-card,.feature-item-new,.dept-card,.ss-product-card');if(!el)return;e.preventDefault();e.stopPropagation();selectElement(el)},true)}
+if(selected&&doc.contains(selected))drawSelectionBox(doc);};
+const drawSelectionBox=doc=>{doc.getElementById('mohajer-selection-box')?.remove();if(!selected||!doc.body.contains(selected))return;const r=selected.getBoundingClientRect(),box=doc.createElement('div');box.id='mohajer-selection-box';box.className='mohajer-selection-box';box.style.left=(r.left+doc.defaultView.scrollX)+'px';box.style.top=(r.top+doc.defaultView.scrollY)+'px';box.style.width=r.width+'px';box.style.height=r.height+'px';['nw','n','ne','e','se','s','sw','w'].forEach(dir=>{const h=doc.createElement('span');h.className='mohajer-handle mh-'+dir;h.dataset.resize=dir;h.addEventListener('pointerdown',e=>startResize(e,dir));box.appendChild(h)});box.addEventListener('pointerdown',e=>{if(e.target.dataset.resize)return;startMove(e)});doc.body.appendChild(box)};
+const startMove=e=>{if(!selected)return;e.preventDefault();const doc=selected.ownerDocument,startX=e.clientX,startY=e.clientY,cs=doc.defaultView.getComputedStyle(selected),ox=parseFloat(selected.dataset.mohajerMoveX||'0'),oy=parseFloat(selected.dataset.mohajerMoveY||'0');dragState={kind:'move',doc,startX,startY,ox,oy,selected};pushUndo();const move=ev=>{const x=ox+ev.clientX-startX,y=oy+ev.clientY-startY;selected.style.transform=`translate(${x}px,${y}px)`;selected.dataset.mohajerMoveX=x;selected.dataset.mohajerMoveY=y;drawSelectionBox(doc)};const up=()=>{doc.removeEventListener('pointermove',move);doc.removeEventListener('pointerup',up);captureCurrent();dragState=null};doc.addEventListener('pointermove',move);doc.addEventListener('pointerup',up)};
+const startResize=(e,dir)=>{if(!selected)return;e.preventDefault();e.stopPropagation();const doc=selected.ownerDocument,r=selected.getBoundingClientRect(),sw=r.width,sh=r.height,sx=e.clientX,sy=e.clientY;pushUndo();const move=ev=>{let w=sw,h=sh;if(dir.includes('e'))w=Math.max(20,sw+ev.clientX-sx);if(dir.includes('w'))w=Math.max(20,sw-ev.clientX+sx);if(dir.includes('s'))h=Math.max(20,sh+ev.clientY-sy);if(dir.includes('n'))h=Math.max(20,sh-ev.clientY+sy);selected.style.width=w+'px';selected.style.height=h+'px';drawSelectionBox(doc)};const up=()=>{doc.removeEventListener('pointermove',move);doc.removeEventListener('pointerup',up);captureCurrent();};doc.addEventListener('pointermove',move);doc.addEventListener('pointerup',up)};
+const selectElement=el=>{if(!el||el.closest('#mohajer-selection-box'))return;selected?.classList.remove('mohajer-selected');selected=el;selected.classList.add('mohajer-selected');selectedKey=selectorFor(el);const d=currentDraft()[selectedKey]||{};const cs=el.ownerDocument.defaultView.getComputedStyle(el),set=(id,v)=>{if($(id))$(id).value=v??''};$('selectedTitle').textContent=(el.tagName+' — '+(el.id||el.dataset.mohajerEditorId||'عنصر')).slice(0,40);$('selectedKey').value=selectedKey;$('emptyInspector').classList.add('hidden');$('inspector').classList.remove('hidden');set('textValue',textOf(el));set('linkValue',el.tagName==='A'?el.getAttribute('href')||'':el.closest('a')?.getAttribute('href')||'');set('altValue',el.alt||'');$('newTab').checked=(el.target||el.closest('a')?.target)==='_blank';set('fontSize',cs.fontSize);set('fontWeight',cs.fontWeight);set('lineHeight',cs.lineHeight);set('letterSpacing',cs.letterSpacing);set('textAlign',cs.textAlign);set('textTransform',cs.textTransform);set('textColor',rgbHex(cs.color));set('textColorText',rgbHex(cs.color));set('bgColor',rgbHex(cs.backgroundColor));set('bgColorText',rgbHex(cs.backgroundColor));set('bgImage',cs.backgroundImage==='none'?'':cs.backgroundImage);set('opacity',cs.opacity);set('margin',cs.margin);set('padding',cs.padding);set('gap',cs.gap);set('width',cs.width);set('height',cs.height);set('minWidth',cs.minWidth);set('maxWidth',cs.maxWidth);set('position',cs.position);set('zIndex',cs.zIndex);set('radius',cs.borderRadius);set('border',cs.border);set('shadow',cs.boxShadow);set('animation',cs.animationName==='none'?'':cs.animationName);set('animationDuration',cs.animationDuration);set('animationDelay',cs.animationDelay);set('hoverScale',d.hover?.scale||'1');set('customCss',d.customCss||'');const rr=d.responsive?.[device]||{};set('responsiveFont',rr.fontSize);set('responsiveWidth',rr.width);set('responsiveMargin',rr.margin);set('responsivePadding',rr.padding);drawSelectionBox(el.ownerDocument);};
+const stylesFromUi=()=>{const s={};['fontSize','fontWeight','lineHeight','letterSpacing','textAlign','textTransform','opacity','margin','padding','gap','width','height','minWidth','maxWidth','position','zIndex','border'].forEach(id=>{if($(id)?.value)s[id]=$(id).value});s.borderRadius=$('radius').value;s.boxShadow=$('shadow').value;s.color=$('textColor').value;s.backgroundColor=$('bgColor').value;const bg=$('bgImage').value.trim();if(bg)s.backgroundImage=bg.startsWith('url(')?bg:`url("${bg.replace(/["\\]/g,'')}")`;const an=$('animation').value;if(an){s.animationName=an;s.animationDuration=$('animationDuration').value||'600ms';s.animationDelay=$('animationDelay').value||'0ms';s.animationFillMode='both'}return s};
+const captureCurrent=()=>{if(!selected)return;const type=typeOf(selected),old=currentDraft()[selectedKey]||{};currentDraft()[selectedKey]={...old,selector:selectedKey,stableId:selected.dataset.mohajerEditorId,fallbackSelector:old.fallbackSelector||fallbackFor(selected),type,content:type==='image'?(selected.currentSrc||selected.src):$('textValue').value.replace(/\n/g,'<br>'),link:$('linkValue').value,newTab:$('newTab').checked,alt:$('altValue').value,styles:{...(old.styles||{}),...stylesFromUi()},responsive:{...(old.responsive||{}),[device]:{fontSize:$('responsiveFont').value,width:$('responsiveWidth').value,margin:$('responsiveMargin').value,padding:$('responsivePadding').value}},hover:{scale:$('hoverScale').value||'1'},customCss:$('customCss').value,schemaVersion:10};saveLocal();$('saveState').textContent='● Draft تغییر کرد'};
+const applyFields=extra=>{if(!selected)return;pushUndo();const d=currentDraft()[selectedKey]||{};const type=extra?.type||typeOf(selected),content=extra?.content!==undefined?extra.content:$('textValue').value;currentDraft()[selectedKey]={...d,selector:selectedKey,stableId:selected.dataset.mohajerEditorId,fallbackSelector:d.fallbackSelector||fallbackFor(selected),type,content,link:$('linkValue').value,newTab:$('newTab').checked,alt:$('altValue').value,styles:{...(d.styles||{}),...stylesFromUi()},responsive:{...(d.responsive||{}),[device]:{fontSize:$('responsiveFont').value,width:$('responsiveWidth').value,margin:$('responsiveMargin').value,padding:$('responsivePadding').value}},hover:{scale:$('hoverScale').value||'1'},customCss:$('customCss').value,schemaVersion:10};applyAll();saveLocal();notify('تغییرات در Draft اعمال شد')};
+const addElement=type=>{if(!selected)return notify('ابتدا یک بخش را انتخاب کنید');const doc=iframe?.contentDocument;if(!doc)return;pushUndo();const tags={Heading:'h2',Paragraph:'p',Text:'div',Button:'button',Link:'a',Image:'img',Video:'div',Gallery:'div',Icon:'span',Section:'section',Container:'div',Divider:'hr',Card:'div',List:'ul',Table:'div',FAQ:'div',Statistic:'div',Badge:'span',Navigation:'nav',Footer:'footer'};const el=doc.createElement(tags[type]||'div'),id=uid();el.dataset.mohajerCreated=id;el.dataset.mohajerEditorId=id;el.className='mohajer-editor-added';el.style.cssText='padding:12px;margin:8px;border:1px dashed #999;min-height:20px';if(type==='Image'){el.src='https://placehold.co/800x450?text=Image';el.alt=''}else if(type==='Heading')el.textContent='عنوان جدید';else if(type==='Paragraph')el.textContent='متن جدید';else if(type==='Button')el.textContent='دکمه جدید';else if(type==='Link'){el.href='#';el.textContent='لینک جدید'}else el.textContent=type;selected.appendChild(el);const key=selectorFor(el);currentDraft()[key]={selector:key,stableId:id,fallbackSelector:key,type:typeOf(el),content:textOf(el)||el.src,styles:{padding:'12px',margin:'8px',border:'1px dashed #999'},schemaVersion:10};pageMeta.structure.push({page:pagePath,action:'add',id,parentSelector:selectorFor(selected),parentFallbackSelector:fallbackFor(selected),html:el.outerHTML});selectElement(el);saveLocal();notify(type+' اضافه شد')};
+const duplicate=()=>{if(!selected)return notify('عنصری انتخاب نشده');pushUndo();const c=selected.cloneNode(true),id=uid();c.dataset.mohajerEditorId=id;c.dataset.mohajerCreated=id;selected.parentElement.insertBefore(c,selected.nextSibling);const key=selectorFor(c),base=currentDraft()[selectedKey]||{};currentDraft()[key]={...clone(base),selector:key,stableId:id,fallbackSelector:key};selectElement(c);saveLocal();notify('کپی ساخته شد')};
+const deleteSelected=()=>{if(!selected)return;if(!confirm('این عنصر از Draft حذف شود؟'))return;pushUndo();pageMeta.structure.push({page:pagePath,action:'delete',id:selected.dataset.mohajerCreated||uid(),selector:selectedKey,fallbackSelector:currentDraft()[selectedKey]?.fallbackSelector||fallbackFor(selected)});delete currentDraft()[selectedKey];selected.remove();selected=null;$('inspector').classList.add('hidden');$('emptyInspector').classList.remove('hidden');saveLocal();notify('عنصر حذف شد')};
+const saveRemote=async()=>{if(!auth?.currentUser||!db)throw Error('حساب مدیریت وارد نشده');await db.collection('siteContent').doc('draft').set({content:{pages:drafts},meta:pageMeta,updatedAt:firebase.firestore.FieldValue.serverTimestamp(),updatedBy:auth.currentUser.uid,schemaVersion:10})};
+const publish=async()=>{const ref=db.collection('siteContent').doc('published'),old=await ref.get(),oldData=old.exists?old.data():{},oldPages=oldData.content?.pages||{};const merged={...oldPages,...drafts};const version='v-'+Date.now();await db.collection('siteVersions').doc(version).set({content:oldData.content||{},meta:oldData.meta||{},versionId:version,createdAt:firebase.firestore.FieldValue.serverTimestamp(),createdBy:auth.currentUser.uid,source:'pre-publish',schemaVersion:10});await ref.set({content:{pages:merged},meta:pageMeta,versionId:version,updatedAt:firebase.firestore.FieldValue.serverTimestamp(),updatedBy:auth.currentUser.uid,schemaVersion:10})};
+const boot=async()=>{if(booted)return;loadLocal();try{const s=await db.collection('siteContent').doc('draft').get();if(s.exists){const d=s.data()||{};if(d.content?.pages){drafts={...(d.content.pages||{}),...drafts}}else if(d.content&&typeof d.content==='object'){drafts[pagePath]={...(d.content||{}),...(drafts[pagePath]||{})}}pageMeta={...(d.meta||{}),...pageMeta};normalize()}}catch(e){console.warn('draft online unavailable',e)}booted=true;loadPage(pagePath,true);renderPages();historyButtons()};
+const aiRequest=async prompt=>{const c=aiConfig();if(!c.key)return{error:'API Key تنظیم نشده است'};let body,headers={'Content-Type':'application/json'},url=c.proxy||'';if(c.proxy){body={provider:c.provider,model:c.model,prompt};}else if(c.provider==='anthropic'){url='https://api.anthropic.com/v1/messages';headers['x-api-key']=c.key;headers['anthropic-version']='2023-06-01';headers['anthropic-dangerous-direct-browser-access']='true';body={model:c.model||'claude-3-5-sonnet-latest',max_tokens:1800,messages:[{role:'user',content:prompt}]}}else{url=c.provider==='qwen'?'https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions':'https://api.openai.com/v1/chat/completions';headers.Authorization='Bearer '+c.key;body={model:c.model||(c.provider==='qwen'?'qwen-plus':'gpt-4o-mini'),messages:[{role:'system',content:'You are a professional website UX/UI and SEO consultant. Return concise Persian recommendations and, when requested, a JSON proposal.'},{role:'user',content:prompt}],temperature:.2}}const r=await fetch(url,{method:'POST',headers,body:JSON.stringify(body)});if(!r.ok)throw Error('AI HTTP '+r.status+' — '+(await r.text()).slice(0,180));const j=await r.json();return c.proxy?j:c.provider==='anthropic'?{text:j.content?.map(x=>x.text||'').join('')||''}:{text:j.choices?.[0]?.message?.content||''}};
+const selectedContext=()=>{if(!selected)return'هیچ عنصری انتخاب نشده است';const cs=selected.ownerDocument.defaultView.getComputedStyle(selected);return JSON.stringify({tag:selected.tagName,text:textOf(selected).slice(0,1500),html:selected.outerHTML.slice(0,5000),styles:{fontSize:cs.fontSize,color:cs.color,background:cs.backgroundColor,width:cs.width,height:cs.height,margin:cs.margin,padding:cs.padding}})};
+const aiAnalyze=async elementMode=>{const box=$('aiResult');if(!box)return;box.textContent='در حال تحلیل…';try{const prompt=elementMode?`این عنصر از سایت مهاجر استیل را تحلیل کن و بگو چه چیزهایی را بهتر کنم، کجا، چرا و با چه اولویتی. پاسخ کاملاً فارسی و عملی باشد. عنصر:\n${selectedContext()}`:`صفحه ${pagePath} از سایت مهاجر استیل را از نظر UI/UX، موبایل، خوانایی، سرعت، CTA و SEO تحلیل کن. فقط پیشنهادهای عملی و اولویت‌دار بده. اگر مشکل مهمی هست محل دقیق آن را بگو. وضعیت صفحه: ${JSON.stringify(currentMeta())}`;const r=await aiRequest(prompt);box.textContent=r.text||JSON.stringify(r,null,2)}catch(e){box.textContent='تحلیل انجام نشد: '+e.message}};
+const aiElementAction=async()=>{if(!selected)return notify('ابتدا عنصر را انتخاب کنید');navView('ai');setTimeout(async()=>{const box=$('aiResult');box.textContent='در حال ساخت پیشنهاد قابل اعمال…';try{const prompt=`برای عنصر زیر یک پیشنهاد اصلاح حرفه‌ای بده. فقط JSON معتبر برگردان با ساختار {"reason":"...","changes":{"text":"","fontSize":"","fontWeight":"","color":"","backgroundColor":"","width":"","height":"","margin":"","padding":"","borderRadius":"","boxShadow":"","animation":"","hoverScale":""}}. فقط فیلدهایی که لازم است پر کن. پاسخ فارسی در reason باشد. عنصر:\n${selectedContext()}`;const r=await aiRequest(prompt);const txt=r.text||'';box.textContent=txt;const match=txt.match(/\{[\s\S]*\}/);if(match){const p=JSON.parse(match[0]);const b=document.createElement('button');b.textContent='اعمال پیشنهاد AI به Draft';b.className='primary';b.onclick=()=>{pushUndo();const ch=p.changes||{};if(ch.text!==undefined)$('textValue').value=ch.text;if(ch.fontSize!==undefined)$('fontSize').value=ch.fontSize;if(ch.fontWeight!==undefined)$('fontWeight').value=ch.fontWeight;if(ch.color!==undefined){$('textColor').value=ch.color;$('textColorText').value=ch.color}if(ch.backgroundColor!==undefined){$('bgColor').value=ch.backgroundColor;$('bgColorText').value=ch.backgroundColor}['width','height','margin','padding','borderRadius','boxShadow','animation','hoverScale'].forEach(k=>{if(ch[k]!==undefined&&$(k))$(k).value=ch[k]});$('applyBtn').click();b.remove()};box.appendChild(b)}}catch(e){box.textContent='پیشنهاد ساخته نشد: '+e.message}},0)};
+const wire=()=>{$('loginForm').onsubmit=async e=>{e.preventDefault();$('loginError').textContent='در حال ورود…';try{await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);await auth.signInWithEmailAndPassword(ADMIN_EMAIL,$('adminPassword').value)}catch(err){$('loginError').textContent='رمز یا حساب مدیریت صحیح نیست.';console.error(err)}};auth.onAuthStateChanged(async user=>{if(!user){$('app').classList.add('locked');$('loginGate').classList.remove('hidden');return}try{await boot();$('app').classList.remove('locked');$('loginGate').classList.add('hidden');notify('پنل مدیریت آماده است')}catch(e){$('loginError').textContent='راه‌اندازی پنل ناموفق بود';errorBox('boot',e)}});$$('.nav').forEach(n=>n.onclick=()=>navView(n.dataset.view));$('undoBtn').onclick=()=>{if(!undo.length)return;redo.push(snapshot());restore(undo.pop())};$('redoBtn').onclick=()=>{if(!redo.length)return;undo.push(snapshot());restore(redo.pop())};$$('.device').forEach(b=>b.onclick=()=>{device=b.dataset.device;$$('.device').forEach(x=>x.classList.toggle('active',x===b));$('canvas').className='canvas '+device;applyAll();if(selected)selectElement(selected)});$('applyBtn').onclick=()=>applyFields();$('duplicateBtn').onclick=duplicate;$('deleteBtn').onclick=deleteSelected;$('clearSelection').onclick=()=>{selected?.classList.remove('mohajer-selected');selected=null;$('inspector').classList.add('hidden');$('emptyInspector').classList.remove('hidden');iframe.contentDocument?.getElementById('mohajer-selection-box')?.remove()};$('previewBtn').onclick=()=>{applyAll();notify('پیش‌نمایش به‌روزرسانی شد')};$('saveBtn').onclick=async()=>{try{await saveRemote();saveLocal();notify('Draft در Firestore ذخیره شد')}catch(e){notify('ذخیره آنلاین ناموفق بود؛ نسخه محلی نگه داشته شد')}};$('openLive').onclick=()=>window.open(pagePath,'_blank');$('publishBtn').onclick=()=>typeof $('publishDialog').showModal==='function'&&$('publishDialog').showModal();$('cancelPublish').onclick=()=>$('publishDialog').close();$('confirmPublish').onclick=async()=>{try{await saveRemote();await publish();$('publishDialog').close();notify('انتشار موفق بود')}catch(e){errorBox('publish',e)}};$('aiElementBtn').onclick=aiElementAction;$$('.device').forEach(x=>x.classList.toggle('active',x.dataset.device===device));$('selectModeBtn').onclick=()=>{selectMode=true;$('selectModeBtn').classList.add('active');$('moveModeBtn').classList.remove('active')};$('moveModeBtn').onclick=()=>{selectMode=false;$('moveModeBtn').classList.add('active');$('selectModeBtn').classList.remove('active')};iframe=$('preview');iframe.addEventListener('load',()=>{previewReady=true;try{applyAll();notify('صفحه زنده آماده است')}catch(e){errorBox('preview',e)}});['textColor','textColorText'].forEach(id=>$(id).oninput=e=>{if(id==='textColor')$('textColorText').value=e.target.value;else $('textColor').value=e.target.value});['bgColor','bgColorText'].forEach(id=>$(id).oninput=e=>{if(id==='bgColor')$('bgColorText').value=e.target.value;else $('bgColor').value=e.target.value});window.addEventListener('beforeunload',saveLocal)};
+const start=()=>{try{if(!window.firebase)throw Error('Firebase SDK لود نشده');if(!window.MOHAJER_FIREBASE_CONFIG)throw Error('Firebase config لود نشده');const app=firebase.apps.length?firebase.app():firebase.initializeApp(window.MOHAJER_FIREBASE_CONFIG);auth=app.auth();db=app.firestore();wire()}catch(e){$('loginError').textContent='سرویس مدیریت آماده نشد';errorBox('startup',e)}};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })();
