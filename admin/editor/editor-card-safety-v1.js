@@ -1,1 +1,1 @@
-(()=>{'use strict';window.__MOHAJER_CARD_SAFETY_DISABLED__=true;})();
+(()=>{'use strict';if(window.__MOHAJER_INTERACTION_V9__)return;window.__MOHAJER_INTERACTION_V9__=true;const s=document.createElement('script');s.src='editor-interaction-v9.js?v=editor-interaction-9';document.body.appendChild(s)})();
