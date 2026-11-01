@@ -1,4 +1,4 @@
-/* Self-contained engineering estimate. No prices, stock or analytics. */
+/* Self-contained engineering estimate and technical enquiry tool. */
 (() => {
   "use strict";
   const DENSITY_KG_PER_M3 = 7850;

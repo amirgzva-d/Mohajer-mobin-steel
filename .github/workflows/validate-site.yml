@@ -12,7 +12,26 @@ jobs:
       - name: Reject unresolved merge artifacts
         shell: bash
         run: |
-          if rg -n '^(<<<<<<<|=======|>>>>>>>)( |$)|^[[:space:]]*(codex-[a-z0-9]+|main)[[:space:]]*$' --glob '!*.png' --glob '!*.jpg' .; then
+          if git grep -nE '^(<<<<<<<|=======|>>>>>>>)( |$)|^[[:space:]]*(codex-[a-z0-9]+|main)[[:space:]]*
+            echo 'Unresolved merge artifacts were found.' >&2
+            exit 1
+          fi
+      - name: Validate JavaScript syntax
+        run: |
+          node --check script.js
+          node --check site-content.js
+          node --check products/steel-calculator.js
+          node --check admin/admin-panel.js
+          node --check admin/editor/editor.js
+      - name: Validate web manifest JSON
+        run: python -m json.tool site.webmanifest >/dev/null
+
+      - name: Compile SEO product generator
+        run: python -m py_compile scripts/generate_product_pages.py
+
+      - name: Validate SEO indexable pages, schema and sitemap
+        run: python scripts/check_seo.py
+ -- '*.html' '*.js' '*.json' '*.css' '*.py' '*.yml' '*.md'; then
             echo 'Unresolved merge artifacts were found.' >&2
             exit 1
           fi
