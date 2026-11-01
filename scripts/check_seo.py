@@ -57,3 +57,23 @@ for stale in ["42,000,000", "39,500,000", "669,000", "667,000", "670,000", "۵ �
     assert stale not in home, f"Stale indicative price/date published as current: {stale}"
 assert 'id="weight-guide"' in (ROOT / "products/rebar/index.html").read_text(encoding="utf-8")
 assert "۳۴۰" in (ROOT / "guides/rebar-grades/index.html").read_text(encoding="utf-8")
+
+# Multilingual product and corporate content: reciprocal, canonical, indexable.
+BILINGUAL = [
+ ("/products/steel-billet/","/en/products/steel-billet/"),
+ ("/products/rebar/","/en/products/rebar/"),
+ ("/products/steel-plate/","/en/products/steel-plate/"),
+ ("/products/steel-slab/","/en/products/steel-slab/"),
+ ("/steel-export/","/en/steel-export/"),
+ ("/trading/","/en/trading/"),
+]
+for fa, en in BILINGUAL:
+ for path, language in ((fa,"fa-IR"),(en,"en")):
+  html = (ROOT / path.lstrip("/") / "index.html").read_text(encoding="utf-8")
+  assert f'rel="canonical" href="{DOMAIN}{path}"' in html, path
+  assert f'hreflang="fa-IR" href="{DOMAIN}{fa}"' in html, path
+  assert f'hreflang="en" href="{DOMAIN}{en}"' in html, path
+  assert f'{DOMAIN}{path}' in locs, path
+  assert html.count("<h1") == 1, path
+assert (DOMAIN+"/en/") in locs
+assert "Steel export" in (ROOT / "en" / "index.html").read_text(encoding="utf-8") or "steel export" in (ROOT / "en" / "index.html").read_text(encoding="utf-8")
