@@ -77,3 +77,16 @@ for fa, en in BILINGUAL:
   assert html.count("<h1") == 1, path
 assert (DOMAIN+"/en/") in locs
 assert "Steel export" in (ROOT / "en" / "index.html").read_text(encoding="utf-8") or "steel export" in (ROOT / "en" / "index.html").read_text(encoding="utf-8")
+
+# Keep the four priority price-intent landing pages distinct and clear about quotation.
+PRIORITY_TITLES = {
+  "steel-billet": "قیمت شمش فولادی 3SP و 5SP | خرید و صادرات | فولاد مهاجر",
+  "rebar": "قیمت میلگرد A2 و A3 و A4 | خرید و صادرات | فولاد مهاجر",
+  "steel-plate": "قیمت ورق فولادی ST37 و ST52 | خرید و صادرات | فولاد مهاجر",
+  "steel-slab": "قیمت اسلب فولادی | خرید و صادرات تختال | فولاد مهاجر"
+}
+for product_slug, expected_title in PRIORITY_TITLES.items():
+    product_html = (ROOT / "products" / product_slug / "index.html").read_text(encoding="utf-8")
+    assert f"<title>{expected_title}</title>" in product_html, product_slug
+    assert "استعلام قیمت" in product_html, product_slug
+    assert f'/en/products/{product_slug}/' in product_html, product_slug
