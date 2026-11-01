@@ -100,3 +100,14 @@ for slug in ("en", "loading-transport"):
     graph = json.loads(ld.group(1))["@graph"]
     assert any(element.get("@type") == "WebPage" for element in graph), slug
 assert f'hreflang="en" href="{DOMAIN}/en/"' in (ROOT / "index.html").read_text(encoding="utf-8")
+
+# Independent technical weight tools, with no product prices or fake inventory.
+for slug in ("steel-billet", "rebar", "steel-plate", "steel-slab"):
+    source = (ROOT / "products" / slug / "index.html").read_text(encoding="utf-8")
+    assert source.count('id="steel-weight-tool"') == 1, slug
+    assert f'data-steel-weight="{slug}"' in source, slug
+    assert '../steel-calculator.js' in source and '../steel-calculator.css' in source, slug
+calculator_js = (ROOT / "products" / "steel-calculator.js").read_text(encoding="utf-8")
+assert "DENSITY_KG_PER_M3 = 7850" in calculator_js
+assert "totalKg" in calculator_js and "navigator.clipboard" in calculator_js
+assert "price" not in calculator_js.lower() and "قیمت" not in calculator_js

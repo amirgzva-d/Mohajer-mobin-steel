@@ -1,0 +1,19 @@
+/* Technical weight and enquiry tools, scoped away from the existing site theme. */
+.request-tool-section { background: #f7f8fb; color: #19243a; }
+.request-tool-section .section-intro {color: #4b586c; max-width: 960px;}
+.request-tool-section .section-title {color: #1d2a45;}
+.request-tool-section .weight-calculator {background:#fff;border:1px solid #dfe5ee;border-radius:13px;padding:clamp(17px,3vw,30px);margin:26px 0 15px;box-shadow:0 8px 25px rgba(22,38,58,.06)}
+.request-tool-section .weight-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.request-tool-section .weight-field{display:flex;flex-direction:column;gap:7px;font-size:.92rem;font-weight:650;color:#26334a}
+.request-tool-section .weight-field input {min-width:0;width:100%;border:1px solid #cbd3df;border-radius:7px;padding:11px 12px;background:#fff;color:#1e2a3f;font:inherit;direction:ltr;text-align:right}
+.request-tool-section .weight-field input:focus,.request-tool-section .weight-request:focus{outline:2px solid #b78941;outline-offset:2px}
+.request-tool-section .weight-actions {margin-top:21px}
+.request-tool-section .weight-button,.request-tool-section .weight-copy {display:inline-block;border:0;border-radius:7px;padding:11px 20px;background:#bd8a3a;color:#151e2d;font:inherit;font-weight:700;cursor:pointer}
+.request-tool-section .weight-copy {background:#283b59;color:#fff;margin-top:12px}
+.request-tool-section .weight-result {font-weight:700;margin:18px 0 14px;color:#213c57;min-height:1.8em}
+.request-tool-section .weight-copy-label{display:block;font-weight:700;margin-bottom:8px}
+.request-tool-section .weight-request{display:block;width:100%;resize:vertical;padding:13px;border:1px solid #cbd3df;border-radius:8px;direction:rtl;text-align:right;background:#f8fafc;color:#253148;line-height:1.8;font:inherit}
+.request-tool-section .weight-copy-status{display:inline-block;margin-inline-start:12px;color:#355c48;font-size:.88rem}
+.request-tool-section .weight-method {font-size:.9rem;line-height:2;color:#5a6474;max-width:1000px}
+@media(max-width:850px){.request-tool-section .weight-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){.request-tool-section .weight-grid{grid-template-columns:1fr}.request-tool-section .weight-button{width:100%}}

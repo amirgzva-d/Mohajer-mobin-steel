@@ -149,6 +149,8 @@
     }
   ]
 }</script>
+  <link rel="stylesheet" href="../steel-calculator.css">
+  <script src="../steel-calculator.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -186,6 +188,24 @@
 <article class="card"><h3>تفاوت قیمت شمش با اسلب</h3><p>شمش معمولاً خوراک نورد میلگرد و مقاطع طویل است؛ اسلب خوراک نورد محصولات تخت. به همین دلیل مقایسه مستقیم قیمت شمش با قیمت اسلب بدون بررسی نوع محصول و گرید اشتباه است. برای آشنایی با کاربردها، <a href="../../guides/billet-vs-slab/">راهنمای تفاوت شمش و اسلب</a> را مطالعه کنید.</p>
 <p>برای تأمین <a href="../steel-plate/">ورق فولادی</a> نیز می‌توانید مشخصات محصول نهایی را جداگانه استعلام کنید.</p></article></div>
       <p class="section-intro">برای دریافت پیشنهاد تجاری، <a href="mailto:info@mohajer-group.com">مشخصات سفارش را برای واحد بازرگانی فولاد مهاجر مبین ارسال کنید</a> یا با <a href="../../steel-export/">مراحل صادرات فولاد</a> آشنا شوید.</p>
+    </section>
+    <section class="section-white request-tool-section" id="steel-weight-tool">
+<h2 class="section-title">محاسبه وزن نظری اسلب و تختال فولادی</h2>
+<p class="section-intro">ضخامت، عرض، طول و تعداد تختال را وارد کنید. وزن تقریبی برای برنامه‌ریزی خرید عمده و حمل صادراتی محاسبه می‌شود و مشخصات قطعی باید با گواهی و باسکول بررسی شوند.</p>
+<form class="weight-calculator" data-steel-weight="steel-slab" data-item-name="اسلب فولادی" novalidate>
+<div class="weight-grid"><label class="weight-field"><span>ضخامت اسلب (میلی‌متر)</span><input type="number" inputmode="decimal" name="thickness" min="50" max="500" step="any" value="200" required></label>
+<label class="weight-field"><span>عرض اسلب (میلی‌متر)</span><input type="number" inputmode="decimal" name="width" min="500" max="3000" step="any" value="1200" required></label>
+<label class="weight-field"><span>طول هر اسلب (متر)</span><input type="number" inputmode="decimal" name="length" min="0.1" max="20" step="any" value="6" required></label>
+<label class="weight-field"><span>تعداد اسلب</span><input type="number" inputmode="decimal" name="count" min="1" max="100000" step="1" value="3" required></label>
+<label class="weight-field"><span>گرید یا استاندارد موردنیاز</span><input type="text" name="grade" maxlength="90" value="طبق سفارش" aria-label="گرید درخواست خرید"></label>
+<label class="weight-field"><span>مقصد بارگیری یا صادرات (اختیاری)</span><input type="text" name="destination" maxlength="120" placeholder="برای مثال: مشهد، بندرعباس، مقصد صادراتی"></label></div>
+<div class="weight-actions"><button type="submit" class="weight-button">محاسبه وزن نظری و تهیه درخواست</button></div>
+<p class="weight-result" aria-live="polite" role="status">اعداد نمونه هستند؛ مشخصات واقعی سفارش را وارد کنید.</p>
+<label class="weight-copy-label" for="order-steel-slab">متن آماده درخواست خرید یا صادرات</label>
+<textarea id="order-steel-slab" class="weight-request" readonly rows="5" placeholder="بعد از محاسبه، متن درخواست در این قسمت آماده می‌شود."></textarea>
+<button type="button" class="weight-copy">کپی متن درخواست</button><span class="weight-copy-status" role="status" aria-live="polite"></span>
+</form>
+<p class="weight-method"><strong>روش محاسبه:</strong> وزن نظری (کیلوگرم) = ضخامت (میلی‌متر) × عرض (میلی‌متر) × طول (متر) × تعداد × ۰٫۰۰۷۸۵؛ چگالی فرضی فولاد کربنی ۷٬۸۵۰ کیلوگرم بر مترمکعب است. نتیجه فقط برای برآورد اولیه است و وزن واقعی باید مطابق استاندارد، گواهی کارخانه و باسکول کنترل شود. هیچ قیمت یا موجودی قطعی از این محاسبه نتیجه نمی‌شود.</p>
     </section>
     <section>
       <h2 class="section-title">فرایند خرید و صادرات</h2>
