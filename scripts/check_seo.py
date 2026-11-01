@@ -90,3 +90,13 @@ for product_slug, expected_title in PRIORITY_TITLES.items():
     assert f"<title>{expected_title}</title>" in product_html, product_slug
     assert "استعلام قیمت" in product_html, product_slug
     assert f'/en/products/{product_slug}/' in product_html, product_slug
+
+# The English product directory and logistics page also expose crawlable page metadata.
+for slug in ("en", "loading-transport"):
+    path = ROOT / slug / "index.html"
+    body = path.read_text(encoding="utf-8")
+    ld = re.search(r'<script type="application/ld\+json">([\s\S]*?)</script>', body)
+    assert ld, f"Missing structured WebPage data: {slug}"
+    graph = json.loads(ld.group(1))["@graph"]
+    assert any(element.get("@type") == "WebPage" for element in graph), slug
+assert f'hreflang="en" href="{DOMAIN}/en/"' in (ROOT / "index.html").read_text(encoding="utf-8")
