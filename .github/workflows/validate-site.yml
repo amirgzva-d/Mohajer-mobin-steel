@@ -25,5 +25,8 @@ jobs:
       - name: Validate web manifest JSON
         run: python -m json.tool site.webmanifest >/dev/null
 
+      - name: Compile SEO product generator
+        run: python -m py_compile scripts/generate_product_pages.py
+
       - name: Validate SEO indexable pages, schema and sitemap
         run: python scripts/check_seo.py
