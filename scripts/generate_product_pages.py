@@ -213,6 +213,27 @@ SEO_GUIDES = {
   }
 }
 
+PRIORITY_INTENT = {
+  "rebar": {
+    "html": "    <section class=\"section-white\" id=\"commercial-questions\">\n      <h2 class=\"section-title\">راهنمای تخصصی قیمت، خرید و صادرات میلگرد</h2>\n      <p class=\"section-intro\">این اطلاعات برای مقایسه پیشنهادهای خرید و صادرات است، نه اعلام نرخ زنده. موجودی، قیمت و اسناد هر سفارش صرفاً در پیش‌فاکتور معتبر تأیید می‌شود.</p>\n      <div class=\"priority-commercial-grid\"><article class=\"card\"><h3>قیمت میلگرد A2، A3 و A4 چگونه استعلام می‌شود؟</h3><p>در استعلام قیمت میلگرد، فقط نام «میلگرد» کافی نیست. قطر، رده استاندارد A2 یا A3 یا A4، طول شاخه، مقدار سفارش و کارخانه مورد نظر را مشخص کنید. وزن نظری و وزن باسکول، هزینه حمل و محل تحویل می‌توانند رقم نهایی پیش‌فاکتور را تغییر دهند.</p>\n<p>اگر هدف پروژه ساختمانی است، جایگزینی گریدها باید مطابق نقشه و نظر مهندس مسئول باشد؛ صرفاً ارزان‌تر بودن قیمت میلگرد A3 یا A4 معیار مناسبی برای انتخاب نیست.</p></article>\n<article class=\"card\"><h3>صادرات میلگرد فولادی و مدارک لازم</h3><p>برای صادرات میلگرد، استاندارد قابل پذیرش در کشور مقصد، گرید مورد نیاز، برگه آزمون کارخانه (MTC) در صورت توافق، قطر و وزن بندیل اهمیت دارند. باید روش بسته‌بندی، مقصد، شرایط تحویل و زمان بارگیری پیش از نهایی شدن پیش‌فاکتور روشن باشد.</p>\n<p>فولاد مهاجر مبین درخواست‌های خرید عمده و صادراتی را بر اساس مشخصات ثبت‌شده بررسی می‌کند. موجودی و قیمت روز اعلام‌شده بدون تأیید واحد بازرگانی معتبر نیست.</p></article>\n<article class=\"card\"><h3>چک‌لیست درخواست قیمت میلگرد</h3><p>یک استعلام دقیق شامل رده A2/A3/A4، قطر میلی‌متر، طول شاخه، تناژ، کارخانه یا استاندارد ترجیحی، شهر یا کشور مقصد و نیاز به آزمون یا بازرسی است. این جزئیات مانع مقایسه قیمت دو محصول غیرهم‌ارز می‌شود.</p>\n<p>برای مشاهده رده‌ها و روش محاسبه وزن، <a href=\"../../guides/rebar-grades/\">راهنمای فنی میلگرد</a> را ببینید.</p></article></div>\n      <p class=\"section-intro\">برای دریافت پیشنهاد تجاری، <a href=\"mailto:info@mohajer-group.com\">مشخصات سفارش را برای واحد بازرگانی فولاد مهاجر مبین ارسال کنید</a> یا با <a href=\"../../steel-export/\">مراحل صادرات فولاد</a> آشنا شوید.</p>\n    </section>\n",
+    "h1": "خرید میلگرد فولادی؛ قیمت و صادرات میلگرد A2، A3 و A4",
+    "description": "قیمت میلگرد فولادی با استعلام قطر، گرید A2، A3 یا A4، کارخانه، تناژ و محل تحویل مشخص می‌شود. راهنمای خرید و صادرات میلگرد از فولاد مهاجر مبین.",
+    "english": "Steel Rebar"
+  },
+  "steel-plate": {
+    "html": "    <section class=\"section-white\" id=\"commercial-questions\">\n      <h2 class=\"section-title\">راهنمای تخصصی قیمت، خرید و صادرات ورق فولادی</h2>\n      <p class=\"section-intro\">این اطلاعات برای مقایسه پیشنهادهای خرید و صادرات است، نه اعلام نرخ زنده. موجودی، قیمت و اسناد هر سفارش صرفاً در پیش‌فاکتور معتبر تأیید می‌شود.</p>\n      <div class=\"priority-commercial-grid\"><article class=\"card\"><h3>قیمت ورق فولادی ST37 و ST52 به چه عواملی بستگی دارد؟</h3><p>در خرید ورق فولادی، اصطلاح عمومی «ورق» دقیق نیست: گرید، شیوه نورد، ضخامت، عرض و طول، حالت تحویل به صورت رول یا شیت و کیفیت سطح باید مشخص شود. خریدار ورق ST37 یا ST52 بهتر است نقشه و استاندارد فنی پروژه را همراه استعلام بفرستد.</p>\n<p>قیمت ورق سیاه با قیمت پلیت برش‌خورده یکسان نیست. هزینه برش، وزن نهایی، محل بارگیری، تناژ و شرایط پرداخت روی نرخ تأییدشده در پیش‌فاکتور اثر می‌گذارند.</p></article>\n<article class=\"card\"><h3>صادرات ورق و پلیت فولادی</h3><p>برای صادرات ورق فولادی، کنترل گرید و مشخصات مکانیکی، تلرانس ابعاد، وضعیت سطح، شیوه مهار بار و مدارک فنی مورد توافق اهمیت دارد. در تحویل صادراتی، خطر آسیب سطحی و رطوبت هنگام حمل باید در روش بسته‌بندی لحاظ شود.</p>\n<p>پیش از استعلام صادرات ورق ST37 یا ST52، مقصد، مقدار، ابعاد و نیاز به گواهی آزمون مواد را اعلام کنید. وجود محصول در یک ضخامت یا کارخانه خاص تنها پس از بررسی تأمین قابل تأیید است.</p></article>\n<article class=\"card\"><h3>تفاوت ورق، پلیت و کویل گالوانیزه</h3><p>ورق و پلیت در کاربردهای سازه‌ای و صنعتی به شکل شیت یا رول عرضه می‌شوند؛ <a href=\"../galvanized-steel-coil/\">کویل گالوانیزه</a> دارای پوشش روی بوده و شرایط فنی و قیمت‌گذاری متفاوتی دارد. <a href=\"../steel-slab/\">اسلب فولادی</a> نیز یکی از مواد اولیه تولید محصولات تخت است.</p>\n<p>برای مقایسه قیمت، وزن نظری هر شیت و تلرانس ضخامت را بر اساس استاندارد مورد توافق کنترل کنید.</p></article></div>\n      <p class=\"section-intro\">برای دریافت پیشنهاد تجاری، <a href=\"mailto:info@mohajer-group.com\">مشخصات سفارش را برای واحد بازرگانی فولاد مهاجر مبین ارسال کنید</a> یا با <a href=\"../../steel-export/\">مراحل صادرات فولاد</a> آشنا شوید.</p>\n    </section>\n",
+    "h1": "خرید ورق فولادی؛ قیمت ورق ST37 و ST52 و صادرات",
+    "description": "استعلام قیمت ورق فولادی ST37 و ST52، ورق سیاه و پلیت بر اساس ضخامت، ابعاد، گرید، کارخانه و محل تحویل؛ راهنمای خرید و صادرات ورق فولادی.",
+    "english": "Steel Plate & Sheet"
+  },
+  "steel-slab": {
+    "html": "    <section class=\"section-white\" id=\"commercial-questions\">\n      <h2 class=\"section-title\">راهنمای تخصصی قیمت، خرید و صادرات اسلب فولادی</h2>\n      <p class=\"section-intro\">این اطلاعات برای مقایسه پیشنهادهای خرید و صادرات است، نه اعلام نرخ زنده. موجودی، قیمت و اسناد هر سفارش صرفاً در پیش‌فاکتور معتبر تأیید می‌شود.</p>\n      <div class=\"priority-commercial-grid\"><article class=\"card\"><h3>قیمت اسلب فولادی و تختال چگونه تعیین می‌شود؟</h3><p>اسلب یا تختال، محصول نیمه‌ساخته با سطح مقطع پهن است که در بسیاری از خطوط نورد ورق استفاده می‌شود. قیمت اسلب به گرید و ترکیب شیمیایی، ضخامت، عرض، طول، کیفیت سطح، تناژ و شرایط تحویل وابسته است.</p>\n<p>برای استعلام قیمت اسلب، علاوه بر اندازه و مقدار، نوع محصول نهایی خط نورد و الزامات فنی آن را مشخص کنید. اعلام قیمت قطعی بدون تأیید کارخانه، موجودی و زمان حمل امکان‌پذیر نیست.</p></article>\n<article class=\"card\"><h3>صادرات اسلب ایران و اسناد موردنیاز</h3><p>در سفارش صادرات اسلب فولادی، مشخصات آنالیز شیمیایی، حدود تلرانس، وضعیت سطح، نحوه بارگیری و مدارک فنی باید در قرارداد یا پیش‌فاکتور تعریف شوند. مقصد، روش حمل و الزامات بازرسی در محاسبه هزینه تجاری اثر دارند.</p>\n<p>درخواست صادرکننده یا خریدار خارجی باید کشور مقصد، مقدار، ابعاد و گرید اسلب را دقیق مشخص کند؛ اصطلاح «اسلب صادراتی» به‌تنهایی تعیین‌کننده کیفیت یا استاندارد نیست.</p></article>\n<article class=\"card\"><h3>تفاوت قیمت شمش با اسلب</h3><p>شمش معمولاً خوراک نورد میلگرد و مقاطع طویل است؛ اسلب خوراک نورد محصولات تخت. به همین دلیل مقایسه مستقیم قیمت شمش با قیمت اسلب بدون بررسی نوع محصول و گرید اشتباه است. برای آشنایی با کاربردها، <a href=\"../../guides/billet-vs-slab/\">راهنمای تفاوت شمش و اسلب</a> را مطالعه کنید.</p>\n<p>برای تأمین <a href=\"../steel-plate/\">ورق فولادی</a> نیز می‌توانید مشخصات محصول نهایی را جداگانه استعلام کنید.</p></article></div>\n      <p class=\"section-intro\">برای دریافت پیشنهاد تجاری، <a href=\"mailto:info@mohajer-group.com\">مشخصات سفارش را برای واحد بازرگانی فولاد مهاجر مبین ارسال کنید</a> یا با <a href=\"../../steel-export/\">مراحل صادرات فولاد</a> آشنا شوید.</p>\n    </section>\n",
+    "h1": "خرید اسلب فولادی؛ قیمت تختال و صادرات اسلب",
+    "description": "خرید اسلب فولادی (تختال) و استعلام قیمت اسلب صادراتی با اعلام گرید، ابعاد، تناژ، مقصد و نیاز به گواهی آنالیز؛ راهنمای بازرگانی فولاد مهاجر مبین.",
+    "english": "Steel Slab"
+  }
+}
+
 def esc(value: str) -> str:
     return html.escape(value, quote=True)
 
@@ -408,6 +429,10 @@ def render(product: dict) -> str:
     description = f'خرید، فروش، قیمت و صادرات {product["fa"]}؛ {product["grades"]}. بررسی مشخصات، شرایط تحویل و استعلام تخصصی از فولاد مهاجر مبین.'
     description = SEO_GUIDES.get(product["slug"], {}).get("description", description)
     guide = SEO_GUIDES.get(product["slug"])
+    priority = PRIORITY_INTENT.get(product["slug"], {})
+    priority_html = priority.get("html", "")
+    language_cta = (f'<p class="section-intro" style="padding:18px clamp(20px,7vw,110px)"><a href="../../en/products/{product["slug"]}/" lang="en">English: {esc(priority["english"])} prices and export inquiry</a></p>' if priority else "")
+    description = priority.get("description", description)
     guide_html = (f'''    <section class="section-white" id="buying-guide">\n      <h2 class="section-title">{esc(guide["heading"])}</h2>\n      <p class="section-intro">{esc(guide["first"])}</p>\n      <div class="content-grid"><article class="card"><h3>مشخصات مهم پیش از سفارش</h3><p>{esc(guide["second"])}</p></article><article class="card"><h3>قیمت و شرایط تأمین صادراتی</h3><p>{esc(guide["third"])}</p></article></div>\n    </section>\n''' if guide else "")
     guide_link_html = ('<p class="section-intro">برای آشنایی با انتخاب رده مناسب، <a href="../../guides/rebar-grades/">راهنمای تفاوت میلگرد A2، A3 و A4</a> را بخوانید.</p>' if product["slug"] == "rebar" else '<p class="section-intro">همچنین ببینید: <a href="../../guides/billet-vs-slab/">تفاوت شمش و اسلب فولادی</a>.</p>' if product["slug"] == "steel-slab" else "")
     weight_guide_html = ('''    <section class="section-white" id="weight-guide">
@@ -434,6 +459,7 @@ def render(product: dict) -> str:
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="{url}">
   <link rel="alternate" hreflang="fa-IR" href="{url}">
+  {f'<link rel="alternate" hreflang="en" href="{BASE_URL}/en/products/{product["slug"]}/">' if priority else ""}
   <link rel="alternate" hreflang="x-default" href="{url}">
   <meta property="og:type" content="product">
   <meta property="og:site_name" content="Mohajer Mobin Steel | فولاد مهاجر مبین">
@@ -462,7 +488,7 @@ def render(product: dict) -> str:
       <div>
         <p class="breadcrumb"><a href="../../">خانه</a> / <a href="../">محصولات فولادی</a> / {esc(product['fa'])}</p>
         <p class="eyebrow">تأمین، بازرگانی و صادرات محصولات فولادی</p>
-        <h1>خرید و صادرات {esc(product['fa'])}</h1>
+        <h1>{esc(priority.get("h1", "خرید و صادرات " + product["fa"]))}</h1>
         <p class="lead">{esc(product['intro'])}</p>
         <div class="hero-actions"><a class="button" href="mailto:info@mohajer-group.com">درخواست استعلام و پیش‌فاکتور</a><a class="button secondary" href="#specifications">مشاهده مشخصات</a></div>
       </div>
@@ -473,7 +499,7 @@ def render(product: dict) -> str:
       <p class="section-intro">مشخصات زیر دامنه عمومی تأمین را نشان می‌دهد. مشخصات قطعی، استاندارد، آنالیز، مقدار قابل عرضه و برنامه تحویل باید در پیش‌فاکتور همان سفارش تأیید شود.</p>
       <div class="spec-table-wrap"><table><thead><tr><th>موضوع</th><th>مشخصات عمومی</th></tr></thead><tbody><tr><td>گرید و کیفیت</td><td>{esc(product['grades'])}</td></tr><tr><td>ابعاد و شکل تحویل</td><td>{esc(product['sizes'])}</td></tr><tr><td>کاربردهای متداول</td><td>{esc(product['use'])}</td></tr><tr><td>بازرسی و اسناد</td><td>بر اساس توافق تجاری، استاندارد محصول و الزامات کشور مقصد</td></tr><tr><td>حمل و تحویل</td><td>قابل بررسی برای تحویل داخلی یا صادراتی بر مبنای مقصد و مقدار سفارش</td></tr></tbody></table></div>
     </section>
-{guide_html}{weight_guide_html}    <section>
+{guide_html}{weight_guide_html}{priority_html}    <section>
       <h2 class="section-title">فرایند خرید و صادرات</h2>
       <div class="content-grid"><article class="card"><h3>اطلاعات لازم برای استعلام</h3><ul class="bullet-list"><li>نام محصول، گرید و استاندارد</li><li>ابعاد، مقدار و تلرانس مورد نیاز</li><li>کشور و محل تحویل</li><li>نیاز به گواهی، بازرسی یا آزمون</li><li>روش بسته‌بندی و بازه زمانی تحویل</li></ul></article><article class="card"><h3>مراحل بررسی سفارش</h3><ol class="bullet-list"><li>دریافت درخواست فنی و تجاری</li><li>بررسی موجودی و منبع تأمین</li><li>تطبیق مشخصات و شرایط تحویل</li><li>ارسال پیشنهاد یا پیش‌فاکتور</li><li>هماهنگی اسناد، بارگیری و حمل</li></ol></article></div>
     </section>
@@ -486,7 +512,7 @@ def render(product: dict) -> str:
       <div class="faq"><h2 class="section-title">سؤالات متداول {esc(product['fa'])}</h2><details><summary>برای خرید {esc(product['fa'])} چه اطلاعاتی لازم است؟</summary><p>گرید، ابعاد، مقدار، استاندارد، محل تحویل و نیاز بازرسی را اعلام کنید تا امکان تأمین و پیشنهاد تجاری بررسی شود.</p></details><details><summary>آیا {esc(product['fa'])} برای صادرات عرضه می‌شود؟</summary><p>بله؛ امکان صادرات پس از تأیید موجودی، مشخصات فنی، مقصد، روش حمل و الزامات اسنادی بررسی می‌شود.</p></details><details><summary>قیمت {esc(product['fa'])} چگونه تعیین می‌شود؟</summary><p>قیمت ثابت نیست و به مشخصات فنی، مقدار سفارش، کارخانه، بازار، محل تحویل، هزینه حمل و شرایط پرداخت وابسته است. برای قیمت معتبر باید استعلام ارسال شود.</p></details></div>
     </section>
     <section><h2 class="section-title">سایر محصولات فولاد مهاجر مبین</h2><p class="section-intro">برای بررسی محصولات مرتبط، مشخصات را مشاهده کنید یا <a href="../">فهرست کامل ۱۲ محصول فولادی</a> را ببینید.</p>{guide_link_html}<div class="related-grid">{related_links(product['slug'])}</div></section>
-    <section class="contact-strip" id="contact"><h2 class="section-title">استعلام {esc(product['fa'])}</h2><p>برای دریافت پیشنهاد تجاری، مشخصات فنی، مقدار سفارش و مقصد را از طریق اطلاعات تماس رسمی سایت ارسال کنید. قیمت و موجودی فقط پس از بررسی درخواست تأیید می‌شود.</p><a class="button" href="mailto:info@mohajer-group.com?subject={esc(product['en'])}%20Inquiry">ارسال درخواست به واحد بازرگانی</a></section>
+    {language_cta}<section class="contact-strip" id="contact"><h2 class="section-title">استعلام {esc(product['fa'])}</h2><p>برای دریافت پیشنهاد تجاری، مشخصات فنی، مقدار سفارش و مقصد را از طریق اطلاعات تماس رسمی سایت ارسال کنید. قیمت و موجودی فقط پس از بررسی درخواست تأیید می‌شود.</p><a class="button" href="mailto:info@mohajer-group.com?subject={esc(product['en'])}%20Inquiry">ارسال درخواست به واحد بازرگانی</a></section>
   </main>
   <footer>© Mohajer Mobin Steel — فولاد مهاجر مبین؛ تأمین، تجارت و صادرات محصولات فولادی</footer>
 </body>
