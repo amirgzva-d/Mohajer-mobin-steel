@@ -410,6 +410,12 @@ def render(product: dict) -> str:
     guide = SEO_GUIDES.get(product["slug"])
     guide_html = (f'''    <section class="section-white" id="buying-guide">\n      <h2 class="section-title">{esc(guide["heading"])}</h2>\n      <p class="section-intro">{esc(guide["first"])}</p>\n      <div class="content-grid"><article class="card"><h3>مشخصات مهم پیش از سفارش</h3><p>{esc(guide["second"])}</p></article><article class="card"><h3>قیمت و شرایط تأمین صادراتی</h3><p>{esc(guide["third"])}</p></article></div>\n    </section>\n''' if guide else "")
     guide_link_html = ('<p class="section-intro">برای آشنایی با انتخاب رده مناسب، <a href="../../guides/rebar-grades/">راهنمای تفاوت میلگرد A2، A3 و A4</a> را بخوانید.</p>' if product["slug"] == "rebar" else '<p class="section-intro">همچنین ببینید: <a href="../../guides/billet-vs-slab/">تفاوت شمش و اسلب فولادی</a>.</p>' if product["slug"] == "steel-slab" else "")
+    weight_guide_html = ('''    <section class="section-white" id="weight-guide">
+      <h2 class="section-title">محاسبه وزن میلگرد و نکات سفارش عمده</h2>
+      <p class="section-intro">وزن نظری یک متر میلگرد با قطر اسمی d بر حسب میلی‌متر، تقریباً از رابطه d² ÷ 162 (کیلوگرم بر متر) به دست می‌آید. برای نمونه وزن نظری یک شاخه ۱۲ متری با قطر ۱۶ میلی‌متر حدود ۱۸٫۹۶ کیلوگرم است؛ وزن واقعی بار باید با تلرانس استاندارد و باسکول کنترل شود.</p>
+      <p class="section-intro">رده‌های متداول A2 (S340)، A3 (S400) و A4 (S500) از نظر حداقل تنش تسلیم و شکل آج تفاوت دارند. پیش از خرید میلگرد، رده استاندارد، برگه آزمون کارخانه، قطر، وزن بندیل، مقدار سفارش و شهر یا کشور مقصد را مشخص کنید. برای مقایسه کامل، <a href="../../guides/rebar-grades/">راهنمای انتخاب میلگرد A2، A3 و A4</a> را مطالعه کنید.</p>
+    </section>
+''' if product["slug"] == "rebar" else "")
     keywords = "، ".join(dict.fromkeys([
         f'خرید {product["fa"]}',
         f'فروش {product["fa"]}',
@@ -467,7 +473,7 @@ def render(product: dict) -> str:
       <p class="section-intro">مشخصات زیر دامنه عمومی تأمین را نشان می‌دهد. مشخصات قطعی، استاندارد، آنالیز، مقدار قابل عرضه و برنامه تحویل باید در پیش‌فاکتور همان سفارش تأیید شود.</p>
       <div class="spec-table-wrap"><table><thead><tr><th>موضوع</th><th>مشخصات عمومی</th></tr></thead><tbody><tr><td>گرید و کیفیت</td><td>{esc(product['grades'])}</td></tr><tr><td>ابعاد و شکل تحویل</td><td>{esc(product['sizes'])}</td></tr><tr><td>کاربردهای متداول</td><td>{esc(product['use'])}</td></tr><tr><td>بازرسی و اسناد</td><td>بر اساس توافق تجاری، استاندارد محصول و الزامات کشور مقصد</td></tr><tr><td>حمل و تحویل</td><td>قابل بررسی برای تحویل داخلی یا صادراتی بر مبنای مقصد و مقدار سفارش</td></tr></tbody></table></div>
     </section>
-{guide_html}    <section>
+{guide_html}{weight_guide_html}    <section>
       <h2 class="section-title">فرایند خرید و صادرات</h2>
       <div class="content-grid"><article class="card"><h3>اطلاعات لازم برای استعلام</h3><ul class="bullet-list"><li>نام محصول، گرید و استاندارد</li><li>ابعاد، مقدار و تلرانس مورد نیاز</li><li>کشور و محل تحویل</li><li>نیاز به گواهی، بازرسی یا آزمون</li><li>روش بسته‌بندی و بازه زمانی تحویل</li></ul></article><article class="card"><h3>مراحل بررسی سفارش</h3><ol class="bullet-list"><li>دریافت درخواست فنی و تجاری</li><li>بررسی موجودی و منبع تأمین</li><li>تطبیق مشخصات و شرایط تحویل</li><li>ارسال پیشنهاد یا پیش‌فاکتور</li><li>هماهنگی اسناد، بارگیری و حمل</li></ol></article></div>
     </section>

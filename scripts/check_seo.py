@@ -50,3 +50,10 @@ for slug in PRODUCTS:
     assert 'href="' + slug + '/"' in hub, slug
 
 print(f"SEO validation passed: {len(locs)} sitemap URLs and {len(PRODUCTS)} products.")
+
+# Prevent stale promotional price data from being presented as current market facts.
+home = (ROOT / "index.html").read_text(encoding="utf-8")
+for stale in ["42,000,000", "39,500,000", "669,000", "667,000", "670,000", "۵ مرداد ۱۴۰۴"]:
+    assert stale not in home, f"Stale indicative price/date published as current: {stale}"
+assert 'id="weight-guide"' in (ROOT / "products/rebar/index.html").read_text(encoding="utf-8")
+assert "۳۴۰" in (ROOT / "guides/rebar-grades/index.html").read_text(encoding="utf-8")
