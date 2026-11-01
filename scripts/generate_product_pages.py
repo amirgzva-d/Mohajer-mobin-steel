@@ -129,7 +129,7 @@ SEO_GUIDES = {
     "second": "برای استعلام قیمت میلگرد A3 یا میلگرد صادراتی، قطر، گرید، کارخانه ترجیحی، تناژ، محل بارگیری و مقصد را اعلام کنید. وزن هر شاخه و بندیل، تلرانس، گواهی آزمون و روش بسته‌بندی بر هزینه نهایی و پذیرش محموله در مقصد اثر می‌گذارند.",
     "third": "برای سفارش صادرات میلگرد ایران، مشخصات فنی باید با استاندارد و الزامات کشور مقصد تطبیق داده شود. قیمت روز و موجودی قطعی تنها پس از استعلام قابل تأیید است؛ این صفحه جدول قیمت لحظه‌ای منتشر نمی‌کند.",
     "title": "خرید میلگرد A2، A3 و A4 | قیمت و صادرات میلگرد | فولاد مهاجر",
-    "description": "در خرید میلگرد آجدار، انتخاب رده A2، A3 یا A4 صرفاً با توجه به قیمت انجام نمی‌شود، نقشه سازه، استاندارد پروژه، | بررسی مشخصات، قیمت و شرایط صادرات با فولاد مهاجر مبین."
+    "description": "خرید و صادرات میلگرد A2، A3 و A4 در قطرهای ۸ تا ۴۰ میلی‌متر؛ مشخصات فنی، عوامل قیمت میلگرد و استعلام پیش‌فاکتور از فولاد مهاجر مبین."
   },
   "steel-slab": {
     "heading": "خرید اسلب فولادی و شرایط صادرات اسلب ایران",
@@ -137,7 +137,7 @@ SEO_GUIDES = {
     "second": "برای استعلام قیمت اسلب فولادی، مقدار سفارش، ابعاد، محدودیت‌های سطحی، نیاز به گواهی آنالیز و مقصد داخلی یا صادراتی را ارسال کنید. مشخصات نهایی بر اساس ظرفیت کارخانه تأمین‌کننده، تولید و شرایط سفارش بررسی می‌شود.",
     "third": "در صادرات اسلب، هماهنگی بازرسی، بارگیری، بیمه و مدارک حمل بخش مهمی از سفارش است. اگر به‌دنبال تأمین‌کننده اسلب ایران هستید، نوع کاربرد و استاندارد نهایی را همراه با درخواست تجاری اعلام کنید.",
     "title": "خرید اسلب فولادی | قیمت و صادرات اسلب | فولاد مهاجر",
-    "description": "اسلب فولادی یا تختال، ماده اولیه خطوط نورد ورق و محصولات تخت است. هنگام خرید اسلب باید ضخامت، عرض، طول، گرید و | بررسی مشخصات، قیمت و شرایط صادرات با فولاد مهاجر مبین."
+    "description": "خرید اسلب فولادی و صادرات تختال ایران؛ راهنمای گرید، ابعاد، شرایط حمل و عوامل قیمت اسلب. استعلام سفارش عمده از فولاد مهاجر مبین."
   },
   "steel-angle": {
     "heading": "خرید نبشی فولادی؛ تفاوت ابعاد، گرید و قیمت نبشی",
@@ -145,7 +145,7 @@ SEO_GUIDES = {
     "second": "گریدهای S235JR، S275JR و S355JR ویژگی‌های متفاوتی دارند و انتخاب آن‌ها به نقشه و محاسبات پروژه بستگی دارد. درخواست نبشی خام یا دارای پوشش نیز باید در سفارش درج شود.",
     "third": "قیمت نبشی فولادی به وزن واحد طول، گرید، کارخانه، تناژ، بسته‌بندی و مسیر تحویل وابسته است. برای صادرات نبشی، تطبیق استاندارد و مدارک با مقصد پیش از تأیید سفارش ضروری است.",
     "title": "خرید نبشی فولادی | قیمت و صادرات نبشی | فولاد مهاجر",
-    "description": "نبشی فولادی برای اتصالات سازه‌ای، دکل، خرپا و ساخت قطعات صنعتی به کار می‌رود. در استعلام خرید نبشی، مساوی یا ن | بررسی مشخصات، قیمت و شرایط صادرات با فولاد مهاجر مبین."
+    "description": "خرید نبشی فولادی؛ بررسی گرید S235JR تا S355JR، ابعاد بال و ضخامت، قیمت و شرایط صادرات نبشی. استعلام از فولاد مهاجر مبین."
   },
   "steel-channel": {
     "heading": "خرید ناودانی فولادی UPN و استعلام قیمت ناودانی",
@@ -153,7 +153,7 @@ SEO_GUIDES = {
     "second": "وزن و ابعاد واقعی مقطع باید با استاندارد مورد توافق و نقشه پروژه کنترل شوند. گریدهای S235JR، S275JR و S355JR بسته به الزامات سازه‌ای قابل بررسی‌اند.",
     "third": "قیمت ناودانی صادراتی با سایز، وزن، کارخانه، مقدار و مقصد تغییر می‌کند. مشخصات بسته‌بندی و برنامه بارگیری برای سفارش عمده و صادرات ناودانی باید در پیش‌فاکتور تأیید شوند.",
     "title": "خرید ناودانی فولادی UPN | قیمت و صادرات | فولاد مهاجر",
-    "description": "ناودانی UPN یکی از مقاطع مورد استفاده در شاسی، قاب و سازه‌های فلزی است. برای خرید ناودانی فولادی، علاوه بر شما | بررسی مشخصات، قیمت و شرایط صادرات با فولاد مهاجر مبین."
+    "description": "خرید ناودانی UPN فولادی؛ بررسی سایز، گرید، وزن و عوامل قیمت ناودانی و شرایط صادرات. دریافت پیشنهاد از فولاد مهاجر مبین."
   },
   "steel-beam": {
     "heading": "خرید تیرآهن و هاش؛ مشخصات و قیمت تیرآهن صادراتی",
@@ -161,7 +161,7 @@ SEO_GUIDES = {
     "second": "در استعلام قیمت تیرآهن، کارخانه تولیدکننده، تناژ، روش بارگیری، نیاز به بازرسی و شهر یا کشور مقصد بر پیشنهاد تجاری تأثیر می‌گذارند. گریدهای S275JR، S355JR و S355J2 بر اساس مشخصات سفارش بررسی می‌شوند.",
     "third": "برای صادرات تیرآهن ایران، مدارک فنی و گواهی محصول و شرایط تحویل باید متناسب با بازار مقصد هماهنگ شود. قیمت درج‌شده در پیش‌فاکتور معتبر است و تغییرات بازار را نمی‌توان با یک نرخ ثابت نمایش داد.",
     "title": "خرید تیرآهن و هاش | قیمت و صادرات تیرآهن | فولاد مهاجر",
-    "description": "برای خرید تیرآهن و مقاطع بال‌پهن، ابتدا نوع مقطع موردنیاز سازه، ابعاد اسمی، وزن هر متر، گرید و طول شاخه را تعی | بررسی مشخصات، قیمت و شرایط صادرات با فولاد مهاجر مبین."
+    "description": "خرید تیرآهن فولادی و مقاطع بال‌پهن؛ مشخصات گرید، وزن، سایز، عوامل قیمت تیرآهن و شرایط صادرات با فولاد مهاجر مبین."
   },
   "steel-pipe": {
     "heading": "خرید لوله فولادی درزدار و بدون درز؛ استعلام قیمت لوله",
@@ -169,7 +169,7 @@ SEO_GUIDES = {
     "second": "برای لوله فولادی سیاه یا گالوانیزه، نوع پوشش، وضعیت سر لوله، طول شاخه، الزامات آزمون و مدارک فنی بخشی از مشخصات سفارش است. امکان تأمین تنها پس از بررسی استاندارد و موجودی تأیید می‌شود.",
     "third": "قیمت لوله فولادی و شرایط صادرات به گرید، قطر، ضخامت، کارخانه و مقصد بستگی دارد. درخواست قیمت را همراه با نقشه یا لیست متریال ارسال کنید تا از پیشنهاد نامتناسب جلوگیری شود.",
     "title": "خرید لوله فولادی | قیمت لوله و صادرات | فولاد مهاجر",
-    "description": "هنگام خرید لوله فولادی باید مشخص شود محصول برای انتقال سیال، سازه یا کاربرد صنعتی استفاده خواهد شد. انتخاب لول | بررسی مشخصات، قیمت و شرایط صادرات با فولاد مهاجر مبین."
+    "description": "خرید لوله فولادی درزدار و بدون درز؛ بررسی قطر، ضخامت، پوشش، قیمت لوله و شرایط تأمین و صادرات از فولاد مهاجر مبین."
   },
   "steel-profile": {
     "heading": "خرید قوطی و پروفیل فولادی؛ ابعاد و قیمت پروفیل",
@@ -177,7 +177,7 @@ SEO_GUIDES = {
     "second": "برای استعلام قیمت پروفیل فولادی، ابعاد دقیق، ضخامت، طول، تناژ، نوع سطح و روش بسته‌بندی را اعلام کنید. ضخامت‌های ۱٫۵ تا ۱۰ میلی‌متر از دامنه‌های قابل بررسی‌اند، نه تضمین موجودی همه سایزها.",
     "third": "برای صادرات پروفیل فولادی، کنترل تلرانس ابعادی، استاندارد مورد پذیرش خریدار و الزامات حمل مهم است. قیمت قطعی و امکان تأمین پس از دریافت مشخصات فنی تعیین می‌شود.",
     "title": "خرید قوطی و پروفیل فولادی | قیمت پروفیل | فولاد مهاجر",
-    "description": "قوطی و پروفیل فولادی مربع و مستطیل در سازه سبک، شاسی، تجهیزات و ساخت قطعات کاربرد دارد. انتخاب مقطع باید با طو | بررسی مشخصات، قیمت و شرایط صادرات با فولاد مهاجر مبین."
+    "description": "خرید قوطی و پروفیل فولادی مربع و مستطیل؛ راهنمای ابعاد، ضخامت، قیمت پروفیل و استعلام سفارش عمده از فولاد مهاجر مبین."
   },
   "steel-flat-bar": {
     "heading": "خرید تسمه فولادی نورد گرم؛ ابعاد، وزن و قیمت تسمه",
@@ -185,7 +185,7 @@ SEO_GUIDES = {
     "second": "برای استعلام قیمت تسمه فولادی، گرید، عرض ۵۰ تا ۲۰۰ میلی‌متر، ضخامت موردنیاز در دامنه ۳ تا ۲۵ میلی‌متر، مقدار و محل تحویل را اعلام کنید. این بازه‌ها به معنی موجود بودن دائمی تمام ترکیب‌ها نیستند.",
     "third": "در سفارش عمده و صادرات تسمه فولادی، تلرانس ابعادی و شرایط بسته‌بندی روی وزن تحویلی و هزینه حمل اثر دارند؛ پیشنهاد نهایی بعد از بررسی تأمین صادر می‌شود.",
     "title": "خرید تسمه فولادی | قیمت تسمه نورد گرم | فولاد مهاجر",
-    "description": "تسمه فولادی در ساخت بست، قاب، تجهیزات و قطعات صنعتی کاربرد دارد. در خرید تسمه نورد گرم، عرض، ضخامت، طول شاخه و | بررسی مشخصات، قیمت و شرایط صادرات با فولاد مهاجر مبین."
+    "description": "خرید تسمه فولادی نورد گرم؛ راهنمای عرض و ضخامت، گرید، عوامل قیمت تسمه و شرایط تأمین و صادرات از فولاد مهاجر مبین."
   },
   "steel-plate": {
     "heading": "خرید ورق فولادی ST37 و ST52؛ استعلام قیمت ورق و پلیت",
@@ -193,7 +193,7 @@ SEO_GUIDES = {
     "second": "برای قیمت ورق ST37 یا قیمت ورق ST52، ضخامت، شکل تحویل به‌صورت رول یا شیت، ابعاد، تناژ، کارخانه و شهر مقصد را ارسال کنید. دامنه ضخامت‌های قابل بررسی ۰٫۵ تا ۴۰ میلی‌متر است و موجودی هر سایز استعلام می‌شود.",
     "third": "در صادرات ورق و پلیت فولادی، گواهی مواد، کیفیت سطح، تلرانس و نحوه محافظت و بارگیری باید در اسناد تجاری مشخص شوند. هیچ قیمت لحظه‌ای تضمین‌شده‌ای در این صفحه ارائه نمی‌شود.",
     "title": "خرید ورق فولادی ST37 و ST52 | قیمت ورق | فولاد مهاجر",
-    "description": "در خرید ورق فولادی، تفاوت ورق و پلیت، روش تولید، ضخامت، عرض، طول و گرید نقش تعیین‌کننده دارند. ورق ST37 و ST52 | بررسی مشخصات، قیمت و شرایط صادرات با فولاد مهاجر مبین."
+    "description": "خرید ورق فولادی ST37 و ST52؛ بررسی ضخامت، ابعاد، قیمت ورق و پلیت و شرایط صادرات. استعلام پیش‌فاکتور از فولاد مهاجر مبین."
   },
   "galvanized-steel-coil": {
     "heading": "خرید کویل گالوانیزه؛ پوشش Z80 تا Z275 و قیمت کلاف",
@@ -201,7 +201,7 @@ SEO_GUIDES = {
     "second": "پوشش Z80 تا Z275 بیانگر دامنه مورد بررسی است و لزوماً به معنی موجودی تمام گریدها و ضخامت‌ها نیست. برای استعلام قیمت کلاف گالوانیزه، نوع پوشش، وزن هر کویل، مقدار سفارش و مقصد را مشخص کنید.",
     "third": "در صادرات کویل گالوانیزه، بسته‌بندی مقاوم در برابر رطوبت، حفاظت لبه‌ها و شرایط حمل اهمیت دارد. مشخصات و قیمت نهایی در پیشنهاد تأمین یا پیش‌فاکتور تأیید می‌شوند.",
     "title": "خرید کویل گالوانیزه | قیمت کلاف Z80 تا Z275 | فولاد مهاجر",
-    "description": "کویل فولادی گالوانیزه برای کاربردهایی مانند لوازم خانگی، پوشش ساختمان و کانال‌سازی استفاده می‌شود. در خرید کوی | بررسی مشخصات، قیمت و شرایط صادرات با فولاد مهاجر مبین."
+    "description": "خرید کویل گالوانیزه با پوشش Z80 تا Z275؛ راهنمای ضخامت، عرض، عوامل قیمت کلاف فولادی و شرایط حمل و صادرات از فولاد مهاجر مبین."
   },
   "steel-wire": {
     "heading": "خرید مفتول فولادی سیاه و گالوانیزه؛ قطر، کلاف و قیمت",
@@ -209,7 +209,7 @@ SEO_GUIDES = {
     "second": "برای خرید مفتول فولادی، قطر ۱ تا ۶ میلی‌متر، نوع پوشش، استحکام موردنیاز، وزن کلاف یا قرقره، نوع بسته‌بندی و مقدار سفارش را مشخص کنید. قابلیت تولید یا تأمین هر ترکیب پس از بررسی اعلام می‌شود.",
     "third": "قیمت مفتول فولادی و شرایط صادرات به قطر، پوشش، وزن بسته، کارخانه و مسیر تحویل وابسته است. پیش از تأیید سفارش، استاندارد و گواهی فنی موردنیاز خریدار بررسی می‌شود.",
     "title": "خرید مفتول فولادی | قیمت مفتول سیاه و گالوانیزه | فولاد مهاجر",
-    "description": "مفتول فولادی در توری، آرماتوربندی و صنایع مفتولی استفاده می‌شود. انتخاب مفتول سیاه آنیل‌شده یا مفتول گالوانیزه | بررسی مشخصات، قیمت و شرایط صادرات با فولاد مهاجر مبین."
+    "description": "خرید مفتول فولادی سیاه و گالوانیزه؛ بررسی قطر، وزن کلاف، عوامل قیمت مفتول و شرایط تأمین و صادرات از فولاد مهاجر مبین."
   }
 }
 
@@ -217,8 +217,108 @@ def esc(value: str) -> str:
     return html.escape(value, quote=True)
 
 
+RELATED_SLUGS = {
+  "steel-billet": [
+    "rebar",
+    "steel-wire",
+    "steel-slab",
+    "steel-plate",
+    "steel-beam",
+    "steel-channel"
+  ],
+  "steel-slab": [
+    "steel-plate",
+    "galvanized-steel-coil",
+    "steel-billet",
+    "rebar",
+    "steel-beam",
+    "steel-pipe"
+  ],
+  "rebar": [
+    "steel-billet",
+    "steel-wire",
+    "steel-beam",
+    "steel-channel",
+    "steel-profile",
+    "steel-plate"
+  ],
+  "steel-angle": [
+    "steel-channel",
+    "steel-beam",
+    "steel-profile",
+    "steel-flat-bar",
+    "rebar",
+    "steel-plate"
+  ],
+  "steel-channel": [
+    "steel-angle",
+    "steel-beam",
+    "steel-flat-bar",
+    "steel-profile",
+    "rebar",
+    "steel-pipe"
+  ],
+  "steel-beam": [
+    "steel-angle",
+    "steel-channel",
+    "rebar",
+    "steel-plate",
+    "steel-profile",
+    "steel-flat-bar"
+  ],
+  "steel-pipe": [
+    "steel-profile",
+    "steel-wire",
+    "steel-plate",
+    "galvanized-steel-coil",
+    "steel-angle",
+    "steel-channel"
+  ],
+  "steel-profile": [
+    "steel-pipe",
+    "steel-angle",
+    "steel-channel",
+    "steel-beam",
+    "steel-flat-bar",
+    "steel-plate"
+  ],
+  "steel-flat-bar": [
+    "steel-angle",
+    "steel-channel",
+    "steel-beam",
+    "steel-plate",
+    "steel-profile",
+    "steel-wire"
+  ],
+  "steel-plate": [
+    "steel-slab",
+    "galvanized-steel-coil",
+    "steel-beam",
+    "steel-pipe",
+    "steel-angle",
+    "steel-profile"
+  ],
+  "galvanized-steel-coil": [
+    "steel-plate",
+    "steel-slab",
+    "steel-pipe",
+    "steel-profile",
+    "steel-flat-bar",
+    "steel-wire"
+  ],
+  "steel-wire": [
+    "steel-billet",
+    "rebar",
+    "galvanized-steel-coil",
+    "steel-pipe",
+    "steel-flat-bar",
+    "steel-profile"
+  ]
+}
+
 def related_links(current_slug: str) -> str:
-    links = [p for p in PRODUCTS if p["slug"] != current_slug][:6]
+    slugs = RELATED_SLUGS.get(current_slug, [])
+    links = [next(p for p in PRODUCTS if p["slug"] == slug) for slug in slugs]
     return "\n".join(
         f'<a href="../{p["slug"]}/">{esc(p["fa"])} <span lang="en">| {esc(p["en"])}</span></a>' for p in links
     )
@@ -275,8 +375,6 @@ def schema_for(product: dict) -> str:
                 "description": product["intro"],
                 "image": [product["image"]],
                 "category": "محصولات فولادی | Steel Products",
-                "brand": {"@type": "Brand", "name": "Mohajer Mobin Steel | فولاد مهاجر مبین"},
-                "manufacturer": {"@id": f"{BASE_URL}/#organization"},
                 "url": url,
                 "additionalProperty": [
                     {"@type": "PropertyValue", "name": "Grade", "value": product["grades"]},
@@ -288,7 +386,7 @@ def schema_for(product: dict) -> str:
                 "@type": "BreadcrumbList",
                 "itemListElement": [
                     {"@type": "ListItem", "position": 1, "name": "فولاد مهاجر مبین", "item": f"{BASE_URL}/"},
-                    {"@type": "ListItem", "position": 2, "name": "محصولات فولادی", "item": f"{BASE_URL}/#catalogSectionAnchor"},
+                    {"@type": "ListItem", "position": 2, "name": "محصولات فولادی", "item": f"{BASE_URL}/products/"},
                     {"@type": "ListItem", "position": 3, "name": product["fa"], "item": url},
                 ],
             },
@@ -311,6 +409,7 @@ def render(product: dict) -> str:
     description = SEO_GUIDES.get(product["slug"], {}).get("description", description)
     guide = SEO_GUIDES.get(product["slug"])
     guide_html = (f'''    <section class="section-white" id="buying-guide">\n      <h2 class="section-title">{esc(guide["heading"])}</h2>\n      <p class="section-intro">{esc(guide["first"])}</p>\n      <div class="content-grid"><article class="card"><h3>مشخصات مهم پیش از سفارش</h3><p>{esc(guide["second"])}</p></article><article class="card"><h3>قیمت و شرایط تأمین صادراتی</h3><p>{esc(guide["third"])}</p></article></div>\n    </section>\n''' if guide else "")
+    guide_link_html = ('<p class="section-intro">برای آشنایی با انتخاب رده مناسب، <a href="../../guides/rebar-grades/">راهنمای تفاوت میلگرد A2، A3 و A4</a> را بخوانید.</p>' if product["slug"] == "rebar" else '<p class="section-intro">همچنین ببینید: <a href="../../guides/billet-vs-slab/">تفاوت شمش و اسلب فولادی</a>.</p>' if product["slug"] == "steel-slab" else "")
     keywords = "، ".join(dict.fromkeys([
         f'خرید {product["fa"]}',
         f'فروش {product["fa"]}',
@@ -350,12 +449,12 @@ def render(product: dict) -> str:
 <body>
   <header class="site-header">
     <a class="brand" href="../../" aria-label="صفحه اصلی فولاد مهاجر مبین"><img src="../../192.png" alt="نشان فولاد مهاجر مبین" width="48" height="48"><span>فولاد مهاجر مبین<br><small lang="en">Mohajer Mobin Steel</small></span></a>
-    <nav aria-label="پیوندهای اصلی"><a href="../../#catalogSectionAnchor">محصولات</a><a href="../../">درباره شرکت</a><a href="mailto:info@mohajer-group.com">تماس و استعلام</a></nav>
+    <nav aria-label="پیوندهای اصلی"><a href="../">محصولات</a><a href="../../">درباره شرکت</a><a href="mailto:info@mohajer-group.com">تماس و استعلام</a></nav>
   </header>
   <main>
     <section class="hero">
       <div>
-        <p class="breadcrumb"><a href="../../">خانه</a> / <a href="../../#catalogSectionAnchor">محصولات فولادی</a> / {esc(product['fa'])}</p>
+        <p class="breadcrumb"><a href="../../">خانه</a> / <a href="../">محصولات فولادی</a> / {esc(product['fa'])}</p>
         <p class="eyebrow">تأمین، بازرگانی و صادرات محصولات فولادی</p>
         <h1>خرید و صادرات {esc(product['fa'])}</h1>
         <p class="lead">{esc(product['intro'])}</p>
@@ -375,12 +474,12 @@ def render(product: dict) -> str:
     <section class="english" id="english" lang="en">
       <h2 class="section-title">{esc(product['en'])} Supplier and Export Inquiry</h2>
       <p class="section-intro">{esc(product['english'])}</p>
-      <div class="content-grid"><article class="card"><h3>Commercial inquiry details</h3><p>Please provide grade, standard, dimensions, quantity, destination, inspection requirements and preferred delivery terms. Availability and commercial terms are confirmed only in the relevant quotation.</p></article><article class="card"><h3>Search topics</h3><p>{esc(' · '.join(product['keywords']))}</p><p>Mohajer Mobin Steel is a steel trading and export business serving qualified domestic and international inquiries.</p></article></div>
+      <div class="content-grid"><article class="card"><h3>Commercial inquiry details</h3><p>Please provide grade, standard, dimensions, quantity, destination, inspection requirements and preferred delivery terms. Availability and commercial terms are confirmed only in the relevant quotation.</p></article><article class="card"><h3>Specifications and export checks</h3><p>Confirm product grade, dimensions, quantity, mill test certificates, packing and shipment terms before ordering.</p><p>Mohajer Mobin Steel is a steel trading and export business serving qualified domestic and international inquiries.</p></article></div>
     </section>
     <section class="section-white">
       <div class="faq"><h2 class="section-title">سؤالات متداول {esc(product['fa'])}</h2><details><summary>برای خرید {esc(product['fa'])} چه اطلاعاتی لازم است؟</summary><p>گرید، ابعاد، مقدار، استاندارد، محل تحویل و نیاز بازرسی را اعلام کنید تا امکان تأمین و پیشنهاد تجاری بررسی شود.</p></details><details><summary>آیا {esc(product['fa'])} برای صادرات عرضه می‌شود؟</summary><p>بله؛ امکان صادرات پس از تأیید موجودی، مشخصات فنی، مقصد، روش حمل و الزامات اسنادی بررسی می‌شود.</p></details><details><summary>قیمت {esc(product['fa'])} چگونه تعیین می‌شود؟</summary><p>قیمت ثابت نیست و به مشخصات فنی، مقدار سفارش، کارخانه، بازار، محل تحویل، هزینه حمل و شرایط پرداخت وابسته است. برای قیمت معتبر باید استعلام ارسال شود.</p></details></div>
     </section>
-    <section><h2 class="section-title">سایر محصولات فولاد مهاجر مبین</h2><p class="section-intro">برای بررسی سایر محصولات بازرگانی و صادراتی، صفحه تخصصی محصول را انتخاب کنید.</p><div class="related-grid">{related_links(product['slug'])}</div></section>
+    <section><h2 class="section-title">سایر محصولات فولاد مهاجر مبین</h2><p class="section-intro">برای بررسی محصولات مرتبط، مشخصات را مشاهده کنید یا <a href="../">فهرست کامل ۱۲ محصول فولادی</a> را ببینید.</p>{guide_link_html}<div class="related-grid">{related_links(product['slug'])}</div></section>
     <section class="contact-strip" id="contact"><h2 class="section-title">استعلام {esc(product['fa'])}</h2><p>برای دریافت پیشنهاد تجاری، مشخصات فنی، مقدار سفارش و مقصد را از طریق اطلاعات تماس رسمی سایت ارسال کنید. قیمت و موجودی فقط پس از بررسی درخواست تأیید می‌شود.</p><a class="button" href="mailto:info@mohajer-group.com?subject={esc(product['en'])}%20Inquiry">ارسال درخواست به واحد بازرگانی</a></section>
   </main>
   <footer>© Mohajer Mobin Steel — فولاد مهاجر مبین؛ تأمین، تجارت و صادرات محصولات فولادی</footer>
@@ -398,7 +497,7 @@ def main() -> None:
         output_dir = products_dir / product["slug"]
         output_dir.mkdir(exist_ok=True)
         (output_dir / "index.html").write_text(render(product), encoding="utf-8")
-    print(f"Generated {len(PRODUCTS)} product pages")
+    print(f"Generated {len(PRODUCTS) - 1} standard product pages; bespoke billet preserved")
 
 
 if __name__ == "__main__":

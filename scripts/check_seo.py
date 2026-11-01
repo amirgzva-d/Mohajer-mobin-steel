@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+"""Validate crawlable pages, truthful product data, canonical links and sitemap."""
+from pathlib import Path
+from urllib.parse import urlsplit
+import json
+import re
+import xml.etree.ElementTree as ET
+
+ROOT = Path(__file__).resolve().parents[1]
+DOMAIN = "https://mohajer-steel.com"
+PRODUCTS = [
+    "steel-billet", "steel-slab", "rebar", "steel-angle", "steel-channel",
+    "steel-beam", "steel-pipe", "steel-profile", "steel-flat-bar",
+    "steel-plate", "galvanized-steel-coil", "steel-wire",
+]
+HUB = DOMAIN + "/products/"
+xml = ET.parse(ROOT / "sitemap.xml")
+locs = [x.text for x in xml.findall(".//{*}loc")]
+assert len(set(locs)) == len(locs), "Duplicate sitemap URLs"
+assert HUB in locs, "Product hub missing from sitemap"
+assert all(DOMAIN + "/products/" + slug + "/" in locs for slug in PRODUCTS)
+
+for url in locs:
+    parsed = urlsplit(url)
+    assert parsed.scheme == "https" and parsed.netloc == "mohajer-steel.com", url
+    path = ROOT / parsed.path.lstrip("/") / "index.html"
+    assert path.is_file(), f"Sitemap URL has no static HTML: {url}"
+    html = path.read_text(encoding="utf-8")
+    assert '<link rel="canonical" href="' + url + '"' in html, url
+    assert re.search(r"<title>[^<]+</title>", html), url
+    assert '<meta name="description"' in html, url
+
+for slug in PRODUCTS:
+    html = (ROOT / "products" / slug / "index.html").read_text(encoding="utf-8")
+    assert html.count("<h1") == 1, f"Expected one h1: {slug}"
+    assert 'href="../"' in html or slug == "steel-billet", f"Missing hub link: {slug}"
+    assert 'hreflang="en"' not in html or "#english" not in html, slug
+    schema = re.search(r'<script type="application/ld\+json">([\s\S]*?)</script>', html)
+    assert schema, slug
+    obj = json.loads(schema.group(1))
+    product = next(x for x in obj["@graph"] if x["@type"] == "Product")
+    assert "manufacturer" not in product and "brand" not in product, slug
+    crumbs = next(x for x in obj["@graph"] if x["@type"] == "BreadcrumbList")
+    assert crumbs["itemListElement"][1]["item"] == HUB, slug
+    assert html.count('rel="canonical"') == 1, slug
+
+hub = (ROOT / "products" / "index.html").read_text(encoding="utf-8")
+assert hub.count('class="product-card"') == 12
+for slug in PRODUCTS:
+    assert 'href="' + slug + '/"' in hub, slug
+
+print(f"SEO validation passed: {len(locs)} sitemap URLs and {len(PRODUCTS)} products.")

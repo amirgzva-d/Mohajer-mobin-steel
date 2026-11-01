@@ -24,3 +24,6 @@ jobs:
           node --check admin/editor/editor.js
       - name: Validate web manifest JSON
         run: python -m json.tool site.webmanifest >/dev/null
+
+      - name: Validate SEO indexable pages, schema and sitemap
+        run: python scripts/check_seo.py
